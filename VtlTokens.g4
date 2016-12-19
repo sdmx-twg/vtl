@@ -248,9 +248,9 @@ lexer grammar VtlTokens;
   MAP_TO						: 'map_to';
   MAP_FROM						: 'map_from';
   CHECK_VALUE_DOMAIN_SUBSET		: 'check_value_domain_subset';
+  RETURNS						: 'returns';
   
   TIME_AGGREGATE				: 'time_aggregate';
-  RETURNS						: 'returns';
   UNIT							: 'unit';
   
 
