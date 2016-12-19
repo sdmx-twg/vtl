@@ -1,6 +1,10 @@
-### Reference Manual Page
+reporter|reporter issue reference|document (UM/RM)|UM page|RM page|page/line
+:--|--:|:--|--:|--:|--:
+txt|#|txt|#|#|#
 
-### User Manual Page
+
+(*Please fill in the information above:* `txt|#|txt|#|#|#` *replacing* `txt` *with the required text and* `#` *with the required number, leaving the pipe* `|` *character as separator. Then, provide the description of the issue below the line, under the corresponding heading. You may, optionally, provide a proposed solution.*)
+***
 
 ### Issue Description
 
