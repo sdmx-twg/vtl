@@ -189,6 +189,11 @@ defValueDomain
   :
   DEFINE_VALUE_DOMAIN valueDomainID '(' (STRING_CONSTANT ',' BOOLEAN_CONSTANT)? dimensionTypeClause ')'
   ;  
+  
+defFunction
+  :
+  CREATE_FUNCTION functionID '(' argList ')' RETURNS dimensionType AS expr
+  ;  
 
 dimensionTypeClause
   :
@@ -304,9 +309,14 @@ ref: '(' exprOr ')'													# parenthesisExprRef
   | list															# listRef
   ; 
 
-/* list, component list, dedupList */
+/* list, component list, dedupList, argList, valueDomainList */
 list:
 	'[' (constant (',' constant)*)? ']'; 	
+
+listofCompList
+  :
+  componentList (',' componentList)*
+  ;
 
 componentList
   :
@@ -317,6 +327,20 @@ dedupList
   :
   constant '*' constant (',' constant '*' constant)*
   ;  
+
+argList
+  : arg (',' arg)* 
+  ;
+
+arg
+  :
+  IDENTIFIER (AS dimensionType)? (ASSIGN constant)?
+  ;
+  
+valueDomainList
+  :
+  dimensionType (',' dimensionType)*
+  ;
 
 /* get */
 getExpr
@@ -369,6 +393,11 @@ validationHierarchical
   :
   CHECK '(' persistentDatasetID ',' rulesetID (',' THRESHOLD '(' INTEGER_CONSTANT ')' )? 
   (',' NOT_VALID|VALID|ALL)? (',' MEASURES|CONDITION)? ')'
+  ;
+  
+validationValueDoman
+  :
+  CHECK_VALUE_DOMAIN_SUBSET '(' expr ',' componentList | (listofCompList '(' (componentList)+')' ',' valueDomainList)? ',' IDENTIFIER ')'
   ;
 
 erCode
@@ -739,6 +768,11 @@ varID
   ;
   
 componentID
+  :
+  IDENTIFIER
+  ;
+  
+ functionID
   :
   IDENTIFIER
   ;
