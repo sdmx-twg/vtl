@@ -1,11 +1,8 @@
 reporter issue reference|document (UM/RM/EBNF)|page|line
 :--|:--|--:|--:
 txt|txt|#|#
-
-
-> *(Please fill in the information above:* `txt|txt|#|#` *replacing* `txt` *with the required text and* `#` *with the required number, leaving the pipe* `|` *character as separator, for example:* `ECB-2|UM|64|2202`*. Then, provide the description of the issue below the line, under the corresponding heading. You may, optionally, propose a solution.)* 
-
 ***
+> *(Please fill in the information above:* `txt|txt|#|#` *replacing* `txt` *with the required text and* `#` *with the required number, leaving the pipe* `|` *character as separator, for example:* `ECB-2|UM|64|2202`*. Then, provide the description of the issue below the horizontal line and under the corresponding heading. You may, optionally, propose a solution.)*
 
 ### Issue Description
 
