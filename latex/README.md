@@ -20,7 +20,7 @@ indexed.
 
 ### Compiling documents to PDF
 
-This is normally done with `pdflatex FILE-NAME.tex` from command line,
+This is normally done with `pdflatex FILE-NAME.tex` from command line *twice*,
 or using an adequate option from a text editor of your choice.  See
 e.g. these slides for orientation:
 
