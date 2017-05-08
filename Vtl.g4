@@ -482,7 +482,7 @@ betweenRowsClauseItem
 
 joinExpr
   :
-  ('[' joinClause ']')? joinBody?
+  ('[' joinClause ']')+ joinBody?
   ;
 
 joinClause
