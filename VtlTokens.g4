@@ -222,6 +222,7 @@ lexer grammar VtlTokens;
   UNPIVOT                     : 'unpivot';
   SUBSPACE                    : 'sub';
   CODELIST                    : 'codelist';
+  APPLY                       : 'apply';
   
   TIME_AGGREGATE				      : 'time_aggregate';
   UNIT							          : 'unit';
