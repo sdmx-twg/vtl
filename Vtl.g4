@@ -22,7 +22,7 @@ exprAnd: exprEq ( AND exprEq)*;
 exprEq: exprExists (op=( '='|'<>') exprExists )*;
 
 /* Matching */
-exprExists: exprComp (((NOT)? EXISTS_IN)  exprComp )*;
+exprExists: exprComp (((NOT)? EXISTS_IN)  exprComp (ALL)? )*;
 
 /* Comparison, range */
 
