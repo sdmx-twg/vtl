@@ -8,7 +8,7 @@ statement: varID ASSIGN expr;
 
 /* Conditional */
 expr: exprOr															# exprOrExpr 
-| IF exprOr THEN exprOr (ELSEIF exprOr THEN exprOr)* (ELSE exprOr)*		# exprIfExpr
+| IF exprOr THEN exprOr ELSE exprOr		# exprIfExpr
 | validationExpr #exprValidationExpr
 ;
 
@@ -22,14 +22,12 @@ exprAnd: exprEq ( AND exprEq)*;
 exprEq: exprExists (op=( '='|'<>') exprExists )*;
 
 /* Matching */
-exprExists: exprComp (op=(EXISTS_IN | EXISTS_IN_ALL | NOT_EXISTS_IN | NOT_EXISTS_IN_ALL) exprComp)*;
+exprExists: exprComp (op=((NOT)? EXISTS_IN)  exprComp (ALL)?)*;
 
 /* Comparison, range */
 
 exprComp: 
 		exprAdd exprCompExt*;
-		
-
 
 exprCompExt: 
 		(NOT)? IN setExpr #exprCompSet
@@ -50,8 +48,9 @@ exprFactor: (opUnary=('+'|'-'|NOT)? exprMember)*;
 exprMember : exprAtom ('[' datasetClause ']')*(MEMBERSHIP componentID)?
 			|exprAtom ('[' datasetClause ']')*(MEMBERSHIP_ALT componentID)?;
 
-/* Rulesets Definition */
 
+/* Rulesets Definition */
+/* CURRENTLY UNDER REVIEW
 defMapping
   :
   defineMapping rulesetID '(' conditionClause? mapTo mapFrom ')' IS ruleClauseMapping endMappingRuleset
@@ -152,16 +151,17 @@ varSignature
   :
   varID (AS STRING_CONSTANT)?
   ;  
+*/
 
 /* Artefacts Definition */
 defDataset
   :
-  DEFINE_DATASET persistentDatasetID '(' (STRING_CONSTANT)? (IS_COLLECTED)? IDENTIFIER | dataStructureClause ')'
+  DEFINE DATASET persistentDatasetID '(' (STRING_CONSTANT)? (IS_COLLECTED)? IDENTIFIER | dataStructureClause ')'
   ; 
 
 defDataStructure
   :
-  DEFINE_DATA_STRUCTURE IDENTIFIER '(' ( STRING_CONSTANT )? dataStructureClause
+  defineDataStructure IDENTIFIER '(' ( STRING_CONSTANT )? dataStructureClause
   ;
 
 dataStructureClause
@@ -176,35 +176,49 @@ dataStructureItem
 
 defVariable
   :
-  DEFINE_VARIABLE varID
+  DEFINE VARIABLE varID
   ;
 
 defValueDomainSubset
   :
-  DEFINE_VALUE_DOMAIN_SUBSET valueDomainID '(' (STRING_CONSTANT ',' BOOLEAN_CONSTANT)?
+  defineValueDomainSubset valueDomainID '(' (STRING_CONSTANT ',' BOOLEAN_CONSTANT)?
   valueDomainID dimensionTypeClause ')'
   ;
 
 defValueDomain
   :
-  DEFINE_VALUE_DOMAIN valueDomainID '(' (STRING_CONSTANT ',' BOOLEAN_CONSTANT)? dimensionTypeClause ')'
+  defineValueDomain valueDomainID '(' STRING_CONSTANT ',' BOOLEAN_CONSTANT ',' valueFormat ',' dataTypeRestrictionClause ',' codeListClause2 ')'
   ;  
   
 defFunction
   :
-  CREATE_FUNCTION functionID '(' argList ')' RETURNS dimensionType AS expr
+  DEFINE OPERATOR operatorID '(' argList ')' RETURNS dimensionType AS expr
+  ;  
+  
+callFunction
+  :
+  operatorID '(' constant (',' constant)* ')'
   ;  
 
 dimensionTypeClause
   :
   dimensionType (codeListClause | dataTypeRestrictionClause)
   ;
-  
+ 
 codeListClause
   :
-  LIST '(' (RECORD '(' '{' '@' IDENTIFIER AS IDENTIFIER ';' 
-  ('#' constant AS constant ';')? '}' ')' )* ')'
+  LIST '(' (RECORD '(''{''@' IDENTIFIER AS IDENTIFIER ';' ('#' constant AS constant ';')?'}'')')*')'
+  ; 
+  
+codeListClause2
+  :
+  CODELIST IDENTIFIER '(' codeItemDefinition (codeItemDefinition)*')'
   ;
+  
+ codeItemDefinition
+  :
+  '('IDENTIFIER ',' STRING_CONSTANT (',' DATEFORMAT ',' DATEFORMAT)? ')'
+  ; 
 
 dataTypeRestrictionClause
   :
@@ -238,6 +252,7 @@ dateClause
   | YYYY '-' MM
   | COMPARISON_OP YYYY '-' MM '-' DD
   ;
+   
 
 /* Functions */
 exprAtom
@@ -254,7 +269,6 @@ exprAtom
   | TRUNC '(' expr ',' INTEGER_CONSTANT ')'							# lnAtom
   | POWER '(' expr ',' exponent ')'									# powerAtom
   | SQRT '(' expr ')'												# sqrtAtom
-  | NROOT '(' expr ',' INTEGER_CONSTANT ')'							# nrootAtom
   | LEN '(' expr ')'												# lenAtom
   | TRIM '(' expr ')'												# trimAtom
   | LTRIM '(' expr ')'												# ltrimAtom
@@ -263,8 +277,6 @@ exprAtom
   | LCASE '(' expr ')'												# lcaseAtom
   | SUBSTR '(' expr ',' expr (',' expr)? ')'						# substrAtom
   | INSTR '(' expr ',' expr ( ',' expr)? (',' expr)? ')'			# instrAtom
-  | DATE_FROM_STRING '(' expr ',' DATE_FORMAT ')'					# date_from_stringAtom
-  | STRING_FROM_DATE '(' DATE_FORMAT ',' expr ')'					# string_from_dateAtom
   | REPLACE '(' expr ',' expr ( ',' expr)? ')'						# replaceAtom
   | INDEXOF '(' expr ',' STRING_CONSTANT ')'						# indexofAtom
   | MISSING '(' expr ')'											# missingAtom
@@ -275,16 +287,11 @@ exprAtom
   | INTERSECT '(' expr ',' expr ')'									# intersectAtom
   | UNION '(' expr ',' expr ')'										# unionAtom
   | DIFF '(' expr ',' expr ')'										# diffAtom
-  | NOT_IN '(' expr ',' expr ')'									# notInAtom
+  | (NOT)? IN '(' expr ',' expr ')'									# notInAtom
   | ISNULL '(' expr ')'												# isNullAtom
-  | NVL '(' expr ',' constant ')'									# nvlAtom
+  | NVL '(' expr ',' expr ')'									# nvlAtom
   | MOD '(' expr ',' expr ')'										# modAtom
-  | LISTSUM '(' expr (',' expr)? ')'								# listsumAtom
   | ALL '(' expr ')'												# allAtom
-  | ANY '(' expr ')'												# anyAtom
-  | UNIQUE '(' expr ')'												# uniqueAtom
-  | FUNC_DEP '(' expr ',' expr ',' expr ')'							# func_depAtom
-  | EXTRACT '(' expr ',' STRING_CONSTANT ')'						# extractAtom
   | CURRENT_DATE '(' ')'										    # currentDateAtom
   | getExpr															# getExprAtom
   | ref																# refAtom
@@ -309,7 +316,7 @@ ref: '(' exprOr ')'													# parenthesisExprRef
   | list															# listRef
   ; 
 
-/* list, component list, dedupList, argList, valueDomainList */
+/* list, component list, argList, valueDomainList */
 list:
 	'[' (constant (',' constant)*)? ']'; 	
 
@@ -321,12 +328,7 @@ listofCompList
 componentList
   :
   ','? constant (',' constant)*
-  ;						
-  
-dedupList
-  :
-  constant '*' constant (',' constant '*' constant)*
-  ;  
+  ;						 
 
 argList
   : arg (',' arg)* 
@@ -351,13 +353,13 @@ getExpr
 /* put */
 putExpr
   : 
-  PUT '(' expr ',' persistentDatasetID ')'
+  PUT_SYMBOL '(' expr ',' persistentDatasetID ')'
   ;
 
 /* eval */
 evalExpr
   : 
-  EVAL '(' STRING_CONSTANT (',' ref)* ',' persistentDatasetID ')'
+  EVAL '(' STRING_CONSTANT (',' STRING_CONSTANT)* (',' ref)* ',' persistentDatasetID ')'
   ;
 
 /* concatenation */
@@ -482,17 +484,17 @@ betweenRowsClauseItem
 
 joinExpr
   :
-  ('[' joinClause ']')+ joinBody?
+  joinKeyword '(' joinClause (joinBody)? ')'
   ;
 
 joinClause
   :
-  (INNER|OUTER|CROSS)? (expr (',' expr)*)? ON IDENTIFIER (',' IDENTIFIER)*?
+  expr (AS IDENTIFIER (',' expr (AS IDENTIFIER))*)? (USING componentID (',' componentID)*)?
   ;
 
 joinBody
   :
-  '{' clause (',' clause)* '}'
+  clause (clause)* 
   ;
 
 clause
@@ -502,13 +504,17 @@ clause
   | joinKeepClause
   | joinFilterClause
   | joinRenameClause
-  | joinUnfoldClause
-  | joinFoldClause
+  | joinApplyClause
   ;
 
 joinCalcClause
   :
-  roleID? componentID '=' expr
+  roleID? joinCalcClauseItem (',' joinCalcClauseItem)*
+  ;
+
+joinCalcClauseItem
+  :
+  componentID ':=' expr
   ;
 
 joinDropClause
@@ -528,18 +534,14 @@ joinFilterClause
 
 joinRenameClause
   :
-  RENAME componentID TO componentID (',' componentID TO componentID)?
+  RENAME componentID TO componentID (',' componentID TO componentID)*?
   ;
-
-joinUnfoldClause
+  
+joinApplyClause
   :
-  UNFOLD componentID ',' IDENTIFIER TO IDENTIFIER (',' IDENTIFIER)?
-  ;
+  APPLY expr
+  ; 
 
-joinFoldClause
-  :
-  FOLD IDENTIFIER (',' IDENTIFIER)? TO IDENTIFIER ',' IDENTIFIER
-  ;
 
 /* Analytic Functions*/
 anFunction
@@ -592,32 +594,18 @@ filterClause
 
 renameClause
   :
-  varID AS STRING_CONSTANT (ROLE roleID)? (',' varID AS STRING_CONSTANT (ROLE roleID)?)* 
+  varID TO STRING_CONSTANT (',' varID TO STRING_CONSTANT)* 
   ;
 
 aggrFunction
   :
   SUM '(' (INCLUDE_NULLS)? expr ')'
   | AVG '(' (INCLUDE_NULLS)? expr ')'
-  | CORR '(' (INCLUDE_NULLS)? expr expr ')'
-  | COVAR_POP '(' (INCLUDE_NULLS)? expr expr ')'
-  | COVAR_SAMP '(' (INCLUDE_NULLS)? expr expr ')'
   | COUNT '(' (INCLUDE_NULLS)? expr ')'
   | MEDIAN '(' (INCLUDE_NULLS)? expr ')'
   | MIN '(' (INCLUDE_NULLS)? expr ')'
   | MAX '(' (INCLUDE_NULLS)? expr ')'
-  | PERCENTILE_CONT '(' (INCLUDE_NULLS)? expr constant ')' ORDER BY expr (ASC|DESC)?
-  | PERCENTILE_DISC '(' (INCLUDE_NULLS)? expr constant ')' ORDER BY expr (ASC|DESC)?
   | RANK '(' (INCLUDE_NULLS)? expr ')'
-  | REGR_SLOPE '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_INTERCEPT '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_COUNT '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_R2 '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_AVGX '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_AVGY '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_SXX '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_SYY '(' (INCLUDE_NULLS)? expr expr ')'
-  | REGR_SXY '(' (INCLUDE_NULLS)? expr expr ')'
   | STDDEV_POP '(' (INCLUDE_NULLS)? expr ')'
   | STDDEV '(' (INCLUDE_NULLS)? expr ')'
   | VAR_POP '(' (INCLUDE_NULLS)? expr ')'
@@ -630,14 +618,9 @@ calcClause
   CALC calcClauseItem (',' calcClauseItem)*
   ;
 
-attrCalcClause
-  :
-  ATTRCALC expr AS STRING_CONSTANT (VIRAL)? (',' expr	 AS STRING_CONSTANT (VIRAL)?)*
-  ;
-
 calcClauseItem
   :
-  calcExpr AS STRING_CONSTANT (ROLE roleID (VIRAL)?)?
+  (roleID)? calcExpr ':=' calcExpr
   ;
 
 calcExpr
@@ -648,7 +631,7 @@ calcExpr
 
 dropClause
   :
-  DROP '(' dropClauseItem (',' dropClauseItem)* ')'
+  DROP '[' dropClauseItem (',' dropClauseItem)* ']'
   ;
 
 dropClauseItem
@@ -658,7 +641,7 @@ dropClauseItem
 
 keepClause
   :
-  KEEP '(' keepClauseItem (',' keepClauseItem)* ')'
+  KEEP '[' keepClauseItem (',' keepClauseItem)* ']'
   ;
 
 keepClauseItem
@@ -689,11 +672,11 @@ dimClause
 setExpr
   :
   '(' constant (','constant)* ')'
-  | UNION '(' setExpr (',' setExpr)+ (',' DEDUP '(' expr ')' )? ')'		
+  | UNION '(' setExpr (',' setExpr)+ ')'		
   | SYMDIFF '(' setExpr ',' setExpr ')'
   | SETDIFF '(' setExpr ',' setExpr ')'
-  | INTERSECT '(' setExpr ',' setExpr (',' DEDUP '(' expr ')' )? ')'
-  | TRANSCODE '(' componentID ',' expr ',' mapItemClause|rulesetID ')'
+  | INTERSECT '(' setExpr ',' setExpr ')'
+ /* | TRANSCODE '(' componentID ',' expr ',' mapItemClause|rulesetID ')' */ #CURRENTLY UNDER REVIEW
   | AGGREGATE '(' expr ',' rulesetID (',' TOTAL|PARTIAL)? (',' returnAgg|returnAll)? ')'
   ;
 
@@ -706,6 +689,23 @@ subscriptExpr
 mapItemClause
   :
   persistentDatasetID (IDENTIFIER MAPS_FROM dimensionType)? (IDENTIFIER MAPS_TO dimensionType)?
+  ;
+
+/* pivot/unpivot expressions */
+
+unpivotExpr
+:
+persistentDatasetID '[' varID ',' varID TO pivotList ']'
+;
+
+pivotExpr
+ :
+ persistentDatasetID '[' PIVOT pivotList TO varID ',' varID ']'
+ ;
+
+pivotList
+  :
+  '(' constant (',' constant)* ')'
   ;
 
 /* aggregate sequences */
@@ -725,7 +725,13 @@ roleID
   MEASURE
   |DIMENSION
   |ATTRIBUTE
+  |viral Attribute
   ;
+  
+ viralAttribute
+  : 
+  VIRAL ATTRIBUTE
+  ; 
 
 /* Dimension Type */
 dimensionType
@@ -772,9 +778,17 @@ componentID
   IDENTIFIER
   ;
   
- functionID
+ operatorID
   :
   IDENTIFIER
+  ;
+  
+ joinKeyword
+  :
+  INNER_JOIN
+  |LEFT_JOIN
+  |FULL_JOIN
+  |CROSS_JOIN
   ;
 
 constant
@@ -784,6 +798,15 @@ constant
   | BOOLEAN_CONSTANT
   | STRING_CONSTANT
   | NULL_CONSTANT
+  ;
+  
+  valueFormat
+  :
+  STRING
+  | INTEGER
+  | FLOAT
+  | BOOLEAN
+  | DATE
   ;
   
  defineDatapointRuleset
@@ -815,3 +838,18 @@ constant
    :
    END MAPPING RULESET
    ;
+   
+ defineValueDomain
+   :
+   DEFINE VALUE_DOMAIN
+   ;  
+   
+ defineValueDomainSubset
+   :
+   DEFINE VALUE_DOMAIN_SUBSET
+   ;  
+   
+ defineDataStructure
+   :
+   DEFINE DATA STRUCTURE
+   ; 
