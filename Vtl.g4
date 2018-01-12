@@ -22,7 +22,7 @@ exprAnd: exprEq ( AND exprEq)*;
 exprEq: exprExists (op=( '='|'<>') exprExists )*;
 
 /* Matching */
-exprExists: exprComp (op=((NOT)? EXISTS_IN)  exprComp (ALL)?)*;
+exprExists: exprComp (((NOT)? EXISTS_IN)  exprComp )*;
 
 /* Comparison, range */
 
@@ -347,7 +347,7 @@ valueDomainList
 /* get */
 getExpr
   : 
-  GET '(' persistentDatasetID (',' persistentDatasetID)* (',' keepClause)? (',' dedupClause)? (',' filterClause)? (',' aggregategetClause)? ')'
+  GET '(' persistentDatasetID (',' persistentDatasetID)* (',' keepClause)? (',' filterClause)? (',' aggregategetClause)? ')'
   ;
 
 /* put */
@@ -445,7 +445,6 @@ datasetClause
   | aggrClause
   | filterClause
   | calcClause
-  | attrCalcClause
   | keepClause
   | dropClause
   | compareClause
@@ -570,11 +569,6 @@ aggrFunctionClause
   aggrFunction ( GROUP_BY|ALONG '(' IDENTIFIER (',' IDENTIFIER)+ ')' )?
   ;
 
-dedupClause
-  :
-  DEDUP '(' dedupList? ')'
-  ;
-
 getFiltersClause
   :
     getFilterClause (',' getFilterClause)*
@@ -676,7 +670,7 @@ setExpr
   | SYMDIFF '(' setExpr ',' setExpr ')'
   | SETDIFF '(' setExpr ',' setExpr ')'
   | INTERSECT '(' setExpr ',' setExpr ')'
- /* | TRANSCODE '(' componentID ',' expr ',' mapItemClause|rulesetID ')' */ #CURRENTLY UNDER REVIEW
+ /* | TRANSCODE '(' componentID ',' expr ',' mapItemClause|rulesetID ')'  #CURRENTLY UNDER REVIEW */
   | AGGREGATE '(' expr ',' rulesetID (',' TOTAL|PARTIAL)? (',' returnAgg|returnAll)? ')'
   ;
 
@@ -725,7 +719,7 @@ roleID
   MEASURE
   |DIMENSION
   |ATTRIBUTE
-  |viral Attribute
+  |viralAttribute
   ;
   
  viralAttribute
