@@ -520,7 +520,6 @@ aggrFunctionClause
   (roleID)? expr ':=' aggrFunction
   ;
 
-
 getFiltersClause
   :
     getFilterClause (',' getFilterClause)*
