@@ -1,6 +1,6 @@
 lexer grammar VtlTokens;
   ASSIGN            : ':=';
-  MEMBERSHIP		    : '#';
+  MEMBERSHIP		: '#';
   EVAL              : 'eval';
   PUT               : 'put';
   IF                : 'if';
@@ -23,6 +23,7 @@ lexer grammar VtlTokens;
   NOT               : 'not';
   BETWEEN           : 'between';
   IN                : 'in';
+  NOT_IN			: 'not_in';
   ISNULL            : 'isnull';
   EX                : 'ex';
   UNION             : 'union';
@@ -49,7 +50,7 @@ lexer grammar VtlTokens;
   ERRORCODE         : 'errorcode';
   THRESHOLD         : 'threshold';
   ALL               : 'all';
-  AGGREGATE         : 'aggregate';
+  AGGREGATE         : 'aggr';
   ERRORLEVEL        : 'errorlevel';
   TIMEFILTER        : 'timefilter';
   ORDER             : 'order';
@@ -84,9 +85,9 @@ lexer grammar VtlTokens;
   COUNT             : 'count';
   COUNT_DISTINCT    : 'count_distinct';
   PERCENTILE        : 'percentile';
-  DIMENSION         : 'Identifier';
-  MEASURE           : 'Measure';
-  ATTRIBUTE         : 'Attribute';
+  DIMENSION         : 'identifier';
+  MEASURE           : 'measure';
+  ATTRIBUTE         : 'attribute';
   FILTER            : 'filter';
   INCLUDE           : 'include';
   EXCLUDE           : 'exclude';
@@ -101,6 +102,8 @@ lexer grammar VtlTokens;
   TYPE              : 'type';
   NVL               : 'nvl';
   HIERARCHY         : 'hierarchy';
+  OPTIONAL			: '_';
+  INVALID			: 'invalid';
   
   VALUE_DOMAIN			          : 'valuedomain';
   VALUE_DOMAIN_SUBSET	        : 'valuedomainsubset';
@@ -108,7 +111,8 @@ lexer grammar VtlTokens;
   DATA			                  : 'data';
   STRUCTURE			              : 'structure';
   DATASET				              : 'dataset';
-  FUNCTION                    : 'function';
+  DOMAIN						: 'domain';
+  
   OPERATOR                    : 'operator';
   DEFINE						          : 'define';
   PUT_SYMBOL                  : '<-';
@@ -117,11 +121,11 @@ lexer grammar VtlTokens;
   HIERARCHICAL					      : 'hierarchical';
   MAPPING						          : 'mapping';
   RULESET						          : 'ruleset';
+  RULE									: 'rule';
   END							            : 'end';
   ANTECEDENTVARIABLES			    : 'antecedentvariables=';
-  VARIABLE						        : 'variable=';
+  VARIABLE_ALT						        : 'variable=';
   VALUEDOMAIN					        : 'valuedomain=';
-  MEMBERSHIP_ALT				      : '.';
   ALTER_DATASET					      : 'alterDataset';
   CREATE_FUNCTION				      : 'createFunction';
   LTRIM							          : 'ltrim';
@@ -156,14 +160,21 @@ lexer grammar VtlTokens;
   REGR_SYY						        : 'regr_syy';
   REGR_SXY						        : 'regr_sxy';
   STDDEV_POP					        : 'stddev_pop';
+  STDDEV_SAMP							: 'stddev_samp';
   VAR_POP						          : 'var_pop';
   VAR_SAMP						        : 'var_samp';
   VARIANCE						        : 'variance';
   GROUP_BY						        : 'group by';
+  GROUP_EXCEPT						        : 'group except';
+  GROUP_ALL						        : 'group all';
+  GROUP									: 'group';
+  EXCEPT								: 'except';
+  HAVING								: 'having';
   ALONG							          : 'along';
   FIRST_VALUE					        : 'first_value';
   LAST_VALUE					        : 'last_value';
-  LAG_LEAD						        : 'lag';
+  LAG						        	: 'lag';
+  LEAD									: 'lead';
   NTILE							          : 'ntile';
   PERCENT_RANK					      : 'percent_rank';
   RATIO_TO_REPORT				      : 'ratio_to_report';
@@ -173,18 +184,20 @@ lexer grammar VtlTokens;
   PARTITION					          : 'partition';
   ROWS							          : 'rows';
   RANGE							          : 'range';
-  CURRENT_ROW					        : 'current row';
+  CURRENT					        : 'current';
   UNBOUNDED_PRECEDING			    : 'unbounded preceding';
   UNBOUNDED_FOLLOWING		      : 'unbounded following';
-  NOT_VALID						        : 'not valid';
   VALID							          : 'valid';
   FILL_TIME_SERIES				    : 'fill_time_series';
   FLOW_TO_STOCK					      : 'flow_to_stock';
   STOCK_TO_FLOW					      : 'stock_to_flow';
   TIMESHIFT						        : 'timeshift';
-  MEASURES						        : 'with measures';
+  MEASURES						        : 'measures';
+  NO_MEASURES							: 'no_measures';
   CONDITION					          : 'condition';
+  BOOLEAN							  : 'boolean';
   DATE							          : 'date';
+  TIME_PERIOD						 :'time_period';
   NUMBER                      : 'number';
   STRING						          : 'string';
   INTEGER						          : 'integer';
@@ -202,10 +215,10 @@ lexer grammar VtlTokens;
   WHEN							          : 'when';
   FROM							          : 'from';
   AGGREGATES         			    : 'aggregates';
-  DATA							          : 'data';
   POINTS						          : 'points';
   TOTAL							          : 'total';
   PARTIAL						          : 'partial';
+  ALWAYS								  : 'always';
   INNER_JOIN							    : 'inner_join';
   LEFT_JOIN							      : 'left_join';
   CROSS_JOIN							    : 'cross_join';
@@ -221,16 +234,43 @@ lexer grammar VtlTokens;
   PIVOT                       : 'pivot';
   UNPIVOT                     : 'unpivot';
   SUBSPACE                    : 'sub';
-  CODELIST                    : 'codelist';
+  CODELIST                    : 'CodeList';
   APPLY                       : 'apply';
+  INCLUDE_NULLS				  : 'include_nulls';
+  CONDITIONED				  : 'conditioned';
+  PERIOD_INDICATOR			  : 'period_indicator';
+  SINGLE					  : 'single';
+  DURATION					  : 'duration';
   
-  TIME_AGGREGATE				      : 'time_aggregate';
+  
+  TIME_AGGR					  : 'time_agg';
   UNIT							          : 'unit';
-  
+  VALUE						  : 'Value';
+  VALUEDOMAINS				  : 'valuedomains';
+  VARIABLES					  : 'variables';
+  INPUT						  : 'input';
+  OUTPUT					  : 'output';
+  RETURNING					  : 'returning';
+  CAST						  : 'cast';
+  RULE_PRIORITY			  : 'rule_priority';
+  DATASET_PRIORITY			  : 'dataset_priority';
+  DEFAULT					  : 'default';
+  CHECK_DATAPOINT			  : 'check_datapoint';
+  CHECK_HIERARCHY			  : 'check_hierarchy';
+  COMPUTED					  : 'computed';
+  DATA_POINTS				  : 'data points';
+  NON_NULL					  : 'non_null';
+  NON_ZERO					  : 'non_zero';
+  PARTIAL_NULL				  : 'partial_null';
+  PARTIAL_ZERO				  : 'partial_zero';
+  ALWAYS_NULL				  : 'always_null';
+  ALWAYS_ZERO				  : 'always_zero';
+  COMPONENTS				  : 'components';
+  ALL_MEASURES				  : 'all_measures';
 
 INTEGER_CONSTANT
   :
-  '0'..'9'+
+  '-'? ('0'..'9')+
   ;
 
 FLOAT_CONSTANT
@@ -301,59 +341,88 @@ IDENTIFIER
     
   DAY
     : 
-    '0'|'1'|'2' DIGITS0_9
-    | '3' '0'|'1'
+    ('0'|'1'|'2' DIGITS0_9)
+    | '3' ('0'|'1')
     ;
 
   YEAR
     : 
-    '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9' DIGITS0_9 DIGITS0_9 DIGITS0_9
+    DIGITS0_9 DIGITS0_9 DIGITS0_9 DIGITS0_9
     ;
     
    WEEK
     :
-    '0'|'1'|'2'|'3'|'4' DIGITS0_9
-    | '5' '0'|'1'|'2'|'3'
+    ('0'|'1'|'2'|'3'|'4' DIGITS0_9)
+    | '5' ('0'|'1'|'2'|'3')
     ;
+    
+  HOURS
+    :
+    ('0'|'1' DIGITS0_9)
+    | '2' ('0'|'1'|'2'|'3'|'4')
+    ;
+  
+  MINUTES
+    :
+    ('0'|'1'|'2'|'3'|'4'|'5' DIGITS0_9)
+    | '6' '0'
+    ;
+    
+  SECONDS
+    :
+    ('0'|'1'|'2'|'3'|'4'|'5' DIGITS0_9)
+    | '6' '0'
+    ; 
     
   DATE_FORMAT
     :
     YEAR 
-    | YEAR 'S' '1'|'2'
-    | YEAR 'Q' '1'|'2'|'3'|'4'
-    | YEAR 'M' MONTH
-    | YEAR 'D' MONTH DAY
-    | YEAR 'A'
-    | YEAR '-' 'Q' '1'|'2'|'3'|'4'
-    | YEAR '-' MONTH
-    | YEAR '-' MONTH '-' DAY
+    | (YEAR 'S' '1'|'2')
+    | (YEAR 'Q' '1'|'2'|'3'|'4')
+    | (YEAR 'M' MONTH)
+    | (YEAR 'D' MONTH DAY)
+    | (YEAR 'A')
+    | (YEAR '-' 'Q' '1'|'2'|'3'|'4')
+    | (YEAR '-' MONTH)
+    | (YEAR '-' MONTH '-' DAY)
+    | (YEAR)
     ;
  
    TIME_FORMAT
     :
     YEAR ('A')?
-    | YEAR ('-')? 'S' '1'|'2'
-    | YEAR ('-')? 'Q' '1'|'2'|'3'|'4'
-    | YEAR 'M'|'-' MONTH
-    | YEAR 'W' WEEK
-    | YEAR 'M' MONTH 'D' DAY
-    | YEAR '-' MONTH '-' DAY
-    | DAY '-' MONTH '-' YEAR
-    | MONTH '-' DAY '-' YEAR
+    | (YEAR ('-')? 'S' '1'|'2')
+    | (YEAR ('-')? 'Q' '1'|'2'|'3'|'4')
+    | (YEAR 'M'|'-' MONTH)
+    | (YEAR 'W' WEEK)
+    | (YEAR 'M' MONTH 'D' DAY)
+    | (YEAR '-' MONTH '-' DAY)
+    | (DAY '-' MONTH '-' YEAR)
+    | (MONTH '-' DAY '-' YEAR)
     ; 
 
-   TIME_UNIT
+TIME_UNIT
     :
     'A'
+    |'S'
     |'M'
     |'Q'
+    |'W'
     |'D'
+    |'T'
     ;
+  
     
+ /* old
     TIME
     :
-    DAY '.' MONTH '.' YEAR
-    ;
+    YEAR '-' MONTH '-' DAY ('T' HOURS ':' MINUTES ':' SECONDS 'Z')?
+    ; */
+    
+ TIME
+  :
+  (YEAR '-' MONTH '-' DAY)'/'(YEAR '-' MONTH '-' DAY)
+  ;   
 
 fragment
 LETTER
@@ -369,30 +438,39 @@ WS
     | '\r'
     | '\t'
     | '\u000C'
+    | '\n'
   )->skip
   
   ;
 
-EOL
+/* old EOL
   :
     '\r'
     | '\n'
-  ;
+  ; */
+  
+EOL
+ : ';'
+ ;
 
 ML_COMMENT
   :
   ('/*' (.)*? '*/')->skip;
   
+SL_COMMENT
+  :
+  ('//' (.)*? '\n') ->skip;
+  
   
 COMPARISON_OP
   :
   '='
-  | '<'
-  | '>'
-  | '<'
-  | '>='
-  | '<='
-  | '<>'
+  | ('<')
+  | ('>')
+  | ('<')
+  | ('>=')
+  | ('<=')
+  | ('<>')
   ;
   
 FREQUENCY
