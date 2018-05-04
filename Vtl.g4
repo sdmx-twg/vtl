@@ -279,12 +279,12 @@ validationExpr
 
 validationDatapoint
   :
-   CHECK_DATAPOINT '(' IDENTIFIER ',' IDENTIFIER (COMPONENTS componentID (',' componentID)*)? (INVALID|ALL|ALL_MEASURES)? ')'
+   CHECK_DATAPOINT '(' expr ',' IDENTIFIER (COMPONENTS componentID (',' componentID)*)? (INVALID|ALL|ALL_MEASURES)? ')'
   ;
   
 validationHierarchical
   :
-  CHECK_HIERARCHY '(' IDENTIFIER ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (modeHierarchical)? (DATASET|DATASET_PRIORITY)? (INVALID|ALL|ALL_MEASURES)? ')'
+  CHECK_HIERARCHY '(' expr',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (modeHierarchical)? (DATASET|DATASET_PRIORITY)? (INVALID|ALL|ALL_MEASURES)? ')'
   ;
 
 erCode 
@@ -450,7 +450,7 @@ aggregateClause
 
 aggrFunctionClause
   :
-  (roleID)? expr ':=' aggrFunction
+  (roleID)? componentID ':=' aggrFunction
   ;
 
 getFiltersClause
@@ -502,7 +502,7 @@ calcClause
 
 calcClauseItem
   :
-  (roleID)? calcExpr ':=' calcExpr
+  (roleID)? componentID ':=' calcExpr
   ;
 
 calcExpr
@@ -518,8 +518,8 @@ dropClause
 
 dropClauseItem
   :
-  varID
-  | (componentID MEMBERSHIP varID)
+  componentID
+  | (datasetID MEMBERSHIP componentID)
   ;
 
 keepClause
@@ -529,8 +529,8 @@ keepClause
 
 keepClauseItem
   :
-  varID
-  | (componentID MEMBERSHIP varID)
+  componentID
+  | (datasetID MEMBERSHIP componentID)
   ;
 
 /* pivot/unpivot/subspace expressions */
@@ -565,7 +565,7 @@ setExpr
   |(IDENTIFIER(',' IDENTIFIER)*)
   | IDENTIFIER
   | UNION '(' setExpr ')'		
-  | SYMDIFF '(' setExpr ',' setExpr ')' 
+  | SYMDIFF '(' expr ',' expr ')' 
   | SETDIFF '(' expr ',' expr ')'
   | INTERSECT '(' setExpr ')'
   ;
@@ -761,7 +761,6 @@ constant
  inputHierarchical
    :
    RULE_PRIORITY
-   |DATASET_PRIORITY
    |RULE
    |DATASET
    ;
