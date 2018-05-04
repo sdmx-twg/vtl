@@ -22,6 +22,8 @@ expr: exprOr															# exprOrExpr
 | timeExpr #timeexpressions
 | setExpr #setExpressions
 | exprAtom #atomicExpression
+| callFunction #callFunctionExpression
+| joinExpr #joinExpression
 ;
 
 timeExpr
@@ -45,8 +47,8 @@ exprEq: exprExists (op=( '='|'<>') exprExists )*;
 
 /* Matching */
 exprExists: 
-           exprComp (((NOT)? EXISTS_IN)  exprComp (ALL)? )*
-		   | (NOT)? EXISTS_IN '(' expr ',' expr (',' retainType)? ')'
+           exprComp (EXISTS_IN  exprComp (ALL)? )*
+		   | EXISTS_IN '(' expr ',' expr (',' retainType)? ')'
 		   ;
 
 /* Comparison, range */
@@ -55,23 +57,21 @@ exprComp:
 		exprAdd exprCompExt*;
 
 exprCompExt: 
-		(NOT)? IN setExpr #exprCompSet
-		| opComp=('>'|'<'|'<='|'>=') exprAdd #exprCompComp
-		| (NOT)? BETWEEN exprAdd AND exprAdd #exprCompBetween
+		(NOT_IN|IN) setExpr #exprCompSet
+		| opComp=('>'|'<'|'<='|'>='|'='|'<>') exprAdd #exprCompComp
 		;	
 
 /* Addition, subtraction */
-exprAdd: exprMultiply (opAdd=('++'|'--'|'+'|'-') exprMultiply)*;
+exprAdd: exprMultiply (opAdd=('+'|'-') exprMultiply)*;
 
 /* Multiplication, division */
-exprMultiply:exprFactor (opMult=('**'|'//'|'*'|'/') exprFactor)*;
+exprMultiply:exprFactor (opMult=('*'|'/') exprFactor)*;
 
 /* Unary plus, unary minus, not */
 exprFactor: (opUnary=('+'|'-'|NOT)? exprMember)*;
 
 /* Membership and clauses */
-exprMember : exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP componentID)?
-			|exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP_ALT componentID)?										
+exprMember : exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP componentID)?										
 			;
 
 /* Rulesets Definition */       
@@ -140,8 +140,6 @@ varSignature
 defExpr
   :
   defOperator
-  |callFunction
-  |joinExpr
   |defDatapoint
   |defHierarchical
   ; 
@@ -158,7 +156,7 @@ parameterItem
     
 callFunction
   :
-  operatorID '(' (constant (',' constant)*)? ')'
+  operatorID '(' ((constant|'_') (',' (constant|'_'))*)? ')'
   ;   
 
 /* Functions */
@@ -167,8 +165,6 @@ exprAtom
   ROUND '(' expr (',' (INTEGER_CONSTANT|'_'))? ')'					# roundAtom
   | CEIL '(' expr ')'												# ceilAtom
   | FLOOR '(' expr ')'												# floorAtom
-  | MIN '(' expr ')'												# minAtom
-  | MAX '(' expr ')'												# maxAtom
   | ABS '(' expr ')'												# minAtom
   | EXP '(' expr ')'												# expAtom
   | LN '(' expr ')'													# lnAtom
@@ -186,82 +182,43 @@ exprAtom
   | SUBSTR '(' expr (',' optionalExpr)? (',' optionalExpr)? ')'		# substrAtom
   | INSTR '(' expr ',' STRING_CONSTANT ( ',' optionalExpr)? (',' optionalExpr)? ')'			# instrAtom
   | REPLACE '(' expr ',' expr ( ',' optionalExpr)? ')'				# replaceAtom
-  | INDEXOF '(' expr ',' STRING_CONSTANT ')'						# indexofAtom
   | CHARSET_MATCH '(' expr ','  STRING_CONSTANT ')'	# charsetMatchAtom
-  | TYPE '(' expr ')' '=' STRING_CONSTANT							# typeAtom
  /* | INTERSECT '(' '[' expr (',' expr)* ']' ')'									# intersectAtom  */
  /* | UNION '(' '[' expr (',' expr)* ']' ')'										# unionAtom */
  /* | SYMDIFF '(' expr ',' expr ')'									#symdiffAtom */
  /* | SETDIFF '(' expr ',' expr ')'									#setdiffAtom */
-  | (NOT)? IN '(' expr ',' expr ')'									# notInAtom
   | ISNULL '(' expr ')'												# isNullAtom
   | NVL '(' expr ',' expr ')'									# nvlAtom
   | MOD '(' expr ',' expr ')'										# modAtom
-  | ALL '(' expr ')'												# allAtom
   | ref																# refAtom
   | putExpr															# putExprAtom
   | evalExpr														# evalExprAtom
   | castExpr														# castExprAtom
-  | mergeExpr														# mergeExprAtom
   | hierarchyExpr													# hierarchyExprAtom
   | FLOW_TO_STOCK '(' expr ')'										# flowToStockAtom
   | STOCK_TO_FLOW '(' expr ')'										# stockToFlowAtom
-  | concatExpr														#concatenationExpr
   | validationDatapoint												#validateDPruleset
   | validationHierarchical 											#validateHRruleset
   | validationExpr													#validationSimple
   ;
 
-/* alterDataset */
-alterExpr
-  :
-  ALTER_DATASET '(' expr (componentList)? (ALL)? ')'
-  ;
 
 /* Parentheses */
 ref: '(' exprOr ')'													# parenthesisExprRef
   | varID															# varIdRef
   | constant														# constantRef
-  | list															# listRef
   ; 
 
-/* list, component list, argList, valueDomainList */
-list:
-	'[' (constant (',' constant)*)? ']'; 	
-
-listofCompList
-  :
-  componentList (',' componentList)*
-  ;
-
-componentList
-  :
-  ','? constant (',' constant)*
-  ;			
+/* identifier list*/		
   
 identifierList
   :
   '[' IDENTIFIER (',' IDENTIFIER)* ']'
   ;			 
 
-argList
-  : arg (',' arg)* 
-  ;
-
-arg
-  :
-  IDENTIFIER (AS dataType)? (ASSIGN constant)?
-  ;
-  
-valueDomainList
-  :
-  dimensionType (',' dimensionType)*
-  ;
-
-/* put PUT_SYMBOL '(' expr ',' persistentDatasetID ')' */
 putExpr
   : 
-  PUT_SYMBOL expr
+  varID PUT_SYMBOL expr
   ;
   
   
@@ -281,7 +238,7 @@ castExpr
 /* concatenation */
 concatExpr
   :
-  (IDENTIFIER|STRING_CONSTANT) CONCAT (IDENTIFIER|STRING_CONSTANT)
+  expr CONCAT expr
   ;
 
 /* Time operators */
@@ -294,7 +251,7 @@ periodExpr
 /* timeshift */
 timeShiftExpr
   :
-  TIMESHIFT '(' expr (',' INTEGER_CONSTANT)? ')'
+  TIMESHIFT '(' expr ',' INTEGER_CONSTANT ')'
   ;
 
 /* fill time series */
@@ -322,17 +279,12 @@ validationExpr
 
 validationDatapoint
   :
-   CHECK_DATAPOINT '(' IDENTIFIER ',' IDENTIFIER (COMPONENTS componentID (',' componentID)*)? (OUTPUT (INVALID|ALL|ALL_MEASURES))? ')'
+   CHECK_DATAPOINT '(' IDENTIFIER ',' IDENTIFIER (COMPONENTS componentID (',' componentID)*)? (INVALID|ALL|ALL_MEASURES)? ')'
   ;
   
 validationHierarchical
   :
   CHECK_HIERARCHY '(' IDENTIFIER ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (modeHierarchical)? (DATASET|DATASET_PRIORITY)? (INVALID|ALL|ALL_MEASURES)? ')'
-  ;
-  
-validationValueDoman
-  :
-  CHECK_VALUE_DOMAIN_SUBSET '(' expr ',' componentList | (listofCompList '(' (componentList)+')' ',' valueDomainList)? ',' IDENTIFIER ')'
   ;
 
 erCode 
@@ -345,29 +297,10 @@ erLevel
   ERRORLEVEL  constant
   ;
 
-/* merge */
-mergeExpr
-  : 
-  MERGE '(' expr AS? STRING_CONSTANT (',' expr AS? STRING_CONSTANT)+ ',' ON '(' expr ')' ',' RETURN 
-  '(' (expr AS? STRING_CONSTANT) (',' expr AS? STRING_CONSTANT)+ ')' ')'
-  ;
-
 /* hierarchy */
 hierarchyExpr
   : 
   HIERARCHY '(' expr ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (modeHierarchical|'_')? (inputHierarchical|'_')? (outputHierarchical|'_')? ')'
-  ;
-
-mappingExpr
-  :
-  '(' constant ',' INTEGER_CONSTANT ','
-  ('+' | '-')')' TO constant
-  ;
-
-aggrParam
-  :
-  'sum'
-  | 'prod'
   ;
 
 /* Clauses. */
@@ -619,14 +552,7 @@ subspaceExpr
 inBetweenClause
   :
   IN (setExpr|IDENTIFIER)
-  | BETWEEN constant AND constant
   | NOT_IN (setExpr|IDENTIFIER)
-  | NOT BETWEEN constant AND constant
-  ;
-
-dimClause
-  :
-  inBetweenClause
   ;
 
 /* Set expressions */
@@ -642,7 +568,6 @@ setExpr
   | SYMDIFF '(' setExpr ',' setExpr ')' 
   | SETDIFF '(' expr ',' expr ')'
   | INTERSECT '(' setExpr ')'
-  | AGGREGATE '(' expr ',' rulesetID (',' TOTAL|PARTIAL)? (',' returnAgg|returnAll)? ')'
   ;
   
 
@@ -650,11 +575,6 @@ setExpr
 subscriptExpr
   :
   persistentDatasetID '[' componentID '=' constant ( ',' componentID '=' constant)? ']' 
-  ;
-
-mapItemClause
-  :
-  persistentDatasetID (IDENTIFIER MAPS_FROM dimensionType)? (IDENTIFIER MAPS_TO dimensionType)?
   ;
 
 /*Aggregation operators invocation*/
@@ -675,20 +595,11 @@ aggrFunctionName
   | COUNT 
   | MEDIAN 
   | MIN 
-  | MAX 
-  | RANK 
+  | MAX
   | STDDEV_POP 
-  | STDDEV 
   | STDDEV_SAMP
   | VAR_POP 
-  | VAR_SAMP 
-  | VARIANCE 
-  | FIRST_VALUE
-  | LAG
-  | LAST_VALUE
-  | LEAD
-  | RANK
-  | RATIO_TO_REPORT
+  | VAR_SAMP
   ;
 
 groupingClause
@@ -702,10 +613,6 @@ havingClause
   ;
   
 /* aggregate sequences */
-returnAgg
-  :
-  RETURN AGGREGATES
-  ;
   
 returnAll
   :
@@ -726,18 +633,10 @@ roleID
   VIRAL ATTRIBUTE
   ; 
 
-/* Dimension Type */
-dimensionType
-  :
-  DATE
-  | STRING
-  | NUMBER
-  ;
-
 /* Arithmetic */
 logBase
   :
-  INTEGER_CONSTANT
+  expr
   ;
 
 exponent
@@ -869,8 +768,6 @@ constant
    
  modeHierarchical
    :
-   TOTAL
-   |PARTIAL
    |NON_NULL
    |NON_ZERO
    |PARTIAL_NULL
@@ -884,9 +781,4 @@ constant
    ALL
    |COMPUTED
    ;      
-   
- measuresChoice
-  :
-  MEASURES
-  |(NO_MEASURES)
-  ;  
+ 
