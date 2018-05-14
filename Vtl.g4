@@ -43,7 +43,7 @@ exprOr: exprAnd ( op=(OR|XOR) exprAnd )*;
 exprAnd: exprEq ( AND exprEq)*;
 
 /* Equality, inequality */
-exprEq: exprExists (op=( '='|'<>') exprExists )*;
+exprEq: <assoc=right> exprExists (op=( '='|'<>') exprExists )*;
 
 /* Matching */
 exprExists: 
@@ -57,7 +57,7 @@ exprComp:
 		exprAdd exprCompExt*;
 
 exprCompExt: 
-		(NOT_IN|IN) setExpr #exprCompSet
+		<assoc=right> (NOT_IN|IN) (lists|IDENTIFIER) #exprCompSet
 		| opComp=('>'|'<'|'<='|'>='|'='|'<>') exprAdd #exprCompComp
 		;	
 
@@ -65,10 +65,10 @@ exprCompExt:
 exprAdd: exprMultiply (opAdd=('+'|'-') exprMultiply)*;
 
 /* Multiplication, division */
-exprMultiply:exprFactor (opMult=('*'|'/') exprFactor)*;
+exprMultiply: <assoc=right> exprFactor (opMult=('*'|'/') exprFactor)*;
 
 /* Unary plus, unary minus, not */
-exprFactor: (opUnary=('+'|'-'|NOT)? exprMember)*;
+exprFactor: <assoc=right>(opUnary=('+'|'-'|NOT)? exprMember)*;
 
 /* Membership and clauses */
 exprMember : exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP componentID)?										
@@ -146,7 +146,7 @@ defExpr
   
 defOperator
   :
-  DEFINE OPERATOR operatorID '(' parameterItem (',' parameterItem)* ')' (RETURNS dataType)? IS expr END DEFINE OPERATOR
+  DEFINE OPERATOR operatorID '(' parameterItem (',' parameterItem)* ')' (RETURNS dataType)? IS expr END OPERATOR
   ;  
  
 parameterItem
@@ -192,6 +192,7 @@ exprAtom
   | MOD '(' expr ',' expr ')'										# modAtom
   | ref																# refAtom
   | putExpr															# putExprAtom
+  | concatExpr														# concatExprAtom
   | evalExpr														# evalExprAtom
   | castExpr														# castExprAtom
   | hierarchyExpr													# hierarchyExprAtom
@@ -221,12 +222,15 @@ putExpr
   varID PUT_SYMBOL expr
   ;
   
-  
+lists
+ :
+ '{' constant (',' constant)* '}'
+ ;  
 
 /* eval */
 evalExpr
   :
-  EVAL '(' routineName '(' componentID? (',' componentID)* ')' (',' STRING_CONSTANT)? (',' RETURNS dataType)? ')'
+  EVAL '(' routineName '(' componentID? (',' componentID)* ')' (',' STRING_CONSTANT)? (',' RETURNS scalarType)? ')'
   ;
   
 /* cast */
@@ -238,7 +242,7 @@ castExpr
 /* concatenation */
 concatExpr
   :
-  expr CONCAT expr
+  (IDENTIFIER|STRING_CONSTANT) CONCAT (IDENTIFIER|STRING_CONSTANT)
   ;
 
 /* Time operators */
@@ -321,7 +325,7 @@ datasetClause
 
 anFunctionClause
   :
-  aggrFunctionName '(' expr (',' expr)* OVER '(' (partitionByClause)? (orderByClause)? (windowingClause)? ')' ')'
+  (aggrFunctionName|anFunction)? '(' expr (',' expr)* OVER '(' (partitionByClause)? (orderByClause)? (windowingClause)? ')' ')'
   ;  
 
 partitionByClause
@@ -429,7 +433,7 @@ joinApplyClause
   ; 
 
 
-/* Analytic Functions*/
+/* Analytic Functions
 anFunction
   :
   FIRST_VALUE '(' expr ')'
@@ -440,8 +444,20 @@ anFunction
   | RANK '(' expr ')'
   | RATIO_TO_REPORT '(' expr ')'
   |LEAD '(' expr ')'
-  ;
+  ; */
 
+
+anFunction
+  :
+  FIRST_VALUE 
+  | LAG 
+  | LAST_VALUE 
+  | NTILE 
+  | PERCENT_RANK 
+  | RANK 
+  | RATIO_TO_REPORT 
+  |LEAD 
+  ;
 
 aggregateClause
   :
@@ -558,16 +574,10 @@ inBetweenClause
 /* Set expressions */
 setExpr
   :
-  '[' constant (','constant)* ']'
-  |'[' expr (',' expr)+ ']'
-  |'(' constant (','constant)* ')'
-  |'{' constant (','constant)* '}'
-  |(IDENTIFIER(',' IDENTIFIER)*)
-  | IDENTIFIER
-  | UNION '(' setExpr ')'		
+  UNION '(' expr (',' expr)* ')'		
   | SYMDIFF '(' expr ',' expr ')' 
   | SETDIFF '(' expr ',' expr ')'
-  | INTERSECT '(' setExpr ')'
+  | INTERSECT '(' expr (',' expr)* ')'
   ;
   
 
@@ -609,7 +619,7 @@ groupingClause
    
 havingClause   
   :
-  HAVING aggrFunction? expr
+  HAVING '('? aggrFunction?  expr ')'?
   ;
   
 /* aggregate sequences */
@@ -715,7 +725,13 @@ constant
   | DATE
   ;
   
-  dataType
+  /*remove this dataType when the one in comments is used*/
+ dataType
+  :
+  scalarType
+  ;
+  
+  scalarType
   :
   STRING
   | INTEGER
@@ -724,7 +740,99 @@ constant
   | DATE
   | TIME_PERIOD
   | DURATION
+  | SCALAR
+  | TIME
   ;
+  
+/*  dataType
+  :
+  scalarType
+  | compoundType
+  ;
+  
+  compoundType
+  :
+  componentType2
+  | datasetType
+  | operatorType
+  | rulesetType
+  | productType
+  | universalSetType
+  | universalListType
+  ;
+  
+  componentType2
+  :
+  (roleID)? (scalarType)?
+  ;
+  
+  datasetType
+  :
+  DATASET '{'compConstraint (',' compConstraint)* '}'
+  ;
+  
+  compConstraint
+  :
+  componentType (componentID|multModifier)
+  ;
+  
+  multModifier
+  :
+  '_' ('+'|'*')?
+  ;
+  
+  productType
+  :
+  dataType ('*' dataType)*
+  ;
+  
+  operatorType
+  :
+  dataType '-''>' dataType
+  ;
+  
+  rulesetType
+  :
+  RULESET
+  |dpRuleset
+  |hrRuleset
+  ;
+  
+  dpRuleset
+  :
+  DATAPOINT
+  |(DATAPOINT_ON_VD '{' prodValueDomains '}')
+  |(DATAPOINT_ON_VAR '{' prodVariables '}')
+  ;
+  
+  hrRuleset
+  :
+  HIERARCHICAL
+  |(HIERARCHICAL_ON_VD '{' prodValueDomains '}')
+  |(HIERARCHICAL_ON_VAR '{' prodVariables '}')
+  ;
+  
+  prodValueDomains
+  :
+  '(' IDENTIFIER ('*' IDENTIFIER)* ')'
+  ;
+  
+  prodVariables
+  :
+  '(' varID ('*' varID)* ')'
+  ;
+  
+  universalSetType
+  :
+  SET '<' dataType '>'
+  ;
+  
+  universalListType
+  :
+  LIST '<' dataType '>'
+  ;
+  
+  */ 
   
   retainType
   :
