@@ -210,6 +210,14 @@ lexer grammar VtlTokens;
   ALWAYS_ZERO				  : 'always_zero';
   COMPONENTS				  : 'components';
   ALL_MEASURES				  : 'all_measures';
+  SCALAR					  : 'scalar';
+  COMPONENT					  : 'component';
+  DATAPOINT_ON_VD			  : 'datapoint_on_valuedomains';
+  DATAPOINT_ON_VAR			  : 'datapoint_on_variables';
+  HIERARCHICAL_ON_VD		  : 'hierarchical_on_valuedomains';
+  HIERARCHICAL_ON_VAR		  : 'hierarchical_on_variables';
+  SET						  : 'set';
+  
 
 INTEGER_CONSTANT
   :
@@ -425,6 +433,3 @@ FREQUENCY
   | 'W'
   | 'D'
   ;
-  
-
-  
