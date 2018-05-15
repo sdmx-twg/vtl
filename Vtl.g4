@@ -12,19 +12,36 @@ optionalExpr
  : expr | OPTIONAL
  ;
 
-expr: exprOr															# exprOrExpr 
-| IF exprOr THEN exprOr ELSE exprOr		# exprIfExpr
-| validationExpr #exprValidationExpr
-| defExpr #definitionExpressions
-| aggrInvocation #standaloneAggregateFunction
-| aggrInvocationCompExpr #componentExpressionwithAggrClause
-| anFunctionClause #standaloneAnalyticFunction
-| timeExpr #timeexpressions
-| setExpr #setExpressions
-| exprAtom #atomicExpression
-| callFunction #callFunctionExpression
-| joinExpr #joinExpression
-;
+expr: 
+    exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP componentID)?
+    |('+'|'-'|NOT) expr
+    |expr ('*'|'/') expr
+	|expr ('+'|'-') expr
+	|expr ('>'|'<'|'<='|'>='|'='|'<>') expr
+	|(NOT_IN|IN)(lists|IDENTIFIER)
+	|expr EXISTS_IN expr ALL?
+	|EXISTS_IN '(' expr ',' expr (',' retainType)? ')'
+	|expr ('='|'<>') expr
+	|expr AND expr
+	|expr (OR|XOR) expr										 
+    |IF expr THEN expr ELSE expr		
+    |exprComplex	
+    |exprAtom
+    |constant
+  	|IDENTIFIER
+    ;
+ 
+exprComplex:
+		validationExpr #exprValidationExpr
+		| defExpr #definitionExpressions
+		| aggrInvocation #standaloneAggregateFunction
+		| aggrInvocationCompExpr #componentExpressionwithAggrClause
+		| anFunctionClause #standaloneAnalyticFunction
+		| timeExpr #timeexpressions
+		| setExpr #setExpressions 
+		| callFunction #callFunctionExpression
+		| joinExpr #joinExpression
+		;
 
 timeExpr
  :timeSeriesExpr
@@ -33,46 +50,6 @@ timeExpr
  |timeAggExpr
  |curDate
  ;
-
-
-
-/* Logical OR */
-exprOr: exprAnd ( op=(OR|XOR) exprAnd )*;
-
-/* Logical AND */
-exprAnd: exprEq ( AND exprEq)*;
-
-/* Equality, inequality */
-exprEq: <assoc=right> exprExists (op=( '='|'<>') exprExists )*;
-
-/* Matching */
-exprExists: 
-           exprComp (EXISTS_IN  exprComp (ALL)? )*
-		   | EXISTS_IN '(' expr ',' expr (',' retainType)? ')'
-		   ;
-
-/* Comparison, range */
-
-exprComp: 
-		exprAdd exprCompExt*;
-
-exprCompExt: 
-		<assoc=right> (NOT_IN|IN) (lists|IDENTIFIER) #exprCompSet
-		| opComp=('>'|'<'|'<='|'>='|'='|'<>') exprAdd #exprCompComp
-		;	
-
-/* Addition, subtraction */
-exprAdd: exprMultiply (opAdd=('+'|'-') exprMultiply)*;
-
-/* Multiplication, division */
-exprMultiply: <assoc=right> exprFactor (opMult=('*'|'/') exprFactor)*;
-
-/* Unary plus, unary minus, not */
-exprFactor: <assoc=right>(opUnary=('+'|'-'|NOT)? exprMember)*;
-
-/* Membership and clauses */
-exprMember : exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP componentID)?										
-			;
 
 /* Rulesets Definition */       
     
@@ -162,15 +139,15 @@ callFunction
 /* Functions */
 exprAtom
   :
-  ROUND '(' expr (',' (INTEGER_CONSTANT|'_'))? ')'					# roundAtom
+  ROUND '(' expr (',' optionalExpr)? ')'							# roundAtom
   | CEIL '(' expr ')'												# ceilAtom
   | FLOOR '(' expr ')'												# floorAtom
   | ABS '(' expr ')'												# minAtom
   | EXP '(' expr ')'												# expAtom
   | LN '(' expr ')'													# lnAtom
-  | LOG '(' expr ',' logBase ')'									# logAtom
-  | TRUNC '(' expr (',' (INTEGER_CONSTANT|'_'))? ')'				# lnAtom
-  | POWER '(' expr ',' exponent ')'									# powerAtom
+  | LOG '(' expr ',' expr ')'										# logAtom
+  | TRUNC '(' expr (',' optionalExpr?) ')'							# lnAtom
+  | POWER '(' expr ',' expr ')'										# powerAtom
   | SQRT '(' expr ')'												# sqrtAtom
   | LEN '(' expr ')'												# lenAtom
   | BETWEEN '(' expr ',' expr ',' expr ')'							# betweenAtom
@@ -180,15 +157,11 @@ exprAtom
   | UCASE '(' expr ')'												# ucaseAtom
   | LCASE '(' expr ')'												# lcaseAtom
   | SUBSTR '(' expr (',' optionalExpr)? (',' optionalExpr)? ')'		# substrAtom
-  | INSTR '(' expr ',' STRING_CONSTANT ( ',' optionalExpr)? (',' optionalExpr)? ')'			# instrAtom
+  | INSTR '(' expr ',' expr ( ',' optionalExpr)? (',' optionalExpr)? ')'	# instrAtom
   | REPLACE '(' expr ',' expr ( ',' optionalExpr)? ')'				# replaceAtom
-  | CHARSET_MATCH '(' expr ','  STRING_CONSTANT ')'	# charsetMatchAtom
- /* | INTERSECT '(' '[' expr (',' expr)* ']' ')'									# intersectAtom  */
- /* | UNION '(' '[' expr (',' expr)* ']' ')'										# unionAtom */
- /* | SYMDIFF '(' expr ',' expr ')'									#symdiffAtom */
- /* | SETDIFF '(' expr ',' expr ')'									#setdiffAtom */
+  | CHARSET_MATCH '(' expr ','  expr ')'							# charsetMatchAtom
   | ISNULL '(' expr ')'												# isNullAtom
-  | NVL '(' expr ',' expr ')'									# nvlAtom
+  | NVL '(' expr ',' expr ')'										# nvlAtom
   | MOD '(' expr ',' expr ')'										# modAtom
   | ref																# refAtom
   | putExpr															# putExprAtom
@@ -205,7 +178,7 @@ exprAtom
 
 
 /* Parentheses */
-ref: '(' exprOr ')'													# parenthesisExprRef
+ref: '(' expr ')'													# parenthesisExprRef
   | varID															# varIdRef
   | constant														# constantRef
   ; 
@@ -278,7 +251,7 @@ timeAggExpr
 
 /* check */
 validationExpr
-  : CHECK '(' exprOr (erCode)? (erLevel)? (IMBALANCE expr)?  (INVALID|ALL)? ')'  
+  : CHECK '(' expr (erCode)? (erLevel)? (IMBALANCE expr)?  (INVALID|ALL)? ')'  
   ;
 
 validationDatapoint
@@ -726,10 +699,10 @@ constant
   ;
   
   /*remove this dataType when the one in comments is used*/
- dataType
+/* dataType
   :
   scalarType
-  ;
+  ; */
   
   scalarType
   :
@@ -744,21 +717,23 @@ constant
   | TIME
   ;
   
-/*  dataType
+dataType
   :
   scalarType
   | compoundType
+  | IDENTIFIER
   ;
   
   compoundType
   :
   componentType2
   | datasetType
+ /*   | productType
   | operatorType
   | rulesetType
-  | productType
   | universalSetType
-  | universalListType
+  | universalListType */
+  | IDENTIFIER
   ;
   
   componentType2
@@ -781,9 +756,9 @@ constant
   '_' ('+'|'*')?
   ;
   
-  productType
+/*  productType
   :
-  dataType ('*' dataType)*
+  (productType) ('*' productType)*
   ;
   
   operatorType
@@ -832,7 +807,7 @@ constant
   LIST '<' dataType '>'
   ;
   
-  */ 
+*/
   
   retainType
   :
