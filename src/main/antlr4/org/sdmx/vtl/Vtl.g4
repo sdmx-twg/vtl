@@ -52,8 +52,8 @@ timeExpr
  |periodExpr (opComp=('>'|'<'|'<='|'>='|'='|'<>') expr)?
  |timeShiftExpr
  |timeAggExpr
- |curDate
- ;
+ |CURRENT_DATE
+ ; 
 
 /* Rulesets Definition */       
     
@@ -246,12 +246,6 @@ timeAggExpr
   :
   TIME_AGGR '(' STRING_CONSTANT (',' (STRING_CONSTANT|'_'))? (',' (expr|'_'))? (',' (FIRST|LAST))? ')' 
   ;
-  
-/* current date */
- curDate
-  :
-  CURRENT_DATE '('')'
-  ;  
 
 /* check */
 validationExpr
@@ -281,7 +275,7 @@ erLevel
 /* hierarchy */
 hierarchyExpr
   : 
-  HIERARCHY '(' expr ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (modeHierarchical|'_')? (inputHierarchical|'_')? (outputHierarchical|'_')? ')'
+  HIERARCHY '(' expr ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? ((TOTAL|PARTIAL)|'_')? ((RULE|DATASET|RULE_PRIORITY|DATASET_PRIORITY)|'_')? ((COMPUTED|ALL)|'_')? ')'
   ;
 
 /* Clauses. */
@@ -838,27 +832,5 @@ dataType
    :
    DEFINE DATA STRUCTURE
    ; 
-   
- inputHierarchical
-   :
-   RULE_PRIORITY
-   |RULE
-   |DATASET
-   ;
-   
- modeHierarchical
-   :
-   |NON_NULL
-   |NON_ZERO
-   |PARTIAL_NULL
-   |PARTIAL_ZERO
-   |ALWAYS_NULL
-   |ALWAYS_ZERO
-   ;
-   
- outputHierarchical
-   :
-   ALL
-   |COMPUTED
-   ;      
+     
  
