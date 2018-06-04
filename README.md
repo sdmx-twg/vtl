@@ -3,4 +3,4 @@ VTL is a standard language for defining **validation** and **transformation** ru
 
 * [Part 1](https://sdmx.org/wp-content/uploads/VTL-2.0-User-Manual-20180416-final.pdf), highlighting the main characteristics of VTL, its core assumptions and the information model the language is based on;
 * [Part 2](https://sdmx.org/wp-content/uploads/VTL-2.0-Reference-Manual-20180416-final.pdf), describing the full library of operators ordered by category, with examples;
-* EBNF notation (Extended Backus-Naur Form) which is the technical notation to be used as a test bed for all the examples throughout the document: files [Vtl.g4](Vtl.g4) & [VtlTokens.g4](VtlTokens.g4)
+* EBNF notation (Extended Backus-Naur Form) which is the technical notation to be used as a test bed for all the examples throughout the document: files [Vtl.g4](src/main/antlr4/org/sdmx/vtl/Vtl.g4) & [VtlTokens.g4](src/main/antlr4/imports/VtlTokens.g4)
