@@ -10,7 +10,7 @@ public class VtlTests extends ParserTest {
 
 	@Test
 	public void testTheExpression() {
-		String expression = "ds_1 := abS(ds_2);";
+		String expression = "ds_1 := abs(ds_2);";
 		try {
 			parseVtlString(expression);
 		} catch (Exception e) {
