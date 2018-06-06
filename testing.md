@@ -7,6 +7,7 @@ The VTL EBNF grammar has been built according to the VTL Reference and User Manu
 For this reason, the GitHub project has been restructured to include the Vtl files within the required folders. You may access them in their new place:
 
 [`src/main/antlr4/org/sdmx/vtl/Vtl.g4`](src/main/antlr4/org/sdmx/vtl/Vtl.g4)
+
 [`src/main/antlr4/imports/VtlTokens.g4`](src/main/antlr4/imports/VtlTokens.g4)
 
 ## Project structure
