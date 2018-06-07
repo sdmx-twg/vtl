@@ -28,7 +28,7 @@ end hierarchical ruleset;
 
 define hierarchical ruleset CalcCountryLevel (valuedomain condition Residence rule GeoArea) is
 when Residence = "resident" then Country1 = Country1
-; when Residence = "non-resident" then Country1 = Region11+Region1M
+; when Residence = "non-resident" then Country1 = Region11+Region1M        
 ; when Residence = "resident" then CountryN = CountryN
 ; when Residence = "non-resident" then CountryN = RegionN1 + RegionNM
 end hierarchical ruleset;
@@ -38,12 +38,12 @@ TOTAL = MALE + FEMALE
 end hierarchical ruleset;
 
 define hierarchical ruleset BeneluxCountriesHierarchy (valuedomain rule GeoArea) is
-BENELUX = BELGIUM + LUXEMBOURG + NETHERLANDS errorcode "Bad value for Benelux"
+BENELUX = BELGIUM + LUXEMBOURG + NETHERLANDS errorcode "Bad value for Benelux" 
 end hierarchical ruleset;
 
 define hierarchical ruleset american_partners_hr (variable rule PartnerArea) is
 NORTH_AMERICA > US ;
-SOUTH_AMERICA = BR + UY + AR + CL
+SOUTH_AMERICA = BR + UY + AR + CL 
 end hierarchical ruleset;
 
 define hierarchical ruleset validationruleset_bop (variable rule BoPItem ) is
@@ -52,12 +52,12 @@ transport_method2 : Transport = PassengersTransport + FreightsTransport
 end hierarchical ruleset;
 
 define operator max1 (x integer, y integer)
-returns boolean is
+returns boolean is 
 if x > y then x else y
 end operator;
 
 define operator add (x integer default 0, y integer default 0)
-returns number is
+returns number is 
 x+y
 end operator;
 
@@ -89,7 +89,7 @@ DS_1#COMP_3
 
 DS_r  := DS_1#Me_1
 
-DS_r  := DS_1#Id_1
+DS_r  := DS_1#Id_1 
 
 DS_r  := DS_1#At_1
 
@@ -98,13 +98,13 @@ max1 ( 2, 3 )
 eval ( routine1 ( DS_1 ) )
 
 /* The following examples referring to eval need to be modified in order to match the syntax definition of eval
-DS_r := eval( SQL3( DS_1 )
+DS_r := eval( SQL3( DS_1 ) 
 returns dataset { identifier<geo_area> ref_area,
 identifier<date> time,
 measure<number> obs_value,
 attribute<string> obs_status } ) */
 
-DS_r := eval( SQL3( DS_1 )
+DS_r := eval( SQL3( DS_1 ) 
 returns integer)
 
 DS_r := DS_1[calc Me := eval( f(Me, 1) returns integer) ]
@@ -443,7 +443,7 @@ DS_r := stock_to_flow ( DS_3 )
 
 DS_r := stock_to_flow ( DS_4 )
 
-/*The following examples are modified to include the correct operator name timeshift in order
+/*The following examples are modified to include the correct operator name timeshift in order 
 to run (lines 4813, 4821, 4829, 4837) */
 DS_r := timeshift(DS_1, -1)
 
@@ -454,7 +454,7 @@ DS_r := timeshift(DS_3,1)
 DS_r := timeshift(DS_3, -1)
 
 //The following example is modified in order to match the time_agg syntax (line 4854)
-sum ( DS group all time_agg ("A", Me))
+sum ( DS group all time_agg ("A", Me)) 
 
 time_agg("A",cast("2012Q1", time_period, "YYYY\Qq"))
 
@@ -556,8 +556,7 @@ DS_r := lag ( DS_1 , 1 over ( partition by Id_1 , Id_2 order by Id_3 ) )
 
 DS_r := lead ( DS_1 , 1 over ( partition by Id_1 , Id_2 order by Id_3 ) )
 
-//The following example was modified in order to add the required operand before 'over' (line 6252)
-DS_r := DS_1 [ calc Me2 := rank (DS_1 over ( partition by Id_1 , Id_2 order by Me_1 ) )]
+DS_r := DS_1 [ calc Me2 := rank ( over ( partition by Id_1 , Id_2 order by Me_1 ) )]
 
 DS_r := ratio_to_report ( DS_1 over ( partition by Id_1, Id_2 ) )
 
@@ -643,3 +642,4 @@ DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "A"]
 DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "B", Id_3 = "YY"]
 
 DS_r := DS_1 [sub Id_2 ="A"] + DS_1 [sub Id_2 ="B"]
+
