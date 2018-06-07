@@ -264,7 +264,7 @@ validationHierarchical
 
 erCode 
   :
-  ERRORCODE  constant 
+  ERRORCODE  constant
   ;
   
 erLevel
@@ -296,7 +296,7 @@ datasetClause
 
 anFunctionClause
   :
-  (aggrFunctionName|anFunction)? '(' expr (',' expr)* OVER '(' (partitionByClause)? (orderByClause)? (windowingClause)? ')' ')'
+  (aggrFunctionName|anFunction)? '(' expr? (',' expr)* OVER '(' (partitionByClause)? (orderByClause)? (windowingClause)? ')' ')'
   ;  
 
 partitionByClause
@@ -337,16 +337,17 @@ joinClause
 
 joinBody
   :
-  clause (clause)* 
+  (joinKeepClause|joinDropClause)? (joinCalcClause|joinApplyClause|joinAggClause)? joinFilterClause? joinRenameClause?
   ;
 
+/*
 clause
   :
-  (joinKeepClause | joinDropClause)
-  | (joinCalcClause | joinApplyClause | joinAggClause)
+  (joinKeepClause|joinDropClause)
+  | (joinCalcClause|joinApplyClause|joinAggClause)
   | joinFilterClause
   | joinRenameClause
-  ;
+  ;*/
 
 joinCalcClause
   :
@@ -712,7 +713,6 @@ dataType
   :
   scalarType
   | compoundType
-  | IDENTIFIER
   ;
   
   compoundType
