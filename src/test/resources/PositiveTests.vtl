@@ -104,12 +104,12 @@ identifier<date> time,
 measure<number> obs_value,
 attribute<string> obs_status } ) */
 
-DS_r := eval( SQL3( DS_1 ) 
+DS_r := eval( SQL3( DS_1 ) language "SQL"
 returns integer)
 
-DS_r := DS_1[calc Me := eval( f(Me, 1) returns integer) ]
+DS_r := DS_1[calc Me := eval( f(Me, 1)language "Java" returns integer) ]
 
-ds_r := ds_1[calc me:=eval(f(me) returns integer)]
+ds_r := ds_1[calc me:=eval(f(me) language "Java" returns integer)]
 
 //The following example is slightly modified to remove an extra parenthesis (line 2063 ref. manual)
 
@@ -483,17 +483,15 @@ DS_r := setdiff ( DS_1, DS_2 )
 
 DS_r := symdiff ( DS_1, DS_2 )
 
-hierarchy (DS1,HR1 total all)
+hierarchy ( DS1, HR1  rule Id_1 non_null all )
 
-hierarchy ( DS2, HR2 rule_priority all)
+hierarchy ( DS2, HR2  condition Comp_1, Comp_2 rule Id_3 non_zero rule computed )
 
-DS_r := hierarchy ( DS_1, Id_2 )
+DS_r := hierarchy ( DS_1, HR_1 rule Id_2 non_null )
 
-DS_r := hierarchy ( DS_1, hr_ref_area all )
+DS_r := hierarchy ( DS_1, HR_1 rule Id_2 non_zero )
 
-DS_r := hierarchy (DS_1, hr_ref_area)
-
-DS_r := hierarchy (DS_1, hr_IT_nord_pop)
+DS_r := hierarchy ( DS_1, HR_1 rule Id_2 partial_null )
 
 avg(DS_1)
 
@@ -560,19 +558,19 @@ DS_r := DS_1 [ calc Me2 := rank ( over ( partition by Id_1 , Id_2 order by Me_1 
 
 DS_r := ratio_to_report ( DS_1 over ( partition by Id_1, Id_2 ) )
 
-//The following two examples were modified to add the required keyword 'output' (lines 6321, 6322)
-check_datapoint ( DS1, DPR output invalid)
+check_datapoint ( DS1, DPR invalid )
 
-check_datapoint ( DS1, DPR output all_measures)
+check_datapoint ( DS1, DPR all_measures )
 
 DS_r := check_datapoint ( DS_1, dpr1 )
 
-//The following example was modified to add the required keyword 'output' (line 6373)
-DS_r := check_datapoint ( DS_1, dpr1 output all)
+DS_r := check_datapoint ( DS_1, dpr1 all )
 
-DS_validation_report := check_hierarchy ( DS_1, hr1 )
+check_hierarchy ( DS1, HR_2  non_null  dataset  invalid )
 
-check_hierarchy(DS1, hr total rule_priority invalid)
+check_hierarchy ( DS1, HR_3  non_zero dataset_priority  all )
+
+DS_r := check_hierarchy ( DS_1, HR_1 rule Id_2 partial_null all )
 
 //The following example is modified to place errorcode and errormessage in quotes (line 6572)
 check ( DS1 > DS2 errorcode "myerrorcode" errorlevel "myerrorlevel" imbalance DS1 - DS2 invalid )
@@ -642,4 +640,5 @@ DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "A"]
 DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "B", Id_3 = "YY"]
 
 DS_r := DS_1 [sub Id_2 ="A"] + DS_1 [sub Id_2 ="B"]
+
 
