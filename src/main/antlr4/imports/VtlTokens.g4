@@ -218,6 +218,7 @@ lexer grammar VtlTokens;
   HIERARCHICAL_ON_VD		  : 'hierarchical_on_valuedomains';
   HIERARCHICAL_ON_VAR		  : 'hierarchical_on_variables';
   SET						  : 'set';
+  LANGUAGE					  : 'language';
   
 
 INTEGER_CONSTANT
