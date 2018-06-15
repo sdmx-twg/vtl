@@ -207,7 +207,7 @@ lists
 /* eval */
 evalExpr
   :
-  EVAL '(' routineName '(' (componentID|constant)? (',' (componentID|constant))* ')'  (RETURNS scalarType)? ')'
+  EVAL '(' routineName '(' (componentID|constant)? (',' (componentID|constant))* ')' (LANGUAGE STRING_CONSTANT)? (RETURNS scalarType)? ')'
   ;
   
 /* cast */
@@ -254,12 +254,12 @@ validationExpr
 
 validationDatapoint
   :
-   CHECK_DATAPOINT '(' expr ',' IDENTIFIER (VARIABLES componentID (',' componentID)*)? (OUTPUT (INVALID|ALL_MEASURES|ALL))? ')'
+   CHECK_DATAPOINT '(' expr ',' IDENTIFIER (COMPONENTS componentID (',' componentID)*)? (INVALID|ALL_MEASURES|ALL)? ')'
   ;
   
 validationHierarchical
   :
-  CHECK_HIERARCHY '(' expr',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (TOTAL|PARTIAL)? (RULE|DATASET|DATASET_PRIORITY|RULE_PRIORITY)? (INVALID|ALL|ALL_MEASURES)? ')'
+  CHECK_HIERARCHY '(' expr',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? (NON_NULL|NON_ZERO|PARTIAL_NULL|PARTIAL_ZERO|ALWAYS_NULL|ALWAYS_ZERO)? (DATASET|DATASET_PRIORITY)? (INVALID|ALL|ALL_MEASURES)? ')'
   ;
 
 erCode 
@@ -275,7 +275,7 @@ erLevel
 /* hierarchy */
 hierarchyExpr
   : 
-  HIERARCHY '(' expr ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? ((TOTAL|PARTIAL)|'_')? ((RULE|DATASET|RULE_PRIORITY|DATASET_PRIORITY)|'_')? ((COMPUTED|ALL)|'_')? ')'
+  HIERARCHY '(' expr ',' IDENTIFIER (CONDITION componentID (',' componentID)*)? (RULE IDENTIFIER)? ((NON_NULL|NON_ZERO|PARTIAL_NULL|PARTIAL_ZERO|ALWAYS_NULL|ALWAYS_ZERO)|'_')? ((RULE|DATASET|RULE_PRIORITY)|'_')? ((COMPUTED|ALL)|'_')? ')'
   ;
 
 /* Clauses. */
@@ -337,17 +337,16 @@ joinClause
 
 joinBody
   :
-  (joinKeepClause|joinDropClause)? (joinCalcClause|joinApplyClause|joinAggClause)? joinFilterClause? joinRenameClause?
+  clause (clause)*
   ;
 
-/*
 clause
   :
   (joinKeepClause|joinDropClause)
   | (joinCalcClause|joinApplyClause|joinAggClause)
   | joinFilterClause
   | joinRenameClause
-  ;*/
+  ;
 
 joinCalcClause
   :
@@ -687,7 +686,7 @@ constant
   | NULL_CONSTANT
   ;
  
-  componentType
+  componentType2
   :
   STRING
   | INTEGER
@@ -717,20 +716,19 @@ dataType
   
   compoundType
   :
-  componentType2			  		  #compType
+  componentType			  		  #compType
   | datasetType				  		  #datasetTypeAlternative
   | rulesetType				  		  #rulesetTypeAlternative
   | compoundType '-''>' compoundType  #operatorType
   | SET '<' compoundType '>'     	  #universalSetType
   | LIST '<' compoundType '>'    	  #universalListType 
-  | IDENTIFIER				  		  #identifieralternative
   | scalarType				 	      #scalarTypeAlternative
    /*  | productType */
   ;
   
-  componentType2
+  componentType
   :
-  (roleID)? (scalarType)?
+  roleID ('<' scalarType '>')?
   ;
   
   datasetType
@@ -740,7 +738,7 @@ dataType
   
   compConstraint
   :
-  componentType (componentID|multModifier)
+  componentType2 (componentID|multModifier)
   ;
   
   multModifier
