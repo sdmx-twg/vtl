@@ -350,12 +350,12 @@ clause
 
 joinCalcClause
   :
-  roleID? joinCalcClauseItem (',' joinCalcClauseItem)*
+  componentRole? joinCalcClauseItem (',' joinCalcClauseItem)*
   ;
 
 joinCalcClauseItem
   :
-  CALC (roleID)? joinCalcExpr (',' (roleID)? joinCalcExpr)*
+  CALC (componentRole)? joinCalcExpr (',' (componentRole)? joinCalcExpr)*
   ;
 
 joinCalcExpr
@@ -365,12 +365,12 @@ joinCalcExpr
   
 joinAggClause
   :
-  roleID? AGGREGATE joinAggClauseItem (',' joinAggClauseItem)* groupingClause? havingClause?
+  componentRole? AGGREGATE joinAggClauseItem (',' joinAggClauseItem)* groupingClause? havingClause?
   ;
 
 joinAggClauseItem
   :
-   (roleID)? joinAggExpr (',' joinAggExpr)*
+   (componentRole)? joinAggExpr (',' joinAggExpr)*
   ;
 
 joinAggExpr
@@ -437,7 +437,7 @@ aggregateClause
 
 aggrFunctionClause
   :
-  (roleID)? componentID ':=' aggrFunction
+  (componentRole)? componentID ':=' aggrFunction
   ;
 
 getFiltersClause
@@ -489,7 +489,7 @@ calcClause
 
 calcClauseItem
   :
-  (roleID)? componentID ':=' calcExpr
+  (componentRole)? componentID ':=' calcExpr
   ;
 
 calcExpr
@@ -601,9 +601,10 @@ returnAll
   ;
 
 /* Role name*/
-roleID
+componentRole
   :
   MEASURE
+  |COMPONENT
   |DIMENSION
   |ATTRIBUTE
   |viralAttribute
@@ -695,7 +696,12 @@ constant
   | DATE
   ;
   
-  scalarType
+ scalarType
+  :
+  (basicScalarType|valueDomainName|setName)scalarTypeConstraint?((NOT)? NULL_CONSTANT)?
+  ;
+  
+  basicScalarType
   :
   STRING
   | INTEGER
@@ -708,27 +714,35 @@ constant
   | TIME
   ;
   
-dataType
+  valueDomainName
   :
-  scalarType
-  | compoundType
+  IDENTIFIER
   ;
   
-  compoundType
+  setName
   :
-  componentType			  		  #compType
-  | datasetType				  		  #datasetTypeAlternative
-  | rulesetType				  		  #rulesetTypeAlternative
-  | compoundType '-''>' compoundType  #operatorType
-  | SET '<' compoundType '>'     	  #universalSetType
-  | LIST '<' compoundType '>'    	  #universalListType 
-  | scalarType				 	      #scalarTypeAlternative
-   /*  | productType */
+  IDENTIFIER
+  ;
+  
+  scalarTypeConstraint
+  :
+  ('[' expr ']')
+  |('{' constant (',' constant)* '}')
+  ;
+  
+ dataType
+  :
+  scalarType
+  |componentType
+  |datasetType
+  |universalSetType
+  |operatorType
+  |rulesetType
   ;
   
   componentType
   :
-  roleID ('<' scalarType '>')?
+  componentRole ('<' scalarType '>')?
   ;
   
   datasetType
@@ -738,7 +752,7 @@ dataType
   
   compConstraint
   :
-  componentType2 (componentID|multModifier)
+  componentType (componentID|multModifier)
   ;
   
   multModifier
@@ -763,8 +777,8 @@ dataType
   hrRuleset
   :
   HIERARCHICAL
-  |(HIERARCHICAL_ON_VD '{' prodValueDomains '}')
-  |(HIERARCHICAL_ON_VAR '{' prodVariables '}')
+  |(HIERARCHICAL_ON_VD '{' IDENTIFIER ('('prodValueDomains')')? '}')
+  |(HIERARCHICAL_ON_VAR '{' varID ('('prodVariables')')? '}')
   ;
   
   prodValueDomains
@@ -777,27 +791,23 @@ dataType
   '(' varID ('*' varID)* ')'
   ;
   
-  /*  productType
-  :
-  (dataType) ('*' dataType)*
-  ;
-  
   operatorType
   :
-  dataType '-''>' dataType
+  paramResultType ('*' paramResultType)* '->' paramResultType
+  ;
+  
+  paramResultType
+  :
+  scalarType
+  |datasetType
+  |universalSetType
+  |rulesetType
   ;
   
   universalSetType
   :
-  SET '<' dataType '>'
+  SET ('<' scalarType '>')?
   ;
-  
-  universalListType
-  :
-  LIST '<' dataType '>'
-  ;
-  
-*/
   
   retainType
   :
