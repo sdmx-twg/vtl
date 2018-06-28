@@ -114,9 +114,6 @@ lexer grammar VtlTokens;
   VAR_POP						          : 'var_pop';
   VAR_SAMP						        : 'var_samp';
   VARIANCE						        : 'variance';
-  GROUP_BY						        : 'group by';
-  GROUP_EXCEPT						        : 'group except';
-  GROUP_ALL						        : 'group all';
   GROUP									: 'group';
   EXCEPT								: 'except';
   HAVING								: 'having';
@@ -130,12 +127,11 @@ lexer grammar VtlTokens;
   OVER							          : 'over';
   PRECEDING                   : 'preceding';
   FOLLOWING                   : 'following';
+  UNBOUNDED					  : 'unbounded';
   PARTITION					          : 'partition';
   ROWS							          : 'rows';
   RANGE							          : 'range';
   CURRENT					        : 'current';
-  UNBOUNDED_PRECEDING			    : 'unbounded preceding';
-  UNBOUNDED_FOLLOWING		      : 'unbounded following';
   VALID							          : 'valid';
   FILL_TIME_SERIES				    : 'fill_time_series';
   FLOW_TO_STOCK					      : 'flow_to_stock';
@@ -164,6 +160,7 @@ lexer grammar VtlTokens;
   FROM							          : 'from';
   AGGREGATES         			    : 'aggregates';
   POINTS						          : 'points';
+  POINT									  : 'point';
   TOTAL							          : 'total';
   PARTIAL						          : 'partial';
   ALWAYS								  : 'always';
@@ -180,19 +177,17 @@ lexer grammar VtlTokens;
   UNPIVOT                     : 'unpivot';
   SUBSPACE                    : 'sub';
   APPLY                       : 'apply';
-  INCLUDE_NULLS				  : 'include_nulls';
   CONDITIONED				  : 'conditioned';
   PERIOD_INDICATOR			  : 'period_indicator';
   SINGLE					  : 'single';
   DURATION					  : 'duration';
-  TIME_AGGR					  : 'time_agg';
+  TIME_AGG					  : 'time_agg';
   UNIT						  : 'unit';
   VALUE						  : 'Value';
   VALUEDOMAINS				  : 'valuedomains';
   VARIABLES					  : 'variables';
   INPUT						  : 'input';
   OUTPUT					  : 'output';
-  RETURNING					  : 'returning';
   CAST						  : 'cast';
   RULE_PRIORITY			      : 'rule_priority';
   DATASET_PRIORITY			  : 'dataset_priority';
@@ -200,8 +195,6 @@ lexer grammar VtlTokens;
   CHECK_DATAPOINT			  : 'check_datapoint';
   CHECK_HIERARCHY			  : 'check_hierarchy';
   COMPUTED					  : 'computed';
-  DATA_POINTS				  : 'data points';
-  DATA_POINT				  : 'data point';
   NON_NULL					  : 'non_null';
   NON_ZERO					  : 'non_zero';
   PARTIAL_NULL				  : 'partial_null';
@@ -244,14 +237,6 @@ FLOATEXP
     | '-'
   )?
   ('0'..'9')+
-  ;
-
-TIME_CLAUSE
-  :
-  (
-    'T'
-    | 't'
-  )
   ;
 
 BOOLEAN_CONSTANT
@@ -393,7 +378,6 @@ WS
     | '\u000C'
     | '\n'
   )->skip
-  
   ;
 
 /* old EOL
