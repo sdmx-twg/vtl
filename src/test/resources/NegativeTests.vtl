@@ -190,9 +190,6 @@ rename d1#Id_1 to Id11, d1#Id_2 to Id12, d2#Id1 to Id21, d2#Id2 to Id22, d1#Me_2
 DS_r := inner_join (filter Me_1 ="A",
 calc Me_4 = Me_1||Me_1A, drop d1#Me_2)
 
-//number used instead of string or component
-"Hello" || 5
-
 //second operand missing
 ds_1 || 
 
@@ -436,7 +433,6 @@ DS_r := DS_1 [ Me_2:= Me_1 and ]
 
 //first operand missing
 DS_r:= or DS_2
-<<<<<<< HEAD
 
 //second operand missing
 DS_r:= DS_1 [ Me_2:= Me_1 or ]
@@ -687,8 +683,6 @@ DS_validation_report := check_hierarchy ()
 //more than two operands used
 DS_validation_report := check_hierarchy ( DS_1, hr1 total, DS_2 )
 
-=======
-
 //second operand missing
 DS_r:= DS_1 [ Me_2:= Me_1 or ]
 
@@ -938,7 +932,6 @@ DS_validation_report := check_hierarchy ()
 //more than two operands used
 DS_validation_report := check_hierarchy ( DS_1, hr1 total, DS_2 )
 
->>>>>>> 285fbebc497e071d9200cc8d0623cd1019c2a3bf
 //'condition' keyword omitted
 DS_validation_report := check_hierarchy ( DS_1, hr1 M1,M2)
 
@@ -1084,7 +1077,6 @@ DS_1 [ drop {Me_2, Me_3} ]
 //op missing
 [ rename Me_2 to Me_3 ]
 
-
 //'rename' keyword missing
 DS_1 [ Me_2 to Me_3 ]
 
@@ -1141,7 +1133,6 @@ DS_r := DS_1 [ sub Id_1 = 1, Id_2 = ]
 
 //no comma used between pairs
 DS_r := DS_1 [ sub Id_1 = 1  Id_2 = "A"]
-
 
 //'rename' keyword missing
 DS_1 [ Me_2 to Me_3 ]
