@@ -7,7 +7,12 @@ start: (statement? (ML_COMMENT)* (SL_COMMENT)* EOL)* statement? EOF
       ;
 
 /* Assignment */
-statement: (varID ASSIGN)? expr;
+statement: ((varID ASSIGN)? expr) | persistentAssignment;
+
+persistentAssignment
+  : 
+  varID PUT_SYMBOL expr
+  ;
 
 /* Conditional */
 
@@ -27,9 +32,10 @@ expr:
 	|expr ('='|'<>') expr
 	|expr AND expr
 	|expr (OR|XOR) expr										 
-    |IF expr THEN expr ELSE expr		
+    |IF expr THEN expr ELSE expr	
     |exprComplex	
     |exprAtom
+    |expr CONCAT expr
     |constant
   	|IDENTIFIER
     ;
@@ -45,7 +51,7 @@ exprComplex:
 	|setExpr #setExpressions 
 	|callFunction #callFunctionExpression
 	|joinExpr #joinExpression
-		;
+	;
 
 timeExpr
  :timeSeriesExpr
@@ -127,12 +133,12 @@ defExpr
   
 defOperator
   :
-  DEFINE OPERATOR operatorID '(' parameterItem (',' parameterItem)* ')' (RETURNS dataType)? IS expr END OPERATOR
+  DEFINE OPERATOR operatorID '(' parameterItem (',' parameterItem)* ')' (RETURNS paramResultType)? IS expr END OPERATOR
   ;  
  
 parameterItem
   :
-  varID dataType (DEFAULT constant)?
+  varID paramResultType (DEFAULT constant)?
   ;
     
 callFunction
@@ -168,8 +174,6 @@ exprAtom
   | NVL '(' expr ',' expr ')'										# nvlAtom
   | MOD '(' expr ',' expr ')'										# modAtom
   | ref																# refAtom
-  | putExpr															# putExprAtom
-  | concatExpr														# concatExprAtom
   | evalExpr														# evalExprAtom
   | castExpr														# castExprAtom
   | hierarchyExpr													# hierarchyExprAtom
@@ -193,11 +197,6 @@ identifierList
   :
   '[' IDENTIFIER (',' IDENTIFIER)* ']'
   ;			 
-
-putExpr
-  : 
-  varID PUT_SYMBOL expr
-  ;
   
 lists
  :
@@ -207,19 +206,13 @@ lists
 /* eval */
 evalExpr
   :
-  EVAL '(' routineName '(' (componentID|constant)? (',' (componentID|constant))* ')' (LANGUAGE STRING_CONSTANT)? (RETURNS scalarType)? ')'
+  EVAL '(' routineName '(' (componentID|constant)? (',' (componentID|constant))* ')' (LANGUAGE STRING_CONSTANT)? (RETURNS basicScalarType)? ')'
   ;
   
 /* cast */
 castExpr
   :  
-  CAST '(' (IDENTIFIER|expr) ',' (dataType|IDENTIFIER) (',' STRING_CONSTANT)? ')'
-  ;
-
-/* concatenation */
-concatExpr
-  :
-  (IDENTIFIER|STRING_CONSTANT) CONCAT (IDENTIFIER|STRING_CONSTANT)
+  CAST '(' expr ',' dataType (',' STRING_CONSTANT)? ')'
   ;
 
 /* Time operators */
@@ -244,7 +237,7 @@ timeSeriesExpr
 /* time period agg */
 timeAggExpr
   :
-  TIME_AGGR '(' STRING_CONSTANT (',' (STRING_CONSTANT|'_'))? (',' (expr|'_'))? (',' (FIRST|LAST))? ')' 
+  TIME_AGG '(' STRING_CONSTANT (',' (STRING_CONSTANT|'_'))? (',' (expr|'_'))? (',' (FIRST|LAST))? ')' 
   ;
 
 /* check */
@@ -311,16 +304,16 @@ orderByClause
   
 windowingClause
   :
-  (DATA_POINTS|RANGE) BETWEEN limitClauseItem AND limitClauseItem
+  ((DATA POINTS)|RANGE) BETWEEN limitClauseItem AND limitClauseItem
   ;
   
 limitClauseItem
   :
   (INTEGER_CONSTANT PRECEDING)
   | (INTEGER_CONSTANT FOLLOWING)
-  | (CURRENT DATA_POINT)
-  | UNBOUNDED_PRECEDING 
-  | UNBOUNDED_FOLLOWING
+  | (CURRENT DATA POINT)
+  | (UNBOUNDED PRECEDING) 
+  | (UNBOUNDED FOLLOWING)
   ;   
 
 /* Join Expressions*/
@@ -673,9 +666,9 @@ componentID
 
  groupKeyword
   :
-  GROUP_BY
-  |GROUP_EXCEPT
-  |GROUP_ALL
+  (GROUP BY)
+  |(GROUP EXCEPT)
+  |(GROUP ALL)
   ;
 
 constant
