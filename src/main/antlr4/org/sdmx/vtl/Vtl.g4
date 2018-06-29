@@ -212,7 +212,7 @@ evalExpr
 /* cast */
 castExpr
   :  
-  CAST '(' expr ',' dataType (',' STRING_CONSTANT)? ')'
+  CAST '(' expr ',' (basicScalarType|valueDomainName) (',' STRING_CONSTANT)? ')'
   ;
 
 /* Time operators */
