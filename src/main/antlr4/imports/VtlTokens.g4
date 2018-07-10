@@ -68,7 +68,6 @@ lexer grammar VtlTokens;
   SUBSTR            : 'substr';
   SUM               : 'sum';
   AVG               : 'avg';
-  STDDEV            : 'stddev';
   MEDIAN            : 'median';
   COUNT             : 'count';
   DIMENSION         : 'identifier';
@@ -113,7 +112,6 @@ lexer grammar VtlTokens;
   STDDEV_SAMP							: 'stddev_samp';
   VAR_POP						          : 'var_pop';
   VAR_SAMP						        : 'var_samp';
-  VARIANCE						        : 'variance';
   GROUP									: 'group';
   EXCEPT								: 'except';
   HAVING								: 'having';
@@ -121,8 +119,6 @@ lexer grammar VtlTokens;
   LAST_VALUE					        : 'last_value';
   LAG						        	: 'lag';
   LEAD									: 'lead';
-  NTILE							          : 'ntile';
-  PERCENT_RANK					      : 'percent_rank';
   RATIO_TO_REPORT				      : 'ratio_to_report';
   OVER							          : 'over';
   PRECEDING                   : 'preceding';
@@ -215,9 +211,20 @@ lexer grammar VtlTokens;
 
 INTEGER_CONSTANT
   :
-  '-'? ('0'..'9')+
+  POSITIVE_CONSTANT
+  |NEGATIVE_CONSTANT
   ;
 
+POSITIVE_CONSTANT
+ :
+ ('0'..'9')+
+ ;
+
+NEGATIVE_CONSTANT
+ :
+  '-' ('0'..'9')+
+  ;
+  
 FLOAT_CONSTANT
   :
   ('0'..'9')+ '.' ('0'..'9')* FLOATEXP?
