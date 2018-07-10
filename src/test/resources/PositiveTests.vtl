@@ -99,10 +99,10 @@ eval ( routine1 ( DS_1 ) )
 
 /* The following examples referring to eval need to be modified in order to match the syntax definition of eval
 DS_r := eval( SQL3( DS_1 ) 
-returns dataset { identifier<geo_area> ref_area,
-identifier<date> time,
-measure<number> obs_value,
-attribute<string> obs_status } ) */
+returns dataset { identifier geo_area ,
+identifier time,
+measure obs_value,
+attribute obs_status } ) */
 
 DS_r := eval( SQL3( DS_1 ) language "SQL"
 returns integer)
@@ -160,8 +160,9 @@ DS_r := cross_join (DS_1 as d1, DS_2 as d2 rename d1#Id_1 to Id11, d1#Id_2 to Id
 DS_r := inner_join (DS_1 as d1, DS_2 as d2 filter Me_1 ="A" calc Me_4 := Me_1||Me_1A drop d1#Me_2)
 
 DS_r := inner_join ( DS_1
+filter Id_2 ="B" 
 calc Me_2 := Me_2 ||"_NEW"
-filter Id_2 ="B" keep Me_1, Me_2)
+ keep Me_1, Me_2)
 
 DS_r := inner_join ( DS_1 as d1, DS_2 as d2 apply d1 || d2)
 
@@ -640,5 +641,3 @@ DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "A"]
 DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "B", Id_3 = "YY"]
 
 DS_r := DS_1 [sub Id_2 ="A"] + DS_1 [sub Id_2 ="B"]
-
-
