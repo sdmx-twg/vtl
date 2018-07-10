@@ -190,6 +190,22 @@ rename d1#Id_1 to Id11, d1#Id_2 to Id12, d2#Id1 to Id21, d2#Id2 to Id22, d1#Me_2
 DS_r := inner_join (filter Me_1 ="A",
 calc Me_4 = Me_1||Me_1A, drop d1#Me_2)
 
+//filter clause misplaced
+full_join (ds1 as d1, ds2 as d2
+aggr Me1:= sum(Me1), attribute At20:=avg(Me2)
+filter d1#Me1 + d2#Me1 <10
+group by Id1, Id2
+having sum(Me3)>0
+)
+
+//keep and drop used together
+left_join ( ds1 as d1, ds2 as d2
+filter d1#Me1 + d2#Me1 <10
+calc Me1 := d1#Me1 + d2#Me3
+keep Me1 drop Me3
+rename Id1 to Ident1, Me1 to Meas1
+)
+
 //second operand missing
 ds_1 || 
 
