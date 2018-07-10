@@ -320,7 +320,7 @@ limitClauseItem
 
 joinExpr
   :
-  joinKeyword '(' joinClause (joinBody)? (',' joinClause (joinBody)?)* ')'
+  joinKeyword '(' joinClause (joinBody)? ')'
   ;
 
 joinClause
@@ -330,15 +330,7 @@ joinClause
 
 joinBody
   :
-  clause (clause)*
-  ;
-
-clause
-  :
-  (joinKeepClause|joinDropClause)
-  | (joinCalcClause|joinApplyClause|joinAggClause)
-  | joinFilterClause
-  | joinRenameClause
+  joinFilterClause? (joinCalcClause|joinApplyClause|joinAggClause)? (joinKeepClause|joinDropClause)?   joinRenameClause?
   ;
 
 joinCalcClause
@@ -403,8 +395,6 @@ anFunction
   FIRST_VALUE '(' expr ')'
   | LAG '(' expr ',' INTEGER_CONSTANT ',' INTEGER_CONSTANT ')'
   | LAST_VALUE '(' expr ')'
-  | NTILE '(' expr ')'
-  | PERCENT_RANK '(' expr ')'
   | RANK '(' expr ')'
   | RATIO_TO_REPORT '(' expr ')'
   |LEAD '(' expr ')'
@@ -416,8 +406,6 @@ anFunction
   FIRST_VALUE 
   | LAG 
   | LAST_VALUE 
-  | NTILE 
-  | PERCENT_RANK 
   | RANK 
   | RATIO_TO_REPORT 
   |LEAD 
@@ -469,10 +457,8 @@ aggrFunction
   | RANK '(' expr ')'
   | STDDEV_POP '(' expr ')'
   | STDDEV_SAMP '(' expr ')'
-  | STDDEV '(' expr ')'
   | VAR_POP '(' expr ')'
   | VAR_SAMP '(' expr ')'
-  | VARIANCE '(' expr ')'
   ;
 
 calcClause
