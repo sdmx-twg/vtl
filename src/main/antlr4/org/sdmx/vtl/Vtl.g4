@@ -133,12 +133,12 @@ defExpr
   
 defOperator
   :
-  DEFINE OPERATOR operatorID '(' parameterItem (',' parameterItem)* ')' (RETURNS paramResultType)? IS expr END OPERATOR
+  DEFINE OPERATOR operatorID '(' (parameterItem (',' parameterItem)*)? ')' (RETURNS dataType)? IS expr END OPERATOR
   ;  
  
 parameterItem
   :
-  varID paramResultType (DEFAULT constant)?
+  varID dataType (DEFAULT constant)?
   ;
     
 callFunction
@@ -714,7 +714,7 @@ constant
   scalarType
   |componentType
   |datasetType
-  |universalSetType
+  |scalarSetType
   |operatorType
   |rulesetType
   ;
@@ -726,7 +726,7 @@ constant
   
   datasetType
   :
-  DATASET '{'compConstraint (',' compConstraint)* '}'
+  DATASET ('{'compConstraint (',' compConstraint)* '}' )?
   ;
   
   compConstraint
@@ -756,34 +756,42 @@ constant
   hrRuleset
   :
   HIERARCHICAL
-  |(HIERARCHICAL_ON_VD '{' IDENTIFIER ('('prodValueDomains')')? '}')
-  |(HIERARCHICAL_ON_VAR '{' varID ('('prodVariables')')? '}')
+  |(HIERARCHICAL_ON_VD ('{' IDENTIFIER ('('prodValueDomains')')? '}')? )
+  |(HIERARCHICAL_ON_VAR ('{' varID ('('prodVariables')')? '}')? )
   ;
   
   prodValueDomains
   :
-  '(' IDENTIFIER ('*' IDENTIFIER)* ')'
+   IDENTIFIER ('*' IDENTIFIER)*
   ;
   
   prodVariables
   :
-  '(' varID ('*' varID)* ')'
+   varID ('*' varID)*
   ;
   
   operatorType
   :
-  paramResultType ('*' paramResultType)* '->' paramResultType
+  inputParameterType ('*' inputParameterType)* '->' outputParameterType
   ;
   
-  paramResultType
+  inputParameterType
   :
   scalarType
   |datasetType
-  |universalSetType
-  |rulesetType
+  |componentType
   ;
   
-  universalSetType
+  outputParameterType
+  :
+  scalarType
+  |datasetType
+  |scalarSetType
+  |rulesetType
+  |componentType
+  ;
+  
+  scalarSetType
   :
   SET ('<' scalarType '>')?
   ;
