@@ -206,7 +206,7 @@ lists
 /* eval */
 evalExpr
   :
-  EVAL '(' routineName '(' (componentID|constant)? (',' (componentID|constant))* ')' (LANGUAGE STRING_CONSTANT)? (RETURNS basicScalarType)? ')'
+  EVAL '(' routineName '(' (componentID|constant)? (',' (componentID|constant))* ')' (LANGUAGE STRING_CONSTANT)? (RETURNS outputParameterType)? ')'
   ;
   
 /* cast */
