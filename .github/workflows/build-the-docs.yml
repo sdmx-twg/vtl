@@ -44,7 +44,7 @@ jobs:
         wget -O /tmp/plantuml-mit-1.2023.13.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-mit-1.2023.13.jar
     - name: Sphynx build
       run: |
-        sphinx-build -M html sourcedir outputdir
+        sphinx-build -M html v2.1/sourcedir outputdir
     - name: Fix permissions
       run: |
         chmod -c -R +rX "outputdir/" | while read line; do
