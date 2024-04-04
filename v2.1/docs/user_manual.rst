@@ -33,9 +33,9 @@ Paragraph + Diagram + List Example (UM 1042-1184)
 This Section provides a formal model for the Variables, the Value Domains, their Values and the possible (Sub)Sets of Values. 
 These artefacts can be referenced in the definition of the VTL Data Structures and as parameters of some VTL Operators.
 
---------------------------------------------------------
+
 Variable and Value Domain model diagram (with styled PlantUML)
---------------------------------------------------------
+----------------------------------------------------------------
 
 .. uml::
 
@@ -72,7 +72,7 @@ Variable and Value Domain model diagram (with styled PlantUML)
 
 
 Variable and Value Domain model diagram (with draw.io)
-======================================================
+--------------------------------------------------------
 
 PNG
 
@@ -88,7 +88,7 @@ SVG
 
 
 Explanation of the Diagram
-=============================
+--------------------------------------------------------
 Even in the case of Variables and Value Domains, the GSIM artefacts are used as much as possible. The differences are mainly due 
 to the fact that GSIM does not distinguish explicitly between Value Domains and their (Sub)Sets, while in the VTL IM this is made more explicit in
 order to allow different Data Set Components relevant to the same aspect of the reality (e.g. the geographic area) to share the same Value Domain and, 
