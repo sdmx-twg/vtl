@@ -31,41 +31,8 @@ Paragraph + Diagram + List Example (UM 1042-1184)
 This Section provides a formal model for the Variables, the Value Domains, their Values and the possible (Sub)Sets of Values. 
 These artefacts can be referenced in the definition of the VTL Data Structures and as parameters of some VTL Operators.
 
--------------------------------------------------------
-Variable and Value Domain model diagram (with Mermaid)
--------------------------------------------------------
-
-.. mermaid::
-
-    classDiagram
-        SetItem "0..N" -- "1..1" Value
-        SetItem "1..N" --* "1..1" SetList 
-        SetList "1..1" -- "1..1" EnumeratedSet
-        
-        CodeItem --|> Value
-        CodeItem "1..N" --* "1..1" CodeList 
-        CodeList "1..1" -- "1..1" EnumeratedValueDomain
-        
-        Value "1..N" -- "1..1" DescribedValueDomain
-        Value "1..N" -- "1..1" DescribedSet
-        
-        DescribedValueDomain --|> ValueDomain
-        EnumeratedValueDomain --|>  ValueDomain
-        
-        EnumeratedSet --|> ValueDomainSubset
-        DescribedSet --|> ValueDomainSubset
-        ValueDomain "1..1" -- "0..N" ValueDomainSubset
-        ValueDomain "1..1" -- "0..N" RepresentedVariable
-        
-        DataStructure "1..1" -- "0..N" DataSet
-        DataStructure *-- "1..N" DataStructureComponent
-        DataSet *-- "1..N" DataSetComponent
-        DataSetComponent "0..N" -- "1..1" DataStructureComponent
-        ValueDomainSubset "1..1" -- "0..N" DataSetComponent
-        RepresentedVariable "1..1" -- "0..N" DataStructureComponent
-
 --------------------------------------------------------
-Variable and Value Domain model diagram (with PlantUML)
+Variable and Value Domain model diagram (with styled PlantUML)
 --------------------------------------------------------
 
 .. uml::
@@ -100,60 +67,6 @@ Variable and Value Domain model diagram (with PlantUML)
             ValueDomainSubset "1..1" -u- "0..N" DataSetComponent
             RepresentedVariable "1..1" -r- "0..N" DataStructureComponent
     @enduml
-
---------------------------------------------------------
-Variable and Value Domain model diagram (with PlantUML and packages)
---------------------------------------------------------
-
-.. uml::
-
-  @startuml      
-  class Value
-            class RepresentedVariable 
-            package domain { 
-            class ValueDomain
-            class DescribedValueDomain 
-            class EnumeratedValueDomain 
-            class CodeItem 
-            class CodeList
-            } 
-            package set { 
-            class DescribedSet 
-            class EnumeratedSet 
-            class ValueDomainSubset
-            class SetItem 
-            class SetList
-            }     
-            package items {       
-            class DataSet 
-            class DataStructure 
-            class DataSetComponent
-            class DataStructureComponent
-            }
-            SetList "1..1" -- "1..1" EnumeratedSet
-            SetItem "1..N" --* "1..1" SetList
-            CodeItem --|> Value
-            CodeItem "1..N" --* "1..1" CodeList
-            CodeList "1..1" -- "1..1" EnumeratedValueDomain
-
-            Value "1..N" -- "1..1" DescribedValueDomain
-            Value "1..N" -- "1..1" DescribedSet
-
-            DescribedValueDomain --|> ValueDomain
-            EnumeratedValueDomain --|>  ValueDomain
-
-            EnumeratedSet --|> ValueDomainSubset
-            DescribedSet --|> ValueDomainSubset
-            ValueDomain "1..1" -- "0..N" ValueDomainSubset
-            ValueDomain "1..1" -- "0..N" RepresentedVariable
-
-            DataStructure "1..1" -- "0..N" DataSet
-            DataStructure *-- "1..N" DataStructureComponent
-            DataSetComponent "1..N"--* DataSet 
-            DataSetComponent "0..N" -- "1..1" DataStructureComponent
-            ValueDomainSubset "1..1" -- "0..N" DataSetComponent
-            RepresentedVariable "1..1" -- "0..N" DataStructureComponent
-  @enduml
 
 --------------------------------------------------------
 Variable and Value Domain model diagram (with draw.io)
