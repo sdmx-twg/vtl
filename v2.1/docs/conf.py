@@ -23,10 +23,10 @@ html_theme_options = {
 }
 html_context = {
     "display_github": True,  # Integrate GitHub
-    "github_user": "vpinna80",  # Username
-    "github_repo": "test_docs",  # Repo name
+    "github_user": "amattioc",  # Username
+    "github_repo": "vtl",  # Repo name
     "github_version": "master",  # Version
-    "conf_py_path": "/sourcedir/"  # Path in the checkout to the docs root
+    "conf_py_path": "/v2.1/docs/"  # Path in the checkout to the docs root
 }
 
 # Load templates
@@ -58,7 +58,7 @@ for op_folder in next(os.walk("operators"))[1]:
     
     with open(op_path.joinpath("examples.rst"), "w") as f:
         f.write(
-            templates["examples"].render({"examples": examples, "inputs": inputs, "repourl_ex": "https://github.com/vpinna80/test\_docs/blob/master/sourcedir"})
+            templates["examples"].render({"examples": examples, "inputs": inputs, "repourl_ex": "https://github.com/amattioc/vtl/blob/master/v2.1"})
         )
 
 plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar")
