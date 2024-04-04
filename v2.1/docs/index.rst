@@ -1,5 +1,5 @@
 ************************************
-VTL User and Reference Manual Tests
+VTL v2.1 User and Reference Manual
 ************************************
 
 .. toctree::
