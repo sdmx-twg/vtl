@@ -18,7 +18,7 @@ Semantics  for scalar operations
 ------------------------------------
 The operator + returns the operand unchanged. For example: ::
 
-	+3 		gives 3
+	+3 	gives 3
 	+(-5) 	gives -5
 
 -----------------------------
