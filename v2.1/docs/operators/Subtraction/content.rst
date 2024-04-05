@@ -24,16 +24,20 @@ For example: `3 - 5` gives `-2`.
 -----------------------------
 Input parameters type
 -----------------------------
-op1, op2 :: dataset { measure<number> _+ }
-					| component<number>
-					| number
+op1, op2 :: 
+
+	dataset { measure<number> _+ }
+	| component<number>
+	| number
 
 -----------------------------
 Result type
 -----------------------------
-result :: dataset { measure<number> _+ }
-					| component<number>
-					| number
+result :: 
+
+	dataset { measure<number> _+ }
+	| component<number>
+	| number
 
 -----------------------------
 Additional Constraints
