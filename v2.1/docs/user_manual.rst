@@ -1,9 +1,10 @@
 #####################
-VTL 2.1 User Manual
+User Manual
 #####################
 
-Table Example (UM 923-932) 
+Example (row 919) 
 ===========================
+As a first simple example of Data Sets seen as mathematical functions, let us consider the following table:
 
    *Production of the American Countries*
 
@@ -28,8 +29,8 @@ Table Example (UM 923-932)
 | …            | …           | …             | …              | …            |
 +--------------+-------------+---------------+----------------+--------------+
 
-Paragraph + Diagram + List Example (UM 1042-1184)
-==================================================
+Generic Model for Variables and Value Domains (row 1042)
+===========================================================
 This Section provides a formal model for the Variables, the Value Domains, their Values and the possible (Sub)Sets of Values. 
 These artefacts can be referenced in the definition of the VTL Data Structures and as parameters of some VTL Operators.
 
