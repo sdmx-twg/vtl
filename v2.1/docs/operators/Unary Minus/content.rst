@@ -18,7 +18,7 @@ Semantics  for scalar operations
 ------------------------------------
 The operator - inverts the sign of op. For example: ::
 
-	-3 		gives -3
+	-3 	gives -3
 	-(-5) 	gives 5
 
 -----------------------------
