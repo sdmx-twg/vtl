@@ -19,7 +19,9 @@ Input parameters
 Semantics  for scalar operations
 ------------------------------------
 The operator addition returns the sum of two numbers.
-For example: `3 + 5` gives `8`.
+For example: ::
+
+3 + 5   gives 8
 
 -----------------------------
 Input parameters type
