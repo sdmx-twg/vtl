@@ -33,9 +33,11 @@ op1, op2 ::
 -----------------------------
 Result type
 -----------------------------
-result :: dataset { measure<number> _+ }
-					| component<number>
-					| number
+result :: 
+	
+	dataset { measure<number> _+ }
+	| component<number>
+	| number
 
 -----------------------------
 Additional Constraints
