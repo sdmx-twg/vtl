@@ -19,7 +19,9 @@ Input parameters
 Semantics  for scalar operations
 ------------------------------------
 The operator subtraction returns the difference of two numbers. 
-For example: `3 - 5` gives `-2`.
+For example: ::
+
+	3 - 5   gives  -2
 
 -----------------------------
 Input parameters type
