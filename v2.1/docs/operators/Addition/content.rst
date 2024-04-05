@@ -24,9 +24,11 @@ For example: `3 + 5` gives `8`.
 -----------------------------
 Input parameters type
 -----------------------------
-op1, op2 :: dataset { measure<number> _+ }
-					| component<number>
-					| number
+op1, op2 :: 
+
+	dataset { measure<number> _+ }
+	| component<number>
+	| number
 
 -----------------------------
 Result type
