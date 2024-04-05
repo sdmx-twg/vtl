@@ -44,7 +44,7 @@ None.
 Behavior
 --------
 The operator has the behaviour of the "Operators applicable on two Scalar Values or Data Sets or Data Set Components" 
-(see the section "Typical behaviours of the ML Operators").
+(see the section "Typical behaviours of the ML Operators"). 
 According to the general rules about data types, the operator can be applied also on sub-types of number, 
 that is the type integer. If the type of both operands is integer then the result has type integer. 
 If one of the operands is of type number, then the other operand is implicitly cast to number and therefore 
