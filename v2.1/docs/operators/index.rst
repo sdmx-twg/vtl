@@ -1,8 +1,8 @@
-#####################################
-VTL 2.1 Reference Manual
-#####################################
+###################
+Reference Manual
+###################
 
-Operators Example (RM 3000-3098)
+VTL-ML - Numeric operators (row 2907)
 -----------------------------------
 .. toctree::
    :glob:
