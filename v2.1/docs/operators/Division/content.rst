@@ -50,8 +50,8 @@ None.
 Behavior
 --------
 
-The operator has the behaviour of the “Operators applicable on two Scalar Values or Data Sets or Data Set Components” 
-(see the section “Typical behaviours of the ML Operators”). According to the general rules about data types, 
+The operator has the behaviour of the "Operators applicable on two Scalar Values or Data Sets or Data Set Components" 
+(see the section "Typical behaviours of the ML Operators"). According to the general rules about data types, 
 the operator can be applied also on sub-types of number, that is the type integer. The result has type number.
 
 If op2 is 0 then the operation generates a run-time error.
