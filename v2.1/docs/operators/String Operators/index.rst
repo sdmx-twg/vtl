@@ -1,5 +1,5 @@
 ######################################
-Reference Manual
+VTL-ML - String Operators
 ######################################
 .. toctree::
    :glob:

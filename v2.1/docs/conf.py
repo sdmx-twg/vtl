@@ -36,29 +36,32 @@ templates = {}
 for template in next(os.walk("templates"))[2]:
     templates[template] = jinjaEnv.get_template(template)
 
-# Apply templates in each op folder
-for op_folder in next(os.walk("operators"))[1]:
-    # Write the op main page
-    op_path = Path("operators").joinpath(op_folder)
-    with open(op_path.joinpath("index.rst"), "w") as f:
-        f.write(templates["operator"].render({"title": op_folder}))
+# Apply templates in each op type folder
+for op_type in next(os.walk("operators"))[1]:
+	op_type_path = Path("operators").joinpath(op_type)
+	# Apply templates in each op folder
+	for op_folder in next(os.walk(op_type_path))[1]:
+		# Write the op main page
+		op_path = op_type_path.joinpath(op_folder)
+		with open(op_path.joinpath("index.rst"), "w") as f:
+			f.write(templates["operator"].render({"title": op_folder}))
 
-    # Write the op examples
-    examples_folder = op_path.joinpath("examples")
-    
-    ds_list = sorted(x.with_suffix('').name for x in examples_folder.glob("ds_*.csv"))
-    inputs = []
-    for i in range(len(ds_list)):
-        inputs.append({ "folder": examples_folder, "i": i + 1, "name": ds_list[i] })
-    
-    ex_list = sorted(x.with_suffix('').name for x in examples_folder.glob("ex_*.vtl"))
-    examples = []
-    for i in range(len(ex_list)):
-        examples.append({ "folder": examples_folder, "i": i + 1, "name": ex_list[i] })
-    
-    with open(op_path.joinpath("examples.rst"), "w") as f:
-        f.write(
-            templates["examples"].render({"examples": examples, "inputs": inputs, "repourl_ex": "https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs"})
-        )
+		# Write the op examples
+		examples_folder = op_path.joinpath("examples")
+		
+		ds_list = sorted(x.with_suffix('').name for x in examples_folder.glob("ds_*.csv"))
+		inputs = []
+		for i in range(len(ds_list)):
+			inputs.append({ "folder": examples_folder, "i": i + 1, "name": ds_list[i] })
+		
+		ex_list = sorted(x.with_suffix('').name for x in examples_folder.glob("ex_*.vtl"))
+		examples = []
+		for i in range(len(ex_list)):
+			examples.append({ "folder": examples_folder, "i": i + 1, "name": ex_list[i] })
+		
+		with open(op_path.joinpath("examples.rst"), "w") as f:
+			f.write(
+				templates["examples"].render({"examples": examples, "inputs": inputs, "repourl_ex": "https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs"})
+			)
 
 plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar")

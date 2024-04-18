@@ -1,5 +1,5 @@
 ######################################
-Reference Manual
+VTL-ML - Numeric Operators
 ######################################
 .. toctree::
    :glob:
