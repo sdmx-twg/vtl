@@ -14,6 +14,7 @@ This is the list of the current VTL-TF members, and their role in the group.
 |Edgardo Greising|ILO|greising@ilo.org|egreising|VTL-TF Member|
 |Florian Vucko|INSEE (France)|florian.vucko@insee.fr|flo7894|VTL-TF Member| 
 |Franck Cotton|INSEE (France)|franck.cotton@insee.fr|FranckCo|VTL-TF Member|
+|Javier Hernandez|Meaningful Data|javier.hernandez@meaningfuldata.eu|javihernant|VTL-TF Member|
 |Jesus Simon|Meaningful Data|jesus.simon@meaningfuldata.eu|jmsimonma-md|VTL-TF Member|
 |Katrin Heinze|ECB|Katrin.Heinze@ecb.europa.eu||VTL-TF Member|
 |Laura Vignola|Istat (Italy)|vignola@istat.it|vignola|VTL-TF Member|
@@ -42,4 +43,4 @@ Jens	Dossé|OECD|Jens.DOSSE@oecd.org|dosse|Collaborator|
 Juan	Muñoz López|INEGI|Juan.munoz@inegi.org.mx|DrJMunozMx|Collaborator|
 Pedro	Carranza|OECD|pedro.carranza@oecd.org|pedroacarranza|Collaborator|
 Sergey Grebenshchikov|ECB|Sergey.Grebenshchikov@ecb.europa.eu||Collaborator|
-Weichen Lei|ILO|lei@ilo.org|wc-lei|VTL-TF Member|
+Weichen Lei|ILO|lei@ilo.org|wc-lei|Collaborator|
