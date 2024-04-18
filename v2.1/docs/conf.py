@@ -61,7 +61,7 @@ for op_type in next(os.walk("operators"))[1]:
 		
 		with open(op_path.joinpath("examples.rst"), "w") as f:
 			f.write(
-				templates["examples"].render({"examples": examples, "inputs": inputs, "repourl_ex": "https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs"})
+				templates["examples"].render({"examples": examples, "inputs": inputs, "op_type": op_type, "repourl_ex": "https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs"})
 			)
 
 plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar")
