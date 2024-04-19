@@ -13,7 +13,8 @@ Input parameters
    * - op 
      - | the operand to be evaluated before performing other operations written outside the parentheses. 
        | According to the general VTL rule, operators can be nested, therefore any Data Set, 
-       | Component or scalar op can be obtained through an expression as complex as needed (for example op can be written as the expression 2 + 3 ).
+       | Component or scalar op can be obtained through an expression as complex as needed 
+       | (for example op can be written as the expression 2 + 3 ).
 
 ------------------------------------
 Semantics  for scalar operations
@@ -57,5 +58,5 @@ Examples
 
 (DS_1 + DS_2) * DS_3
 
-(CMP_1  CMP_2 / (CMP_3 + CMP_4) ) * CMP_5
+(CMP_1 - CMP_2 / (CMP_3 + CMP_4) ) * CMP_5
 
