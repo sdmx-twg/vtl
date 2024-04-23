@@ -25,3 +25,4 @@ Physical Meeting: 26th May 2023 09.00-17.00CET
 19. Matthew Nelson (remote)
 20. Thomas Dubois (remote)
 
+## Introduction and adoption of the agenda
