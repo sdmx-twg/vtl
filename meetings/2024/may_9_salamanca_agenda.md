@@ -1,7 +1,6 @@
 # Agenda Physical Meeting 9-10 May 2024
-Venue: Universidad Pontificia de Salamanca
-Calle Serranos 2, Salamanca
-https://maps.app.goo.gl/wBYze2Xg6Ny6VKUF8
+Venue: Universidad Pontificia de Salamanca Calle Serranos 2, Salamanca https://maps.app.goo.gl/wBYze2Xg6Ny6VKUF8
+
 WiFi Access: available in the room
 
 
