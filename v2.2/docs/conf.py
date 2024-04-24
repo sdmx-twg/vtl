@@ -3,6 +3,8 @@ import re
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
+VERSION = "2.2"
+
 def name_norm(value):
     return re.sub("[^a-zA-Z0-9]", "", value)
 
@@ -14,7 +16,7 @@ extensions = [
     "sphinx_toolbox.collapse"
 ]
 pdf_documents = [
-    ("index", "VTL_2.1_DOCS", "VTL 2.1 DOCS", "SDMX-TWG"),
+    ("index", f"VTL_{VERSION}_DOCS", f"VTL {VERSION} DOCS", "SDMX-TWG"),
 ]
 exclude_patterns = ["*intro.rst", "pandocTranslation*"]
 html_theme_options = {
@@ -26,7 +28,7 @@ html_context = {
     "github_user": "amattioc",  # Username
     "github_repo": "vtl",  # Repo name
     "github_version": "master",  # Version
-    "conf_py_path": "/v2.1/docs/"  # Path in the checkout to the docs root
+    "conf_py_path": f"/v{VERSION}/docs/"  # Path in the checkout to the docs root
 }
 
 # Load templates
@@ -61,7 +63,7 @@ for op_type in next(os.walk("operators"))[1]:
 		
 		with open(op_path.joinpath("examples.rst"), "w") as f:
 			f.write(
-				templates["examples"].render({"examples": examples, "inputs": inputs, "op_type": op_type, "repourl_ex": "https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs"})
+				templates["examples"].render({"examples": examples, "inputs": inputs, "op_type": op_type, "repourl_ex": f"https://github.com/sdmx-twg/vtl/blob/master/v{VERSION}/docs"})
 			)
 
 plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
