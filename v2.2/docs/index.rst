@@ -9,4 +9,4 @@ Documentation for VTL v2.2
    operators/index
 
 
-`PDF Version </pdf/VTL_2.2_DOCS.pdf>`_
+`PDF Version <https://ma-bdi.github.io/vtl-twg/2.2/html/pdf/VTL_2.2_DOCS.pdf>`_
