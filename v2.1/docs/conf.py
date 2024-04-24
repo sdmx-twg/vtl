@@ -14,7 +14,7 @@ extensions = [
     "sphinx_toolbox.collapse"
 ]
 pdf_documents = [
-    ("index", "rst2pdf", "Sample rst2pdf doc", "SDMX-TWG"),
+    ("index", "rst2pdf", "VTL 2.1 DOCS", "SDMX-TWG"),
 ]
 exclude_patterns = ["*intro.rst", "pandocTranslation*"]
 html_theme_options = {
@@ -64,4 +64,4 @@ for op_type in next(os.walk("operators"))[1]:
 				templates["examples"].render({"examples": examples, "inputs": inputs, "op_type": op_type, "repourl_ex": "https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs"})
 			)
 
-plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar")
+plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
