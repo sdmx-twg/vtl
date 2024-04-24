@@ -14,9 +14,9 @@ extensions = [
     "sphinx_toolbox.collapse"
 ]
 pdf_documents = [
-    ("index", "rst2pdf", "Sample rst2pdf doc", "Your Name"),
+    ("index", "rst2pdf", "Sample rst2pdf doc", "SDMX-TWG"),
 ]
-exclude_patterns = ["*intro.rst"]
+exclude_patterns = ["*intro.rst", "pandocTranslation*"]
 html_theme_options = {
     "navigation_depth": 3,
     "collapse_navigation": False,
