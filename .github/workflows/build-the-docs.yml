@@ -45,6 +45,7 @@ jobs:
     - name: Sphynx build
       run: |
         sphinx-build -M html v2.1/docs outputdir
+        sphinx-build -b pdf v2.1/docs outputdir/html/pdf
     - name: Fix permissions
       run: |
         chmod -c -R +rX "outputdir/" | while read line; do
