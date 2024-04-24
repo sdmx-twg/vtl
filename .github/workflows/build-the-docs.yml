@@ -44,8 +44,10 @@ jobs:
         wget -O /tmp/plantuml-mit-1.2023.13.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-mit-1.2023.13.jar
     - name: Sphynx build
       run: |
-        sphinx-build -M html v2.1/docs outputdir
-        sphinx-build -b pdf v2.1/docs outputdir/html/pdf
+        sphinx-build -M html v2.1/docs outputdir/2.1/
+        sphinx-build -b pdf v2.1/docs outputdir/2.1/html/pdf
+        sphinx-build -M html v2.2/docs outputdir/2.2/
+        sphinx-build -b pdf v2.2/docs outputdir/2.2/html/pdf
     - name: Fix permissions
       run: |
         chmod -c -R +rX "outputdir/" | while read line; do
@@ -55,7 +57,7 @@ jobs:
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: ./outputdir/html
+        path: ./outputdir
 
   # Deployment job
   deploy:
