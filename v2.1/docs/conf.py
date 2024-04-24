@@ -14,7 +14,7 @@ extensions = [
     "sphinx_toolbox.collapse"
 ]
 pdf_documents = [
-    ("index", "rst2pdf", "VTL 2.1 DOCS", "SDMX-TWG"),
+    ("index", "VTL_2.1_DOCS", "VTL 2.1 DOCS", "SDMX-TWG"),
 ]
 exclude_patterns = ["*intro.rst", "pandocTranslation*"]
 html_theme_options = {
