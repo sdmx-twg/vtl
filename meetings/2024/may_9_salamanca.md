@@ -20,8 +20,8 @@ Physical Meeting: 9-10th May 2024
 14.  Edgardo	Greising (remote)
 15.  Katrin	Heinze (remote)
 16.  Laura	Vignola (remote)
-17.  Sergey	Grebenshchikov (remote)
-18.  Matthew	Nelson (remote)
+17.  Matthew	Nelson (remote)
+18.  Sergey	Grebenshchikov (remote)
 19.  Stratos	Nikoloutsos (remote)
 
 Other attendees:
@@ -38,7 +38,17 @@ Some new collaborators have been also introduced:
 - Arturo	San Feliciano (Banco de Espana)
 - Sergey	Grebenshchikov (Bundesbank)
 
+## Release of VTL version 2.1
+The User Manual and the Reference Manual will be frozen in the next days. The 2 documents in pdf version will be sent to the Secretariat via Written Procedure and will be published in the SDMX User Forum for final review.
 
+The G4 file (grammar) will be update accordingly and will be available possibly by the end of June, in order to be ready to be published in the SDMX VTL official web page.
+
+The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 version; the decision will be taken in the next TWG meeting at the beginning of June in Washington.
+
+**Actions**:
+- Nicolas to coordinate the activity of producing the G4 file (grammar) possibily by end of June
+- Angelo to produce the pdf of the two manuals and send to Secretariat via WP
+- Angelo to post on SDMX the VTL 2.1 manuals for public review
 ## Current activities - WS1 (Attilio)
 **Goals**
 - Docs generation should be automated
