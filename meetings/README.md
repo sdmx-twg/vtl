@@ -28,7 +28,6 @@ Stefano Pambianco|ECB|stefano.pambianco@ecb.europa.eu|stefanopam|VTL-TF Member|
 Stratos Nikoloutsos|BIS|stratos.nikoloutsos@bis.org|stratosn|VTL-TF Member|
 Thomas Dubois|INSEE (France)|thomas.dubois@insee.fr||VTL-TF Member|
 Valentino Pinna|Banca d’Italia|valentino.pinna@bancaditalia.it|vpinna80|VTL-TF Member|
-Xavier Sosnovsky|BIS|xavier.sosnovsky@bis.org|sosna|TVTL-TF Member|
 
 
 ## Current External Collaborators
@@ -45,3 +44,4 @@ Juan	Muñoz López|INEGI|Juan.munoz@inegi.org.mx|DrJMunozMx|Collaborator|
 Pedro	Carranza|OECD|pedro.carranza@oecd.org|pedroacarranza|Collaborator|
 Sergey Grebenshchikov|ECB|Sergey.Grebenshchikov@ecb.europa.eu||Collaborator|
 Weichen Lei|ILO|lei@ilo.org|wc-lei|Collaborator|
+Xavier Sosnovsky|BIS|xavier.sosnovsky@bis.org|sosna|Collaborator|
