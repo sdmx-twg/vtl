@@ -49,31 +49,35 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
 - Nicolas to coordinate the activity of producing the G4 file (grammar) possibily by end of June
 - Angelo to produce the pdf of the two manuals and send to Secretariat via WP
 - Angelo to post on SDMX the VTL 2.1 manuals for public review
-## Current activities - WS1 (Attilio)
-**Goals**
-- Docs generation should be automated
-- Single source for different outputs: HTML (github pages) and PDF
-- Not clear how to handle current version + releases
-- Docs sources easily readable and changes traceable
-- Examples in Reference Manual (VTL code, input/output datasets) automatically included in test suite
-- Current documentation to be migrated to new format
+## Current activities - WS1 - VTL docs (Attilio)
+**Requirements**
+- Docs generation should be automated (CI/CD like) --> **YES**
+  - Single source for different outputs
+  - Enable versioning
+  - Easily manage releases (current + previous easily reachable
+  - Envisaged outputs are HTML github pages ) and PDF
+- Docs sources should be readable in github to ease changes tracing --> **YES**
+  - … including diagrams if possible
+- Examples in the reference guide (vtl code, input and output datasets and structures) should be easily consumed by VTL engines for testing , to ensure alignment with specs and implementations  --> **YES**
+- Current documentation has to be massively migrated to new format (use pandoc for raw starting point  --> **YES**
+- Automatic translations --> **NO**
 
-**Work done by Makingsense-INSEE**
-- https://making-sense-info.github.io/VTL-Docs/
-- Docusaurus used (https://docusaurus.io/)
+**Work done**
+- https://github.com/sdmx-twg/vtl
+- https://sdmx-twg.github.io/vtl
+- https://ma-bdi.github.io/vtl-twg/ (multi version and pdf)
 
-**Work done by Banca d'Italia**
-- https://github.com/vpinna80/test_docs
-- Sphinx used (https://www.sphinx-doc.org/en/master/)
-
-**TWG feedback**
-- Many issues are common to VTL and SMDX docs
-- Some members of TWG could be included in the WS1 activities (Luis Gonzales Morales from UNSD, Carlos Morillo from Banco de España)
-- 2024-Q1 to have technical specifications (which tools to use, how to deal with versioning, how to perform the “massive translation” of the current documentation) and project planning
+**Open Issues**
+1. Diagrams in PDF
+2. Style choices
+3. Massive Translation
 
 **Actions**:
-- Get a pilot for some operators with all the contents (text, VTL scripts, I/O datasets with their structures, schemas and graphics) by the end of January 2024
-- Contact TWG people to get them involved (on a voluntary basis)
+- Take as input the current "frozen" VTL 2.1 documentation (User Manual and Reference Manual pdf files), that will be referenced as "specifications"
+- Priority given to the operators: Attilio will define an issue for each operator and every VTL TF will take the ones that prefers to produce the new documentation (that includes VTL expressions, csv files and json structures of the input and the output for the examples)
+- If discrepancies with the current specifications are found, please contact WS3 (Angelo) to open a discussion and eventually reconcile the two sources
+- A good example of documentation is the pandora's one (https://pandas.pydata.org/docs/); at the moment it could be considerate a template for VTL home page
+
 
 ## Current activities - WS2 (Valentino)
 **Work done**
