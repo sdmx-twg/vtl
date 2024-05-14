@@ -28,6 +28,16 @@ Other attendees:
 
 Fabio Palatta and Ida Migliaccio (Banca d'italia)
 
+## Introduction to new members
+New members have been introduced:
+- Bryan	Marquette (National Bank of Belgium) will participate in Work Stream 3
+- Hadrien Kohl (Consultant) will participate in Work Stream 2
+- Noah Boerger (Bundesbank) will participate in Work Stream 2
+
+Some new collaborators have been also introduced:
+- Arturo	San Feliciano (Banco de Espana)
+- Sergey	Grebenshchikov (Bundesbank)
+
 
 ## Current activities - WS1 (Attilio)
 **Goals**
