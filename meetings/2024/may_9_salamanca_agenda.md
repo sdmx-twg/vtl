@@ -24,7 +24,7 @@ WiFi Access: available in the room
 |12:45 - 15:00|Lunch & visit to university building|	
 |15:00 - 16:30|Open issues about VTL	
 ||Dynamic web questionnaires|Romain
-||VTL – DL improvements & other issues|Angelo
+||UDO and DL operators improvements|Angelo
 |16:30 - 17:30|Presentation of Meaningfuldata tools|Antonio
 
 21:00		Social event (dinner) Location to be confirmed 
