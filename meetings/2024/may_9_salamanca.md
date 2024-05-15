@@ -1,6 +1,49 @@
 # SDMX VTL TF Minutes
-
 Physical Meeting: 9-10th May 2024
+
+Venue: Universidad Pontificia de Salamanca Calle Serranos 2, Salamanca
+
+## Agenda
+
+## Day 1 Thursday 9th  May
+|TIME|TOPIC|PRESENTER
+|----|-----|------|
+|09:00 - 09:15|Welcome coffee|	
+|09:15 - 09:45|Introduction: logistics, location, social program|Antonio
+|09:45 - 10:00|Adoption of the agenda|Angelo
+|10:00 - 10:30|Introduction to new members|Angelo
+|10:30 - 11:00|Release of VTL version 2.1|
+||- Open issues|
+||- Cutoff date|
+||- Publishing of the UM&RM|
+||- Update of SDMX VTL page|
+|11:00 - 11:15|Coffee break||	
+|11:15 - 12:30|Outcome from the Work Streams 	
+||WS1: VTL docs|Attilio
+||WS2: VTL technical issues|Valentino
+||WS3: VTL language|Angelo
+|12:30 - 13:00|Open issues about VTL: VTL – DL improvements & other issues|Angelo
+|13:00 - 14:15|Lunch|	
+|14:15 - 15:30|Open issues about VTL: Dynamic web questionnaires|Romain
+|15:30 - 17:00|Presentation of Meaningfuldata tools|Antonio
+
+17:30   Guided tour in Salamanca
+
+21:00	  Social event (dinner)  
+
+## Day 2 Thursday 10th  May
+|TIME|TOPIC|PRESENTER
+|----|-----|------|
+|09:00 - 09:15|Welcome coffee|	
+|09:15 - 10:00|Key points for implementing VTL in production environment|Angelo
+|10:00 - 11:30|Implementing VTL in production environments: experiences from different organizations:|	
+||Making Sense & HK consulting|Hadrien/Nicolas
+||NBB/Meaningfuldata|Antonio/Bryan
+||ECB (testing activities with VTL)|Noah
+|11:30 - 11:45|Coffee break|	
+|11:45 - 12:30|Current collaboration activities|
+||Each organization is invited to share information about collaboration activities on VTL|All
+|12:30 - 13:00|AOB & conclusion|Angelo
 
 ## Participants
 
@@ -27,7 +70,7 @@ Physical Meeting: 9-10th May 2024
 Other attendees:
 
 Fabio Palatta and Ida Migliaccio (Banca d'italia)
-
+## Day 1 Thursday 9th  May
 ## Introduction to new members
 New members have been introduced:
 - Bryan	Marquette (National Bank of Belgium) will participate in Work Stream 3
@@ -102,8 +145,6 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
 - Viral attributes revision to be prioritised
 - Antonio to prepare a proposal for the join operator to be analysed and discussed
 
-## Open issues about VTL: Dynamic web questionnaires
-
 ## Open issues about VTL: UDO and DL operators improvements
 Angelo decribed more in detail current issues on User Defined Operators (UDO) and on Define Language (DL): 
 - Current issues with User Defined Operators
@@ -121,5 +162,35 @@ Angelo decribed more in detail current issues on User Defined Operators (UDO) an
 - Input will be coming from tools’ implementing teams (see Technical notes document) and from new requirements
 - WS3 will take care of producing specificationsViral attributes revision to be prioritised
 
+## Open issues about VTL: Dynamic web questionnaires
+
+## Presentation of Meaningfuldata tools
+Antonio introduced Gustavo from Meaningfuldata who went through the VTL tools offered by the company.
+
+Antonio presented a live demo of the VTL Suite and announced that in some weeks their VTL engine will be released as open source
+## Day 2 Friday 10th  May
+## Key points for implementing VTL in production environment
+Angelo gave a presentation about some key points on an enterprise calculation engine, based on the over 30 years' experience in Banca d'Italia:
+- 0 implicit and 0 explicit cubes
+- How to interpret missing values and nulls handling
+- Calculability: Process cubesets, Status cubes and input vs output synchrony
+- Process unit and parameters
+- Historical processing and modularisation
+## Implementing VTL in production environments: experiences from different organizations: Making Sense and HK consulting
+Hadrien and Nicolas presented some issues about current version of VTL:
+1. Some G4 issues that will be fixed in the next release of the grammar related to VTL version 2.1
+2. Some operators containing constant values in their definition could be more efficient and flexible if variables are used
+3. Language orthogonality: some operations can be expressed in multiple ways using different VTL operators: should this be avoided ?
+4. Derived operators: some complex operators can be implemented by means of other core operators: ) be defined in VTL ?
+5. Lacking of Technology Compatibility Kit (TCK)
+6. Temporal types: too much is left to interpretation
+7. Some useful operators can be introduced:
+  - getObs(ds, 1 order by id_1)  -- returns the first ds line as key/value object (new type)
+  - scalar := getScalar(observation, "Me_2") -- returns the Me_2 scalar value
+   
+NBB/Meaningfuldata|Antonio/Bryan
+||ECB (testing activities with VTL)|Noah
+|11:30 - 11:45|Coffee break|	
+|11:45 - 12:30|Current collaboration activities
 ## AOB
 Next VTL physical meeting will be held ... 
