@@ -196,7 +196,7 @@ Hadrien and Nicolas presented some issues about current version of VTL:
 - The other points will be analysed and discussed in ad-hoc WS2 and WS3 meetings
 
 #### NBB/Meaningfuldata
-- Bryan briefly described NBB's current activities on VTL; at the moment final users do not have direct "hands on" the language and there is an "expert group" that implements business requirements using VTL Suite by Meaningfuldata
+- Bryan briefly described NBB's current activities on VTL; at the moment final users do not have direct "hands on" the language and there is an expert group that implements business requirements using VTL Suite by Meaningfuldata
 - In the next months more statistical flow will be added to the current solution and once the expert group has reached a good knowledge of VTL, training programs will be set up involving all the final business users
 #### ECB testing activities with VTL
 ### Current collaboration activities
