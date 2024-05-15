@@ -94,14 +94,32 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
 
 ## Current activities - WS3 - VTL language (Angelo)
 - These are the main topics for the next release:
-  - User Defined Operators (UDO) (issue #51) 
+  - User Defined Operators (UDO) (issue #51 
   - Viral attributes: complete revision
   -	Explicit casting for integer/number to string and viceversa (issues #381, #383 and #394)
-  - Join: revise the entire description of the operator (issue #392): Antonio to prepare a proposal to be analysed and discussed
+  - Join: revise the entire description of the operator (issue #392) 
+**Actions**
+- Viral attributes revision to be prioritised
+- Antonio to prepare a proposal for the join operator to be analysed and discussed
+
+## Open issues about VTL: Dynamic web questionnaires
+
+## Open issues about VTL: UDO and DL operators improvements
+Angelo decribed more in detail current issues on User Defined Operators (UDO) and on Define Language (DL): 
+- Current issues with User Defined Operators
+  - #388: allow UDOs with several transformations (see procedures in VTL
+  - #389: allow UDOs with set of components as argument
+  - #390: make UDOs more flexible
+  - #396: UDO default parameters
+- DL operators currently in the “Technical notes” document
+  - define structure
+  - define variable
+  - define value domain
 
 **Actions**
-- Viral attributes revision to be prioritised 
-## AOB
-Next VTL physical meeting will be held before or after TWG. A tentative date will be fixed in May and the location could be in Spain (Salamanca). 
+- UDO and DL operators will be significantly enhanced in next release
+- Input will be coming from tools’ implementing teams (see Technical notes document) and from new requirements
+- WS3 will take care of producing specificationsViral attributes revision to be prioritised
 
-Antonio will try to make arrangements for it.
+## AOB
+Next VTL physical meeting will be held ... 
