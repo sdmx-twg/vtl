@@ -47,6 +47,7 @@ jobs:
         sphinx-build -M html docs outputdir/
         sphinx-build -M html v2.1/docs outputdir/2.1/
         sphinx-build -b pdf v2.1/docs outputdir/2.1/html/pdf
+        mv outputdir/html/* outputdir/
     - name: Fix permissions
       run: |
         chmod -c -R +rX "outputdir/" | while read line; do
