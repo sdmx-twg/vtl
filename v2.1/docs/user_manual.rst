@@ -71,6 +71,7 @@ Variable and Value Domain model diagram (with styled PlantUML)
             RepresentedVariable "1..1" -r- "0..N" DataStructureComponent
     @enduml
 
+
 Explanation of the Diagram
 --------------------------------------------------------
 Even in the case of Variables and Value Domains, the GSIM artefacts are used as much as possible. The differences are mainly due 
