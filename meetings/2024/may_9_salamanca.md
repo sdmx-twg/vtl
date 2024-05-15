@@ -79,8 +79,7 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
 - A good example of documentation is the pandora's one (https://pandas.pydata.org/docs/); at the moment it could be considerate a template for VTL home page
 
 
-## Current activities - WS2 (Valentino)
-
+## Current activities - WS2 - VTL technical issues (Valentino)
 - Technical notes document drafted on github
 - Some enhancements for error handling have been proposed:
   - Define a standard coding 
@@ -90,12 +89,18 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
   - Error types could be eventually defined as VTL types 
 
 **Actions**
--  a pdf version will be generated and published together the 2 manuals in the official SDMX VTL site## Current activities - WS3 (Angelo)
-**Work done**
-- 
+- WS2 to analyse proposed enhancements and produce a new version of the Technical Notes for the next VTL release
+- Current pdf version will be generated and published together the 2 manuals in the official SDMX VTL site
+
+## Current activities - WS3 - VTL language (Angelo)
+- These are the main topics for the next release:
+  - User Defined Operators (UDO) (issue #51) 
+  - Viral attributes: complete revision
+  -	Explicit casting for integer/number to string and viceversa (issues #381, #383 and #394)
+  - Join: revise the entire description of the operator (issue #392): Antonio to prepare a proposal to be analysed and discussed
 
 **Actions**
-- 
+- Viral attributes revision to be prioritised 
 ## AOB
 Next VTL physical meeting will be held before or after TWG. A tentative date will be fixed in May and the location could be in Spain (Salamanca). 
 
