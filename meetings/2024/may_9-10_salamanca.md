@@ -91,7 +91,7 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
 **Actions**:
 - Nicolas to coordinate the activity of producing the G4 file (grammar) possibily by end of June
 - Angelo to produce the pdf of the two manuals and send to Secretariat via WP
-- Angelo to post on SDMX the VTL 2.1 manuals for public review
+- Angelo to post on SDMX User Forum the VTL 2.1 manuals for public review
 ### Current activities - WS1 - VTL docs (Attilio)
 **Requirements**
 - Docs generation should be automated (CI/CD like) --> **YES**
@@ -199,6 +199,21 @@ Hadrien and Nicolas presented some issues about current version of VTL:
 - Bryan briefly described NBB's current activities on VTL; at the moment final users do not have direct "hands on" the language and there is an expert group that implements business requirements using VTL Suite by Meaningfuldata
 - In the next months more statistical flow will be added to the current solution and once the expert group has reached a good knowledge of VTL, training programs will be set up involving all the final business users
 #### ECB testing activities with VTL
+- Noah described the ongoing activities for the Common Data Management project related to the adoption of VTL for validation and transformation services
+- Testing has been conductiong on several use cases using Trevas VTL Enginge; hereafter are reported the main outcomes:
+  - Some findings have been reported about language coverage of Trevas engine (not implemented operators), on handling of null and zero values, calculation accuracy and other minor ones
+  - Trevas engine has been used with AWS Glue, according to the adopted architectural environment of the project
+  - Nexts steps: performance tests, handling of invalid syntax errors, enhancement of the implemented interactive user guide
+
+Angelo asked if testing of other engines is planned and eventual requirements for VTL enhancements will be coming from the CDM project.
+
+Sergey replied that currently they are working on assessing VTL coverage of CDM project's requirements and how to complement the residual ones; eventual requests for VTL enhancements will come probably in the next year.
+
 ### Current collaboration activities
+Angelo reported that the announced collaboration regarding the integration on VTL in the SDMX Fusion Metadata Registry between BSI and Banca d'Italia in the sdmx.io initiative is going on; some legal issues on the Memorandum Of Understanding will be resolved in the next period, but no technical problems have been experienced up to now.
+
+Stratos reported that BSI is currently working with INSEE for including Trevas VTL Engine in the sdmx.io initiative
 ### AOB
-Next VTL physical meeting will be held ... 
+Next VTL TF physical meeting will be held around the end of the year; by that time the VTL docs activities should be ended and an alignment with the current 2.1 specifications could be required.
+
+A big thanks to Antonio and Meaningfuldata for their wonderful hospitality in Salamanca.
