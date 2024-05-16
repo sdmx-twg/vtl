@@ -36,13 +36,13 @@ Venue: Universidad Pontificia de Salamanca Calle Serranos 2, Salamanca
 |----|-----|------|
 |09:00 - 09:15|Welcome coffee|	
 |09:15 - 10:00|Key points for implementing VTL in production environment|Angelo
-|10:00 - 11:30|Implementing VTL in production environments: experiences from different organizations:|	
-||Making Sense & HK consulting|Hadrien/Nicolas
-||NBB/Meaningfuldata|Antonio/Bryan
+|10:00 - 11:30|Implementing VTL in production environments|	
+||Making Sense & HK consulting|Hadrien
+||NBB/Meaningfuldata|Bryan
 ||ECB (testing activities with VTL)|Noah
 |11:30 - 11:45|Coffee break|	
 |11:45 - 12:30|Current collaboration activities|
-||Each organization is invited to share information about collaboration activities on VTL|All
+||Shared information about collaboration activities on VTL|All
 |12:30 - 13:00|AOB & conclusion|Angelo
 
 ## Participants
@@ -99,9 +99,8 @@ The final release of VTL 2.1 will be probably coordinated to the SDMX 3.1 versio
   - Enable versioning
   - Easily manage releases (current + previous easily reachable
   - Envisaged outputs are HTML github pages ) and PDF
-- Docs sources should be readable in github to ease changes tracing --> **YES**
-  - … including diagrams if possible
-- Examples in the reference guide (vtl code, input and output datasets and structures) should be easily consumed by VTL engines for testing , to ensure alignment with specs and implementations  --> **YES**
+- Docs sources should be readable in github to ease changes tracing including diagrams if possible --> **YES**
+- Examples in the reference guide (vtl code, input and output datasets and structures) should be easily consumed by VTL engines for testing, to ensure alignment with specs and implementations  --> **YES**
 - Current documentation has to be massively migrated to new format (use pandoc for raw starting point  --> **YES**
 - Automatic translations --> **NO**
 
@@ -163,7 +162,19 @@ Angelo decribed more in detail current issues on User Defined Operators (UDO) an
 - WS3 will take care of producing specificationsViral attributes revision to be prioritised
 
 ### Open issues about VTL: Dynamic web questionnaires
+Romain described how INSEE is using VTL to handle dynamic web questionnaires.
 
+Some new operators could be useful to handle some use cases:
+- Besides first_value and last_value a new operator could be defined to get the nth value in a dataset/component
+- Introduce vector/list types (and operators to get the individual elements)
+- Define a way to get a reference to set of components
+
+Angelo observed that the vector/list types has been introduced in SDMX 3.0 and that VTL adoption of these new types had been put in the "to-do list" last year, but no use cases were reported so this issue had been deprioritized.
+
+**Actions**
+- New operator to get the nth value in a dataset/component will be defined in the next release
+- Vector/list type definition will be analysed and discussed in the WS3
+- A discussion will be initiated about the introduction of the "set of components" concept  
 ### Presentation of Meaningfuldata tools
 Antonio introduced Gustavo from Meaningfuldata who went through the VTL tools offered by the company.
 
