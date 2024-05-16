@@ -176,7 +176,7 @@ Angelo observed that the vector/list types has been introduced in SDMX 3.0 and t
 - Vector/list type definition will be analysed and discussed in the WS3
 - A discussion will be initiated about the introduction of the "set of components" concept  
 ### Presentation of Meaningfuldata tools
-Antonio introduced Gustavo from Meaningfuldata who went through the VTL tools offered by the company.
+Antonio introduced Gustavo Homem from Meaningfuldata who went through the VTL tools offered by the company.
 
 Antonio presented a live demo of the VTL Suite and announced that in some weeks their VTL engine will be released as open source
 ## Day 2 Friday 10th  May
