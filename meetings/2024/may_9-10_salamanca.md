@@ -202,8 +202,9 @@ Hadrien and Nicolas presented some issues about current version of VTL:
 
 **Actions**
 - Point 1: all the errors found will be fixed in the next release of the grammar related to VTL version 2.1
-- Points 3 and 4: The current approach, as Edgardo pointed out, has been adopted after a similar discussion during the preparation of VTL version 1.1. Since VTL is not a programming language and it is more user-oriented, it is preferable to keep it more user-friendly and less error-prone, even if has some redundancies
+- Points 3 and 4: The current approach, as Edgardo pointed out, has been adopted after a similar discussion during the preparation of VTL version 1.1. Since VTL is not a programming language and it is more user-oriented, it is preferable to keep it more user-friendly and less error-prone, even if has some redundancies. Anyway the proposal of designing a standard library, agreed by several people, can be discussed and probably implemented in VTL 3.0.
 - Point 5: The currently on-going activity of VTL docs (WS1) is aimed at building a first "implicit" version of a TCK; possible ehancements can be discussed at the end of this task
+- Point 7: Regarding "getScalar" function, a possible "easy win" could be applying it only to datasets with 1 column and 1 row.
 - The other points will be analysed and discussed in ad-hoc WS2 and WS3 meetings
 
 #### NBB/Meaningfuldata
