@@ -51,5 +51,3 @@ Behavior
 
 As mentioned, the op of the parentheses can be obtained through an expression as complex as needed (for example op can be written as DS_1 - DS_2). 
 The part of the expression inside the parentheses is evaluated before the part outside of the parentheses. If more parentheses are nested, the inner parentheses are evaluated first, for example **( 20 - 10 / (2 + 3) ) * 3** would give **54**.
-
-

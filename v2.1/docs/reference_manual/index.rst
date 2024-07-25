@@ -2,10 +2,16 @@
 Documentation for VTL v2.1 
 ***************************
 
+#####################
+Reference Manual
+#####################
+
+
 .. toctree::
    :maxdepth: 2
 
-   user_manual
+   foreword
+   introduction
    operators/index
 
 

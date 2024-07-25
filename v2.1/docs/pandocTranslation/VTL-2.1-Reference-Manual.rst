@@ -12,7 +12,7 @@ VTL Task Force
 
 **Part 2 – Reference Manual**
 
-*Xxxxx 2023*
+*Xxxxx 2024*
 
 Foreword 
 =========
