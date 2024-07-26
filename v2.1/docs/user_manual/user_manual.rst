@@ -115,7 +115,7 @@ values that can be of interest for representing a certain aspect of the
 reality like the time, the geographical area, the economic sector and so
 on. As for the mathematical meaning, a Value Domain is meant to be the
 representation of a “space of events” with the meaning of the
-probability theory [14]_. Therefore, a single Value of a Value Domain is
+probability theory. Therefore, a single Value of a Value Domain is
 a representation of a single “event” belonging to this space of events.
 
 **Described Value Domain**: a Value Domain defined by a criterion

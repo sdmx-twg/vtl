@@ -8,7 +8,7 @@ Reference Manual
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    foreword
    introduction
