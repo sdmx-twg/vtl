@@ -6,21 +6,21 @@ Examples
 
 
 
-Input **DS_1** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual\operators\Numeric%20Operators\Division\examples/ds_1.json>`__\)
+Input **DS_1** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/Numeric%20Operators/Division/examples/ds_1.json>`__\)
 
 .. csv-table::
    :file: examples/ds_1.csv
    :header-rows: 1
 
 
-Input **DS_2** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual\operators\Numeric%20Operators\Division\examples/ds_2.json>`__\)
+Input **DS_2** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/Numeric%20Operators/Division/examples/ds_2.json>`__\)
 
 .. csv-table::
    :file: examples/ds_2.csv
    :header-rows: 1
 
 
-Input **DS_3** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual\operators\Numeric%20Operators\Division\examples/ds_3.json>`__\)
+Input **DS_3** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/Numeric%20Operators/Division/examples/ds_3.json>`__\)
 
 .. csv-table::
    :file: examples/ds_3.csv
@@ -33,7 +33,7 @@ Example 1
 ^^^^^^^^^^^^^^^^
 .. literalinclude:: examples/ex_1.vtl
 
-Result **EX_1** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual\operators\Numeric%20Operators\Division\examples/ex_1.json>`__\)
+Result **EX_1** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/Numeric%20Operators/Division/examples/ex_1.json>`__\)
 
 .. csv-table::
    :file: examples/ex_1.csv
@@ -45,7 +45,7 @@ Example 2
 ^^^^^^^^^^^^^^^^
 .. literalinclude:: examples/ex_2.vtl
 
-Result **EX_2** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual\operators\Numeric%20Operators\Division\examples/ex_2.json>`__\)
+Result **EX_2** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/Numeric%20Operators/Division/examples/ex_2.json>`__\)
 
 .. csv-table::
    :file: examples/ex_2.csv
@@ -57,7 +57,7 @@ Example 3
 ^^^^^^^^^^^^^^^^
 .. literalinclude:: examples/ex_3.vtl
 
-Result **EX_3** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual\operators\Numeric%20Operators\Division\examples/ex_3.json>`__\)
+Result **EX_3** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/Numeric%20Operators/Division/examples/ex_3.json>`__\)
 
 .. csv-table::
    :file: examples/ex_3.csv
