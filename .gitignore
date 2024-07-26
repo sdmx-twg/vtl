@@ -4,3 +4,4 @@ outputdir
 .vscode/
 .idea/
 /v2.1/docs/_build/
+examples_files/

@@ -26,9 +26,9 @@ Example 1
 ^^^^^^^^^^^^^^^^
 .. literalinclude:: examples/ex_1.vtl
 
-Result **EX_1** (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/General%20Purpose%20Operators/Parentheses/examples/ex_1.json>`__\)
+results in (see `structure <https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/reference_manual/operators/General%20Purpose%20Operators/Parentheses/examples/ex_1.json>`__\):
 
-.. csv-table::
+.. csv-table:: DS_r
    :file: examples/ex_1.csv
    :header-rows: 1
 
