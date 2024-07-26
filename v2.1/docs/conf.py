@@ -42,8 +42,8 @@ for template in next(os.walk("templates"))[2]:
     templates[template] = jinjaEnv.get_template(template)
 
 # Apply templates in each op type folder
-for op_type in next(os.walk("operators"))[1]:
-    op_type_path = Path("operators").joinpath(op_type)
+for op_type in next(os.walk("reference_manual/operators"))[1]:
+    op_type_path = Path("reference_manual/operators").joinpath(op_type)
     # Apply templates in each op folder
     for op_folder in next(os.walk(op_type_path))[1]:
         # Write the op main page
@@ -80,6 +80,7 @@ for op_type in next(os.walk("operators"))[1]:
                 )
             )
 
-plantuml = (
-    "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
-)
+# TODO: Uncomment this for UML Diagrams (User Manual), we do not have the necessary files
+# plantuml = (
+#     "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
+# )

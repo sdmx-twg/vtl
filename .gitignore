@@ -2,3 +2,5 @@ venv
 outputdir
 *.jar
 .vscode/
+.idea/
+/v2.1/docs/_build/
