@@ -2,7 +2,7 @@
 Syntax
 ------
 
-    { **trim** | **ltrim** | **rtrim** }1 **(** op **)**
+    { **upper** | **lower** }1 **(** op **)**
 
 ----------------
 Input parameters
@@ -15,28 +15,28 @@ Input parameters
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-Removes trailing or/and leading whitespace from a string.
+Converts the character case of a string in upper or lower case.
 For example: ::
 
-	trim("Hello ") gives "Hello"
+    upper("Hello") gives "HELLO"
 
 -----------------------------
 Input parameters type
 -----------------------------
-op1 ::
+op ::
 
-	dataset { measure<string> _+ }
-	| component<string>
-	| string
+    dataset { measure<string> _+ }
+    | component<string>
+    | string
 
 -----------------------------
 Result type
 -----------------------------
-result :: 
-	
-	dataset { measure<string> _+ }
-	| component<string>
-	| string
+result ::
+
+    dataset { measure<string> _+ }
+    | component<string>
+    | string
 
 -----------------------------
 Additional Constraints
