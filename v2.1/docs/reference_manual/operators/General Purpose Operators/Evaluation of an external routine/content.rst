@@ -16,7 +16,8 @@ Input parameters
    * - language
      - | the implementation language of the routine
    * - outputType
-     - | the data type of the object returned by eval (see outputParameterType in Data type syntax)
+     - | the data type of the object returned by eval
+       | (see outputParameterType in Data type syntax)
 
 ------------------------------------
 Semantics  for scalar operations
