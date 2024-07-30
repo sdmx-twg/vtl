@@ -2,7 +2,128 @@
 User Manual
 #####################
 
-Example (row 919) 
+Foreword
+=========
+
+The Task force for the Validation and Transformation Language (VTL),
+created in 2012-2013 under the initiative of the SDMX Secretariat, is
+pleased to present the draft version of VTL 2.0.
+
+The SDMX Secretariat launched the VTL work at the end of 2012, moving on
+from the consideration that SDMX already had a package for
+transformations and expressions in its information model, while a
+specific implementation language was missing. To make this framework
+operational, a standard language for defining validation and
+transformation rules (operators, their syntax and semantics) had to be
+adopted, while appropriate SDMX formats for storing and exchanging
+rules, and web services to retrieve them, had to be designed. The
+present VTL 2.0 package is only concerned with the first element, i.e.,
+a formal definition of each operator, together with a general
+description of VTL, its core assumptions and the information model it is
+based on.
+
+The VTL task force was set up early in 2013, composed of members of
+SDMX, DDI and GSIM communities and the work started in summer 2013. The
+intention was to provide a language usable by statisticians to express
+logical validation rules and transformations on data, described as
+either dimensional tables or unit-record data. The assumption is that
+this logical formalization of validation and transformation rules could
+be converted into specific programming languages for execution (SAS, R,
+Java, SQL, etc.), and would provide at the same time, a “neutral”
+business-level expression of the processing taking place, against which
+various implementations can be mapped. Experience with existing examples
+suggests that this goal would be attainable.
+
+An important point that emerged is that several standards are interested
+in such a kind of language. However, each standard operates on its model
+artefacts and produces artefacts within the same model (property of
+closure). To cope with this, VTL has been built upon a very basic
+information model (VTL IM), taking the common parts of GSIM, SDMX and
+DDI, mainly using artefacts from GSIM 1.1, somewhat simplified and with
+some additional detail. In this way, existing standards (GSIM, SDMX,
+DDI, others) would be allowed to adopt VTL by mapping their information
+model against the VTL IM. Therefore, although a work-product of SDMX,
+the VTL language in itself is independent of SDMX and will be usable
+with other standards as well. Thanks to the possibility of being mapped
+with the basic part of the IM of other standards, the VTL IM also makes
+it possible to collect and manage the basic definitions of data
+represented in different standards.
+
+For the reason described above, the VTL specifications are designed at
+logical level, independently of any other standard, including SDMX. The
+VTL specifications, therefore, are self-standing and can be implemented
+either on their own or by other standards (including SDMX). In
+particular, the work for the SDMX implementation of VTL is going in
+parallel with the work for designing this VTL version, and will entail a
+future update of the SDMX documentation.
+
+The first public consultation on VTL (version 1.0) was held in 2014.
+Many comments were incorporated in the VTL 1.0 version, published in
+March 2015. Other suggestions for improving the language, received
+afterwards, fed the discussion for building the draft version 1.1, which
+contained many new features, was completed in the second half of 2016
+and provided for public consultation until the beginning of 2017.
+
+The high number and wide impact of comments and suggestions induced a
+high workload on the VTL TF, which agreed to proceed in two steps for
+the publication of the final documentation, taking also into
+consideration that some first VTL implementation initiatives had already
+been launched. The first step, the current one, is dedicated to fixing
+some high-priority features and making them as much stable as possible.
+A second step, scheduled for the next period, is aimed at acknowledging
+and fixing other features considered of minor impact and priority, which
+will be added hopefully without affecting either the features already
+published in this documentation, or the possible relevant
+implementations. Moreover, taking into account the number of very
+important new features that have been introduced in this version in
+respect to the VTL 1.0, it was agreed that the current VTL version
+should be considered as a major one and thus named VTL 2.0.
+
+The VTL 2.0 package contains the general VTL specifications,
+independently of the possible implementations of other standards; in its
+final release, it will include:
+
+a) Part 1 – the user manual, highlighting the main
+   characteristics of VTL, its core assumptions and the information
+   model the language is based on;
+
+b) Part 2 – the reference manual, containing the full library of
+   operators ordered by category, including examples; this version will
+   support more validation and compilation needs compared to VTL 1.0.
+
+c) eBNF notation (extended Backus-Naur Form) which is the
+   technical notation to be used as a test bed for all the examples.
+
+The present document is the part 1.
+
+The latest version of VTL is freely available online at
+https://sdmx.org/?page_id=5096
+
+**Acknowledgements**
+
+The VTL specifications have been prepared thanks to the collective input
+of experts from Bank of Italy, Bank for International Settlements (BIS),
+European Central Bank (ECB), Eurostat, ILO, INEGI-Mexico, INSEE-France,
+ISTAT-Italy, OECD, Statistics Netherlands, and UNESCO. Other experts
+from the SDMX Technical Working Group, the SDMX Statistical Working
+Group and the DDI initiative were consulted and participated in
+reviewing the documentation.
+
+The list of contributors and reviewers includes the following experts:
+Sami Airo, Foteini Andrikopoulou, David Barraclough, Luigi Bellomarini,
+Marc Bouffard, Maurizio Capaccioli, Franck Cotton, Vincenzo Del Vecchio,
+Fabio Di Giovanni, Jens Dossé, Heinrich Ehrmann, Bryan Fitzpatrick,
+Tjalling Gelsema, Luca Gramaglia, Arofan Gregory, Gyorgy Gyomai, Edgardo
+Greising, Dragan Ivanovic, Angelo Linardi, Juan Munoz, Chris Nelson,
+Stratos Nikoloutsos, Antonio Olleros, Stefano Pambianco, Marco
+Pellegrino, Michele Romanelli, Juan Alberto Sanchez, Roberto Sannino,
+Angel Simon Delgado, Daniel Suranyi, Olav ten Bosch, Laura Vignola,
+Fernando Wagener and Nikolaos Zisimos.
+
+Feedback and suggestions for improvement are encouraged and should be
+sent to the SDMX Technical Working Group (twg@sdmx.org).
+
+Example (row 919)
 ===========================
 As a first simple example of Data Sets seen as mathematical functions, let us consider the following table:
 
@@ -31,7 +152,7 @@ As a first simple example of Data Sets seen as mathematical functions, let us co
 
 Generic Model for Variables and Value Domains (row 1042)
 ===========================================================
-This Section provides a formal model for the Variables, the Value Domains, their Values and the possible (Sub)Sets of Values. 
+This Section provides a formal model for the Variables, the Value Domains, their Values and the possible (Sub)Sets of Values.
 These artefacts can be referenced in the definition of the VTL Data Structures and as parameters of some VTL Operators.
 
 
@@ -47,22 +168,22 @@ Variable and Value Domain model diagram (with styled PlantUML)
             SetItem "0..N" -u- "1..1" Value
             SetItem "1..N" -u-* "1..1" SetList
             SetList "1..1" -u- "1..1" EnumeratedSet
-    
+
             CodeItem -u-|> Value
             CodeItem "1..N" -u-* "1..1" CodeList
             CodeList "1..1" -u- "1..1" EnumeratedValueDomain
-    
+
             Value "1..N" -u- "1..1" DescribedValueDomain
             Value "1..N" -u- "1..1" DescribedSet
-    
+
             DescribedValueDomain -u-|> ValueDomain
             EnumeratedValueDomain -u-|>  ValueDomain
-    
+
             EnumeratedSet -u-|> ValueDomainSubset
             DescribedSet -u-|> ValueDomainSubset
             ValueDomain "1..1" -r- "0..N" ValueDomainSubset
             ValueDomain "1..1" -u- "0..N" RepresentedVariable
-    
+
             DataStructure "1..1" -r- "0..N" DataSet
             DataStructure *-- "1..N" DataStructureComponent
             DataSet *-d- "1..N" DataSetComponent
@@ -74,22 +195,22 @@ Variable and Value Domain model diagram (with styled PlantUML)
 
 Explanation of the Diagram
 --------------------------------------------------------
-Even in the case of Variables and Value Domains, the GSIM artefacts are used as much as possible. The differences are mainly due 
+Even in the case of Variables and Value Domains, the GSIM artefacts are used as much as possible. The differences are mainly due
 to the fact that GSIM does not distinguish explicitly between Value Domains and their (Sub)Sets, while in the VTL IM this is made more explicit in
-order to allow different Data Set Components relevant to the same aspect of the reality (e.g. the geographic area) to share the same Value Domain and, 
-at the same time, to take values in different Subsets of it. This is essential for VTL for several operations and in particular for validation purposes. 
+order to allow different Data Set Components relevant to the same aspect of the reality (e.g. the geographic area) to share the same Value Domain and,
+at the same time, to take values in different Subsets of it. This is essential for VTL for several operations and in particular for validation purposes.
 
-For example, it may happen that the same Represented Variable, say the “place of birth”, in a Data Set takes values in the Set of the European Counties, 
-in another one takes values in the set of the African countries, and so on, even at different levels of details (e.g. the regions, the cities). 
+For example, it may happen that the same Represented Variable, say the “place of birth”, in a Data Set takes values in the Set of the European Counties,
+in another one takes values in the set of the African countries, and so on, even at different levels of details (e.g. the regions, the cities).
 The definition of the exact Set of Values that a Data Set Component can take may be very important for VTL, in particular for validation purposes.
-The specification of the Set of Values that the Data Set Components may assume is equivalent, on the mathematical plane, 
+The specification of the Set of Values that the Data Set Components may assume is equivalent, on the mathematical plane,
 to the specification of the domain and the co-domain of the mathematical function corresponding to the Data Set.
 
 **Data Set:** see the explanation given in the previous section (Generic Model for Data and their structures).
 
-**Data Set Component:** a component of the Data Set, which matches with just one Data Structure Component of the Data Structure 
+**Data Set Component:** a component of the Data Set, which matches with just one Data Structure Component of the Data Structure
 of such a Data Set and takes values in a (sub)set of the corresponding Value Domain13; this (sub)set of allowed values may either coincide with
-the set of all the values belonging to the Value Domain or be a proper subset of it. In respect to a Data Structure Component, 
+the set of all the values belonging to the Value Domain or be a proper subset of it. In respect to a Data Structure Component,
 a Data Set Component bears the important additional information of the set of allowed values of the Component, which can be different Data Set by
 Data Set even if their data structure is the same.
 
@@ -125,7 +246,7 @@ as in GSIM.
     **Enumerated Value Domain**: a Value Domain defined by enumeration of
     the allowed values (e.g. domain of ISO codes of the countries). This
     artefact is the same as in GSIM.
-    
+
     **Code List**: the list of all the Code Items belonging to an
     enumerated Value Domain, each one representing a single “event” with
     the meaning of the probability theory. As for its mathematical
@@ -145,7 +266,7 @@ as in GSIM.
     repetitions, no ambiguities). In practice, as for the VTL IM, the
     Code List artefact matches 1:1 with the Enumerated Value Domain
     artefact, therefore they can be considered as the same artefact.
-    
+
     **Code Item**: an allowed Value of an enumerated Value Domain. A Code
     Item is the association of a Value with the relevant meaning (called
     “category” in GSIM). An example of Code Item is a single country ISO
@@ -186,12 +307,12 @@ Domain).
     (e.g. the countries having more than 100 million inhabitants, the
     integers between 1 and 100). This artefact does not exist in GSIM;
     however, it is compliant with the GSIM Described Value Domain.
-    
+
     **Enumerated Value Domain** **Subset** (or simply **Enumerated
     Set**): an enumerated subset of a Value Domain (e.g. the enumeration
     of the European countries). This artefact does not exist in GSIM;
     however, it is compliant with the GSIM Enumerated Value Domain.
-    
+
     **Set List**: the list of all the Values belonging to an Enumerated
     Set (e.g. the list of the ISO codes of the European countries),
     without repetitions (each Value is present just once). As obvious,
@@ -211,4 +332,3 @@ Domain).
 belong to the same Value Domain the Set belongs to. Each Set Item refers
 to just one Value and just one Set. A Value can belong to any number of
 Sets. A Set can contain any number of Values.
-

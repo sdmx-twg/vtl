@@ -1,11 +1,11 @@
 ***************************
-Documentation for VTL v2.1 
+Documentation for VTL v2.1
 ***************************
 
 .. toctree::
    :maxdepth: 2
 
-   user_manual
+   user_manual/user_manual
    operators/index
 
 
