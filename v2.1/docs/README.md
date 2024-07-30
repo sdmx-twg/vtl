@@ -19,8 +19,9 @@ Since we are using Sphinx for the documentation website, some upfront setup is r
   - can do better with poetry or rye?
 - `conf.py` is a Sphinx related file
 - check Sphinx installation in the virtual env with `sphinx-build --version`
-- PLANTUML JAR OMG
-  - need Java and the JAR OMG
+- in order to generate the PlantUML schemas:
+  - install Java
+  - dowload the required [PlantUML JAR](https://github.com/plantuml/plantuml/releases/tag/v1.2023.13) to the directory configured in `conf.py` - currently `/tmp`
 
 Now you can use Sphinx to build and test locally the website by using:
 
