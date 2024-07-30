@@ -68,17 +68,18 @@ for op_type in next(os.walk("reference_manual/operators"))[1]:
         for i in range(len(ex_list)):
             examples.append({"folder": examples_folder, "i": i + 1, "name": ex_list[i]})
 
-        with open(op_path.joinpath("examples.rst"), "w") as f:
-            f.write(
-                templates["examples"].render(
-                    {
-                        "examples": examples,
-                        "inputs": inputs,
-                        "op_type": op_type,
-                        "repourl_ex": f"https://github.com/sdmx-twg/vtl/blob/master/v{VERSION}/docs",
-                    }
-                )
+        examples_text = templates["examples"].render(
+                {
+                    "examples": examples,
+                    "inputs": inputs,
+                    "op_type": op_type,
+                    "repourl_ex": f"https://github.com/sdmx-twg/vtl/blob/master/v{VERSION}/docs",
+                }
             )
+        if examples_folder.joinpath("end_text.rst").exists():
+            examples_text += """.. include:: examples/end_text.rst"""
+        with open(op_path.joinpath("examples.rst"), "w") as f:
+            f.write(examples_text)
 
 # TODO: Uncomment this for UML Diagrams (User Manual), we do not have the necessary files
 # plantuml = (
