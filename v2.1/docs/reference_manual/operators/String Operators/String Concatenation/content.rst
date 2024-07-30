@@ -18,25 +18,25 @@ Semantics  for scalar operations
 Concatenates two strings.
 For example: ::
 
-	"Hello" || ", World"  gives "Hello, World"
+    "Hello" || ", World"  gives "Hello, World"
 
 -----------------------------
 Input parameters type
 -----------------------------
 op1, op2 ::
 
-	dataset { measure<string> _+ }
-	| component<string>
-	| string
+    dataset { measure<string> _+ }
+    | component<string>
+    | string
 
 -----------------------------
 Result type
 -----------------------------
 result :: 
 
-	dataset { measure<string> _+ }
-	| component<string>
-	| string
+    dataset { measure<string> _+ }
+    | component<string>
+    | string
 
 -----------------------------
 Additional Constraints
