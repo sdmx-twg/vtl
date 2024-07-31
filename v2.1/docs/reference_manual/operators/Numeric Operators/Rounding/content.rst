@@ -49,7 +49,7 @@ numDigit ::
 -----------------------------
 Result type
 -----------------------------
-result :: 
+result ::
 
     dataset { measure<number> _+ }
     | component<number>
