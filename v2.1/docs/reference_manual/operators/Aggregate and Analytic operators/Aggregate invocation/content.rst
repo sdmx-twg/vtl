@@ -66,7 +66,7 @@ The aggregate operators cannot be applied to scalar values.
 -----------------------------
 Input parameters type
 -----------------------------
-firstComponent ::
+firstOperand ::
 
     dataset
     | component
