@@ -2,7 +2,7 @@
 Syntax
 ------
 
-    { **upper** | **lower** }1 **(** op **)**
+    { **upper** | **lower** }¹ **(** op **)**
 
 ----------------
 Input parameters

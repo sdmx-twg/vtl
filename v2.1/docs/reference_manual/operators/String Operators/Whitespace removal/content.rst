@@ -2,7 +2,7 @@
 Syntax
 ------
 
-    { **trim** | **ltrim** | **rtrim** }1 **(** op **)**
+    { **trim** | **ltrim** | **rtrim** }¹ **(** op **)**
 
 ----------------
 Input parameters

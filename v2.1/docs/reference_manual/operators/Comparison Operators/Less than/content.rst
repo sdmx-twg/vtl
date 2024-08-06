@@ -2,7 +2,7 @@
 Syntax
 ------
 
-    left { **<** | **<=** }1 right
+    left { **<** | **<=** }¹ right
 
 ----------------
 Input parameters
