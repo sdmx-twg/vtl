@@ -1,0 +1,9 @@
+Provided(down) / expected(right) ,integer,number,boolean,time,date,time_period,string,duration
+integer,-,Implicit,Explicit w/o mask,Not feasible,Not feasible,Not feasible,Implicit,Not feasible
+number,Explicit w/o mask,-,Explicit w/o mask,Not feasible,Not feasible,Not feasible,Implicit,Not feasible
+boolean,Explicit w/o mask,Explicit w/o mask,-,Not feasible,Not feasible,Not feasible,Implicit,Not feasible
+time,Not feasible,Not feasible,Not feasible,-,Not feasible,Not feasible,Explicit with mask,Not feasible
+date,Not feasible,Not feasible,Not feasible,Implicit,-,Explicit w/o mask,Explicit with mask,Not feasible
+time_period,Not feasible,Not feasible,Not feasible,Implicit,Explicit with mask,-,Explicit w/o mask,Not feasible
+string,Explicit w/o mask,Explicit with mask,Not feasible,Explicit with mask,Explicit with mask,Explicit with mask,-,Explicit with mask
+duration,Not feasible,Not feasible,Not feasible,Not feasible,Not feasible,Not feasible,Explicit with mask,-
