@@ -2,7 +2,7 @@
 Syntax
 ------
 
-    operatorName ( { argument { , argument }* } )
+    operatorName **(** { argument { , argument }* } **)**
 
 ----------------
 Input parameters
@@ -10,9 +10,9 @@ Input parameters
 .. list-table::
 
    * - operatorName
-     - | the name of an existing user-defined operator
+     - the name of an existing user-defined operator
    * - argument
-     - | argument passed to the operator
+     - argument passed to the operator
 
 ------------------------------------
 Semantics  for scalar operations
@@ -43,8 +43,9 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-operatorName must refer to an operator created with the define operator statement.
-The type of each argument value must be compliant with the type of the corresponding parameter of
+· *operatorName* must refer to an operator created with the **define operator** statement.
+
+· The type of each argument value must be compliant with the type of the corresponding parameter of
 the user defined operator (the correspondence is in the positional order).
 
 --------
