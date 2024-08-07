@@ -10,11 +10,11 @@ Input parameters
 .. list-table::
 
    * - externalRoutineName
-     - | the name of an external routine
+     - the name of an external routine
    * - argument
-     - | the arguments passed to the external routine
+     - the arguments passed to the external routine
    * - language
-     - | the implementation language of the routine
+     - the implementation language of the routine
    * - outputType
      - | the data type of the object returned by eval
        | (see outputParameterType in Data type syntax)
@@ -22,7 +22,7 @@ Input parameters
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-This is not a scalar operation. A valid example could be **eval ( routine1 ( “eabcdefgh” ) language “PL/SQL” returns string )**.
+This is not a scalar operation.
 
 -----------------------------
 Input parameters type
@@ -78,3 +78,5 @@ Behavior
 The **eval** operator invokes an external, non-VTL routine, and returns its result as a Data Set or a scalar.
 The specific data type can be given in the invocation.
 The routine specified in the **eval** operator can perform any internal logic.
+
+One valid example could be **eval ( routine1 ( “eabcdefgh” ) language “PL/SQL” returns string )**.
