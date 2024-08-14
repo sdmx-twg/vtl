@@ -10,9 +10,9 @@ Input parameters
 .. list-table::
 
    * - ds
-     - | the Data Set
+     - the Data Set
    * - cop
-     - | the Data Set Component
+     - the Data Set Component
 
 ------------------------------------
 Semantics  for scalar operations

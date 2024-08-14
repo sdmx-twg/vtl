@@ -10,7 +10,7 @@ Input parameters
 .. list-table::
 
    * - re
-     - | the result
+     - the result
    * - right
      - | the operand. According to the general VTL rule allowing the indentation of the operators,
        | op can be obtained through an expression as complex as needed
