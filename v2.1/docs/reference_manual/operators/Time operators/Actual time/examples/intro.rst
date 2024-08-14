@@ -2,10 +2,10 @@
 Example 1
 ^^^^^^^^^^^^^^^^
 
-current_date
+DS_r := current_date();
 
 ^^^^^^^^^^^^^^^^
 Example 2
 ^^^^^^^^^^^^^^^^
 
-cast ( current_date, string, "YYYY.MM.DD" )
+DS_r := cast ( current_date(), string, "YYYY.MM.DD" );
