@@ -401,3 +401,15 @@ Language effectiveness
 
 -  The results of the calculations can be permanently stored or not,
    according to the needs.
+
+.. [1]
+   See the next section (VTL Information Model) and the section
+   “Relationships between VTL and GSIM”
+
+.. [2]
+   See at:
+   http://www1.unece.org/stat/platform/display/gsim/GSIM+and+standards;
+
+.. [3]
+   The Measures bear information about the real world and the Attributes
+   about the Data Set or some part of it.
