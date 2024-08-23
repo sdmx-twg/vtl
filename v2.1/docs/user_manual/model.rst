@@ -1838,3 +1838,91 @@ be the following:
 -  A VTL Transformation 🡨🡪 A spreadsheet formula assigned to a cell
 
 -  a VTL Transformation Scheme 🡨🡪 A whole spreadsheet
+
+.. [6]
+   The definition of a temporary artefact can be also persistent, if
+   needed.
+
+.. [7]
+   See also the section “Relations with the GSIM Information model”
+
+.. [8]
+   For the GSIM – DDI and GSIM – SDMX mappings, see also the
+   relationships between GSIM and other standards at the UNECE site
+   http://www1.unece.org/stat/platform/display/gsim/GSIM+and+standards.
+   About the mapping with SDMX, however, note that here it is assumed
+   that the SDMX artefacts Data Set and Data Structure Definition may
+   represent both dimensional and unit data (not only dimensional data)
+   and may be mapped respectively to the VTL artefacts Data Set and Data
+   Structure.
+
+.. [9]
+   Hyperlink
+   “\ \ `http://www1.unece.org/stat/platform/display/GSIMclick/Clickable+GSIM” <http://www1.unece.org/stat/platform/display/GSIMclick/Clickable+GSIM>`__
+
+.. [10]
+   For example in the Common Warehouse Metamodel and Meta-Object
+   Facility specifications
+
+.. [11]
+   For example, this is the case of a relationship that does not have
+   properties: imagine a Data Set containing the relationship between
+   the students and the courses that they have followed, without any
+   other information: the corresponding Data Set would have StudentId
+   and CourseId as Identifiers and would not have any explicit measure
+
+.. [12]
+   For example, for ensuring correct operations, the knowledge of the
+   Data Structure of the input Data Sets is essential at parsing time,
+   in order to check the correctness of the VTL expression and determine
+   the Data Structure of the result, and at execution time to perform
+   the calculations
+
+.. [13]
+   This is the Value Domain which measures the Represented Variable,
+   which defines the Data Structure Component, which the Data Set
+   Component matches to
+
+.. [14]
+   According to the probability theory, a random experiment is a
+   procedure that returns a result belonging a predefined set of
+   possible results (for example, the determination of the “geographic
+   location” may be considered as a random experiment that returns a
+   point of the Earth surface as a result). The “space of results” is
+   the space of all the possible results. Instead an “event” is a set of
+   results (going back to the example of the geographic location, the
+   event “Europe” is the set of points of the European territory and
+   more in general an “event” corresponds to a “geographical area”). The
+   “space of events” is the space of all the possible “events” (in the
+   example, the space of the geographical areas).
+
+.. [15]
+   The SDMX specification can be found at https://sdmx.org/?page_id=5008
+   (see Section 2 - Information Model, package 13 - “Transformations and
+   Expressions”).
+
+.. [16]
+   The Transformation model described here is not a model of the
+   processes, like the ones that both SDMX and GSIM have, and has a
+   different scope. The mapping between the VTL Transformation and the
+   Process models is not covered by the present document, and will be
+   addressed in a separate work task with contributions from several
+   standards experts.
+
+.. [17]
+   This specification can be found at http://www.omg.org/cwm.
+
+.. [18]
+   The term is used with the same meaning of “argument”, as usual in
+   computer science.
+
+.. [19]
+   At the implementation level, which is out of the scope of this
+   document, the update operations are obviously possible
+
+.. [20]
+   The main difference between the two cases is the fact that a cell of
+   a spreadsheet may contain only a scalar value while a VTL artefact
+   may have also a more complex data structure, being typically a Data
+   Set
+
