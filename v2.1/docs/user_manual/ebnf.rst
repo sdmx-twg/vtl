@@ -47,46 +47,6 @@ mentioned associativity and precedence constrains as well as the
 relative ordering of the productions in the grammar itself, which solves
 ambiguity by default.
 
-.. [33]
-   A high-order function is a function which takes one or more other
-   functions as arguments and/or provides another function as result.
-
-.. [34]
-   This corresponds to the "outer join" form of the join expressions,
-   explained in details in the Reference Manual.
-
-.. [35]
-   As obvious, the data type depends on the parameter for which the Data
-   Set is passed
-
-.. [36]
-   to preserve the functional behaviour *keep* and *drop* can be applied
-   only on Measures and Attributes, for a deeper description of these
-   operators see the corresponding section in the Reference Manual
-
-.. [37]
-   The *calc* Operator can be used also to calculate Attributes: for a
-   more complete description of this operator see the corresponding
-   section in the Reference Manual
-
-.. [38]
-   As obvious, the data type depends on the parameters for which the
-   Data Set are passed
-
-.. [39]
-   In fact according to the IM, a Variable takes values in one Value
-   Domain which represents just one basic data type, independently of
-   where the Variable or the Value Domain are used (e.g. if they have
-   the same type everywhere)
-
-.. [40]
-   In particular, the *keep* clause allows the specification of whether
-   or not an attribute is kept in the result while the *calc* clause
-   makes it possible to define calculation formulas for specific
-   attributes. The *calc* can be used both for Measures and for
-   Attributes and is a unary Operator, e.g. it may operate on Components
-   of just one Data Set to obtain new Measures / Attributes.
-
 .. [41]
    ISO/IEC 14977
 
