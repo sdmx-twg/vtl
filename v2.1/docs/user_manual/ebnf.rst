@@ -47,15 +47,6 @@ mentioned associativity and precedence constrains as well as the
 relative ordering of the productions in the grammar itself, which solves
 ambiguity by default.
 
-.. [4]
-   A first-order function is a function that does not take other
-   functions as arguments and does not provide another function as
-   result.
-
-.. [5]
-   A higher-order function is a function that takes one or more other
-   functions as arguments and/or provides another function as result.
-
 .. [6]
    The definition of a temporary artefact can be also persistent, if
    needed.

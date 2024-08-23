@@ -202,3 +202,12 @@ conventions and on the other side can be easily substituted by the
 Even in respect to the draft VTL 1.1 many rationalisations have been
 applied, also following the very numerous comments received during the
 relevant public consultation.
+
+.. [4]
+   A first-order function is a function that does not take other
+   functions as arguments and does not provide another function as
+   result.
+
+.. [5]
+   A higher-order function is a function that takes one or more other
+   functions as arguments and/or provides another function as result.
