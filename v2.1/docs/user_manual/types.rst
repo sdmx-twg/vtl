@@ -1297,3 +1297,56 @@ For instance the following Universal List type:
 includes elements like [32]_ [reference date, import, export] but does
 not include elements like [dataset1, country, sector] and [import,
 “text”] because dataset1 and “text” are not Components.
+
+.. [21]
+   This can be achieved in many ways that depend on the data type and on
+   the adopted internal and external representations. For example, there
+   can exist a default correspondence (e.g., 0 means always False and 1
+   means always True for Boolean), or the parts of the external
+   representation can be specified through a mask (e.g., for the dates,
+   DD-MM-YYYY or YYYYMMDD specify the position of the digits
+   representing year, month and day).
+
+.. [22]
+   For example, at least one default Value Domain should exists for each
+   basic scalar type, the Value Domains needed to represent the results
+   of the checks should exist, and so on.
+
+.. [23]
+   I.e., an expressions whose result is *boolean*
+
+.. [24]
+   “between ( x, y, z)” is the VTL operator which returns TRUE if x is
+   comprised between y and z
+
+.. [25]
+   “in” is the VTL operator which returns TRUE if an element (in this
+   case the value) belongs to a Set; the symbol { … , … , … } denotes a
+   set defined as the list of its elements (separated by commas)
+
+.. [26]
+   “length” is the VTL Operator that returns the length of a string (in
+   the example, the *integer* operand of the length operator is
+   automatically cast to a string and its length is determined)
+
+.. [27]
+   See the section “Behaviour for Attribute Components”
+
+.. [28]
+   I.e., a sub-expressions whose result is *string*
+
+.. [29]
+   Therefore each combination of values of the Identifier Components
+   except the reference time identifies a Time Series
+
+.. [30]
+   In the VTL syntax the symbol ( ) allows to define a tuple in-line by
+   enumeration of its elements
+
+.. [31]
+   In the VTL syntax, the symbol {…} denotes a set defined as the list
+   of its elements (separated by commas).
+
+.. [32]
+   In the VTL syntax, the symbol [ ] allows to define a List in-line by
+   enumeration of its elements.
