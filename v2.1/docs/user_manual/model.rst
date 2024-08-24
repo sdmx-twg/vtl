@@ -212,45 +212,28 @@ mapping is between the VTL Data Set and the SDMX Dataflow.
 Data model diagram 
 ~~~~~~~~~~~~~~~~~~~
 
-Data Point
+.. uml::
 
-0..N
+    @startuml
+        skinparam linetype ortho
+        skinparam ClassBackgroundColor White
 
-has
+        class "Data Structure" as DataStructure #d3d3d3
+        class "Data Set" as DataSet #d3d3d3
+        class "Data Point" as DataPoint
+        abstract class "Data Structure Component" as DataStructureComponent
 
-1..1
+        DataSet "0..N" --> "1..1" DataStructure: "structured by"
+        DataSet "1..1" -up-> "0..N" DataPoint: "has"
+        DataStructure *-right- "0..N" DataStructureComponent
+        Identifier -up-|> DataStructureComponent
+        Measure -up-|> DataStructureComponent
+        Attribute -up-|> DataStructureComponent
+    @enduml
 
-Data Structure Component
+White box: same artefact as in GSIM 1.1
 
-Data Set
-
-0..N
-
-0..N
-
-structured by
-
-Identifier
-
-1..1
-
-has
-
-0..N
-
-Measure
-
-Data Structure
-
-Is super-type of
-
-0..N
-
-Attribute
-
-   White box: same artefact as in GSIM 1.1
-
-   Light grey box: similar to GSIM 1.1
+Light grey box: similar to GSIM 1.1
 
 Explanation of the Diagram 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
