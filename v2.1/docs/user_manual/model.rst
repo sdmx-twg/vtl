@@ -429,39 +429,47 @@ GSIM and DDI.
 
 GSIM – VTL mapping diagram about data structures:
 
-VTL Data Set
+.. uml::
 
-VTL Data Structure
+    @startuml
 
-structured by
+        skinparam SameClassWidth true
+        skinparam ClassBackgroundColor White
+        skinparam linetype ortho
+        skinparam nodesep 100
 
-1..1
+        class "GSIM Unit\nData Record" as GSIMUnitDataRecord
+        class "GSIM Dimens.\nData Set" as GSIMDimensDataSet
+        class "GSIM\nLogical Record" as GSIMLogicalRecord
+        class "GSIM Dimens.\nData Structure" as GSIMDimensDataStructure
+        class "VTL\nData Set" as VTLDataSet #F8F8F8
+        class "VTL\nData Structure" as VTLDataStructure #F8F8F8
 
-0..N
+        package "Virtual VTL artefacts" as vtl #line.dashed {
+            class "VTL Unit Data\nSet" as VTLUnitDataSet
+            class "VTL Dimens.\nData Set" as VTLDimensDataSet
+            class "VTL Unit Data\nStructure" as VTLUnitDataStructure
+            class "VTL Dimens.\nData Structure" as VTLDimensDataStructure
+            'Draw hidden links to control package layout
+            VTLUnitDataSet -down[hidden]- VTLDimensDataSet
+            VTLUnitDataSet -down[hidden]- VTLDimensDataSet
+            VTLDimensDataSet -down[hidden]- VTLUnitDataStructure
+            VTLUnitDataStructure -down[hidden]- VTLDimensDataStructure
+        }
 
-GSIM
+        vtl.VTLUnitDataSet <-left-> GSIMUnitDataRecord: "mappings  "
+        vtl.VTLDimensDataSet <-left-> GSIMDimensDataSet
+        vtl.VTLUnitDataStructure <-left-> GSIMLogicalRecord
+        vtl.VTLDimensDataStructure <-left-> GSIMDimensDataStructure
 
-Unit DataRecord
+        vtl.VTLUnitDataSet -right-|> VTLDataSet
+        vtl.VTLDimensDataSet -right-|> VTLDataSet
+        vtl.VTLUnitDataStructure -right-|> VTLDataStructure
+        vtl.VTLDimensDataStructure -right-|> VTLDataStructure
 
-GSIM
+        VTLDataSet "0..N" -down-> "1..1" VTLDataStructure: "structured by"
 
-Logical Record
-
-GSIM Dimens. Data Set
-
-GSIM Dimens. Data Structure
-
-VTL Unit Data Set
-
-VTL Unit Data Structure
-
-VTL Dimens. Data Set
-
-VTL Dimens. Data Structure
-
-Virtual VTL artefacts
-
-mappings
+    @enduml
 
 Examples 
 ~~~~~~~~~
