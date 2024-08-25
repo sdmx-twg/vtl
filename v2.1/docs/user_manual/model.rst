@@ -1492,75 +1492,41 @@ like a spreadsheet documents the operations among its cells.
 Transformations model diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-uses
+.. uml::
 
-Transformation
+    @startuml
 
-Transformation Scheme
+        skinparam SameClassWidth true
+        skinparam ClassBackgroundColor #D3D3D3
+        skinparam linetype ortho
+        skinparam nodesep 100
 
-Operator
+        class "Transformation\nScheme" as TransformationScheme
+        class "Non Persistent\nOperand" as NonPersistentOperand
+        class "Persistent\nOperand" as PersistentOperand
+        class "Non Persistent\nResult" as NonPersistentResult
+        class "Persistent\nResult" as PersistentResult
+        class "Identifiable\nArtefact" as IdentifiableArtefact
 
-0..N
+        Operator "1..N" <-right- "0..N" Transformation: "uses"
+        TransformationScheme o-left- "0..N" Transformation
+        Operator *-- "0..N" Parameter: "input"
+        Operator *-- "1..1" Parameter: "output"
+        Transformation -down-> "0..N" Operand: "acts on"
+        Transformation --> "1..1" Result: "produces"
 
-1..1
+        NonPersistentOperand -up-|> Operand
+        PersistentOperand -up-|> Operand
+        NonPersistentResult -up-|> Result
+        PersistentResult -up-|> Result
+        PersistentOperand "0..N" --> "1..1" IdentifiableArtefact: "references"
+        PersistentResult "0..1" --> "1..1" IdentifiableArtefact: "references"
 
-1..1
-
-0..N
-
-Parameter
-
-0..N
-
-1..1
-
-input
-
-output
-
-1..N
-
-produces
-
-acts on poonas
-
-0..N
-
-1..1
-
-Non Persistent Result
-
-Persistent Result
-
-Result
-
-Operand
-
-Is sub-type of
-
-Is sub-type of
-
-Non Persistent Operand
-
-Persistent Operand
-
-0..1
-
-0..N
-
-1..1
-
-1..1
-
-Identifiable Artefact
-
-references
-
-references
+    @enduml
 
 White box: same as in GSIM 1.1
 
-   Dark grey box: additional detail (in respect to GSIM 1.1)
+Dark grey box: additional detail (in respect to GSIM 1.1)
 
 .. _explanation-of-the-diagram-2:
 
