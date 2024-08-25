@@ -1073,29 +1073,23 @@ continents and the whole world in terms of individual countries:
 A simple model diagram for the Code Item Relations and Code Item
 Relation Operands is the following:
 
-Contains in 2nd member
+.. uml::
 
-Code Item Rel. Operand
+    @startuml
 
-Code Item Relation
+        skinparam SameClassWidth true
+        skinparam ClassBackgroundColor White
+        skinparam nodesep 100
 
-1..N
+        class "Code Item\nRelation" as CodeItemRelation
+        class "Code Item Rel.\nOperand" as CodeItemRelOperand
+        class "Code Item" as CodeItem
 
-1..1
+        CodeItemRelation "1..1" -right-> "1..N" CodeItemRelOperand: "Contains in\n2nd member"
+        CodeItemRelation "0..N" --> "1..1" CodeItem: "Refers as the\n1st member"
+        CodeItemRelOperand "0..N" --> "1..1" CodeItem: "Refers"
 
-Refers as the 1st member
-
-Refers
-
-0..N
-
-0..N
-
-Code Item
-
-1..1
-
-1..1
+    @enduml
 
 This diagram tells that a Code Item Relation has a first and a second
 member. The first member (the left one) refers to just one Code Item,
