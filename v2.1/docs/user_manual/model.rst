@@ -218,8 +218,8 @@ Data model diagram
         skinparam linetype ortho
         skinparam ClassBackgroundColor White
 
-        class "Data Structure" as DataStructure #d3d3d3
-        class "Data Set" as DataSet #d3d3d3
+        class "Data Structure" as DataStructure #F8F8F8
+        class "Data Set" as DataSet #F8F8F8
         class "Data Point" as DataPoint
         abstract class "Data Structure Component" as DataStructureComponent
 
@@ -690,121 +690,58 @@ and as parameters of some VTL Operators.
 Variable and Value Domain model diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Data Set
+.. uml::
 
-Has
+    @startuml
 
-1..N
+            skinparam ClassBackgroundColor White
+            skinparam linetype ortho
+            skinparam nodesep 100
 
-match to
+            class "Data Set" as DataSet #F8F8F8
+            class "Data Set\nComponent" as DataSetComponent #D3D3D3
+            class "Data Structure\nComponent" as DataStructureComponent
+            class "Represented\nVariable" as RepresentedVariable
+            class "Value Domain\nSubset (Set)" as ValueDomainSubset #D3D3D3
+            class "Value Domain" as ValueDomain
+            class "Enumerated\nValue Domain" as EnumeratedValueDomain
+            class "Described\nValue Domain" as DescribedValueDomain
+            class "Enumerated\nSet" as EnumeratedSet
+            class "Described\nSet" as DescribedSet
+            class "Code List" as CodeList
+            class "Code Item" as CodeItem
+            class "Set List" as SetList
+            class "Set Item" as SetItem
 
-defined by
+            DataSet "has" *-down- "1..N" DataSetComponent
+            DataSetComponent "0..N" -left-> "1..1" DataStructureComponent: "match to"
+            RepresentedVariable "1..1" <-right-  "0..N" DataStructureComponent: "defined by"
+            DataSetComponent "0..N" -down-> "1..1" ValueDomainSubset: "takes value in"
+            ValueDomain "1..1" -right-> "0..N" ValueDomainSubset: "includes"
+            ValueDomain "1..1" -up-> "0..N" RepresentedVariable: "measures"
 
-measures
+            DescribedValueDomain -up-|> ValueDomain
+            EnumeratedValueDomain -up-|> ValueDomain
+            EnumeratedSet -up-|> ValueDomainSubset
+            DescribedSet -up-|> ValueDomainSubset
 
-1..1
+            EnumeratedValueDomain "1..1" -down-> "1..1" CodeList: "has"
+            DescribedValueDomain "1..1" -down-> "1..N" Value: "has"
+            DescribedSet "1..1" -down-> "1..N" Value: "has"
+            EnumeratedSet "1..1" -down-> "1..1" SetList: "has"
 
-1..1
+            SetItem "0..N" -up- "1..1" Value
+            SetList "1..1" *-down- "1..N" SetItem: "contains"
+            CodeItem -up-|> Value
+            CodeList "1..1" *-down- "1..N" CodeItem: "contains"
 
-0..N
+    @enduml
+	
+White box: same as in GSIM 1.1
 
-Represented Variable
+Light grey: similar to GSIM 1.1
 
-0..N
-
-0..N
-
-Data Structure Component
-
-Data Set Component
-
-0..N
-
-Takes values in
-
-1..1
-
-includesas
-
-Value Domain Subset (Set)
-
-Value Domain
-
-1..1
-
-0..N
-
-1..1
-
-Is super-class of
-
-Is super-class of classtype of
-
-1..1
-
-1..1
-
-0..N
-
-1..1
-
-1..1
-
-Enumerated Value Domain
-
-Described Value Domain
-
-Code Item
-
-1..1
-
-1..N
-
-Code List
-
-Has
-
-Contains
-
-Described Set
-
-Enumerated Set
-
-Set List
-
-Has
-
-Contains
-
-Value
-
-Is super-class of
-
-Has
-
-1..1
-
-1..1
-
-1..N
-
-1..N
-
-Has
-
-1..1
-
-1..1
-
-1..N
-
-Set Item
-
-   White box: same as in GSIM 1.1
-
-   Light grey: similar to GSIM 1.1
-
-   Dark grey additional detail (in respect to GSIM 1.1)
+Dark grey additional detail (in respect to GSIM 1.1)
 
 .. _explanation-of-the-diagram-1:
 
