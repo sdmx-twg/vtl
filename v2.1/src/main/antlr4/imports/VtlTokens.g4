@@ -3,6 +3,7 @@ lexer grammar VtlTokens;
   MEMBERSHIP		: '#';
   EVAL              : 'eval';
   IF                : 'if';
+  CASE              : 'case';
   THEN              : 'then';
   ELSE              : 'else';
   USING             : 'using';

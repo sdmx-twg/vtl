@@ -32,7 +32,8 @@ expr:
 	|expr ('='|'<>') expr
 	|expr AND expr
 	|expr (OR|XOR) expr										 
-    |IF expr THEN expr ELSE expr	
+    |IF expr THEN expr ELSE expr
+    |CASE WHEN expr THEN expr (WHEN expr THEN expr)* ELSE expr
     |exprComplex	
     |exprAtom
     |expr CONCAT expr

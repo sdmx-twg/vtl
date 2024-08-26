@@ -580,6 +580,15 @@ DS_r := check ( DS1 >= DS2 imbalance DS1 - DS2 )
 
 if x1 > x2 then 2 else 5
 
+case
+    when x1 > x2 then "foo"
+    else "baz"
+
+case
+    when x1 > x2 then "foo"
+    when x2 < x1 then "bar"
+    else "baz"
+
 DS_r := if ( DS_cond#Id_4 = "F" ) then DS_1 else DS_2
 
 nvl ( ds1#m1, 0 )
