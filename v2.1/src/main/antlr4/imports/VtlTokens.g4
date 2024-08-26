@@ -29,6 +29,7 @@ lexer grammar VtlTokens;
   DIFF              : 'diff';
   SYMDIFF           : 'symdiff';
   INTERSECT         : 'intersect';
+  RANDOM            : 'random';
   KEYS              : 'keys';
   CARTESIAN_PER     : ',';
   INTYEAR           : 'intyear';

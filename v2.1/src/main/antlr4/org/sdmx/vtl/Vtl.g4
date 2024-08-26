@@ -49,7 +49,8 @@ exprComplex:
 	|anFunctionClause #standaloneAnalyticFunction
 	|aggrFunction #simpleaggregateFunctions
 	|timeExpr #timeexpressions
-	|setExpr #setExpressions 
+	|setExpr #setExpressions
+	|randExpr #randExpressions
 	|callFunction #callFunctionExpression
 	|joinExpr #joinExpression
 	;
@@ -531,7 +532,11 @@ setExpr
   | SETDIFF '(' expr ',' expr ')'
   | INTERSECT '(' expr (',' expr)* ')'
   ;
-  
+
+randExpr
+  :
+  RANDOM '(' seed=expr ',' index=expr ')'
+  ;
 
 /* subscript expression*/
 subscriptExpr
