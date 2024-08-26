@@ -60,7 +60,17 @@ timeExpr
  |periodExpr (opComp=('>'|'<'|'<='|'>='|'='|'<>') expr)?
  |timeShiftExpr
  |timeAggExpr
- |CURRENT_DATE
+ |DATEDIFF '(' dateFrom=expr ',' dateTo=expr ')'
+ |DATEADD '(' op=expr ',' shiftNumber=expr ',' periodInd=expr ')'
+ |YEAR_OP '(' expr ')'
+ |MONTH_OP '(' expr ')'
+ |DAYOFMONTH '(' expr ')'
+ |DAYOFYEAR '(' expr ')'
+ |DAYTOYEAR '(' expr ')'
+ |DAYTOMONTH '(' expr ')'
+ |YEARTODAY '(' expr ')'
+ |MONTHTODAY '(' expr ')'
+ |CURRENT_DATE // TODO: maybe use funciton() form to avoid "reserving" a variable id.
  ; 
 
 /* Rulesets Definition */       

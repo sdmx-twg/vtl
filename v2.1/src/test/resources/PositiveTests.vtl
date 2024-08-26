@@ -476,6 +476,40 @@ time_agg(cast( ”A”, “2012M1”, date, ”YYYYMMDD”), _, true ) */
 
 cast(current_date, string, "YYYY.MM.DD")
 
+datediff(cast("20120213", date, "YYYYMMDD"), cast("20120213", date, "YYYYMMDD"));
+
+datediff(cast("20120213", date, "YYYYMMDD"),cast("20120213", date, "YYYYMMDD"));
+
+datediff(cast("20120213", date, "YYYYMMDD"), cast("20120213", date, "YYYYMMDD"));
+
+ds2 := ds1[calc Me3 := datediff(Me1, Me2)];
+
+dateadd ("2022Q1", 5, "M")
+
+dateadd ("2020-12-14", -3 , "Y")
+
+ds2 := ds1[calc Me2 := dateadd(Me1, 3, "W")]
+
+DS_r := dateadd(DS_1, 1, "M")
+
+year("2022Q1")
+
+dayofyear("2020-12-14")
+
+daytoyear(422)
+
+daytomonth(146)
+
+yeartoday(422)
+
+monthtoday(146)
+
+ds2 := ds1[calc Me2 := yeartoday(Me1)]
+
+ds2 := ds1[calc Me2 := daytomonth(Me1)]
+
+ds2 := ds1[calc Me2 := dayofmonth(Me1)]
+
 DS_r := union(DS_1,DS_2)
 
 DS_r := intersect(DS_1,DS_2)
