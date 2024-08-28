@@ -14,6 +14,8 @@ Reference Manual
    introduction
    overview of the language and conventions
    vtl_dl_rulesets
+   vtl_dl_udo
+   typical_behaviour
    operators/index
 
 
