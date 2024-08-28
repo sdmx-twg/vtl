@@ -1043,23 +1043,25 @@ to the VTL basic scalar types is left to the VTL implementations.
 In the VTL manuals, just for explanatory purposes, the following default
 Measures will be used:
 
-   **Basic Scalar Types** **Default Measure Variable**
+.. uml::
 
-   *String* string_var
+    @startsalt
 
-   *Number* num_var
+        {
+            {T
+                + **Basic Scalar Types**                 **Default Measure Variable**
+                ++ String                            string_var
+                ++ Number                            num_var
+                +++ Integer                          int_var
+                ++++ Natural                         nat_var
+                ++ Time                              time_var
+                +++ Time-instant                     date_var
+                +++ Time-period                      period_var
+                ++ Boolean                           bool_var
+            }
+        }
 
-   *Integer* int_var
-
-   *Natural* nat_var
-
-   *Time* time_var
-
-   *Time-instant* date_var
-
-   *Time-period* period_var
-
-   *Boolean* bool_var
+    @endsalt
 
 In some cases, in the examples of the Manuals, the default Boolean
 variable is also called “condition”.
