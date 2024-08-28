@@ -13,6 +13,7 @@ Reference Manual
    foreword
    introduction
    overview of the language and conventions
+   vtl_dl_rulesets
    operators/index
 
 
