@@ -63,67 +63,48 @@ Data Types overview
 Data Types model diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Is super-class of
+.. uml::
 
-Data Type
+    @startuml
 
-Is super-class of
+        skinparam SameClassWidth true
+        skinparam ClassBackgroundColor White
+        skinparam linetype ortho
+        skinparam nodesep 100
 
-Scalar Type
+        class "Data Type" as DataType
+        class "Scalar Type" as ScalarType
+        class "Compound\nType" as CompoundType
+        class "Basic Scalar\nType" as BasicScalarType
+        class "Scalar Value\nDomain" as ScalarValueDomain
+        class "Scalar Set" as ScalarSet
+        class "Ruleset\nType" as RulesetType
+        class "Component\nType" as ComponentType
+        class "Operator\nType" as OperatorType
+        class "Data Set\nType" as DataSetType
+        class "Universal Set\nType" as UniversalSetType
+        class "Product\nType" as ProductType
+        class "Universal List\nType" as UniversalListType
 
-Compound Type
+        DataType "0..N" -left-> "0..N" DataType: "is subtype of"
+        ScalarType -right-|> DataType
+        CompoundType ----up-|> DataType
+        BasicScalarType -up-|> ScalarType
+        ScalarValueDomain -up-|> ScalarType
+        ScalarSet -up-|> ScalarType
 
-Is sub-type of
+        ScalarValueDomain "0..N" -up-> "1..1" BasicScalarType: "refers to"
+        ScalarSet "0..N" -up-> "1..1" ScalarValueDomain: "is subtype of"
 
-0..N
+        RulesetType --up-|> CompoundType
+        ComponentType -up-|> CompoundType
+        OperatorType --up-|> CompoundType
+        DataSetType -up-|> CompoundType
+        UniversalSetType --up-|> CompoundType
+        ProductType -up-|> CompoundType
+        UniversalListType --up-|> CompoundType
 
-0..N
-
-Basic Scalar Type
-
-Is super-class of
-
-0..N
-
-1..1
-
-1..1
-
-Scalar Value Domain
-
-Refers
-
-to
-
-Is subset
-
-of
-
-0..N
-
-Scalar Set
-
-Universal Set Type
-
-Product
-
-Type
-
-Component Type
-
-Data Set
-
-Type
-
-Operator
-
-Type
-
-Universal List Type
-
-Ruleset
-
-Type
+    @enduml
 
 .. _explanation-of-the-diagram-3:
 
