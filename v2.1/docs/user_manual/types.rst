@@ -263,23 +263,35 @@ has two independent sub-types, namely *date* and *time_period.*
 
 The hierarchical tree of the basic scalar types is the following:
 
-   *Scalar*
+.. uml::
 
-   *String*
+    @startmindmap
 
-   *Number*
+        * <i>Scalar</i>
+        ** <i>String</i>
+        ** <i>Number</i>
+        *** <i>Integer</i>
+        ** <i>Time</i>
+        *** <i>Date</i>
+        *** <i>Time period</i>
+        ** <i>Duration</i>
+        ** <i>Boolean</i>
 
-   *Integer*
+    @endmindmap
 
-   *Time*
+.. uml::
 
-   *Date*
-
-   *Time_period*
-
-   *Duration*
-
-   *Boolean*
+    @startwbs
+        * <i>Scalar</i>
+        ** <i>String</i>
+        ** <i>Number</i>
+        *** <i>Integer</i>
+        ** <i>Time</i>
+        *** <i>Date</i>
+        *** <i>Time period</i>
+        ** <i>Duration</i>
+        ** <i>Boolean</i>
+	@endwbs	
 
 A scalar Value of type **string** is a sequence of alphanumeric
 characters of any length. On scalar Values of type *string*, the string
