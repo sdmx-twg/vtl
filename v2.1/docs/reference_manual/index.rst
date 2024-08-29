@@ -8,12 +8,11 @@ Reference Manual
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
    foreword
    introduction
    overview_conventions/index
-   overview of the language and conventions
    vtl_dl_rulesets
    vtl_dl_udo
    typical_behaviour

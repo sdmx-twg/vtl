@@ -3,6 +3,7 @@ Operators
 #########
 .. toctree::
    :glob:
-   :maxdepth: 1
+   :maxdepth: 2
 
-   */index
+   General purpose operators/index
+   Join operators/index
