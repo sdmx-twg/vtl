@@ -70,7 +70,7 @@ timeExpr
  |DAYTOMONTH '(' expr ')'
  |YEARTODAY '(' expr ')'
  |MONTHTODAY '(' expr ')'
- |CURRENT_DATE // TODO: maybe use funciton() form to avoid "reserving" a variable id.
+ |CURRENT_DATE
  ; 
 
 /* Rulesets Definition */       
