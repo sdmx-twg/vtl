@@ -12,8 +12,13 @@
           "data_type": "String"
       },
       {
-          "name": "int_var",
+          "name": "string_var",
           "role": "Measure",
-          "data_type": "Integer"
+          "data_type": "String"
+      },
+      {
+          "name": "At_1",
+          "role": "ViralAttribute",
+          "data_type": "String"
       }
   ]}

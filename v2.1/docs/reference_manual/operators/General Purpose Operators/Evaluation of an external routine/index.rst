@@ -1,5 +1,5 @@
 =============================================================================================
-Evaluation of an external routine
+Evaluation of an external routine: `eval`
 =============================================================================================
 .. include:: ./content.rst
 .. include:: ./examples.rst

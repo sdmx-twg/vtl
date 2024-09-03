@@ -13,12 +13,17 @@ Input parameters
      - the name of an existing user-defined operator
    * - argument
      - argument passed to the operator
-
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+.. code-block::
+    
+    max1 ( 2, 3 )
+        
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-It depends on the specific user-defined operator that is invoked. One valid example could be **max1 ( 2, 3 )**,
-provided the user-defined operator max1 exists and takes two numeric arguments.
+It depends on the specific user-defined operator that is invoked. 
 
 -----------------------------
 Input parameters type
@@ -43,14 +48,13 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-· *operatorName* must refer to an operator created with the **define operator** statement.
-
-· The type of each argument value must be compliant with the type of the corresponding parameter of
+* *operatorName* must refer to an operator created with the **define operator** statement.
+* The type of each argument value must be compliant with the type of the corresponding parameter of
 the user defined operator (the correspondence is in the positional order).
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The invoked user-defined operator is evaluated. The arguments passed to the operator in the invocation are associated to
 the corresponding parameters in positional order, the first argument as the value of the first parameter,

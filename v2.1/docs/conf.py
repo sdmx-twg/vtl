@@ -23,7 +23,7 @@ pdf_documents = [
 ]
 exclude_patterns = ["*intro.rst", "pandocTranslation*"]
 html_theme_options = {
-    "navigation_depth": 4,
+    "navigation_depth": 5,
     "collapse_navigation": False,
 }
 html_context = {

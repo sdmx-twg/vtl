@@ -15,5 +15,10 @@
           "name": "int_var",
           "role": "Measure",
           "data_type": "Integer"
+      },
+      {
+          "name": "At_1",
+          "role": "ViralAttribute",
+          "data_type": "String"
       }
   ]}
