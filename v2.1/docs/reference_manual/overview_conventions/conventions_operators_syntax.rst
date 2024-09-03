@@ -1,5 +1,5 @@
 Conventions for describing the operators’ syntax
-===============================================
+================================================
 
 Each VTL operator has an explanatory name, which recalls the operator
 function (e.g., “Greater than”) and a syntactical symbol, which is used

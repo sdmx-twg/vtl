@@ -13,6 +13,7 @@ Input parameters
      - the name of an existing user-defined operator
    * - argument
      - argument passed to the operator
+
 ------------------------------------
 Examples of valid syntaxes
 ------------------------------------
@@ -48,9 +49,10 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
+
 * *operatorName* must refer to an operator created with the **define operator** statement.
 * The type of each argument value must be compliant with the type of the corresponding parameter of
-the user defined operator (the correspondence is in the positional order).
+  the user defined operator (the correspondence is in the positional order).
 
 ---------
 Behaviour

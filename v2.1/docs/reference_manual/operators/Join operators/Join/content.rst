@@ -2,21 +2,37 @@
 Syntax
 ------
 
-    joinOperator **(** ds { **as** alias } { , ds { **as** alias } }* { **using** usingComp { , usingComp }* }
-    { **filter** filterCondition }
-    { **apply** applyExpr | **calc** calcClause | **aggr** aggrClause { groupingClause } }
-    { **keep** comp {, comp }* | **drop** comp {, comp }* }
-    { **rename** compFrom **to** compTo { , compFrom **to** compTo }* } **)**
 
-        joinOperator ::= { **inner_join | left_join | full_join | cross_join** }¹
+    joinOperator_ **(** ds1 { **as** alias1 }, ds2 { **as** alias2 } { , dsN { **as** aliasN } }* 
+      | { **using** usingComp { , usingComp }* }
+      | { **filter** filterCondition }
+      | { **apply** applyExpr 
+      | |     **calc** calcClause_ 
+      | |     **aggr** aggrClause_ { groupingClause_ } }
+      | { **keep** comp {, comp }* | **drop** comp {, comp }* }
+      | { **rename** compFrom **to** compTo { , compFrom **to** compTo }* } **)**
+
+        .. _joinOperator:
+  
+        joinOperator: { **inner_join | left_join | full_join | cross_join** }¹
+
+        .. _calcClause:
 
         calcClause ::= { calcRole } calcComp **:=** calcExpr { , { calcRole } calcComp **:=** calcExpr }*
 
+        .. _calcRole:
+
         calcRole ::= { **identifier | measure | attribute | viral attribute** }¹
 
-        aggrClause ::= { aggrRole } aggrComp **:=** aggrExpr { , { aggrRole } aggrComp **:=** aggrExpr }*
+        .. _aggrClause:
+
+        aggrClause ::= { aggrRole_ } aggrComp **:=** aggrExpr { , { aggrRole_ } aggrComp **:=** aggrExpr }*
+
+        .. _aggrRole:
 
         aggrRole ::= { **measure | attribute | viral attribute** }¹
+
+        .. _groupingClause:
 
         groupingClause ::= { **group by** groupingId { , groupingId }* | **group except** groupingId { , groupingId }* | **group all** conversionExpr }¹ { **having** havingCondition }
 
@@ -27,8 +43,8 @@ Input parameters
 
    * - joinOperator
      - the Join operator to be applied
-   * - ds
-     - the Data Set operands (at least one must be present)
+   * - ds1, ..., dsN
+     - the Data Set operands (at least two must be present) [1]_
    * - alias
      - | optional aliases for the input Data Sets, valid only within the “join” operation
        | to make it easier to refer to them. If omitted, the Data Set name must be used.
@@ -110,6 +126,10 @@ Input parameters
      - the original name of the Component to be renamed
    * - compTo
      - the new name of the Component after the renaming
+
+
+.. [1] In the previous versions for inner_join only one Data Set operand had to be specified; 
+       to be more consistent and similarly to SQL syntax, at least to operands are required.
 
 ------------------------------------
 Semantics  for scalar operations

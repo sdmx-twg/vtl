@@ -52,7 +52,7 @@ result ::
 Additional Constraints
 -----------------------------
 * Not all the conversions are possible, the specified casting operation is allowed only according to the
-semantics described below.
+  semantics described below.
 * The `mask` must adhere to one of the formats specified below.
 
 ---------
@@ -91,7 +91,7 @@ specified in the first column (row headings) and the output type in the first ro
 .. csv-table::
    :file: conversionTable.csv
    :header-rows: 1
-   :header-columns: 1
+   :stub-columns: 1
 
 The type of casting can be personalised in specific environments, provided that the personalisation is explicitly
 documented with reference to the table above. For example, assuming that an explicit **cast** with `mask` is
@@ -100,30 +100,30 @@ also become implicit provided that the mask that will be applied is specified.
 
 The **implicit casting** is performed when a value of a certain type is provided when another type is expected. Its
 behaviour is described here:
-* From **integer** to **number**: an `integer` is provided when a `number` is expected (for example, an `integer` and a
-`number` are passed as inputs of a n-ary numeric operator); it returns a `number` having the integer part equal
-to the `integer` and the decimal part equal to zero;
+
+* From **integer** to **number**: an `integer` is provided when a `number` is expected (for example, an `integer`
+  and a `number` are passed as inputs of a n-ary numeric operator); it returns a `number` having the integer part equal 
+  to the `integer` and the decimal part equal to zero;
 * From **integer** to **string**: an `integer` is provided when a `string` is expected (for example, an `integer` is passed
-as an input of a `string` operator); it returns a `string` having the literal value of the `integer`;
+  as an input of a `string` operator); it returns a `string` having the literal value of the `integer`;
 * From **number** to **string**: a `number` is provided when a `string` is expected; it returns the `string` having the
-literal value of the `number`; the decimal separator is converted into the character “.” (dot).
+  literal value of the `number`; the decimal separator is converted into the character “.” (dot).
 * From **boolean** to **string**: a `boolean` is provided when a `string` is expected; the `boolean` value TRUE is
-converted into the `string` “TRUE” and FALSE into the `string` “FALSE”;
+  converted into the `string` “TRUE” and FALSE into the `string` “FALSE”;
 * From **date** to **time**: a `date` (point in time) is provided when a `time` is expected (interval of time): the
-conversion results in an interval having the same start and end, both equal to the original `date`;
+  conversion results in an interval having the same start and end, both equal to the original `date`;
 * From **time_period** to **time**: a *time_period* (a regular interval of *time*, like a month, a quarter, a year...) is
-provided when a *time* (any interval of time) is expected; it returns a *time* value having the same start and
-end as the *time_period* value.
+  provided when a *time* (any interval of time) is expected; it returns a *time* value having the same start and
+  end as the *time_period* value.
 * From **integer** to **boolean**: if the `integer` is different from 0, then TRUE is returned, FALSE otherwise.
 * From **number** to **integer**: converts a `number` with no decimal part into an `integer`; 
-if the decimal part is present, a runtime error is raised. 
+  if the decimal part is present, a runtime error is raised. 
 *	From **number** to **boolean**: if the `number` is different from 0.0, then TRUE is returned, FALSE otherwise.
 * From **boolean** to **integer**: TRUE is converted into 1; FALSE into 0.
 *	From **boolean** to **number**: TRUE is converted into 1.0; FALSE into 0.0.
 *	From **time_period** to **string**:  it is applied the `time_period` formatting mask.
-*	From **string** to **integer**: the `integer` having the literal value of the `string` is returned; if the `string`
-contains a literal that cannot be matched to an `integer`, a runtime error is raised.
-
+*	From **string** to **integer**: the `integer` having the literal value of the `string` is returned; if the `string` contains a literal that cannot be matched to an `integer`, a runtime error is raised.
+  
 
 An implicit cast is also performed from a **value domain type** or a **set type** to a **basic scalar type**: when a *scalar*
 value belonging to a Value Domains or a Set is involved in an operation (i.e., provided as input to an operator),
@@ -151,21 +151,21 @@ The behaviour of the **cast** operator for such conversions is the following:
 *	From **date** to **time_period**: it converts a `date` into the corresponding daily value of `time_period`.
 * From **date** to **string**: it is applied the `time_period` formatting mask.
 * From **time_period** to **date**: it is applied a formatting mask which accepts two possible values (“START”,
-“END”). If “START” is specified, then the `date` is set to the beginning of the `time_period`; if `END` is specified,
-then the `date` is set to the end of the `time_period`.
+  “END”). If “START” is specified, then the `date` is set to the beginning of the `time_period`; if `END` is specified,
+  then the `date` is set to the end of the `time_period`.
 * From **string** to **number**: the `number` having the literal value of the `string` is returned; if the `string` contains a
-literal that cannot be matched to a `number`, a runtime error is raised. The `number` is generated by using a
-`number` formatting mask.
+  literal that cannot be matched to a `number`, a runtime error is raised. The `number` is generated by using a
+  `number` formatting mask.
 * From **string** to **time**: the `time` having the literal value of the `string` is returned; if the `string` contains a literal
-that cannot be matched to a `date`, a runtime error is raised. The `time` value is generated by using a `time`
-formatting mask.
+  that cannot be matched to a `date`, a runtime error is raised. The `time` value is generated by using a `time`
+  formatting mask.
 *	From **string** to **date**: it converts a `string` value to a `date` value.
 *	From **string** to **time_period**: it converts a `string value` to a `time_period` value.
 * From **string** to **duration**: the `duration` having the literal value of the `string` is returned; if the `string` contains
-a literal that cannot be matched to a `duration`, a runtime error is raised. The `duration` value is generated by
-using a `time` formatting mask.
-*	From **duration** to **string**: a `duration` (an absolute time interval) is provided when a `string` is expected; it returns 
-the `string` having the default `string` representation for the `duration`.
+  a literal that cannot be matched to a `duration`, a runtime error is raised. The `duration` value is generated by
+  using a `time` formatting mask.
+*	From **duration** to **string**: a `duration` (an absolute time interval) is provided when a `string` is expected; it returns the `string` having the default `string` representation for the `duration`.
+
 
 **Conversions between basic scalar types and Value Domains or Set types**
 

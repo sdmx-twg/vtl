@@ -63,17 +63,17 @@ Additional Constraints
 -----------------------------
 
 * The **eval** is the only VTL Operator that does not allow nesting and therefore a Transformation can contain just
-one invocation of **eval** and no other invocations. In other words, **eval** cannot be nested as the operand
-of another operation as well as another operator cannot be nested as an operand of **eval**
+  one invocation of **eval** and no other invocations. In other words, **eval** cannot be nested as the operand
+  of another operation as well as another operator cannot be nested as an operand of **eval**
 * The result of an expression containing **eval** must be persistent
 * `externalRoutineName` is the conventional name of a non-VTL routine
 * The invoked external routine must be consistent with the VTL principles, first of all its behaviour must be functional,
-so having in input and providing in output first-order functions
+  so having in input and providing in output first-order functions
 * argument is an argument passed to the external routine, it can be a name or a value of a VTL artefacts or
-some other parameter required by the routine
+  some other parameter required by the routine
 * The arguments passed to the routine correspond to the parameters of the invoked external routine in positional order;
-as usual the optional parameters are substituted by the underscore if missing.
-The conversion of the VTL input/output data types from and to the external routine processor is left to the implementation.
+  as usual the optional parameters are substituted by the underscore if missing.
+  The conversion of the VTL input/output data types from and to the external routine processor is left to the implementation.
 
 ---------
 Behaviour
