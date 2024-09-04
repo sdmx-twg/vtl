@@ -13,13 +13,21 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    abs ( DS_1 )
+    abs ( -5 )
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator **abs** calculates the absolute value of a number.
-For example: ::
+For example: 
 
-    abs ( -5.49 ) gives 5.49
-    abs ( 5.49 ) gives 5.49
+| ``abs ( -5.49 )`` gives ``5.49``
+| ``abs ( 5.49 )`` gives ``5.49``
 
 -----------------------------
 Input parameters type
@@ -49,4 +57,4 @@ Behavior
 --------
 
 The operator has the behaviour of the “Operators applicable on one Scalar Value or Data Set or Data Set
-Component” (see the section “Typical behaviours of the ML Operators”). Some valid examples could be: **abs ( DS_1 )**, **abs ( -5 )**.
+Component” (see the section “Typical behaviours of the ML Operators”).

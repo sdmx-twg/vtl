@@ -13,12 +13,20 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    sqrt ( DS_1 )
+    sqrt ( 5 )
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator **sqrt** calculates the square root of a number.
-For example: ::
+For example:
 
-    sqrt ( 25 ) gives 5
+| ``sqrt ( 25 )`` gives ``5``
 
 -----------------------------
 Input parameters type
@@ -43,9 +51,9 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the behaviour of the “Operators applicable on one Scalar Value or Data Set or Data Set
 Component” (see the section “Typical behaviours of the ML Operators”). Some valid examples could be: **sqrt ( DS_1 )**, **sqrt ( 5 )**.

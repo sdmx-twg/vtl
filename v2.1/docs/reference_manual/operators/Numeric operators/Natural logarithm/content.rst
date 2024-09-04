@@ -13,15 +13,23 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    ln ( DS_1 )
+    ln ( 148 )
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator **ln** calculates the natural logarithm of a number.
-For example: ::
+For example:
 
-    ln ( 148 ) gives 4.997...
-    ln ( e ) gives 1.0
-    ln ( 1 ) gives 0.0
-    ln ( 0,5 ) gives -0.693...
+| ``ln ( 148 )`` gives ``4.997...``
+| ``ln ( e )`` gives ``1.0``
+| ``ln ( 1 )`` gives ``0.0``
+| ``ln ( 0.5 )`` gives ``-0.693...``
 
 -----------------------------
 Input parameters type
@@ -46,9 +54,9 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the behaviour of the “Operators applicable on one Scalar Value or Data Set or Data Set
-Component” (see the section “Typical behaviours of the ML Operators”). Some valid examples could be: **ln ( DS_1 )**, **ln ( 148 )**.
+Component” (see the section “Typical behaviours of the ML Operators”).
