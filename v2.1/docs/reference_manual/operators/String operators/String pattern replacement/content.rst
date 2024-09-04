@@ -16,16 +16,25 @@ Input parameters
    * - pattern2
      - the replacing pattern
 
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+.. code-block:: 
+    
+	replace(DS_1, "Hello", "Hi")
+	replace(DS_1, "Hello")
+
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 Replaces all the occurrences of a specified string-pattern (*pattern1*) with another one (*pattern2*).
-If *pattern2* is omitted then all occurrences of *pattern1* are removed.
-For example: ::
+If `pattern2` is omitted then all occurrences of `pattern1` are removed.
+For example:
 
-	replace("Hello world", "Hello", "Hi") gives "Hi world"
-	replace("Hello world", "Hello") gives " world"
-	replace ("Hello", "ello", "i") gives "Hi"
+| ``replace("Hello world", "Hello", "Hi")`` gives ``"Hi world"``
+| ``replace("Hello world", "Hello")`` gives ``" world"``
+| ``replace ("Hello", "ello", "i")`` gives ``"Hi"``
 
 -----------------------------
 Input parameters type
@@ -53,13 +62,13 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-None.
+The second parameter (`pattern1`) cannot be omitted.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 As for the invocations at Data Set level, the operator has the behaviour of the “Operators applicable on one Scalar Value
 or Data Set or Data Set Component”. As for the invocations at Component or Scalar level, the operator has the behaviour
 of the “Operators applicable on more than two Scalar Values or Data Set Components”
-(see the section “Typical behaviours of the ML Operators”). Some valid examples could be: **replace(DS_1, "Hello", "Hi")** or **replace(DS_1, "Hello")**.
+(see the section “Typical behaviours of the ML Operators”).

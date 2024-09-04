@@ -16,9 +16,7 @@ Input parameters
 Semantics  for scalar operations
 ------------------------------------
 Removes trailing or/and leading whitespace from a string.
-For example: ::
-
-	trim("Hello ") gives "Hello"
+For example, ``trim("Hello ")`` gives ``"Hello"``.
 
 -----------------------------
 Input parameters type

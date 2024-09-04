@@ -13,12 +13,18 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+.. code-block:: 
+    
+    upper("Hello")
+    lower(ds_1)
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 Converts the character case of a string in upper or lower case.
-For example: ::
-
-    upper("Hello") gives "HELLO"
+For example, ``upper("Hello")`` gives ``"HELLO"``.
 
 -----------------------------
 Input parameters type

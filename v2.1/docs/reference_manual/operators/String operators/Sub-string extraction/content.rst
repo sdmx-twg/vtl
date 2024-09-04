@@ -17,18 +17,30 @@ Input parameters
      - the length (number of characters) of the string to be extracted
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+.. code-block:: 
+    
+	substr  ( DS_1,  2 ,  3 )
+	substr  ( DS_1, 2 ) 
+	substr  ( DS_1, _ , 3 )
+	substr  ( DS_1 ) 
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator extracts a substring from op, which must be string type. The substring starts from the startth character
-of the input string and has a number of characters equal to the length parameter.
-If *start* is omitted, the substring starts from the 1st position.
-If *length* is omitted or overcomes the length of the input string, the substring ends at the end of the input string.
-If *start* is greater than the length of the input string, an empty string is extracted.
-For example: ::
+The operator extracts a substring from op, which must be `string type`. The substring starts from the startth character
+of the input string and has a number of characters equal to the **length** parameter.
 
-	substr (“abcdefghijklmnopqrstuvwxyz”, 5 , 10 )  gives: “efghijklmn”
-	substr (“abcdefghijklmnopqrstuvwxyz”, 25 , 10 ) gives: “yz”
-	substr (“abcdefghijklmnopqrstuvwxyz”, 30 , 10 ) gives: “”
+* If `start` is omitted, the substring starts from the 1st position.
+* If `length` is omitted or overcomes the length of the input string, the substring ends at the end of the input string.
+* If `start` is greater than the length of the input string, an empty string is extracted.
+
+For example:
+
+| ``substr (“abcdefghijklmnopqrstuvwxyz”, 5 , 10 )``  gives: ``“efghijklmn”``
+| ``substr (“abcdefghijklmnopqrstuvwxyz”, 25 , 10 )`` gives: ``“yz”``
+| ``substr (“abcdefghijklmnopqrstuvwxyz”, 30 , 10 )`` gives: ``“”``
 
 -----------------------------
 Input parameters type

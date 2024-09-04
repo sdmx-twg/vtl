@@ -5,4 +5,10 @@ VTL-ML - String Operators
    :glob:
    :maxdepth: 1
 
-   String/index
+   String concatenation/index
+   Whitespace removal/index
+   Character case conversion/index
+   Sub-string extraction/index
+   String pattern replacement/index
+   String pattern location/index
+   String length/index
