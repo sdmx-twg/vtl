@@ -1,1 +1,0 @@
-Given the operand datasets DS_1 and DS_2:
