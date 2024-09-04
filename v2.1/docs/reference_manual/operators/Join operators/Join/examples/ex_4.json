@@ -1,57 +1,44 @@
 {
-  "datasets": [
-    {
-      "name": "DS_r",
-      "DataStructure": [
-        {
+  "name":"DS_r",
+  "components": [
+      {
+          "name": "Id_11",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_12",
+          "role": "Identifier",
+          "data_type": "String"
+      },
+      {
+          "name": "Id_21",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_22",
+          "role": "Identifier",
+          "data_type": "String"
+      },
+      {
           "name": "Me_1",
           "role": "Measure",
-          "type": "String",
-          "nullable": true
-        },
-        {
-          "name": "Me_1A",
-          "role": "Measure",
-          "type": "String",
-          "nullable": true
-        },
-        {
-          "name": "Me_2",
-          "role": "Measure",
-          "type": "String",
-          "nullable": true
-        },
-        {
-          "name": "Id11",
-          "role": "Identifier",
-          "type": "Integer",
-          "nullable": false
-        },
-        {
-          "name": "Id12",
-          "role": "Identifier",
-          "type": "String",
-          "nullable": false
-        },
-        {
-          "name": "Id21",
-          "role": "Identifier",
-          "type": "Integer",
-          "nullable": false
-        },
-        {
-          "name": "Id22",
-          "role": "Identifier",
-          "type": "String",
-          "nullable": false
-        },
-        {
+          "data_type": "String"
+      },
+      {
           "name": "Me12",
           "role": "Measure",
-          "type": "String",
-          "nullable": true
-        }
-      ]
-    }
-  ]
-}
+          "data_type": "String"
+      },
+      {
+          "name": "Me_1A",
+          "role": "Measure",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_2",
+          "role": "Measure",
+          "data_type": "String"
+      }
+  ]}
