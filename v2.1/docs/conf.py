@@ -5,6 +5,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
 VERSION = "2.1"
+BRANCH = "docs-dev"
 
 
 def name_norm(value):
@@ -73,7 +74,7 @@ for op_type in next(os.walk("reference_manual/operators"))[1]:
                     "examples": examples,
                     "inputs": inputs,
                     "op_type": op_type,
-                    "repourl_ex": f"https://github.com/sdmx-twg/vtl/blob/master/v{VERSION}/docs",
+                    "repourl_ex": f"https://github.com/sdmx-twg/vtl/blob/{BRANCH}/v{VERSION}/docs/",
                 }
             )
         if examples_folder.joinpath("end_text.rst").exists():
