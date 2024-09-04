@@ -15,12 +15,20 @@ Input parameters
      - the subtrahend
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+    
+    DS_1 - DS_2
+    3 - 5
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator subtraction returns the difference of two numbers. 
-For example: ::
+For example:
 
-    3 - 5   gives  -2
+| ``3 - 5`` gives ``-2``
 
 -----------------------------
 Input parameters type
@@ -45,9 +53,9 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 The operator has the behaviour of the "Operators applicable on two Scalar Values or Data Sets or Data Set Components" 
 (see the section "Typical behaviours of the ML Operators"). 
 According to the general rules about data types, the operator can be applied also on sub-types of *number*,

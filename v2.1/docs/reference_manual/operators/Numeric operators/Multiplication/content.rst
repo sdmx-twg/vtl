@@ -15,12 +15,21 @@ Input parameters
      - the multiplier
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+
+::
+
+    DS_1 * DS_2
+    3 * 5
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator addition returns the product of two numbers.
-For example: ::
+For example: 
 
-    3 * 5   gives 15
+| ``3 * 5`` gives ``15``
 
 -----------------------------
 Input parameters type

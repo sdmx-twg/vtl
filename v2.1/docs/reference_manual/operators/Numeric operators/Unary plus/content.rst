@@ -13,12 +13,20 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    + DS_1
+    + 3
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator **+** returns the operand unchanged. For example: ::
+The operator **+** returns the operand unchanged. For example: 
 
-    +3 gives 3
-    +(-5) gives -5
+| ``+3`` gives ``3``
+| ``+(-5)`` gives ``-5``
 
 -----------------------------
 Input parameters type
@@ -43,9 +51,9 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the behaviour of the "Operators applicable on one Scalar Value or Data Set or Data Set
 Component" (see the section "Typical behaviours of the ML Operators").

@@ -15,12 +15,19 @@ Input parameters
      - the divisor
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+        
+    DS_1 / DS_2
+    3 / 5
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator addition divides two numbers.
-For example: ::
-
-    3 / 5   gives 0.6
+For example: 
+| ``3 / 5``  gives ``0.6``
 
 -----------------------------
 Input parameters type
