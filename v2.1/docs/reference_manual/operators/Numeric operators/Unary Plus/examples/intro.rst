@@ -1,1 +1,0 @@
-Given the operand Data Set DS_1:
