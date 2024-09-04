@@ -5,4 +5,4 @@ VTL-ML - String Operators
    :glob:
    :maxdepth: 1
 
-   */index
+   String/index
