@@ -5,4 +5,7 @@ VTL-ML - Boolean Operators
    :glob:
    :maxdepth: 1
 
-   */index
+   Logical conjunction/index
+   Logical disjunction/index
+   Exclusive disjunction/index
+   Logical negation/index

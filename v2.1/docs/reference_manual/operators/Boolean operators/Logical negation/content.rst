@@ -13,14 +13,20 @@ Input parameters
      - the first operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    not DS_1
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The **not** operator returns TRUE if *op* is FALSE, otherwise TRUE. The input operand must be of *boolean* type.
-For example: ::
-
-    not FALSE gives TRUE
-    not TRUE gives FALSE
-    not NULL gives NULL
+For example:
+| ``not FALSE`` gives ``TRUE``
+| ``not TRUE`` gives ``FALSE``
+| ``not NULL`` gives ``NULL``
 
 -----------------------------
 Input parameters type
@@ -45,9 +51,9 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the typical behaviour of the “Behaviour of Boolean operators” (see the section “Typical
-behaviours of the ML Operators”). One valid example could be: **not DS_1**.
+behaviours of the ML Operators”).

@@ -15,19 +15,25 @@ Input parameters
      - the second operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    DS_1 or DS_2
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The **or** operator returns TRUE if at least one of the operands is TRUE, otherwise FALSE.
 The two operands must be of *boolean* type.
-For example: ::
-
-    FALSE or FALSE gives FALSE
-    FALSE or TRUE gives TRUE
-    FALSE or NULL gives NULL
-    TRUE or FALSE gives TRUE
-    TRUE or TRUE gives TRUE
-    TRUE or NULL gives TRUE
-    NULL or NULL gives NULL
+For example:
+| ``FALSE or FALSE`` gives ``FALSE``
+| ``FALSE or TRUE`` gives ``TRUE``
+| ``FALSE or NULL`` gives ``NULL``
+| ``TRUE or FALSE`` gives ``TRUE``
+| ``TRUE or TRUE`` gives ``TRUE``
+| ``TRUE or NULL`` gives ``TRUE``
+| ``NULL or NULL`` gives ``NULL``
 
 -----------------------------
 Input parameters type
@@ -57,4 +63,4 @@ Behavior
 --------
 
 The operator has the typical behaviour of the “Behaviour of Boolean operators” (see the section “Typical
-behaviours of the ML Operators”). One valid example could be: **DS_1 or DS_2**.
+behaviours of the ML Operators”).
