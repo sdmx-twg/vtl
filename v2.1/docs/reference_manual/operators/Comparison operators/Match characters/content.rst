@@ -15,6 +15,14 @@ Input parameters
      - the regular expression to check the Data Set or the Component against
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  match_characters(ds1, "[abc]+\d\d")
+  ds1 [ calc m1 := match_characters(ds1, "[abc]+\d\d") ]
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 **match_characters** returns TRUE if *op* matches the regular expression *regexp*, FALSE otherwise.
@@ -53,9 +61,9 @@ If *op* is a Data Set then it has exactly one measure.
 
 *pattern* is a POSIX regular expression.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the typical behaviour of the “Operators changing the data type” (see the section “Typical
-behaviours of the ML Operators”). Some valid examples could be: **match_characters(ds1, “[abc]+\d\d”)**, **ds1 [ calc m1 := match_characters(ds1, “[abc]+\d\d”) ]**.
+behaviours of the ML Operators”).

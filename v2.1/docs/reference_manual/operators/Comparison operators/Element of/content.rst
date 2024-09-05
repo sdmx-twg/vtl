@@ -2,11 +2,12 @@
 Syntax
 ------
 
-    op **in** collection
+| op **in** collection_
+| op **not_in** collection_
 
-    op **not_in** collection
+.. _collection: 
 
-    collection ::= set | valueDomainName
+collection ::= set | valueDomainName
 
 ----------------
 Input parameters
@@ -23,16 +24,26 @@ Input parameters
      - the name of the Value Domain which contains the values
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  ds := ds_2 in {1,4,6}
+  ds := ds_3 in mySet
+  ds := ds_3 in myValueDomain	
+
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The **in** operator returns TRUE if *op* belongs to the collection, FALSE otherwise.
 The **not_in** operator returns FALSE if *op* belongs to the collection, TRUE otherwise.
-For example: ::
+For example:
 
-    1 in { 1, 2, 3 } returns TRUE
-    “a” in { “c, “ab”, “bb”, “bc” } returns FALSE
-    “b” not_in { “b”, ”hello”, ”c”} returns FALSE
-    “b” not_in { “a”, ”hello”, ”c”} returns TRUE
+| ``1 in { 1, 2, 3 }`` returns ``TRUE``
+| ``“a” in { “c, “ab”, “bb”, “bc” }`` returns ``FALSE``
+| ``“b” not_in { “b”, ”hello”, ”c”}`` returns ``FALSE``
+| ``“b” not_in { “a”, ”hello”, ”c”}`` returns ``TRUE``
 
 -----------------------------
 Input parameters type
@@ -72,5 +83,4 @@ The operator has the typical behaviour of the “Operators changing the data typ
 behaviours of the ML Operators”).
 
 The *collection* can be either a *set* of values defined in line or a name that references an externally defined Value
-Domain or Set. Some valid examples could be: **ds := ds_2 in {1,4,6}**, as usual, here the braces denote a set literal
-(it contains the values 1, 4 and 6), **ds := ds_3 in mySet**, **ds := ds_3 in myValueDomain**.
+Domain or Set.

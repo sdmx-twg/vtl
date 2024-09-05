@@ -13,13 +13,20 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  isnull(DS_1)
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator returns TRUE if the value of the operand is NULL, FALSE otherwise.
-For example: ::
+For example:
 
-    isnull(“Hello”) gives FALSE
-    isnull(NULL) gives TRUE
+| ``isnull(“Hello”)`` gives ``FALSE``
+| ``isnull(NULL)`` gives ``TRUE``
 
 -----------------------------
 Input parameters type
@@ -44,9 +51,9 @@ Additional Constraints
 -----------------------------
 If *op* is a Data Set then it has exactly one measure.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the typical behaviour of the “Operators changing the data type” (see the section “Typical
-behaviours of the ML Operators”). One valid example could be: **isnull(DS_1)**.
+behaviours of the ML Operators”).

@@ -15,15 +15,23 @@ Input parameters
      - the right operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    DS_1 < DS_2
+    DS_1 <= DS_2
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator **<** returns TRUE if left is smaller than right, FALSE otherwise.
 The operator **<=** returns TRUE if left is smaller than or equal to right, FALSE otherwise.
-For example: ::
+For example:
 
-    5 < 4 gives FALSE
-    5 <= 5 gives TRUE
-    “hello” < “hi” gives TRUE
+| ``5 < 4`` gives ``FALSE``
+| ``5 <= 5`` gives ``TRUE``
+| ``"hello" < "hi"`` gives ``TRUE``
 
 -----------------------------
 Input parameters type
@@ -48,9 +56,9 @@ Additional Constraints
 -----------------------------
 Operands *left* and *right* must be of the same scalar type.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator has the typical behaviour of the “Operators changing the data type” (see the section “Typical
 behaviours of the ML Operators”). Some valid examples could be: **DS_1 < DS_2**, **DS_1 <= DS_2**.

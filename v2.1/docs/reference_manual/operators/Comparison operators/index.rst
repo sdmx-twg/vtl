@@ -5,4 +5,12 @@ VTL-ML - Comparison Operators
    :glob:
    :maxdepth: 1
 
-   */index
+   Equal to/index
+   Not equal to/index
+   Greater than/index
+   Less than/index
+   Between/index
+   Element of/index
+   Match characters/index
+   Is null/index
+   Exists in/index
