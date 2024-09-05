@@ -13,6 +13,13 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+    
+    flow_to_stock ( ds_1 )
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator does not perform scalar operations.
@@ -52,6 +59,7 @@ operator perform the cumulative sum from the first Data Point of each time serie
 Point of the same time series.
 
 The *flow_to_stock* operator can be applied only on Data Sets of time series and returns a Data Set of time series.
+
 The result Data Set has the same Identifier, Measure and Attribute Components as the operand Data Set and
 contains the same time series as the operand, because the time series Identifiers (all the Identifiers except the
 reference time Identifier) are not changed.
@@ -59,4 +67,3 @@ reference time Identifier) are not changed.
 As mentioned in the section “Behaviour of the Time Operators”, the operator is assumed to know which is the
 *time* Identifier as well as the *period* of each time series.
 
-One valid example could be: **flow_to_stock ( ds_1 )**.

@@ -13,6 +13,13 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    stock_to_flow ( ds_1 )
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator does not perform scalar operations.
@@ -36,9 +43,9 @@ Additional Constraints
 -----------------------------
 The operand dataset has an Identifier of type *time*, *date* or *time_period* and may have other Identifiers.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The statistical data that describe the “state” of a phenomenon on a given moment (e.g. resident population on a
 given moment) are often referred to as “stock data”.
@@ -59,22 +66,3 @@ The Attribute propagation rule is not applied.
 
 As mentioned in the section “Behaviour of the Time Operators”, the operator is assumed to know which is the
 *time* Identifier as well as the *period* of each time series.
-
-One valid example could be: **stock_to_flow ( ds_1 )**.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

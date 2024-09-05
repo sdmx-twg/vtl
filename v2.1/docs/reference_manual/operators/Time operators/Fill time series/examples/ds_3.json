@@ -1,27 +1,19 @@
 {
-  "datasets": [
-    {
-      "name": "DS_3",
-      "DataStructure": [
-        {
+  "name": "DS_3",
+  "components": [
+      {
           "name": "Id_1",
           "role": "Identifier",
-          "type": "String",
-          "nullable": false
-        },
-        {
+          "data_type": "String"
+      },
+      {
           "name": "Id_2",
           "role": "Identifier",
-          "type": "Time_Period",
-          "nullable": false
-        },
-        {
+          "data_type": "TimePeriod"
+      },
+      {
           "name": "Me_1",
           "role": "Measure",
-          "type": "String",
-          "nullable": true
-        }
-      ]
-    }
-  ]
-}
+          "data_type": "String"
+      }
+  ]}

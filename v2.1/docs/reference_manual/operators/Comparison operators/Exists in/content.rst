@@ -51,7 +51,7 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-*op2* has at least all the identifier components of *op1*.
+*op1* has at least all the identifier components of *op2* or *op2* has at least all the identifier components of *op1*.
 
 ---------
 Behaviour

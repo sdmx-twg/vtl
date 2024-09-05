@@ -1,5 +1,3 @@
-The operator **time_agg** converts *time*, *date* and *time_period* values from a smaller to a larger duration.
-
 ------
 Syntax
 ------
@@ -18,6 +16,17 @@ Input parameters
      - the source period indicator
    * - periodIndTo
      - the target period indicator
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  sum ( DS group all time_agg ( “A” ) )
+  time_agg ( “A”, cast ( “2012Q1”, time_period , ”YYYY\Qq” ) )
+  time_agg(“M”, cast (“2012-12-23”, date, “YYYY-MM-DD”) )
+  time_agg(“M”, DS1)
+  ds_2 := ds_1[calc Me1 := time_agg(“M”,Me1)]
 
 ------------------------------------
 Semantics  for scalar operations
@@ -50,12 +59,15 @@ result ::
 Additional Constraints
 -----------------------------
 If *op* is a Data Set then it has exactly one Identifier of type *time*, *date* or *time_period* and may have other Identifiers.
+
+If time_agg is used in combination with an aggregation operator, op must not be specified.
+
 It is only possible to convert smaller duration values to larger duration values (e.g. it is possible to convert
 *monthly* data to *annual* data but the contrary is not allowed).
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The scalar version of this operator takes as input a *time*, *date* or *time_period* value, converts it to *periodIndTo*
 and returns a scalar of the corresponding type.
@@ -80,10 +92,4 @@ adjusted correspondingly).
 
 The input duration *periodIndFrom* is optional. In case of *time_period* Data Points, the input duration can be
 inferred from the internal representation of the value. In case of *time* or *date* types, it is inferred by the
-implementation. Filters on input time series can be obtained with the **filter** clause.
-
-Some valid examples could be: **sum ( DS group all time_agg ( Me, “A” ) )**,
-**time_agg ( “A”, cast ( “2012Q1”, time_period , ”YYYY\Qq” ) )**,
-**time_agg(“M”, cast (“2012-12-23”, date, “YYYY-MM-DD”) )**,
-**time_agg(“M”, DS1)**,
-**ds_2 := ds1[calc Me1 := time_agg(“M”,Me1)]**.
+implementation.

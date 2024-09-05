@@ -2,9 +2,11 @@
 Syntax
 ------
 
-    **fill_time_series (** op { , limitsMethod } **)**
+**fill_time_series (** op { , limitsMethod_ } **)**
 
-    limitsMethod ::= **single** | **all**
+.. _limitsMethod:
+
+limitsMethod ::= **single** | **all**
 
 ----------------
 Input parameters
@@ -15,6 +17,14 @@ Input parameters
      - the operand
    * - limitsMethod
      - method for determining the limits of the time interval to be filled (default: **all**)
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+  
+  fill_time_series ( ds )
+  fill_time_series ( ds, all )
 
 ------------------------------------
 Semantics  for scalar operations
@@ -40,9 +50,9 @@ Additional Constraints
 -----------------------------
 The operand *op* has an Identifier of type *time*, *date* or *time_period* and may have other Identifiers.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 This operator can be applied only on Data Sets of time series and returns a Data Set of time series.
 

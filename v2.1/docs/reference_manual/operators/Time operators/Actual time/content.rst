@@ -10,6 +10,13 @@ Input parameters
 None.
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    current_date()
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 The operator **current_date** returns the current time as a *date* type.

@@ -15,6 +15,13 @@ Input parameters
      - the number of periods to be shifted
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    timeshift ( DS_1, 2 )
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator does not perform scalar operations.
@@ -61,5 +68,3 @@ The Attribute propagation rule is not applied.
 
 As mentioned in the section “Behaviour of the Time Operators”, the operator is assumed to know which is the
 time Identifier as well as the period of each data point.
-
-Some valid examples could be: **timeshift ( DS_1, 2 )**, **timeshift ( DS_1, 1 )**.

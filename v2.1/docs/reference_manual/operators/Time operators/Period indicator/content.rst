@@ -13,6 +13,14 @@ Input parameters
      - the operand
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+    period_indicator ( ds_1 )
+    period_indicator  // (if used in a clause the operand op can be omitted) 
+
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 **period_indicator** returns the period indicator of a *time_period* value. The period indicator is the part of the
@@ -43,11 +51,9 @@ If *op* is a Data Set then it has exactly one Identifier of type *time_period* a
 If the operator is used in a clause and *op* is omitted, then the Data Set to which the clause is applied has exactly one
 Identifier of type *time_period* and may have other Identifiers.
 
---------
-Behavior
---------
-
-The operator **period_indicator** extracts the period indicator from a *time_period* value.
+---------
+Behaviour
+---------
 
 The operator extracts the period indicator part of the *time_period* value. The period indicator is computed for
 each Data Point. When the operator is used in a clause, it extracts the period indicator from the *time_period*
