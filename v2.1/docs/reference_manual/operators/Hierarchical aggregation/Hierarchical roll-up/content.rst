@@ -2,11 +2,18 @@
 Syntax
 ------
 
-    **hierarchy (** op , hr { **condition** condComp { , condComp }* } { **rule** ruleComp } { mode } { input } { output } )
+    **hierarchy (** op , hr { **condition** condComp { , condComp }* } 
+    { **rule** ruleComp } { mode_ } { input_ } { output_ } )
 
+    .. _mode:
+    
     mode ::= **non_null | non_zero | partial_null | partial_zero | always_null | always_zero**
 
+    .. _input:
+    
     input ::= **dataset | rule | rule_priority**
+
+    .. _output:
 
     output ::= **computed | all**
 
@@ -35,6 +42,15 @@ Input parameters
    * - output
      - | this parameter specifies the content of the resulting Data Set.
        | The meaning of the possible values of the parameter is explained below.
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  hierarchy ( DS1, HR1 rule Id_1 non_null all )
+  hierarchy ( DS2, HR2 condition Comp_1, Comp_2 rule Id_3 non_zero rule computed )
+
 
 ------------------------------------
 Semantics  for scalar operations
@@ -80,9 +96,9 @@ specified all the same if it is desired to show explicitly in the invocation whi
 this case, the *condComp* and *ruleComp* must be the same and in the same order as the Variables specified in in
 the *condition* and *rule* signatures of *hr*.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The **hierarchy** operator applies the rules of *hr* to *op* as specified in the parameters. The operator returns a Data
 Set with the same Identifiers and the same Measure as *op*. The Attribute propagation rule is applied on the
@@ -175,5 +191,3 @@ options of the parameter *output* and the corresponding behaviours are the follo
        | of the following (virtual)expression: **union ( setdiff (op , R) , R )**
 
 If the parameter *output* is not specified then it is assumed to be *computed*.
-
-Some valid examples could be: **hierarchy ( DS1, HR1 rule Id_1 non_null all )** or **hierarchy ( DS2, HR2 condition Comp_1, Comp_2 rule Id_3 non_zero rule computed )**.
