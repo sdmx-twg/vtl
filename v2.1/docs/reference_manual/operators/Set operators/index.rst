@@ -5,4 +5,7 @@ VTL-ML - Set Operators
    :glob:
    :maxdepth: 1
 
-   */index
+   Union/index
+   Intersection/index
+   Set difference/index
+   Symmetric difference/index

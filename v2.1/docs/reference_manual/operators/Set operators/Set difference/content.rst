@@ -15,6 +15,13 @@ Input parameters
      - the second Data Set in the difference (the subtrahend)
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  setdiff (ds2, ds3)
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator cannot be applied to scalar values.
@@ -53,5 +60,3 @@ The operator has the typical behaviour of the “Behaviour of the Set operators�
 behaviours of the ML Operators”).
 
 The automatic Attribute propagation is not applied.
-
-One valid example could be: **setdiff ( ds2, ds3 )**.

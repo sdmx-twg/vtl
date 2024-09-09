@@ -38,9 +38,9 @@ Additional Constraints
 -----------------------------
 The operand Data Sets have the same Identifier, Measure and Attribute Components.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator implements the symmetric set difference between functions (i.e. Data Sets), interpreting the Data
 Points of the input Data Sets as the elements in the operand Sets. The operator returns one Data Set, with the
@@ -57,5 +57,3 @@ The operator has the typical behaviour of the “Behaviour of the Set operators�
 behaviours of the ML Operators”).
 
 The automatic Attribute propagation is not applied.
-
-One valid example could be: **symdiff ( ds2, ds3 )**.

@@ -2,7 +2,9 @@
 Syntax
 ------
 
-    **union (** dsList **)**
+    **union (** dsList_ **)**
+
+    .. _dsList:
 
     dsList ::= ds { , ds }*
 
@@ -14,6 +16,13 @@ Input parameters
    * - dsList
      - the list of Data Sets in the union
 
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  union (ds2, ds3)
+  
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
@@ -38,9 +47,9 @@ Additional Constraints
 -----------------------------
 All the Data Sets in dsList have the same Identifier, Measure and Attribute Components.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The **union** operator implements the union of functions (i.e., Data Sets). The resulting Data Set has the same
 Identifier, Measure and Attribute Components of the operand Data Sets specified in the *dsList*, and contains the
@@ -56,5 +65,3 @@ The operator has the typical behaviour of the “Behaviour of the Set operators�
 behaviours of the ML Operators”).
 
 The automatic Attribute propagation is not applied.
-
-One valid example could be: **union ( ds2, ds3 )**.

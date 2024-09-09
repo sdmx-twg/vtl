@@ -2,7 +2,9 @@
 Syntax
 ------
 
-    **intersect (** dsList **)**
+    **intersect (** dsList_ **)**
+
+    .. _dsList:
 
     dsList ::= ds { , ds }*
 
@@ -13,6 +15,13 @@ Input parameters
 
    * - dsList
      - the list of Data Sets in the intersection
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  intersect (ds2, ds3)
 
 ------------------------------------
 Semantics  for scalar operations
@@ -56,5 +65,3 @@ The operator has the typical behaviour of the “Behaviour of the Set operators�
 behaviours of the ML Operators”).
 
 The automatic Attribute propagation is not applied.
-
-One valid example could be: **intersect ( ds2, ds3 )**.
