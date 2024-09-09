@@ -2,38 +2,40 @@
 Syntax
 ------
 
-**datediff (** dateFrom , dateTo **)**
+{**year** | **month** | **dayofmonth** | **dayofyear**}¹ **(** op **)**
+
 
 ----------------
 Input parameters
 ----------------
 .. list-table::
 
-   * - dateFrom
-     - the starting date/time period
-   * - dateTo
-     - the ending date/time period
+   * - op
+     - the input date/time period
+
 
 ------------------------------------
 Examples of valid syntaxes
 ------------------------------------
 ::
   
-    datediff (2022Q1, 2023Q2)
-    datediff (2020-12-14,2021-04-20)
-    datediff (2021Q2, 2021-11-04)
-    ds2 := ds1[calc Me3 := datediff(Me1, Me2)]
+  year (2022Q1)
+  dayofyear (2020-12-14)
+  ds2 := ds1[calc Me2 := dayofmonth(Me1)]
+
 
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator datediff returns the number of days between two dates or time periods.
-The last day of the time period is assumed as the starting/ending date.
+The operator **year** returns the year of the given date/time period.
+The operator **month** returns the month of the given date/time period (between 1 and 12).
+The operator **dayofmonth** returns the ordinal day within the month (between 1 and 31).
+The operator **dayofyear** returns the ordinal day within the year (between 1 and 366).
 
 -----------------------------
 Input parameters type
 -----------------------------
-dateFrom, dateTo::
+op::
 
     component<time>
     | time
@@ -56,8 +58,8 @@ None.
 Behaviour
 ---------
 
-The scalar version of this operator takes as input two date or time_period values and 
-returns a scalar integer value.
+The scalar version of this operators takes as input one date or time_period value and 
+returns a integer value corresponding to the specified time period.
 
 In the component version, that can be used in a calc clause, a new component of type 
 integer is added to the dataset.

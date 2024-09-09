@@ -41,3 +41,7 @@ For a fully-detailed explanation, please refer to the User Manual.
    Time aggregation/index
    Actual time/index
    Days between two dates/index
+   Add time unit to date/index
+   Extract time period/index
+   Number days to duration/index
+   Duration to number days/index

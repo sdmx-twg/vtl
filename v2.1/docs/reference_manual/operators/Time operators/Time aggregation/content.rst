@@ -60,7 +60,8 @@ Additional Constraints
 -----------------------------
 If *op* is a Data Set then it has exactly one Identifier of type *time*, *date* or *time_period* and may have other Identifiers.
 
-If time_agg is used in combination with an aggregation operator, op must not be specified.
+If time_agg is used in combination with an aggregation operator, op must not be specified, and the source dataset must have exactly 
+one Identifier of type time, date or time_period (it may have additional Identifiers of other types).
 
 It is only possible to convert smaller duration values to larger duration values (e.g. it is possible to convert
 *monthly* data to *annual* data but the contrary is not allowed).
