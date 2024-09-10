@@ -2,17 +2,28 @@
 Syntax
 ------
 
-    *in a Data Set expression:*
+* In a Data Set expression:
 
-    aggregateOperator **(** firstOperand { , additionalOperand }* { groupingClause } **)**
+  aggregateOperator_ **(** firstOperand { , additionalOperand }* { groupingClause } **)**
 
-    *in a Component expression within an aggr clause:*
 
-    aggregateOperator **(** firstOperand { , additionalOperand }* **)** { groupingClause }
+* In a Component expression within an aggr clause:
+
+
+  aggregateOperator_ **(** firstOperand { , additionalOperand }* **)** { groupingClause }
+
+
+    .. _aggregateOperator:
 
     aggregateOperator ::= **avg | count | max | median | min | stddev_pop | stddev_samp | sum | var_pop | var_samp**
 
-    groupingClause ::= { **group by** groupingId {, groupingId}* | **group except** groupingId {, groupingId}* | **group all** conversionExpr }¹ { **having** havingCondition }
+
+    groupingClause ::= 
+      |  { **group by** groupingId {, groupingId}* 
+      |   | **group except** groupingId {, groupingId}* 
+      |   | **group all** conversionExpr }¹ 
+      | { **having** havingCondition }
+
 
 ----------------
 Input parameters
@@ -57,6 +68,18 @@ Input parameters
        | of single Data Points and not to the groups. The count operator is used in a
        | *havingCondition* without parameters, e.g.:
        | *sum ( ds group by id1 having count () >= 10 )* .
+
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  avg ( DS_1 )
+  avg ( DS_1 group by Id_1, Id_2  )
+  avg ( DS_1 group except  Id_1, Id_2  )
+  avg ( DS_1 group all time_agg ( "Q" ) )
+
 
 ------------------------------------
 Semantics  for scalar operations
@@ -116,9 +139,9 @@ operator.
 If the grouping clause is omitted, then all the input Data Points are aggregated in a single group and the clause
 returns a Data Set that contains a single Data Point and has no Identifiers.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The *aggregateOperator* is applied as usual to all the measures of the *firstOperand* Data Set (if invoked at Data
 Set level) or to the *firstOperand* Component of the input Data Set (if invoked at Component level). In both cases,

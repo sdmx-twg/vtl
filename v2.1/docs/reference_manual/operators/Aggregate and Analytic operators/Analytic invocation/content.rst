@@ -2,19 +2,31 @@
 Syntax
 ------
 
-    analyticOperator **(** firstOperand { , additionalOperand }* **over (** analyticClause **) )**
+analyticOperator_ **(** firstOperand { , additionalOperand }* **over (** analyticClause_ **) )**
 
+    .. _analyticOperator:
+    
     analyticOperator ::= **avg | count | max | median | min | stddev_pop | stddev_samp | sum | var_pop | var_samp | first_value | lag | last_value | lead | rank | ratio_to_report**
 
-    analyticClause ::= { partitionClause } { orderClause } { windowClause }
+    .. _analyticClause:
 
-    partitionClause ::= **partition by** identifier { , identifier }*
+    analyticClause ::= { partitionClause_ } { orderClause_ } { windowClause_ }
 
-    orderClause ::= **order by** component { **asc | desc** } { , component { **asc | desc** } }*
+      .. _partitionClause:
 
-    windowClause ::= { **data points | range** }¹ **between** limitClause **and** limitClause
+      partitionClause ::= **partition by** identifier { , identifier }*
 
-    limitClause ::= { num **preceding |** num **following | current data point | unbounded preceding | unbounded following** }¹
+      .. _orderClause:
+      
+      orderClause ::= **order by** component { **asc | desc** } { , component { **asc | desc** } }*
+
+      .. _windowClause:
+      
+      windowClause ::= { **data points | range** }¹ **between** limitClause_ **and** limitClause_
+
+        .. _limitClause:
+      
+        limitClause ::= { num **preceding |** num **following | current data point | unbounded preceding | unbounded following** }¹
 
 ----------------
 Input parameters
@@ -54,14 +66,16 @@ Input parameters
      - | clause that can specify either the lower or the upper boundaries of the sliding
        | window. Each boundary is specified in relationship either to the whole partition
        | or to the current data point under analysis by using the following keywords:
-       | · **unbounded preceding** means that the sliding window starts at the first Data
+
+       | * **unbounded preceding** means that the sliding window starts at the first Data
        | Point of the partition (it make sense only as the first limit of the window)
-       | · **unbounded following** indicates that the sliding window ends at the last Data
+       | *  **unbounded following** indicates that the sliding window ends at the last Data
        | Point of the partition (it makes sense only as the second limit of the window)
-       | · **current data point** specifies that the window starts or ends at the current
+       | * **current data point** specifies that the window starts or ends at the current
        | Data Point.
-       | · *num* **preceding** specifies either the number of **data points** to consider
+       | * *num* **preceding** specifies either the number of **data points** to consider
        | preceding the current data point in the order given by the *orderClause*
+
        | (when **data points** is specified in the window clause), or the maximum difference
        | to consider, as for the Measure which the analytic is applied to, between the value
        | of the current Data Point and the generic other Data Point (when **range** is
@@ -73,13 +87,25 @@ Input parameters
        | Data Point and the current Data Point (when range is specified in the windows
        | clause).
        | If the whole *windowClause* is omitted then the default is **data points between**
-       | **unbounded preceding and current data point**.
+       | **unbounded preceding and unbounded following**.
    * - identifier
      - an Identifier Component of the input Data Set
    * - component
      - a Component of the input Data Set
    * - num
      - a scalar number
+
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  sum ( DS_1 over ( partition by  Id_1  order by  Id_2  ) )
+  sum ( DS_1 over ( order by  Id_2  ) )
+  avg ( DS_1 over ( order by  Id_1  data points between 1 preceding and 1 following ) )
+  DS_1 [ calc M1 := sum ( Me_1 over ( order by  Id_1  ) ) ]
+
 
 ------------------------------------
 Semantics  for scalar operations
@@ -132,9 +158,9 @@ The basic scalar types of *firstOperand* and *additionalOperand* (if any) must b
 scalar types required by the invoked operator (the required basic scalar types are described in the table at the
 beginning of this chapter and in the sections of the various operators below).
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The analytic Operator is applied as usual to all the Measures of the input Data Set (if invoked at Data Set level) or
 to the specified Component of the input Data Set (if invoked at Component level). In both cases, the operator
@@ -142,16 +168,17 @@ calculates the desired output values for each Data Point of the input Data Set.
 
 The behaviour of the analytic operations can be procedurally described as follows:
 
-· The Data Points of the input Data Set are first partitioned (according to *partitionBy*) and then ordered
-(according to *orderBy*).
+* The Data Points of the input Data Set are first partitioned (according to *partitionBy*) and then ordered 
+  (according to *orderBy*).
+* The operation is performed for each Data Point (named “current Data Point”) of the input Data Set. For each
+  input Data Point, one output Data Point is returned, having the same values of the Identifiers. The analytic
+  operator is applied to a “window” which includes a set of Data Points of the input Data Set and returns the
+  values of the Measure(s) of the output Data Point.
 
-· The operation is performed for each Data Point (named “current Data Point”) of the input Data Set. For each
-input Data Point, one output Data Point is returned, having the same values of the Identifiers. The analytic
-operator is applied to a “window” which includes a set of Data Points of the input Data Set and returns the
-values of the Measure(s) of the output Data Point.
-
-    > If *windowClause* is not specified, then the set of Data Points which contribute to the analytic operation is the whole partition which the current Data Point belongs to
-    > If *windowClause* is specified, then the set of Data Points is the one specified by *windowClause* (see *windowsClause* and *LimitClause* explained above).
+  * If *windowClause* is not specified, then the set of Data Points which contribute to the analytic operation is the whole 
+    partition which the current Data Point belongs to
+  * If *windowClause* is specified, then the set of Data Points is the one specified by *windowClause*
+    (see *windowsClause* and *LimitClause* explained above).
 
 For the invocation at Data Set level, the resulting Data Set has the same Measures as the input Data Set
 *firstOperand*. For the invocation at Component level, the resulting Data Set has the Measures of the input Data

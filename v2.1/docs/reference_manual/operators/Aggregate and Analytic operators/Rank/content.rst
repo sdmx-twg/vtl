@@ -2,7 +2,10 @@
 Syntax
 ------
 
-    **rank ( over (** { partitionClause } orderClause **) )** *(in a Component expression within a calc clause)*
+.. list-table::
+
+    * - in a Component expression within a calc clause
+      - **rank ( over (** { partitionClause } orderClause **) )*
 
 ----------------
 Input parameters
@@ -47,9 +50,9 @@ The Aggregate invocation is not allowed.
 
 The *windowClause* of the Analytic invocation syntax is not allowed.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns an order number (rank) for each Data Point, starting from the number 1 and following the order
 specified in the *orderClause*. If some Data Points are in the same order according to the specified *orderClause*, the

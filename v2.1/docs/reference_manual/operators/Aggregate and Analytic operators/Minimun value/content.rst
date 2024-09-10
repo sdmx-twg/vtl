@@ -2,18 +2,24 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **min (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **min (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **min (** dataset { groupingClause } **)** 
+   * - in a Component expression within an aggr clause
+     - **min (** component **)** { groupingClause }  
 
+* Analytic syntax
 
-    *Analytic syntax*
+.. list-table::
 
-        **min (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
+    * - in a Data Set expression
+      - **min (** dataset **over (** analyticClause **) )**
+    * - in a Component expression within a calc clause
+      - **min (** component **over (** analyticClause **) )**
 
-        **min (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
 
 ----------------
 Input parameters
@@ -58,8 +64,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the minimum value of the input values. For other details, see Aggregate and Analytic invocations.

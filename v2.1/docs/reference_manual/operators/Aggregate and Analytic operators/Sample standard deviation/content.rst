@@ -2,18 +2,23 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **stddev_samp (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **stddev_samp (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **stddev_samp (** dataset { groupingClause } **)**
+   * - in a Component expression within an aggr clause
+     - **stddev_samp (** component **)** { groupingClause } 
 
+* Analytic syntax
 
-    *Analytic syntax*
+.. list-table::
 
-        **stddev_samp (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
-
-        **stddev_samp (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
+    * - in a Data Set expression
+      - **stddev_samp (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **stddev_samp (** component **over (** analyticClause **) )**
 
 ----------------
 Input parameters
@@ -58,8 +63,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the “sample standard deviation” of the input values. For other details, see Aggregate and Analytic invocations.

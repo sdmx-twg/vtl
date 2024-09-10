@@ -1,19 +1,24 @@
 ------
 Syntax
 ------
+ 
+* Aggregate syntax
 
-    *Aggregate syntax*
+.. list-table::
 
-        **median (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+   * - in a Data Set expression
+     - **median (** dataset { groupingClause } **)**
+   * - in a Component expression within an aggr clause
+     - **median (** component **)** { groupingClause } 
 
-        **median (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+* Analytic syntax
 
+.. list-table::
 
-    *Analytic syntax*
-
-        **median (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
-
-        **median (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
+    * - in a Data Set expression
+      - **median (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **median (** component **over (** analyticClause **) )**
 
 ----------------
 Input parameters
@@ -58,8 +63,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the median value of the input values. For other details, see Aggregate and Analytic invocations.

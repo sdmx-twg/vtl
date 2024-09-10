@@ -13,4 +13,21 @@ described below and their main characteristics.
    :glob:
    :maxdepth: 1
 
-   */index
+   Aggregate invocation/index
+   Analytic invocation/index
+   Counting the number of data points/index
+   Minimun value/index
+   Maximum value/index
+   Median value/index
+   Sum/index
+   Average value/index
+   Population standard deviation/index
+   Sample standard deviation/index
+   Population variance/index
+   Sample variance/index
+   First value/index
+   Last value/index
+   Lag/index
+   Lead/index
+   Rank/index
+   Ratio to report/index

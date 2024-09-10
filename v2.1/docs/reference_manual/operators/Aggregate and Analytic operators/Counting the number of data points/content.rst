@@ -2,20 +2,26 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **count (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **count (** component **)** { groupingClause }          *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **count (** dataset { groupingClause } **)** 
+   * - in a Component expression within an aggr clause
+     - **count (** component **)** { groupingClause } 
+   * - in a Data Set expression
+     -  **count ( )** 
 
-        **count ( )**                                       *(in an having clause)*
+* Analytic syntax
 
+.. list-table::
 
-    *Analytic syntax*
+    * - in a Data Set expression
+      - **count (** dataset **over(** analyticClause **) )**
+    * - in a Component expression within a calc clause
+      - **count (** component **over(** analyticClause **) )**
 
-        **count (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
-
-        **count (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
 
 ----------------
 Input parameters
@@ -60,8 +66,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the number of the input Data Points. For other details, see Aggregate and Analytic invocations.

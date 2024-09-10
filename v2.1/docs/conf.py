@@ -17,12 +17,16 @@ extensions = [
     "sphinxcontrib.mermaid",
     "sphinxcontrib.plantuml",
     "rst2pdf.pdfbuilder",
-    "sphinx_toolbox.collapse",
+    "sphinx_toolbox.collapse"
 ]
 pdf_documents = [
     ("index", f"VTL_{VERSION}_DOCS", f"VTL {VERSION} DOCS", "SDMX-TWG"),
 ]
-exclude_patterns = ["*intro.rst", "pandocTranslation*"]
+exclude_patterns = [
+    "*intro.rst",
+    "pandocTranslation*",]
+
+
 html_theme_options = {
     "navigation_depth": 5,
     "collapse_navigation": False,
@@ -34,6 +38,7 @@ html_context = {
     "github_version": "master",  # Version
     "conf_py_path": f"/v{VERSION}/docs/",  # Path in the checkout to the docs root
 }
+
 
 # Load templates
 jinjaEnv = Environment(loader=FileSystemLoader(searchpath="templates"))

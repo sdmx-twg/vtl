@@ -2,18 +2,23 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **max (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **max (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **max (** dataset { groupingClause } **)**
+   * - in a Component expression within an aggr clause
+     - **max (** component **)** { groupingClause }   
 
+* Analytic syntax
 
-    *Analytic syntax*
+.. list-table::
 
-        **max (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
-
-        **max (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
+    * - in a Data Set expression
+      - **max (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **max (** component **over (** analyticClause **) )**
 
 ----------------
 Input parameters
@@ -58,8 +63,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the maximum of the input values. For other details, see Aggregate and Analytic invocations.

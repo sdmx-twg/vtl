@@ -1,33 +1,24 @@
 {
-  "datasets": [
-    {
-      "name": "DS_r",
-      "DataStructure": [
-        {
+  "name": "DS_3",
+  "components": [
+      {
           "name": "Id_1",
           "role": "Identifier",
-          "type": "Integer",
-          "nullable": false
-        },
-        {
+          "data_type": "TimePeriod"
+      },
+      {
           "name": "Me_2",
           "role": "Measure",
-          "type": "Integer",
-          "nullable": true
-        },
-        {
+          "data_type": "Integer"
+      },
+      {
           "name": "Me_3",
           "role": "Measure",
-          "type": "Integer",
-          "nullable": true
-        },
-        {
+          "data_type": "Integer"
+      },
+      {
           "name": "At_1",
-          "role": "Attribute",
-          "type": "String",
-          "nullable": true
-        }
-      ]
-    }
-  ]
-}
+          "role": "ViralAttribute",
+          "data_type": "String"
+      }
+  ]}

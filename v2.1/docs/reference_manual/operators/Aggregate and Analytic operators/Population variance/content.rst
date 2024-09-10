@@ -2,18 +2,24 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **var_pop (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **var_pop (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **var_pop (** dataset { groupingClause } **)**
+   * - in a Component expression within an aggr clause
+     - **var_pop (** component **)** { groupingClause } 
 
+* Analytic syntax
 
-    *Analytic syntax*
+.. list-table::
 
-        **var_pop (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
+    * - in a Data Set expression
+      - **var_pop (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **var_pop (** component **over (** analyticClause **) )**
 
-        **var_pop (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
 
 ----------------
 Input parameters
@@ -58,8 +64,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the “population variance” of the input values. For other details, see Aggregate and Analytic invocations.

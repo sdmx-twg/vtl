@@ -1,21 +1,14 @@
 {
-  "datasets": [
-    {
-      "name": "DS_r",
-      "DataStructure": [
-        {
+  "name": "DS_r",
+  "components": [
+      {
           "name": "Id_1",
           "role": "Identifier",
-          "type": "Integer",
-          "nullable": false
-        },
-        {
+          "data_type": "TimePeriod"
+      },
+      {
           "name": "Me_1",
           "role": "Measure",
-          "type": "Number",
-          "nullable": true
-        }
-      ]
-    }
-  ]
-}
+          "data_type": "Number"
+      }
+  ]}

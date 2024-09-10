@@ -2,18 +2,23 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **sum (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **sum (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **sum (** dataset { groupingClause } **)**
+   * - in a Component expression within an aggr clause
+     - **sum (** component **)** { groupingClause } 
 
+* Analytic syntax
 
-    *Analytic syntax*
+.. list-table::
 
-        **sum (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
-
-        **sum (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
+    * - in a Data Set expression
+      - **sum (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **sum (** component **over (** analyticClause **) )**
 
 ----------------
 Input parameters
@@ -58,8 +63,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the sum of the input values. For other details, see Aggregate and Analytic invocations.

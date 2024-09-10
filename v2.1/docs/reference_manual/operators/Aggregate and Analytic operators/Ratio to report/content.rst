@@ -2,9 +2,12 @@
 Syntax
 ------
 
-    **ratio_to_report (** dataset **over (** partitionClause **) )** *(in a Data Set expression)*
+.. list-table::
 
-    **ratio_to_report (** component **over (** partitionClause **) )** *(in a Component expr. within a calc clause)*
+    * - in a Data Set expression
+      - **ratio_to_report (** dataset **over (** partitionClause **) )**
+    * - in a Component expression within a calc clause
+      - **ratio_to_report (** component **over (** partitionClause **) )**
 
 ----------------
 Input parameters
@@ -49,9 +52,9 @@ The Aggregate invocation is not allowed.
 
 The *orderClause* and *windowClause* of the Analytic invocation syntax are not allowed.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the ratio between the value of the current Data Point and the sum of the values of the
 partition which the current Data Point belongs to.

@@ -2,13 +2,12 @@
 Syntax
 ------
 
-    *In a Data Set expression:*
+.. list-table::
 
-        **lead (** dataset {, offset {, *defaultValue* } } **over (** { partitionClause } orderClause **) )**
-
-    *In a Component expression within a calc clause:*
-
-        **lead (** component {, offset {, *defaultValue* } } **over (** { partitionClause } orderClause **) )**
+    * - in a Data Set expression
+      - **lead (** dataset {, offset {, defaultValue } } **over (** { partitionClause } orderClause **) )**
+    * - in a Component expression within a calc clause
+      - **lead (** component {, offset {, defaultValue } } **over (** { partitionClause } orderClause **) )**
 
 ----------------
 Input parameters
@@ -67,9 +66,9 @@ The Aggregate invocation is not allowed.
 
 The *windowClause* of the Analytic invocation syntax is not allowed.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 In the ordered set of Data Points of the current partition, the operator returns the value(s) taken from the Data
 Point at the specified physical *offset* beyond the current Data Point.

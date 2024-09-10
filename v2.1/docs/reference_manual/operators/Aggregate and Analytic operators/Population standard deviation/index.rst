@@ -1,5 +1,5 @@
 =============================================================================================
-Population standard deviation
+Population standard deviation: `stddev_pop`
 =============================================================================================
 .. include:: ./content.rst
 .. include:: ./examples.rst

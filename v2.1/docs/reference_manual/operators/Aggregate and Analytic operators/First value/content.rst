@@ -2,9 +2,12 @@
 Syntax
 ------
 
-    **first_value (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
+.. list-table::
 
-    **first_value(** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
+    * - in a Data Set expression
+      - **first_value (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **first_value (** component **over (** analyticClause **) )**
 
 ----------------
 Input parameters
@@ -47,9 +50,9 @@ Additional Constraints
 -----------------------------
 The Aggregate invocation is not allowed.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the first value (in the value order) of the set of Data Points that belong to the same analytic window as the current Data Point.
 

@@ -2,18 +2,23 @@
 Syntax
 ------
 
-    *Aggregate syntax*
+* Aggregate syntax
 
-        **avg (** dataset { groupingClause } **)**            *(in a Data Set expression)*
+.. list-table::
 
-        **avg (** component **)** { groupingClause }        *(in a Component expression within an aggr clause)*
+   * - in a Data Set expression
+     - **avg (** dataset { groupingClause } **)**
+   * - in a Component expression within an aggr clause
+     - **avg (** component **)** { groupingClause } 
 
+* Analytic syntax
 
-    *Analytic syntax*
+.. list-table::
 
-        **avg (** dataset **over (** analyticClause **) )**       *(in a Data Set expression)*
-
-        **avg (** component **over (** analyticClause **) )**     *(in a Component expression within a calc clause)*
+    * - in a Data Set expression
+      - **avg (** dataset **over (** analyticClause **) )** 
+    * - in a Component expression within a calc clause
+      - **avg (** component **over (** analyticClause **) )**
 
 ----------------
 Input parameters
@@ -58,8 +63,8 @@ Additional Constraints
 -----------------------------
 None.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns the average of the input values. For other details, see Aggregate and Analytic invocations.
