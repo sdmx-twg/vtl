@@ -7,4 +7,4 @@ VTL-ML - Data Validation Operators
 
    Check datapoint/index
    Check hierarchy/index
-   check/index
+   Check/index
