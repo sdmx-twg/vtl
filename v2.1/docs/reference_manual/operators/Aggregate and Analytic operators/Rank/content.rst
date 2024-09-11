@@ -5,7 +5,7 @@ Syntax
 .. list-table::
 
     * - in a Component expression within a calc clause
-      - **rank ( over (** { partitionClause } orderClause **) )*
+      - **rank ( over (** { partitionClause } orderClause **) )**
 
 ----------------
 Input parameters

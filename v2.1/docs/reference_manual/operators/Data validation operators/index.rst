@@ -5,4 +5,6 @@ VTL-ML - Data Validation Operators
    :glob:
    :maxdepth: 1
 
-   */index
+   Check datapoint/index
+   Check hierarchy/index
+   check/index

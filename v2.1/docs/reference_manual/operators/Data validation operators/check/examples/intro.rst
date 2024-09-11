@@ -1,1 +1,0 @@
-Given the Data Sets DS_1 and DS_2:
