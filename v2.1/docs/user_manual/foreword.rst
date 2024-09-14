@@ -75,22 +75,22 @@ important new features that have been introduced in this version in
 respect to the VTL 1.0, it was agreed that the current VTL version
 should be considered as a major one and thus named VTL 2.0.
 
-:mark:`The VTL 2.0 package contains the general VTL specifications,
-independently of the possible implementations of other standards; in its
-final release, it will include:`
+The VTL 2.1 package contains the general VTL specifications,
+independently of the possible implementations of other standards; it includes:
 
-a) :mark:`Part 1 – the user manual, highlighting the main
+a) The User Manual, highlighting the main
    characteristics of VTL, its core assumptions and the information
-   model the language is based on;`
+   model the language is based on;
 
-b) :mark:`Part 2 – the reference manual, containing the full library of
-   operators ordered by category, including examples; this version will
-   support more validation and compilation needs compared to VTL 1.0.`
+b) The Reference Manual, containing the full library of operators ordered 
+   by category, including examples;
 
-c) :mark:`eBNF notation (extended Backus-Naur Form) which is the
-   technical notation to be used as a test bed for all the examples.`
+c) eBNF notation (extended Backus-Naur Form) which is the
+   technical notation to be used as a test bed for all the examples.
 
-:mark:`The present document is the part 1.`
+d) A Technical Notes document, containing some guidelines for VTL implementation.
+
+The present document is the part 1.
 
 The latest version of VTL is freely available online at
 https://sdmx.org/?page_id=5096

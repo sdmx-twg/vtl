@@ -479,7 +479,6 @@ let us consider the following table:
 
    *Production of the American Countries*
 
-.. table:: Production of the American Countries
 
 +--------------+-------------+---------------+----------------+-------------+
 | **Ref.Date** | **Country** | **Meas.Name** | **Meas.Value** | **Status**  |
