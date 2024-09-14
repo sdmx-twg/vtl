@@ -5,4 +5,6 @@ VTL-ML - Conditional Operators
    :glob:
    :maxdepth: 1
 
-   */index
+   if-then-else/index
+   Case/index
+   Nvl/index
