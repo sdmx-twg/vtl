@@ -15,6 +15,15 @@ Input parameters
      - the filter condition
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    DS_1 [ filter Me_3 > 0 ]
+    DS_1 [ filter  Me_3 + Me_2 <= 0 ]
+
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator cannot be applied to scalar values.

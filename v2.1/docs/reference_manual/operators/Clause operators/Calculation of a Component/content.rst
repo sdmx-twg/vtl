@@ -2,8 +2,10 @@
 Syntax
 ------
 
-    op **[ calc** { calcRole } calcComp := calcExpr { , { calcRole } calcComp := calcExpr }* **]**
+    op **[ calc** { calcRole } calcComp := calcExpr { , { calcRole_ } calcComp := calcExpr }* **]**
 
+        .. _calcRole:
+        
         calcRole ::= **identifier | measure | attribute | viral attribute**
 
 ----------------
@@ -20,6 +22,13 @@ Input parameters
    * - calcExpr
      - | expression at component level, having only Components of the
        | input Data Sets as operands, used to calculate a Component
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  DS_1 [ calc Me_3 := Me_1 + Me_2 ]
 
 ------------------------------------
 Semantics  for scalar operations

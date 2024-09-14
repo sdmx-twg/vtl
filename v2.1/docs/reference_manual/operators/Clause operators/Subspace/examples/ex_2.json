@@ -1,21 +1,14 @@
 {
-  "datasets": [
-    {
-      "name": "DS_r",
-      "DataStructure": [
-        {
-          "name": "At_1",
-          "role": "Attribute",
-          "type": "String",
-          "nullable": true
-        },
-        {
+  "name": "DS_r",
+  "components": [
+      {
           "name": "Me_1",
           "role": "Measure",
-          "type": "Integer",
-          "nullable": true
-        }
-      ]
-    }
-  ]
-}
+          "data_type": "Integer"
+      },
+      {
+          "name": "At_1",
+          "role": "Attribute",
+          "data_type": "String"
+      }
+  ]}

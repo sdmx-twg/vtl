@@ -2,12 +2,20 @@
 Syntax
 ------
 
-    op **[ aggr** aggrClause { groupingClause } **]**
+    op **[ aggr** aggrClause_ { groupingClause } **]**
 
-        aggrClause ::= { aggrRole } aggrComp := aggrExpr { , { aggrRole } aggrComp:= aggrExpr }*
+        .. _aggrClause:
+        
+        aggrClause ::= { aggrRole_ } aggrComp := aggrExpr { , { aggrRole_ } aggrComp:= aggrExpr }*
 
-        groupingClause ::= { **group by** groupingId {, groupingId }* | **group except** groupingId {, groupingId }* | **group all** conversionExpr }¹ { **having** havingCondition }
+                
+        groupingClause ::= { **group by** groupingId {, groupingId }* 
+                          | | **group except** groupingId {, groupingId }* 
+                          | | **group all** conversionExpr }¹ 
+                          | { **having** havingCondition }
 
+        .. _aggrRole:
+        
         aggrRole ::= **measure | attribute | viral attribute**
 
 ----------------
@@ -42,6 +50,9 @@ Input parameters
        |    · **group all**: converts the values of an Identifier Component using *conversionExpr*
        |    and keeps all the resulting Identifiers.
    * - groupingId
+     - | Identifier Component to be kept (in the **group by** clause) or dropped 
+       | (in the **group except** clause).
+   * - conversionExpr
      - | specifies a conversion operator (e.g., **time_agg**) to convert an Identifier
        | from finer to coarser granularity. The conversion operator is applied on an
        | Identifier of the operand Data Set *op*.
@@ -58,6 +69,16 @@ Input parameters
        | refers to the values of the single Data Points and not to the groups.
        | The **count** operator is used in a *havingCondition* without parameters, e.g.:
        |    *sum (DS_1 group by id1 having count ( ) >= 10 )*
+
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  DS_1 [ aggr M1 := min ( Me_1 ) group by  Id_1, Id_2  ]
+  DS_1 [ aggr M1 := min ( Me_1 ) group except  Id_1, Id_2 ]
+
 
 ------------------------------------
 Semantics  for scalar operations
@@ -108,9 +129,9 @@ All the components used in *aggrExpr* must belong to the operand Data Set *op*.
 The *conversionExpr* parameter applies just one conversion operator to just one Identifier belonging to the input
 Data Set. The basic scalar type of the Identifier must be compatible with the basic scalar type of the conversion operator.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator **aggr** calculates aggregations of dependent Components (Measures or Attributes) on the basis of
 sub-expressions at Component level. Each Component is calculated through an independent sub-expression. It is

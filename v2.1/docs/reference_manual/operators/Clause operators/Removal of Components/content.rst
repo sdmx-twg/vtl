@@ -15,6 +15,13 @@ Input parameters
      - a Component to drop
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    DS_1 [ drop Me_2, Me_3 ]
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator cannot be applied to scalar values.
@@ -44,9 +51,9 @@ All the Components *comp* must belong to the input Data Set *op*.
 
 The Components *comp* cannot be Identifiers in *op*.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator takes as input a Data Set (*op*) and some Component names of such a Data Set (*comp*). These
 Components can be Measures or Attributes of *op* but not Identifiers. The operator drops the specified

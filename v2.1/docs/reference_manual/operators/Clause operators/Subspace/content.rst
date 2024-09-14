@@ -17,6 +17,13 @@ Input parameters
      - valid value for *identifier*
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+    DS_r := DS_1 [sub Id_2 = "A", Id_5 = 1 ]
+    
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator cannot be applied to scalar values.
@@ -52,17 +59,16 @@ Each Identifier Component can be specified only once.
 
 The specified *value* must be an allowed value for *identifier*.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator returns a Data Set in a subspace of the one of the input Dataset. Its behaviour can be procedurally described as follows:
 
-    1. It creates a virtual Data Set VDS as a copy of *op*
-
-    2. It maintains the Data Points of VDS for which *identifier = value* (for all the specified *identifier*) and eliminates all the Data Points for which *identifier <> value* (even for only one specified *identifier*)
-
-    3. It projects out (“drops”, in VTL terms) all the *identifier* (s)
+1. It creates a virtual Data Set VDS as a copy of *op*
+2. It maintains the Data Points of VDS for which *identifier = value* (for all the specified *identifier*) and eliminates 
+   all the Data Points for which *identifier <> value* (even for only one specified *identifier*)
+3. It projects out (“drops”, in VTL terms) all the *identifier* (s)
 
 The result of the last step is the output of the operation.
 

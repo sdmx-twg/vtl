@@ -17,6 +17,13 @@ Input parameters
      - the new name of the Component after the renaming
 
 ------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  DS_1 [ rename Me_2 to Me_3 ]
+
+------------------------------------
 Semantics  for scalar operations
 ------------------------------------
 This operator cannot be applied to scalar values.
@@ -52,9 +59,9 @@ on the same Value Domain and the same Value Domain Subset.
 The components used in *dsc_from* must belong to the input Data Set and the component used in the *dsc_to*
 cannot have the same names as other Components of the result Data Set.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The operator assigns new names to one or more Components (Identifier, Measure or Attribute Components).
 The resulting Data Set, after renaming the specified Components, must have unique names of all its Components
