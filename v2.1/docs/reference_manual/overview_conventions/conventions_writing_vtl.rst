@@ -7,10 +7,9 @@ conventions apply.
 
 **Transformations:**
 
--  A Transformation can be written in one or more lines, therefore the
+*  A Transformation can be written in one or more lines, therefore the
    end of a line does not denote the end of a Transformation.
-
--  The end of a Transformation is denoted by a semicolon (;).
+*  The end of a Transformation is denoted by a semicolon (;).
 
 **Comments:**
 
@@ -20,7 +19,7 @@ syntaxes.
 -  A multi-line comment is embedded between /\* and \*/ and, obviously,
    can span over several lines:
 
-..
+::
 
    /\* multi-line
    comment text \*/
@@ -28,7 +27,7 @@ syntaxes.
 -  A single-line comment follows the symbol // up to the next end of
    line:
 
-..
+::
 
    // text of a comment on a single line
 
@@ -44,8 +43,8 @@ Examples of valid comments:
 
    *Example 1:* ::
 
-        /\* this is a multi-line
-        Comment \*/
+        \* this is a multi-line
+        Comment */
 
    *Example 2:* ::
 

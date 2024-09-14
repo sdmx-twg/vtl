@@ -10,16 +10,14 @@ the evaluation of an expression to an Artefact of the IM. The operands
 of the expression are IM Artefacts as well. A Transformation is made of
 the following components:
 
--  A left-hand side, which specifies the Artefact which the outcome of
+*  A left-hand side, which specifies the Artefact which the outcome of
    the expression is assigned to (this is the result of the
    Transformation);
-
--  An assignment operator, which specifies also the persistency of the
+*  An assignment operator, which specifies also the persistency of the
    left hand side. The assignment operators are two, the first one for
    the persistent assignment (**<-**) and the other one for the
    non-persistent assignment (**:=**).
-
--  A right-hand side, which is the expression to be evaluated, whose
+*  A right-hand side, which is the expression to be evaluated, whose
    inputs are the operands of the Transformation. An expression consists
    in the invocation of VTL Operators in a certain order. When an
    Operator is invoked, for each input Parameter, an actual argument
@@ -30,10 +28,10 @@ the following components:
    results in an expression are non-persistent.
 
 Examples of Transformations are:
+::
 
-   DS_np **:=** **(** DS_1 **-** DS_2 **)** **\*** 2 ;
-
-   DS_p **<-** **if** DS_np **>=** 0 **then** DS_np **else** DS_1 ;
+   DS_np := (DS_1 - DS_2 ) * 2;
+   DS_p <- if DS_np >= 0 then DS_np else DS_1;
 
 (DS_1 and DS_2 are input Data Sets, DS_np is a non persistent result,
 DS_p is a persistent result, the invoked operators (apart the mentioned
@@ -70,10 +68,12 @@ performed in the same order as they are written, because the order of
 execution depends on their input-output relationships (a Transformation
 which calculates a result that is operand of other Transformations must
 be executed first). For example, if the two Transformations of the
+example above were written in the reverse order:
+::
 
-   (i) DS_p <- if DS_np >= 0 then DS_np else DS_1 ;
+   (i) DS_p <- if DS_np >= 0 then DS_np else DS_1;
+   (ii) DS_np := (DS_1 - DS_2 ) * 2;
 
-   (ii) DS_np := ( DS_1 - DS_2 ) \* 2 ;
 
 All the same the Transformation (ii) would be executed first, because it
 calculates the Data Set DS_np which is an operand of the Transformation
@@ -82,5 +82,3 @@ calculates the Data Set DS_np which is an operand of the Transformation
 When Transformations are written in sequence, a semicolon (;) is used to
 denote the end of a Transformation and the beginning of the following
 one.
-
-

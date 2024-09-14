@@ -60,5 +60,6 @@ the following table.
 |             | xor             | Logical XOR             |                |
 +-------------+-----------------+-------------------------+----------------+
 | X           | if-then-else    | Conditional             | None           |
-|             | case            | (if-then-else/case)     |                |
+|             |                 | (if-then-else/case)     |                | 
+|             | case            |                         |                |
 +-------------+-----------------+-------------------------+----------------+

@@ -53,7 +53,7 @@ optional, alternative or repeated parts.
 In the simple cases, the optional parts are denoted by using the
 *italic* face, for example:
 
-        **substr (** op\ **,** *start\ *\ **,** *length* **)**
+        **substr (** op **,** *start* **,** *length* **)**
 
 The expression above implies that in the **substr** operator the start
 and length operands are optional. In the invocation, a non-specified
@@ -76,57 +76,48 @@ a vertical bar (or sometimes named “pipe”) within braces denotes
 possible alternatives; an optional trailing number, following the
 braces, specifies the number of possible repetitions.
 
--  non-optional : non-optional sub-expression (text without braces)
-
--  {optional} : optional sub-expression (zero or 1 occurrence)
-
--  {non-optional}\ :sup:`1` : non-optional sub-expression (just 1
+*  non-optional : non-optional sub-expression (text without braces)
+*  {optional} : optional sub-expression (zero or 1 occurrence)
+*  {non-optional}\ :sup:`1` : non-optional sub-expression (just 1
    occurrence)
-
--  {one-or-more}+ : sub-expression repeatable from 1 to many occurrences
-
--  {zero-or-more}\* : sub-expression repeatable from 0 to many
+*  {one-or-more}+ : sub-expression repeatable from 1 to many occurrences
+*  {zero-or-more}\* : sub-expression repeatable from 0 to many
    occurrences
-
--  { part1 \| part2 \| part3 } : optional alternative sub-expressions
+*  { part1 \| part2 \| part3 } : optional alternative sub-expressions
    (zero or 1 occurrence)
-
--  { part1 \| part2 \| part3 }\ :sup:`1` : alternative sub-expressions
+*  { part1 \| part2 \| part3 }\ :sup:`1` : alternative sub-expressions
    (just 1 occurrence)
-
--  { part1 \| part2 \| part3 }+: alternative sub-expressions, from 1 to
+*  { part1 \| part2 \| part3 }+: alternative sub-expressions, from 1 to
    many occurrences
-
--  { part1 \| part2 \| part3 }\* : alternative sub-expressions, from 0
+*  { part1 \| part2 \| part3 }\* : alternative sub-expressions, from 0
    to many occurrences
 
 Moreover, to improve the readability, some sub-expressions (the
 underlined ones) can be referenced by their names and separately
 defined, for example a meta-expression can take the following form:
 
-   sub-expr\ :sub:`1`-text *sub-expr\ 2-name* … *sub-expr\ N-1-name*
-   sub-expr\ :sub:`N`-text
+   sub-expr1-text sub-expr2-name_ … sub-exprN-1-name_  sub-exprN-text
 
-        *sub-expr\ 2-name* ::= sub-expr\ :sub:`2`-text
+        .. _sub-expr2-name:
+        
+        sub-expr2-name ::= sub-expr2-text
 
         ... possible others ...
 
-        *sub-expr\ N-1-name* ::= sub-expr\ :sub:`N-1`-text
+        .. _sub-exprN-1-name:
+
+        sub-exprN-1-name ::= sub-exprN-1-text
 
 In this representation of a meta-expression:
 
--  The first line is the text of the meta-expression
-
--  sub-expr\ :sub:`1`-text, sub-expr\ :sub:`N`-text are sub-expressions
+*  The first line is the text of the meta-expression
+*  sub-expr\ :sub:`1`-text, sub-expr\ :sub:`N`-text are sub-expressions
    directly written in the meta-expression
-
--  *sub-expr\ 2-name*, … *sub-expr\ N-1-name* are identifiers of
+*  *sub-expr\ 2-name*, … *sub-expr\ N-1-name* are identifiers of
    sub-expressions.
-
--  sub-expr\ :sub:`2`-text, … sub-expr\ :sub:`N-1`-text are
+*  sub-expr\ :sub:`2`-text, … sub-expr\ :sub:`N-1`-text are
    subexpression written separately from the meta-expression.
-
--  The symbol **::=** means “is defined as” and denotes the assignment
+*  The symbol **::=** means “is defined as” and denotes the assignment
    of a sub-expression-text to a sub-expression-name.
 
 The following example shows the definition of the syntax of the
@@ -138,14 +129,11 @@ a string:
 
 The meta-expression above synthesizes that:
 
--  **trim**, **ltrim**, **rtrim** are the operators’ symbols (reserved
+*  **trim**, **ltrim**, **rtrim** are the operators’ symbols (reserved
    keywords);
-
--  **(**, **)** are symbols of the operators syntax (reserved keywords);
-
--  op is the only operand of the three operators;
-
--  “{ }\ :sup:`1”` and **“**\ \|” are symbols of the meta-syntax; in
+*  **(**, **)** are symbols of the operators syntax (reserved keywords);
+*  op is the only operand of the three operators;
+*  “{ }\ :sup:`1”` and **“**\ \|” are symbols of the meta-syntax; in
    particular “\|” indicates that the three operators are alternative (a
    single invocation can contain only one of them) and “{ }\ :sup:`1”`
    indicates that a single invocation contains just one of the shown
@@ -153,9 +141,9 @@ The meta-expression above synthesizes that:
 
 From this template, it is possible to infer some valid possible
 invocations of the operators:
-
+::
+  
         ltrim ( DS_2 )
-
         rtrim ( DS_3 )
 
 In these invocations, **ltrim** and **rtrim** are the symbols of the
