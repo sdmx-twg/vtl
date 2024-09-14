@@ -1,93 +1,115 @@
+#########################################
 VTL-DL – User Defined Operators 
-================================
+#########################################
 
+---------------
 define operator
 ---------------
 
-*Syntax*
+Syntax
+------
 
-**define operator** operator_name **(** { *parameter* { **,**
-*parameter* }\* } **)
-**\ {**returns** outputType } **is** operatorBody
+**define operator** operator_name **(** { parameter_ { **,** parameter_ }\* } **)
+|    **\ {**returns** outputType } **is** operatorBody
+| **end define operator**
 
-**end define operator**
+.. _parameter:
 
-*parameter*::= parameterName parameterType { **default**
-parameterDefaultValue }
+*parameter*::= parameterName parameterType { **default** parameterDefaultValue }
 
-*Syntax description*
 
-operator_name the name of the operator
+Syntax description
+------------------
 
-*parameter* the names of parameters, their data types and defaultvalues
+.. list-table:: 
 
-outputType the data type of the artefact returned by the operator
+   * - operator_name
+     - the name of the operator
+   * - parameter
+     - the names of parameters, their data types and defaultvalues
+   * - outputType
+     - the data type of the artefact returned by the operator
+   * - operatorBody
+     - the expression which defines the operation
+   * - parameterName
+     - the name of the parameter
+   * - parameterType
+     - the data type of the parameter
+   * - parameterDefaultValue
+     - the default value for the parameter (optional)
 
-operatorBody the expression which defines the operation
+Input parameters type
+---------------------
 
-parameterName the name of the parameter
+operator_name::
+   
+   name
 
-parameterType the data type of the parameter
+outputType::
 
-parameterDefaultValue the default value for the parameter (optional)
+   a VTL data type (see the Data Type Syntax below)
 
-*Parameters*
+operatorBody::
+   
+   a VTL expression having the parameters (i.e., parameterName) as the operands
 
-operator_name name
+parameterName::
+   
+    name
 
-outputType a VTL data type (see the Data Type Syntax below)
+parameterType::
+   
+   a VTL data type (see the Data Type Syntax below)
 
-operatorBody a VTL expression having the parameters (i.e.,
-parameterName) as the operands
+parameterDefaultValue::
+   
+   a Value of the same type as the parameter
 
-parameterName name
 
-parameterType a VTL data type (see the Data Type Syntax below)
+Constraints
+-----------
 
-parameterDefaultValue a Value of the same type as the parameter
-
-*Constraints*
-
--  Each parameterName must be unique within the list of parameters
-
--  parameterDefaultValue must be of the same data type as the
+*  Each parameterName must be unique within the list of parameters
+*  parameterDefaultValue must be of the same data type as the
    corresponding parameter
-
--  if outputType is specified then the type of operatorBody must be
+*  if outputType is specified then the type of operatorBody must be
    compatible with outputType
-
--  If outputType is omitted then the type returned by the operatorBody
+*  If outputType is omitted then the type returned by the operatorBody
    expression is assumed
+*  If parameterDefaultValue is specified then the parameter is optional
 
--  If parameterDefaultValue is specified then the parameter is optional
 
-*Semantic specification*
+Semantic specification
+----------------------
 
 This operator defines a user-defined Operator by means of a VTL
 expression, specifying also the parameters, their data types, whether
 they are mandatory or optional and their (possible) default values.
 
-*Examples*
+Examples
+--------
 
 *Example 1:*
+::
 
    define operator max1 (x integer, y integer)
+      returns boolean is
 
-   returns boolean is
-
-   if x > y then x else y
+         if x > y then x else y
 
    end operator
 
 *Example 2:*
 
-   | define operator add (x integer default 0, y integer default 0)
-   | returns number is
+::
 
-   x+y
+   define operator add (x integer default 0, y integer default 0)
+      returns number is
 
+         x+y
    end operator
 
+----------------
 Data type syntax
 ----------------
 
@@ -106,67 +128,71 @@ these definitions, see the section VTL Data Types in the User Manual).
 See also the section “Conventions for describing the operators’ syntax”
 in the chapter “Overview of the language and conventions” above.
 
-*dataType* ::= *scalarType* \| *scalarSetType* \| *componentType* \|
-*datasetType* \| *operatorType* \|
+dataType ::= scalarType_ | scalarSetType_ | componentType_ | datasetType_ | operatorType_ | rulesetType_
 
-*rulesetType*
+.. _scalarType:
 
-*scalarType* ::= { *basicScalarType* \| valueDomainName \| setName
-}\ :sup:`1` { *scalarTypeConstraint* } **{ { not } null }**
+scalarType ::= { basicScalarType_| valueDomainName | setName }\ :sup:`1` { scalarTypeConstraint_ } **{ { not } null }**
 
-*basicScalarType* ::= **scalar \| number** \| **integer** \| **string**
-\| **boolean** \| **time** \| **date** \|
+.. _basicScalarType:
 
-**time_period** \| **duration**
+basicScalarType ::= **scalar** | **number** | **integer** | **string** | **boolean** | **time** | **date** | **time_period** | **duration**
 
-*scalarTypeConstraint* ::=\ **[** valueBooleanCondition **]** \| **{**
-scalarLiteral { , scalarLiteral }\* **}**
+.. _scalarTypeConstraint:
 
-*scalarSetType* ::= **set** { **<** *scalarType* **>** }
+scalarTypeConstraint ::= **[** valueBooleanCondition **]**\| **{** scalarLiteral { , scalarLiteral }\* **}**
 
-*componentType* ::= *componentRole* { **<** *scalarType* **>** }
+.. _scalarSetType:
 
-*componentRole* ::= **component \| identifier \| measure \| attribute \|
-viral attribute**
+scalarSetType ::= **set** { **<** scalarType_ **>** }
 
-*datasetType* ::= **dataset** { **{** *componentConstraint* { **,**
-*componentConstraint*  }\ :sup:`\*` **}** }
+.. _componentType:
 
-*componentConstraint* ::= *componentType* { componentName \|
-*multiplicityModifier* }\ :sup:`1`
+componentType ::= componentRole_ { **<** scalarType_ **>** }
 
-*multiplicityModifier* ::= **\_** { **+** \| **\*** }
+.. _componentRole:
 
-*operatorType ::=* *inputParameterType* { \* *inputParameterType }\* }
--> outputParameterType*
+componentRole ::= **component** | **identifier** | **measure** | **attribute** | **viral attribute**
 
-*inputParameterType* ::= *scalarType \| scalarSetType \| componentType
-\| datasetType \|*
+.. _datasetType:
 
-*rulesetType*
+datasetType ::= **dataset** { **{** componentConstraint_ { **,** componentConstraint_  }\ :sup:`\*` **}** }
 
-*outputParameterType* ::= *scalarType \| componentType \| datasetType*
+.. _componentConstraint:
 
-*rulesetType* ::= { **ruleset** \| *dpRuleset* \| *hrRuleset*
-}\ :sup:`1`
+componentConstraint ::= componentType_ { componentName | multiplicityModifier_ }\ :sup:`1`
 
-*dpRuleset* ::= **datapoint** \|
+.. _multiplicityModifier:
 
-**datapoint_on_valuedomains { (** name { **\*** name }\ :sup:`\*` **)**
-**}** \|
+multiplicityModifier ::= **\_** { **+** | **\*** }
 
-   **datapoint_on_variables { (** name { **\*** name }\ :sup:`\*` **)**
-   **}**
+.. _operatorType:
 
-*hrRuleset* ::= **hierarchical** \|
+operatorType ::= inputParameterType_ { \* inputParameterType_ }\* } -> outputParameterType_
 
-**hierarchical_on_valuedomains** **{** valueDomainName
+.. _inputParameterType:
 
-**{ (** condValueDomainName { \* condValueDomainName **}\* ) } } }** \|
+inputParameterType ::= scalarType_ | scalarSetType_ | componentType_ | datasetType_ | rulesetType_
 
-**hierarchical_on_variables {** variableName
+.. _outputParameterType:
 
-**{ (** condValueDomainName { \* condValueDomainName **}\* ) } } }**
+outputParameterType ::= scalarType_ | componentType_ | datasetType_
+
+.. _rulesetType:
+
+rulesetType ::= { **ruleset** | dpRuleset_ | hrRuleset_}\ :sup:`1`
+
+.. _dpRuleset:
+
+dpRuleset ::= **datapoint** |
+            | **datapoint_on_valuedomains { (** name { **\*** name }\ :sup:`\*` **) }** |
+            | **datapoint_on_variables { (** name { **\*** name }\ :sup:`\*` **) }**
+
+.. _hrRuleset:
+
+hrRuleset ::= **hierarchical** | 
+            | **hierarchical_on_valuedomains** **{** valueDomainName **{ (** condValueDomainName { \* condValueDomainName **}\* ) } } }** \|
+            | **hierarchical_on_variables {** variableName  **{ (** condValueDomainName { \* condValueDomainName **}\* ) } } }**
 
 Note that the valueBooleanCondition in scalarTypeConstraint is expressed
 with reference to the fictitious variable “value” (see also the User
@@ -186,4 +212,3 @@ General examples of the syntax for defining types can be found in the
 User Manual, section VTL Data Types and in the declaration of the data
 types of the VTL operators (sub-sections “input parameters type” and
 “result type”).
-

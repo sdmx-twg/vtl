@@ -61,197 +61,236 @@ the Code Items BELGIUM, LUXEMBOURG and NETHERLANDS:
 Syntax
 ------
 
-**define hierarchical ruleset** rulesetName **(** *hrRulesetSignature*
-**) is** *hrRule*
+**define hierarchical ruleset** rulesetName **(** hrRulesetSignature_ **) is**
 
-   { **;** *hrRule* }\*
+    hrRule_
+
+   { **;** hrRule_ }\*
 
 **end hierarchical ruleset**
 
-*hrRulesetSignature* ::= *vdRulesetSignature* \| *varRulesetSignature*
+.. _hrRulesetSignature:
 
-*vdRulesetSignature* ::= **valuedomain** { **condition**
-*vdConditioningSignature* *}* **rule** ruleValueDomain
+hrRulesetSignature ::= vdRulesetSignature_ | varRulesetSignature_
 
-*vdConditioningSignature* ::= condValueDomain { **as** vdAlias } { **,**
-condValueDomain { **as** vdAlias } }\*
+.. _vdRulesetSignature:
 
-*varRulesetSignature* ::= **variable** { **condition**
-*varConditioningSignature* } **rule** ruleVariable
+vdRulesetSignature ::= **valuedomain** { **condition** vdConditioningSignature_ } **rule** ruleValueDomain
 
-*varConditioningSignature* ::= condVariable { **as** vdAlias } { **,**
-condVariable { **as** vdAlias } }\*
+.. _vdConditioningSignature:
 
-*hrRule* ::= { ruleName\ **:**} *codeItemRelation* { **errorcode**
-errorCode } { **errorlevel** errorLevel }
+vdConditioningSignature ::= condValueDomain { **as** vdAlias } { **,** condValueDomain { **as** vdAlias } }\*
 
-*codeItemRelation*  ::= { **when** leftCondition **then** }
+.. _varRulesetSignature:
 
-   leftCodeItem { **=** \| **>** \| **<** \| **>=** \| **<=**
-   }\ :sup:`1`
+varRulesetSignature ::= **variable** { **condition** varConditioningSignature_} **rule** ruleVariable
 
-   { **+** \| **-** } rightCodeItem { **[** rightCondition **]** }
+.. _varConditioningSignature:
 
-   { { **+** \| **-** }\ :sup:`1` rightCodeItem { **[** rightCondition
-   **]** } }\*
+varConditioningSignature ::= condVariable { **as** vdAlias } { **,** condVariable { **as** vdAlias } }\*
 
-*Syntax description*
+.. _hrRule:
 
-rulesetName the name of the Hierarchical Ruleset to be defined.
+hrRule ::= { ruleName **:**} codeItemRelation_ { **errorcode** errorCode } { **errorlevel** errorLevel }
 
-*hrRulesetSignature* the signature of the Ruleset. It specifies the
-Value Domain or Variable on which the Ruleset is defined, and the
-Conditioning Signature.
+.. _codeItemRelation:
 
-*vdRulesetSignature* the signature of a Ruleset defined on Value Domains
+codeItemRelation ::= { **when** leftCondition **then** }
+    | leftCodeItem { **=** | **>** | **<** | **>=** | **<=**}:sup:`1`
+    | { **+** \| **-** } rightCodeItem { **[** rightCondition **]** }
+    | { { **+** \| **-** }\ :sup:`1` rightCodeItem { **[** rightCondition **]** } }\*
 
-*varRulesetSignature* the signature of a Ruleset defined on Variables
+--------------------
+Syntax description
+--------------------
 
-*hrRule* a single hierarchical rule, as described below.
+.. list-table::
 
-*vdConditioningSignature* specifies the Value Domains on which the
-conditions are defined. The Ruleset is meant to be applicable to the
-Data Sets having Components that take values on the Value Domain on
-which the ruleset is defined (i.e., ruleValueDomain) and on the
-conditioning Value Domains (i.e., condValueDomain).
+    * - rulesetName
+      - the name of the Hierarchical Ruleset to be defined.
+    * - hrRulesetSignature
+      - the signature of the Ruleset. It specifies the Value Domain or Variable on which the Ruleset 
+        is defined, and the Conditioning Signature.
+    * - vdRulesetSignature
+      - the signature of a Ruleset defined on Value Domains
+    * - varRulesetSignature
+      - the signature of a Ruleset defined on Variables 
+    * - *hrRule*
+      - a single hierarchical rule, as described below.
+    * - *vdConditioningSignature*
+      - specifies the Value Domains on which the
+        conditions are defined. The Ruleset is meant to be applicable to the
+        Data Sets having Components that take values on the Value Domain on
+        which the ruleset is defined (i.e., ruleValueDomain) and on the
+        conditioning Value Domains (i.e., condValueDomain).
+    * - ruleValueDomain
+      - the Value Domain on which the Ruleset is defined
+    * - condValueDomain
+      - a conditioning Value Domain of the Ruleset 
+    * - vdAlias 
+      - an (optional) alias assigned to a Value Domain and valid only
+        within the Ruleset, this can be used for the sake of compactness in
+        writing leftCondition and rightCondition. If an alias is not specified
+        then the name of the Value Domain (i.e., condValueDomain) must be used.
+    * - *varConditioningSignature*
+      - the signature of the (possible) conditions of
+        the Ruleset defined on Variables. It specifies the Represented Variables
+        (see the information model) on which these conditions are defined. The
+        Ruleset is meant to be applicable to any Data Set having Components
+        which are defined by the Variable on which the Ruleset is expressed
+        (i.e., variable) and on the Conditioning Variables.
+    * - ruleVariable
+      - the variable on which the Ruleset is defined
+    * - condVariable
+      - a conditioning Variable of the Ruleset
+    * - varAlias
+      - an (optional) alias assigned to a Variable and valid only
+        within the Ruleset, this can be used for the sake of compactness in
+        writing leftCondition and rightCondition. If an alias is not specified
+        then the name of the Variableomain (parameter condVariable) must be
+        used.
+    * - ruleName
+      - the name assigned to the specific Rule within the Ruleset. If
+        the Ruleset is used for validation then the ruleName identifies the
+        validation results of the various Rules of the Ruleset. The ruleName is
+        optional and, if not specified, is assumed to be the progressive order
+        number of the Rule in the Ruleset. However please note that, if ruleName
+        is omitted, then the Rule names can change in case the Ruleset is
+        modified, e.g., if new Rules are added or existing Rules are deleted,
+        and therefore the users that interpret the validation results must be
+        aware of these changes. In addition, if the results of more than one
+        Ruleset have to be combined in one Data Set, then the user should make
+        the relevant rulesetNames different.
+    * - *codeItemRelation*
+      - specifies a (possibly conditioned) Code Item
+        Relation. It expresses a logical relation between Code Items belonging
+        to the Value Domain of the hrRulesetSignature, possibly conditioned by
+        the Values of the Value Domains or Variables of the Conditioning
+        Signature. The relation is expressed by one of the symbols **=**, **>**,
+        **>=**, **<**, **<=**, that in this context denote special logical
+        relationships typical of Code Items. The first member of the relation is
+        a single Code Item. The second member of the relationship is the
+        composition of one or more Code Items combined using the symbols **+**
+        or **-**, which in turn also denote special logical operators typical of
+        Code Items. The meaning of these symbols is better explained below and
+        in the User Manual.
+    * - errorCode
+      - a literal denoting the error code associated to the rule, to
+        be assigned to the possible non-valid results in case the Rule is used
+        for validation. If omitted then no error code is assigned (NULL value).
+        VTL assumes that a Value Domain errorcode_vd of the error codes exists
+        in the Information Model and contains all the possible error codes: the
+        errorCode literal must be one of the possible Values of such a Value
+        Domain. VTL assumes also that a Variable errorcode for describing the
+        error codes exists in the IM and is a dependent variable of the Data
+        Sets which contain the results of the validation.
+    * - errorLevel
+      - a literal denoting the error level (severity) associated to
+        the rule, to be assigned to the possible non-valid results in case the
+        Rule is used for validation. If omitted then no error level is assigned
+        (NULL value). VTL assumes that a Value Domain errorlevel_vd of the error
+        levels exists in the Information Model and contains all the possible
+        error levels: the errorLevel literal must be one of the possible Values
+        of such a Value Domain. VTL assumes also that a Variable errorlevel for
+        describing the error levels exists in the IM and is a dependent variable
+        of the Data Sets which contain the results of the validation.
+    * - leftCondition
+      - a *boolean* expression which defines the pre-condition for
+        evaluating the left member Code Item (i.e., it is evaluated only when
+        the leftCondition is TRUE); It can contain references to the Value
+        domains or the Variables of the conditioningSignature of the Ruleset and
+        Constants; all the VTL-ML component level operators are allowed. The
+        leftCondition is optional, if missing it is assumed to be TRUE and the
+        Rule is always evaluated.
+    * - leftCodeItem
+      - a Code Item of the Value Domain specified in the hrRulesetSignature.
+    * - rightCodeItem
+      - a Code Item of the Value Domain specified in the hrRulesetSignature.
+    * - rightCondition
+      - a *boolean* scalar expression which defines the condition
+        for a right member Code Item to contribute to the evaluation of the Rule
+        (i.e., the right member Code Item is taken into account only when the
+        relevant rightCondition is TRUE). It can contain references to the Value
+        Domains or Variables of the vdConditioningSignature or
+        varConditioningSignature of the Ruleset and Constants; all the VTL-ML
+        component level operators are allowed. The rightCondition is optional,
+        if omitted then it is assumed to be TRUE and the right member Code Item
+        is always taken into account.
 
-ruleValueDomain the Value Domain on which the Ruleset is defined
+---------------------
+Input parameters type
+---------------------
 
-condValueDomain a conditioning Value Domain of the Ruleset
+rulesetName :: 
+    
+    name < ruleset >
 
-vdAlias an (optional) alias assigned to a Value Domain and valid only
-within the Ruleset, this can be used for the sake of compactness in
-writing leftCondition and rightCondition. If an alias is not specified
-then the name of the Value Domain (i.e., condValueDomain) must be used.
+ruleValueDomain :: 
+    
+    name <valuedomain >
 
-*varConditioningSignature* the signature of the (possible) conditions of
-the Ruleset defined on Variables. It specifies the Represented Variables
-(see the information model) on which these conditions are defined. The
-Ruleset is meant to be applicable to any Data Set having Components
-which are defined by the Variable on which the Ruleset is expressed
-(i.e., variable) and on the Conditioning Variables.
+condValueDomain :: 
+    
+    name <valuedomain >
 
-ruleVariable the variable on which the Ruleset is defined
+vdAlias :: 
+    
+    name
 
-condVariable a conditioning Variable of the Ruleset
+ruleVariable :: 
+    
+    name
 
-varAlias an (optional) alias assigned to a Variable and valid only
-within the Ruleset, this can be used for the sake of compactness in
-writing leftCondition and rightCondition. If an alias is not specified
-then the name of the Variableomain (parameter condVariable) must be
-used.
+condVariable :: 
+    
+    name
 
-ruleName the name assigned to the specific Rule within the Ruleset. If
-the Ruleset is used for validation then the ruleName identifies the
-validation results of the various Rules of the Ruleset. The ruleName is
-optional and, if not specified, is assumed to be the progressive order
-number of the Rule in the Ruleset. However please note that, if ruleName
-is omitted, then the Rule names can change in case the Ruleset is
-modified, e.g., if new Rules are added or existing Rules are deleted,
-and therefore the users that interpret the validation results must be
-aware of these changes. In addition, if the results of more than one
-Ruleset have to be combined in one Data Set, then the user should make
-the relevant rulesetNames different.
+varAlias :: 
+    
+    name
 
-*codeItemRelation* specifies a (possibly conditioned) Code Item
-Relation. It expresses a logical relation between Code Items belonging
-to the Value Domain of the hrRulesetSignature, possibly conditioned by
-the Values of the Value Domains or Variables of the Conditioning
-Signature. The relation is expressed by one of the symbols **=**, **>**,
-**>=**, **<**, **<=**, that in this context denote special logical
-relationships typical of Code Items. The first member of the relation is
-a single Code Item. The second member of the relationship is the
-composition of one or more Code Items combined using the symbols **+**
-or **-**, which in turn also denote special logical operators typical of
-Code Items. The meaning of these symbols is better explained below and
-in the User Manual.
+ruleName :: 
+    
+    name
 
-errorCode a literal denoting the error code associated to the rule, to
-be assigned to the possible non-valid results in case the Rule is used
-for validation. If omitted then no error code is assigned (NULL value).
-VTL assumes that a Value Domain errorcode_vd of the error codes exists
-in the Information Model and contains all the possible error codes: the
-errorCode literal must be one of the possible Values of such a Value
-Domain. VTL assumes also that a Variable errorcode for describing the
-error codes exists in the IM and is a dependent variable of the Data
-Sets which contain the results of the validation.
+errorCode :: 
+    
+    errorcode_vd
 
-errorLevel a literal denoting the error level (severity) associated to
-the rule, to be assigned to the possible non-valid results in case the
-Rule is used for validation. If omitted then no error level is assigned
-(NULL value). VTL assumes that a Value Domain errorlevel_vd of the error
-levels exists in the Information Model and contains all the possible
-error levels: the errorLevel literal must be one of the possible Values
-of such a Value Domain. VTL assumes also that a Variable errorlevel for
-describing the error levels exists in the IM and is a dependent variable
-of the Data Sets which contain the results of the validation.
+errorLevel :: 
+    
+    errorlevel_vd
 
-leftCondition a *boolean* expression which defines the pre-condition for
-evaluating the left member Code Item (i.e., it is evaluated only when
-the leftCondition is TRUE); It can contain references to the Value
-domains or the Variables of the conditioningSignature of the Ruleset and
-Constants; all the VTL-ML component level operators are allowed. The
-leftCondition is optional, if missing it is assumed to be TRUE and the
-Rule is always evaluated.
+leftCondition :: 
+    
+    boolean
 
-leftCodeItem a Code Item of the Value Domain specified in the
-hrRulesetSignature.
+leftCodeItem :: 
+    
+    name
 
-rightCodeItem a Code Item of the Value Domain specified in the
-hrRulesetSignature.
+rightCodeItem :: 
+    
+    name
 
-rightCondition a *boolean* scalar expression which defines the condition
-for a right member Code Item to contribute to the evaluation of the Rule
-(i.e., the right member Code Item is taken into account only when the
-relevant rightCondition is TRUE). It can contain references to the Value
-Domains or Variables of the vdConditioningSignature or
-varConditioningSignature of the Ruleset and Constants; all the VTL-ML
-component level operators are allowed. The rightCondition is optional,
-if omitted then it is assumed to be TRUE and the right member Code Item
-is always taken into account.
+rightCondition :: 
+    
+    boolean
 
-*Input parameters type*
+------------
+Constraints
+------------
 
-rulesetName :: name < ruleset >
-
-ruleValueDomain :: name <valuedomain >
-
-condValueDomain :: name <valuedomain >
-
-vdAlias :: name
-
-ruleVariable :: name
-
-condVariable :: name
-
-varAlias :: name
-
-ruleName :: name
-
-errorCode :: errorcode_vd
-
-errorLevel :: errorlevel_vd
-
-leftCondition :: boolean
-
-leftCodeItem :: name
-
-rightCodeItem :: name
-
-rightCondition :: boolean
-
-*Constraints*
-
--  leftCondition and rightCondition can refer only to Value Domains or
+*  leftCondition and rightCondition can refer only to Value Domains or
    Variables specified in vdConditioningSignature or
    varConditioningSignature.
-
--  Either the ruleName is specified for all the Rules of the Ruleset or
+*  Either the ruleName is specified for all the Rules of the Ruleset or
    for none.
+*  If specified, the ruleName must be unique within the Ruleset\ *.*
 
--  If specified, the ruleName must be unique within the Ruleset\ *.*
-
-*Semantic specification*
+----------------------
+Semantic specification
+----------------------
 
 This operator defines a Hierarchical Ruleset named rulesetName that can
 be used both for validation and calculation purposes (see
@@ -389,16 +428,18 @@ the following Ruleset will maintain in the result the Data Points of the
 input Data Set relevant to Belgium, Luxembourg and Netherland and will
 add new Data Points containing the calculated value for Benelux:
 
-   define hierarchical ruleset BeneluxRuleset ( valuedomain rule
-   GeoArea) is
 
-   Belgium = Belgium
+::
 
-   ; Luxembourg = Luxembourg
+   define hierarchical ruleset BeneluxRuleset ( valuedomain rule GeoArea) is
 
-   ; Netherlands = Netherlands
+        Belgium = Belgium
 
-   ; Benelux = Belgium + Luxembourg + Netherlands
+        ; Luxembourg = Luxembourg
+
+        ; Netherlands = Netherlands
+
+        ; Benelux = Belgium + Luxembourg + Netherlands
 
    end hierarchical ruleset
 
@@ -441,64 +482,52 @@ European Union in term of participating Countries.
 *Example 1* (for simplicity the time literals are written without the
 needed “cast” operation)
 
-   define hierarchical ruleset EuropeanUnionAreaCountries1
+::
 
-   ( valuedomain condition ReferenceTime as Time rule GeoArea ) is
+   define hierarchical ruleset EuropeanUnionAreaCountries1 
+      ( valuedomain condition ReferenceTime as Time rule GeoArea ) is
 
-   when between (Time, “1.1.1958”, “31.12.1972”)
+        when between (Time, “1.1.1958”, “31.12.1972”)
+                then EU = BE + FR + DE + IT + LU + NL
 
-   then EU = BE + FR + DE + IT + LU + NL
+        ; when between (Time, “1.1.1973”, “31.12.1980”)
+                then EU = *… same as above …* + DK + IE + GB
 
-   ; when between (Time, “1.1.1973”, “31.12.1980”)
+        ; when between (Time, “1.1.1981”, “02.10.1985”)
+            then EU = *… same as above …* + GR
 
-   then EU = *… same as above …* + DK + IE + GB
+        ; when between (Time, “1.1.1986”, “31.12.1994”)
+            then EU = *… same as above …* + ES + PT
 
-   ; when between (Time, “1.1.1981”, “02.10.1985”)
+        ; when between (Time, “1.1.1995”, “30.04.2004”)
+            then EU = *… same as above …* + AT + FI + SE
 
-   then EU = *… same as above …* + GR
+        ; when between (Time, “1.5.2004”, “31.12.2006”)
+            then EU = *… same as above …* +CY+CZ+EE+HU+LT+LV+MT+PL+SI+SK
 
-   ; when between (Time, “1.1.1986”, “31.12.1994”)
+        ; when between (Time, “1.1.2007”, “30.06.2013”)
+            then EU = *… same as above …* + BG + RO
 
-   then EU = *… same as above …* + ES + PT
-
-   ; when between (Time, “1.1.1995”, “30.04.2004”)
-
-   then EU = *… same as above …* + AT + FI + SE
-
-   ; when between (Time, “1.5.2004”, “31.12.2006”)
-
-   then EU = *… same as above …* +CY+CZ+EE+HU+LT+LV+MT+PL+SI+SK
-
-   ; when between (Time, “1.1.2007”, “30.06.2013”)
-
-   then EU = *… same as above …* + BG + RO
-
-   ; when >= “1.7.2013”
-
-   then EU = *… same as above …* + HR
+        ; when >= “1.7.2013”
+            then EU = *… same as above …* + HR
 
    end hierarchical ruleset
 
 *Example 2* (for simplicity the time literals are written without the
 needed “cast” operation)
 
-   define hierarchical ruleset EuropeanUnionAreaCountries2
+::
 
-   (valuedomain condition ReferenceTime as Time rule GeoArea ) is
+   define hierarchical ruleset EuropeanUnionAreaCountries2
+      (valuedomain condition ReferenceTime as Time rule GeoArea ) is
 
    EU = AT [ Time >= “0101.1995” ]
-
-   + BE [ Time >= “01.01.1958” ]
-
-   + BG [ Time >= “01.01.2007” ]
-
-   + …
-
-   + SE [ Time >= “01.01.1995” ]
-
-   + SI [ Time >= “01.05.2004” ]
-
-   + SK [ Time >= “01.05.2004” ]
+      + BE [ Time >= “01.01.1958” ]
+      + BG [ Time >= “01.01.2007” ]
+      + …
+      + SE [ Time >= “01.01.1995” ]
+      + SI [ Time >= “01.05.2004” ]
+      + SK [ Time >= “01.05.2004” ]
 
    end hierarchical ruleset
 
@@ -506,32 +535,33 @@ needed “cast” operation)
 or not having levels (free hierarchies). For example, leaving aside the
 time validity for sake of simplicity:
 
-   define hierarchical ruleset GeoHierarchy ( valuedomain rule Geo_Area)
-   is
+::
 
-   World = Africa + America + Asia + Europe + Oceania
+   define hierarchical ruleset GeoHierarchy ( valuedomain rule Geo_Area) is
 
-   ; Africa = Algeria + … + Zimbabwe
+        World = Africa + America + Asia + Europe + Oceania
 
-   ; America = Argentina + … + Venezuela
+        ; Africa = Algeria + … + Zimbabwe
 
-   ; Asia = Afghanistan + … + Yemen
+        ; America = Argentina + … + Venezuela
 
-   ; Europe = Albania + … + VaticanCity
+        ; Asia = Afghanistan + … + Yemen
 
-   ; Oceania = Australia + … + Vanuatu
+        ; Europe = Albania + … + VaticanCity
 
-   ; Afghanistan = AF_reg_01 + … + AF_reg_N
+        ; Oceania = Australia + … + Vanuatu
 
-   … … … … … …
+        ; Afghanistan = AF_reg_01 + … + AF_reg_N
 
-   ; Zimbabwe = ZW_reg_01 + … + ZW_reg_M
+        … … … … … …
 
-   ; EuropeanUnion = … + … + … + …
+        ; Zimbabwe = ZW_reg_01 + … + ZW_reg_M
 
-   ; CentralAmericaCommonMarket = … + … + … + …
+        ; EuropeanUnion = … + … + … + …
 
-   ; OECD_Area = … + … + … + …
+        ; CentralAmericaCommonMarket = … + … + … + …
+
+        ; OECD_Area = … + … + … + …
 
    end hierarchical ruleset
 
@@ -546,14 +576,15 @@ sum up to the whole "Transport" figure. In the following example a
 RuleName is assigned to the different methods of breaking down the
 Transport.
 
-   define hierarchical ruleset TransportBreakdown ( variable rule
-   BoPItem ) is
+:: 
 
-   transport_method1 : Transport = AirTransport + SeaTransport +
-   LandTransport
+   define hierarchical ruleset TransportBreakdown ( variable rule BoPItem ) is 
 
-   ; transport_method2 : Transport = PassengersTransport +
-   FreightsTransport
+        transport_method1 : Transport = AirTransport + SeaTransport +
+        LandTransport
+
+        ; transport_method2 : Transport = PassengersTransport +
+        FreightsTransport
 
    end hierarchical ruleset
 
@@ -563,17 +594,19 @@ broken down by region and data about non-residents units broken down by
 country. In order to calculate a homogeneous level of aggregation (e.g.,
 by country), a possible Ruleset is the following:
 
+::
+
    define hierarchical ruleset CalcCountryLevel ( valuedomain condition
-   Residence rule GeoArea) is
+      Residence rule GeoArea) is
 
-when Residence = “resident” then Country1 = Country1
+        when Residence = “resident” then Country1 = Country1
 
-; when Residence = “non-resident” then Country1 = Region11+ … +Region1M
-…
+        ; when Residence = “non-resident” then Country1 = Region11+ … +Region1M
+        …
 
-; when Residence = “resident” then CountryN = CountryN
+        ; when Residence = “resident” then CountryN = CountryN
 
-; when Residence = “non-resident” then CountryN = Region N1+ …+ RegionNM
+        ; when Residence = “non-resident” then CountryN = Region N1+ …+ RegionNM
 
    end hierarchical ruleset
 
@@ -600,25 +633,29 @@ If the Ruleset is aimed only at validation, there is no risk of
 producing erroneous results because in the validation the rules are
 applied independently.
 
-*Examples*
+--------
+Examples
+--------
 
 1) The Hierarchical Ruleset is defined on the Value Domain “sex”: Total
 is defined as Male + Female. No conditions are defined.
 
-   define hierarchical ruleset sex_hr (valuedomain rule sex) is
+::
+    define hierarchical ruleset sex_hr (valuedomain rule sex) is
 
-   TOTAL = MALE + FEMALE
+        TOTAL = MALE + FEMALE
 
-   end hierarchical ruleset
+    end hierarchical ruleset
 
 2) BENELUX is the aggregation of the Code Items BELGIUM, LUXEMBOURG and
 NETHERLANDS. No conditions are defined.
 
-   define hierarchical ruleset BeneluxCountriesHierarchy (valuedomain
-   rule GeoArea) is
+::
 
-   BENELUX = BELGIUM + LUXEMBOURG + NETHERLANDS errorcode “Bad value for
-   Benelux”
+   define hierarchical ruleset BeneluxCountriesHierarchy (valuedomain rule GeoArea) is
+
+        BENELUX = BELGIUM + LUXEMBOURG + NETHERLANDS errorcode “Bad value for
+        Benelux”
 
    end hierarchical ruleset
 
@@ -628,12 +665,13 @@ type of validation is useful when the data communicated by the data
 provider do not cover the whole composition of the aggregate but only
 some elements. No conditions are defined.
 
-   define hierarchical ruleset american_partners_hr (variable rule
-   PartnerArea) is
+::
 
-   NORTH_AMERICA > US
+   define hierarchical ruleset american_partners_hr (variable rule PartnerArea) is
 
-   ; SOUTH_AMERICA = BR + UY + AR + CL
+        NORTH_AMERICA > US
+
+        ; SOUTH_AMERICA = BR + UY + AR + CL
 
    end hierarchical ruleset
 
@@ -643,18 +681,17 @@ be broken down by type of carrier (Air transport, Sea transport, Land
 transport) and by type of objects transported (Passengers and Freights)
 and both breakdowns must sum up to the total "Transport" figure.
 
-   define hierarchical ruleset validationruleset_bop (variable rule
-   BoPItem ) is
+::
 
-   transport_method1 : Transport = AirTransport + SeaTransport +
-   LandTransport
+   define hierarchical ruleset validationruleset_bop (variable rule BoPItem ) is
 
-   ; transport_method2 : Transport = PassengersTransport +
-   FreightsTransport
+        transport_method1 : Transport = AirTransport + SeaTransport +
+        LandTransport
+
+        ; transport_method2 : Transport = PassengersTransport +
+        FreightsTransport
 
    end hierarchical ruleset
-
-
 
    
 .. [2]
