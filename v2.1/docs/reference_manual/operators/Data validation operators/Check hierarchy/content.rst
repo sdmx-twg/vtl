@@ -2,11 +2,17 @@
 Syntax
 ------
 
-    **check_hierarchy (** op , hr { **condition** condComp { , condComp }* } { **rule** ruleComp } { mode } { input } { output } **)**
+    **check_hierarchy (** op , hr { **condition** condComp { , condComp }* } { **rule** ruleComp } { mode_ } { input_ } { output_ } **)**
 
+        .. _mode:
+        
         mode ::= **non_null | non_zero | partial_null | partial_zero | always_null | always_zero**
 
+        .. _input:
+        
         input ::= **dataset | dataset_priority**
+
+        .. _output:
 
         output ::= **invalid | all | all_measures**
 
@@ -35,6 +41,14 @@ Input parameters
    * - output
      - | this parameter specifies the structure and the content of the resulting dataset. The
        | meaning of the possible values of the parameter is explained below.
+
+------------------------------------
+Examples of valid syntaxes
+------------------------------------
+::
+
+  check_hierarchy ( DS1, HR_2  non_null  dataset  invalid )   
+  check_hierarchy ( DS1, HR_3  non_zero dataset_priority  all )
 
 -----------------------------
 Input parameters type
@@ -75,9 +89,9 @@ specified all the same if it is desired to show explicitly in the invocation whi
 this case, the *condComp* and *ruleComp* must be the same and in the same order as the Variables specified in
 the *condition* and *rule* signatures of *hr*.
 
---------
-Behavior
---------
+---------
+Behaviour
+---------
 
 The **check_hierarchy** operator applies the Rules of the Ruleset *hr* to check the Code Items Relations between
 the Code Items present in *op* (as for the Code Items Relations, see the User Manual - section “Generic Model for
@@ -190,28 +204,21 @@ If the parameter *output* is not specified then it is assumed to be *invalid*.
 
 In conclusion, the operator returns a Data Set having the following Components:
 
-· all the Identifier Components of *op*
-
-· the additional Identifier Component *ruleid*, whose aim is to identify the Rule that has generated the
-actual Data Point (it contains at least the Rule name specified in *hr* (The content of *ruleid* maybe personalised in the implementation) )
-
-· if the *output* parameter is *all*: the *boolean* Measure *bool_var* whose values are the result of the
-evaluation of the Rules (TRUE, FALSE or NULL).
-
-· if the *output* parameter is *invalid*: the original Measure of *op*, whose values are taken from the Measure
-values of the Data Points of the left side of the Rule
-
-· if the *output* parameter is *all_measures*: the *boolean* Measure *bool_var*, whose value is the result of the
-evaluation of a Rule on a Data Point (TRUE, FALSE or NULL), and the original Measure of *op*, whose
-values are taken from the Measure values of the Data Points of the left side of the Rule
-
-· the Measure *imbalance*, which contains the difference between the Measure values of the Data Points on
-the left side of the Rule and the Measure values of the corresponding calculated Data Points on the right
-side of the Rule
-
-· the Measure *errorcode*, which contains the *errorcode* value specified in the Rule
-
-· the Measure *errorlevel*, which contains the *errorlevel* value specified in the Rule
+* all the Identifier Components of *op*
+* the additional Identifier Component *ruleid*, whose aim is to identify the Rule that has generated the
+  actual Data Point (it contains at least the Rule name specified in *hr* (The content of *ruleid* maybe personalised in the implementation) )
+* if the *output* parameter is *all*: the *boolean* Measure *bool_var* whose values are the result of the
+  evaluation of the Rules (TRUE, FALSE or NULL).
+* if the *output* parameter is *invalid*: the original Measure of *op*, whose values are taken from the Measure
+  values of the Data Points of the left side of the Rule
+* if the *output* parameter is *all_measures*: the *boolean* Measure *bool_var*, whose value is the result of the
+  evaluation of a Rule on a Data Point (TRUE, FALSE or NULL), and the original Measure of *op*, whose
+  values are taken from the Measure values of the Data Points of the left side of the Rule
+* the Measure *imbalance*, which contains the difference between the Measure values of the Data Points on
+  the left side of the Rule and the Measure values of the corresponding calculated Data Points on the right
+  side of the Rule
+* the Measure *errorcode*, which contains the *errorcode* value specified in the Rule
+* the Measure *errorlevel*, which contains the *errorlevel* value specified in the Rule
 
 Note that a generic Data Point of *op* can produce several Data Points in the resulting Data Set, one for each Rule
 in which the Data Point appears as the left member of the comparison.
