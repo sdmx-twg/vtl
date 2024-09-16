@@ -119,7 +119,7 @@ Integrated approach
       information model, as it operates on the VTL IM artefacts to
       produce other VTL IM artefacts. In principle, a language cannot be
       applied as-is to another information model (e.g. SDMX, DDI, GSIM);
-      this possibility exists only if there is a unambiguous
+      this possibility exists only if there is an unambiguous
       correspondence between the artefacts of those information models
       and the VTL IM (that is if their artefacts correspond to the same
       mathematical notion);
@@ -135,13 +135,11 @@ Integrated approach
       by the GSIM IM and uses the same artefacts when possible [1]_; in
       fact, GSIM is designed to provide a formal description of data at
       business level against which other information models can be
-      mapped; moreover, loose mappings between GSIM and SDMX and between
-      GSIM and DDI are already available [2]_; a very small subset of
-      the GSIM artefacts is used in the VTL IM in order to keep the
-      model and the language as simple as possible (Occam’s razor
-      principle); these are the artefacts strictly needed for describing
-      the data involved in Transformations, their structure and the
-      variables and value domains;
+      mapped; a very small subset of the GSIM artefacts is used in the
+	  VTL IM in order to keep the model and the language as simple as
+	  possible (Occam’s razor principle); these are the artefacts
+	  strictly needed for describing the data involved in Transformations,
+	  their structure and the variables and value domains;
 
    -  GSIM artefacts are supplemented, when needed, with other artefacts
       that are necessary for describing calculations; in particular, the
@@ -244,11 +242,9 @@ Independence of IT implementation
    particularly important in order to allow different institutions to
    rely on different IT environments and solutions);
 
-   -  | The VTL provides only for a logical/conceptual layer for
-        defining the data
-      | transformations, which applies on a logical/conceptual layer of
-        data
-      | definitions
+   -  The VTL provides only for a logical/conceptual layer for defining
+      the data transformations, which applies on a logical/conceptual
+      layer of data definitions
 
    -  The VTL does not prescribe any technical/physical tool or
       solution, so that it is possible to implement the VTL by using
@@ -280,10 +276,9 @@ Independence of IT implementation
       dimensional databases, xml files, spread-sheets, traditional
       files);
 
--  | The language is not strictly connected with some specific IT tool
-     to perform the
-   | calculations (e.g. SQL, statistical packages, other languages, XML
-     tools...);
+-  The language is not strictly connected with some specific IT tool to
+   perform the calculations (e.g. SQL, statistical packages, other languages,
+   XML tools...);
 
    -  The syntax of the VTL is independent of existing IT calculation
       tools;
@@ -336,7 +331,7 @@ Extensibility, customizability
       them as if they were operators of the language)
 
    -  The use of external routines compromises the IT implementation
-      independence, the abstraction and the user orientation; therefore
+      independence, the abstraction and the user orientation. Therefore
       external routines should be used only for specific needs and in
       limited cases, whereas widespread and generic needs should be
       fulfilled through the operators of the language;
@@ -363,7 +358,7 @@ Language effectiveness
    aspects, and relying on mathematical notions, as mentioned above. The
    various types of statistical data are considered as mathematical
    functions, having independent variables (Identifiers) and dependent
-   variables (Measures, Attributes [3]_), whose extensions can be
+   variables (Measures, Attributes [2]_), whose extensions can be
    thought as logical tables (DataSets) made of rows (Data Points) and
    columns (Identifiers, Measures, Attributes).
 
@@ -403,13 +398,8 @@ Language effectiveness
    according to the needs.
 
 .. [1]
-   See the next section (VTL Information Model) and the section
-   “Relationships between VTL and GSIM”
+   See the section “Relationships between VTL and GSIM”
 
 .. [2]
-   See at:
-   http://www1.unece.org/stat/platform/display/gsim/GSIM+and+standards;
-
-.. [3]
    The Measures bear information about the real world and the Attributes
    about the Data Set or some part of it.
