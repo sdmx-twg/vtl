@@ -1,22 +1,16 @@
 Foreword 
-=========
+========
 
 The Task force for the Validation and Transformation Language (VTL),
 created in 2012-2013 under the initiative of the SDMX Secretariat, is
-pleased to present the draft version of VTL 2.0.
+pleased to present the version 2.1 of VTL.
 
 The SDMX Secretariat launched the VTL work at the end of 2012, moving on
 from the consideration that SDMX already had a package for
 transformations and expressions in its information model, while a
 specific implementation language was missing. To make this framework
 operational, a standard language for defining validation and
-transformation rules (operators, their syntax and semantics) had to be
-adopted, while appropriate SDMX formats for storing and exchanging
-rules, and web services to retrieve them, had to be designed. The
-present VTL 2.0 package is only concerned with the first element, i.e.,
-a formal definition of each operator, together with a general
-description of VTL, its core assumptions and the information model it is
-based on.
+transformation rules (operators, their syntax and semantics) has been adopted.
 
 The VTL task force was set up early in 2013, composed of members of
 SDMX, DDI and GSIM communities and the work started in summer 2013. The
@@ -35,7 +29,7 @@ in such a kind of language. However, each standard operates on its model
 artefacts and produces artefacts within the same model (property of
 closure). To cope with this, VTL has been built upon a very basic
 information model (VTL IM), taking the common parts of GSIM, SDMX and
-DDI, mainly using artefacts from GSIM 1.1, somewhat simplified and with
+DDI, mainly using artefacts from GSIM, somewhat simplified and with
 some additional detail. In this way, existing standards (GSIM, SDMX,
 DDI, others) would be allowed to adopt VTL by mapping their information
 model against the VTL IM. Therefore, although a work-product of SDMX,
@@ -48,10 +42,7 @@ represented in different standards.
 For the reason described above, the VTL specifications are designed at
 logical level, independently of any other standard, including SDMX. The
 VTL specifications, therefore, are self-standing and can be implemented
-either on their own or by other standards (including SDMX). In
-particular, the work for the SDMX implementation of VTL is going in
-parallel with the work for designing this VTL version, and will entail a
-future update of the SDMX documentation.
+either on their own or by other standards (including SDMX).
 
 The first public consultation on VTL (version 1.0) was held in 2014.
 Many comments were incorporated in the VTL 1.0 version, published in
@@ -62,20 +53,21 @@ and provided for public consultation until the beginning of 2017.
 
 The high number and wide impact of comments and suggestions induced a
 high workload on the VTL TF, which agreed to proceed in two steps for
-the publication of the final documentation, taking also into
-consideration that some first VTL implementation initiatives had already
-been launched. The first step, the current one, is dedicated to fixing
-some high-priority features and making them as much stable as possible.
-A second step, scheduled for the next period, is aimed at acknowledging
-and fixing other features considered of minor impact and priority, which
-will be added hopefully without affecting either the features already
-published in this documentation, or the possible relevant
-implementations. Moreover, taking into account the number of very
-important new features that have been introduced in this version in
-respect to the VTL 1.0, it was agreed that the current VTL version
-should be considered as a major one and thus named VTL 2.0.
+the publication of the final documentation. The first step has been
+dedicated to fixing some high-priority features and making them as much
+stable as possible; given the high number of changes, it was decided that
+the new version should be considered as a major one and thus named VTL 2.0.
 
-The VTL 2.1 package contains the general VTL specifications,
+The second step, taking also into consideration that some VTL implementation
+initiatives are already in place, is aimed at acknowledging and fixing
+other features considered of minor impact and priority, without affecting
+the features already published or the possible relevant implementations.
+In parallel with the work for designing the new VTL version, the task force
+has been involved in the SDMX implementation of VTL, aiming at defining
+formats for exchanging rules and developing web services to retrieve them;
+the new features have been included in the SDMX 3.0 package.
+
+The present VTL 2.1 package contains the general VTL specifications,
 independently of the possible implementations of other standards; it includes:
 
 a) The User Manual, highlighting the main
@@ -86,11 +78,9 @@ b) The Reference Manual, containing the full library of operators ordered
    by category, including examples;
 
 c) eBNF notation (extended Backus-Naur Form) which is the
-   technical notation to be used as a test bed for all the examples.
+   technical notation to be used as a test bed for all the examples;
 
 d) A Technical Notes document, containing some guidelines for VTL implementation.
-
-The present document is the part 1.
 
 The latest version of VTL is freely available online at
 https://sdmx.org/?page_id=5096
