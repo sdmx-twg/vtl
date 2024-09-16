@@ -2,7 +2,7 @@ Introduction
 ============
 
 This document presents the Validation and Transformation Language (also
-known as ‘VTL’) version 2.0.
+known as ‘VTL’) version 2.1.
 
 The purpose of VTL is to allow a formal and standard definition of
 algorithms to validate statistical data and calculate derived data.
@@ -29,9 +29,9 @@ in the Reference Manual.
 Although VTL is developed under the umbrella of the SDMX governance, DDI
 and GSIM users may also be highly interested in adopting a language for
 validation and transformation. In particular, organizations involved in
-the SDMX, DDI and GSIM communities and in the High-Level Group for the
-modernisation of statistical production and services (HLG) expressed
-their wish of having a unique language, usable in SDMX, DDI and GSIM.
+the SDMX, DDI and GSIM communities and in the Modernisation of Official
+Statistics (HLG-MOS) expressed their wish of adopting VTL as a unique
+language, usable in SDMX, DDI and GSIM.
 
 Accordingly, the task-force working for the VTL development agreed on
 the objective of adopting a common language, in the hope of avoiding the
@@ -52,7 +52,8 @@ topics:
 The general characteristics of the VTL, which are also the main
 requirements that the VTL is aimed to fulfil.
 
-The changes of VTL 2.0 in respect to VTL 1.0.
+The changes of VTL 2.x in respect to VTL 1.0 and a section for changes
+for version 2.1.
 
 The Information Model on which the language is based. In particular, it
 describes the generic model of the data artefacts for which the language
@@ -81,6 +82,5 @@ A short annex gives some background information about the BNF
 (Backus-Naur Form) syntax used for providing a context-free
 representation of VTL.
 
-The Extended BNF (EBNF) representation of the VTL 1.0 package is
-available at https://sdmx.org/?page_id=5096. The VTL 2.0 representation
-will be added as soon as it is available.
+The Extended BNF (EBNF) representation of the VTL 2.1 package is
+available at https://sdmx.org/?page_id=5096.
