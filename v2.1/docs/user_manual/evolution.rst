@@ -1,8 +1,8 @@
 Evolution of VTL 2.0 in respect to VTL 1.0
 ==========================================
 
-Important contributions gave origin to the work that brought to this VTL
-2.0 version.
+Important contributions gave origin to the work that brought to the
+VTL 2.0 and now to this VTL 2.1 version.
 
 Firstly, it was not possible to acknowledge immediately - in VTL 1.0 -
 all of the remarks received during the 1.0 public review. Secondly, the
@@ -32,7 +32,7 @@ standards (e.g. SDMX, DDI …).
 
 As already said, VTL is intended to operate at logical/conceptual level
 and independently of the implementation, actually allowing different
-implementations. For this reason, VTL-IM 2.0 provides only for a core
+implementations. For this reason, VTL-IM provides only for a core
 abstract view of data and calculations and leaves out the implementation
 aspects.
 
@@ -45,7 +45,7 @@ changes that impact model artefacts).
 The operational metadata needed for supporting real processing systems
 are also out of VTL scope.
 
-The implementation of the VTL-IM 2.0 abstract model artefacts needs to
+The implementation of the VTL-IM abstract model artefacts needs to
 take into account the specificities of the standards (like SDMX, DDI …)
 and the information systems for which it is used.
 
@@ -80,7 +80,7 @@ but is largely of interest of the VTL technical implementers.
 The suggestion above has been acknowledged, so VTL 2.0 manipulation
 language consists of a core set of primitive operators and a standard
 library of derived operators, definable in term of the primitive ones.
-The standard library contains essentially the VTL 1.0 operators
+The standard library contains essentially the VTL 1 operators
 (possibly enhanced) and the new operators introduced with VTL 2.0 (see
 below).
 
@@ -160,11 +160,11 @@ considered as mathematical functions, having independent variables
 extensions can be thought of as logical tables (Data Sets) made of rows
 (Data Points) and columns (Identifiers, Measures, Attributes).
 Therefore, the main artefacts to be manipulated using VTL are the
-logical Data Sets, i.e. first-order mathematical functions [4]_.
+logical Data Sets, i.e. first-order mathematical functions [3]_.
 
 Accordingly, VTL uses a functional programming paradigm, meaning a
 paradigm that treats computations as the evaluation of higher-order
-mathematical functions [5]_, which manipulate the first-order ones
+mathematical functions [4]_, which manipulate the first-order ones
 (i.e., the logical Data Sets), also termed “operators” or “functionals”.
 The functional paradigm avoids changing-state and mutable data and makes
 use of expressions for defining calculations.
@@ -203,11 +203,11 @@ Even in respect to the draft VTL 1.1 many rationalisations have been
 applied, also following the very numerous comments received during the
 relevant public consultation.
 
-.. [4]
+.. [3]
    A first-order function is a function that does not take other
    functions as arguments and does not provide another function as
    result.
 
-.. [5]
+.. [4]
    A higher-order function is a function that takes one or more other
    functions as arguments and/or provides another function as result.
