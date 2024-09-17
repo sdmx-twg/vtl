@@ -203,6 +203,28 @@ Even in respect to the draft VTL 1.1 many rationalisations have been
 applied, also following the very numerous comments received during the
 relevant public consultation.
 
+Changes for version 2.1
+-----------------------
+
+The VTL 2.1 version is a minor one and contains the following changes
+in respect to 2.0:
+
+i.   typos and errors in the text and/or in the examples have been fixed;
+
+ii.  new operators have been defined: time operators (datediff, dateadd,
+     year/month/quarter/dayofmonth/dayofyear, daystoyear, daystomonth,
+     durationtodays), case operator (simple extension of if-then-else),
+     random operator (generating a random decimal number >= 0 and < 1)
+
+iii. some changes have been introduced: the cast operator will have
+     only explicit or implicit mask (no optional mask not allowed),
+     some assumptions have been taken in the ordering for some use
+     cases, the default window clause for analytic operators has been
+     changed to be compliant with the SQL standard behaviour.
+
+A new document (Technical Notes) has been added to the documentation
+to support VTL implementation.
+
 .. [3]
    A first-order function is a function that does not take other
    functions as arguments and does not provide another function as
