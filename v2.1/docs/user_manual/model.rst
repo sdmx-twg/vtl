@@ -28,23 +28,22 @@ VTL can manage persistent or temporary artefacts, the former stored
 persistently in the information system, the latter only used
 temporarily. The definition of the persistent artefact must be
 persistent as well, while the definition of temporary artefacts can be
-temporary [6]_.
+temporary [5]_.
 
 The VTL IM provides a formal description at business level of the
 artefacts that VTL can manipulate, which is the same purpose as the
 Generic Statistical Information Model (GSIM) with a broader scope. In
 fact, the VTL Information Model uses GSIM artefacts as much as possible
-(GSIM 1.1 version) [7]_. Besides, GSIM already provides a first mapping
-with SDMX and DDI that can be used for the technical
-implementation [8]_. Note that the description of the GSIM 1.1 classes
-and relevant definitions can be consulted in the “Clickable GSIM” of the
-UNECE site [9]_. However, the detailed mapping between the VTL IM and
-the IMs of the other standards is out of the scope of this document and
-is left to the competent bodies of the other standards.
+(GSIM 2.0 version) [6]_. Note that the description of the GSIM 2.0
+classes and relevant definitions can be consulted in the “Clickable
+GSIM” of the UNECE site [7]_. However, the detailed mapping between
+the VTL IM and the IMs of the other standards is out of the scope of
+this document and is left to the competent bodies of the other
+standards [8]_.
 
-Like GSIM, the VTL IM provides for a model at a logical/conceptual
-level, which is independent of the implementation and allows different
-possible implementations.
+The VTL IM provides for a model at a logical/conceptual level, which
+is independent of the implementation and allows different possible
+implementations.
 
 The VTL IM provides for an abstract view of the core artefacts used in
 the VTL calculations and intentionally leaves out implementation
@@ -83,23 +82,39 @@ follows:
    real world. For example, the content of the data set *“population
    from United Nations”*:
 
-   *Year Country Population*
+.. list-table::
+   :widths: 25 25 50
+   :header-rows: 1
 
-   *2016 China 1,403,500,365*
+   * - *Year*
+     - *Country*
+     - *Population*
+   * - *2016*
+     - *China*
+     - *1,403,500,365*
+   * - *2016*
+     - *India*
+     - *1,324,171,354*
+   * - *2016*
+     - *USA*
+     - *322,179,605*
+   * - *...*
+     -
+     -
+   * - *2017*
+     - *China*
+     - *1,409,517,397*
+   * - *2017*
+     - *India*
+     - *1,339,180.127*
+   * - *2017*
+     - *USA*
+     - *324,459,463*
+   * - *...*
+     -
+     -
 
-   *2016 India 1,324,171,354*
-
-   *2016 USA 322,179,605*
-
-   *…*
-
-   *2017 China 1,409,517,397*
-
-   *2017 India 1,339,180.127*
-
-   *2017 USA 324,459,463*
-
-   *…*
+..
 
    Level 2 – the definitions of specific data structures (and relevant
    transformations) which are the model of the level 1. An example: *the
@@ -115,7 +130,7 @@ follows:
 
 A similar approach is very largely used, in particular in the
 information technology and for example by the Object Management
-Group [10]_, even if the terminology and the enumeration of the levels
+Group [9]_, even if the terminology and the enumeration of the levels
 is different. The main correspondences are:
 
    VTL Level 1 (extensions) – OMG M0 (instances)
@@ -160,12 +175,6 @@ Generic Model for Data and their structures
 This Section provides a formal model for the structure of data as
 operated on by the Validation and Transformation Language (VTL).
 
-As already said, GSIM artefacts are used as much as possible. Some
-differences between this model and GSIM are due to the fact that, in the
-VTL IM, both unit and dimensional data are considered as first-order
-mathematical functions having independent and dependent variables and
-are treated in the same way.
-
 For each Unit (e.g. a person) or Group of Units of a Population (e.g.
 groups of persons of a certain age and civil status), identified by
 means of the values of the independent variables (e.g. either the
@@ -191,15 +200,13 @@ in this document in order to make it easier to map the VTL IM to the
 GSIM IM and the DDI IM, which have such a distinction.
 
 Starting from this assumption, each mathematical function (logical
-table) may be defined likewise a GSIM Dimensional Data Set and the
-function structure likewise a GSIM Dimensional Data Structure, having
-Identifier, Measure and Attribute Components. The Identifier components
-are the independent variables of the function, the Measures and
-Attribute Components are the dependent variables. Obviously, the GSIM
-artefacts “Data Set” and “Data Set Structure” have to be strictly
-interpreted as **logical artefacts** on a mathematical level, not
-necessarily corresponding to physical data sets and physical data
-structures.
+table) may be defined having Identifier, Measure and Attribute
+Components. The Identifier components are the independent variables
+of the function, the Measures and Attribute Components are the dependent
+variables. Obviously, the GSIM artefacts “Data Set” and “Data Set
+Structure” have to be strictly interpreted as **logical artefacts**
+on a mathematical level, not necessarily corresponding to physical
+data sets and physical data structures.
 
 In order to avoid any possible misunderstanding with respect to SDMX,
 also take note that the VTL Data Set in general does not correspond to
@@ -251,9 +258,7 @@ cardinality: for example, a VTL Data Set may be stored either in one or
 in many physical data sets, as well as many VTL Data Sets may be stored
 in the same physical datasets (or database tables). The mapping between
 the VTL logical artefacts and the physical artefacts is left to the VTL
-implementations and is out of scope of this document. The VTL Data Set
-is similar to the GSIM Data Set; the relationship between them is
-described in a following section.
+implementations and is out of scope of this document.
 
 **Data Point**: a single value of the function, i.e. a single
 association between the values of the independent variables and the
@@ -263,8 +268,7 @@ of the function (Data Set) is a set of Data Points. Some Data Points of
 the function can be unknown (i.e. missing or null), for example, the
 possible ones relevant to future dates. The single Data Points do not
 need to be individually defined, because their definition is the
-definition of the function (i.e. the Data Set definition). This artefact
-is the same as the GSIM Data Point.
+definition of the function (i.e. the Data Set definition).
 
 **Data Structure:** the structure of a mathematical function, having
 independent and dependent variables. The independent variables are
@@ -273,35 +277,24 @@ either “Measure Components” or “Attribute Components”. The distinction
 between Measure and Attribute components is conventional and essentially
 based on their meaning: the Measure Components give information about
 the real world, while the Attribute components give information about
-the function itself. The VTL Data Structure is similar to the GSIM Data
-Structure; the relationship between them is described in a following
-section.
+the function itself.
 
 **Data Structure Component**: any component of the data structure, which
 can be either an Identifier, or a Measure, or an Attribute Component.
-This artefact is the same as in GSIM.
 
    **Identifier Component** (or simply Identifier): a component of the
-   data structure that is an independent variable of the function. This
-   artefact is the same as in GSIM. In respect to SDMX, an Identifier
-   Component may be either a **Group Identifier**, which contributes to
-   identify a group of statistical units and correspond to a SDMX
-   Dimension, or a **Measure Identifier**, which contributes to identify
-   a Measure and corresponds to a SDMX Measure Dimension.
+   data structure that is an independent variable of the function.
 
    **Measure Component** (or simply Measure): a component of the data
    structure that is a dependent variable of the function and gives
-   information about the real world. This artefact is the same as in
-   GSIM.
+   information about the real world.
 
    **Attribute Component** (or simply Attribute): a component of the
    data structure that is a dependent variable of the function and gives
-   information about the function itself. This artefact is the same as
-   in GSIM. In case the automatic propagation of the Attributes is
-   supported (see the section “Behaviour for Attribute Components”), the
-   Attributes can be further classified in normal Attributes (not
-   automatically propagated) and Viral Attributes (automatically
-   propagated).
+   information about the function itself. In case the automatic
+   propagation of the Attributes is Attributes can be further classified
+   in normal Attributes (not automatically propagated) and Viral
+   Attributes (automatically propagated).
 
 There can be from 0 to N Identifiers in a Data Structure. A Data Set
 having no identifiers can contain just one Data Point, whose independent
@@ -313,7 +306,7 @@ functional dependent from themselves (so having also the role of
 Measure). In an equivalent way, the combinations of values of the
 Identifiers can be considered as “true” (i.e. existing), therefore it
 can be thought that there is an implicit Boolean measure having value
-“TRUE” for all the Data Points [11]_.
+“TRUE” for all the Data Points [10]_.
 
 The extreme case of a Data Set having no Identifiers, Measures and
 Attributes is allowed. A Data Set of this kind contains just one scalar
@@ -327,9 +320,8 @@ Measures and Attributes may be significant for the VTL.
 
 **Represented Variable**: a characteristic of a statistical population
 (e.g. the country of birth) represented in a specific way (e.g. through
-the ISO numeric country code). This artefact is the same as in GSIM. A
-represented variable may contribute to define any number of Data
-Structure Components.
+the ISO numeric country code). A represented variable may contribute
+to define any number of Data Structure Components.
 
 Functional Integrity
 ~~~~~~~~~~~~~~~~~~~~
@@ -370,107 +362,6 @@ The VTL expects the input Data Sets to be functionally integral and is
 designed to ensure that the resulting Data Set are functionally integral
 too.
 
-Relationships between VTL and GSIM 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As mentioned earlier, the VTL Data Set and Data Structure artefacts are
-similar to the corresponding GSIM artefact. VTL, however, does not make
-a distinction between Unit and Dimensional Data Sets and Data
-Structures.
-
-In order to explain the relationships between VTL and GSIM, the
-distinction between Unit and Dimensional Data Sets can be introduced
-virtually even in the VTL artefacts. In particular, the GSIM Data Set
-may be a GSIM Dimensional Data Set or a GSIM Unit Data Set, while a VTL
-Data Set may (virtually) be:
-
-   either a (virtual) **VTL Dimensional Data Set**: a kind of (Logical)
-   Data Set describing groups of units of a population that may be
-   composed of many units. This (virtual) artefact would be the same as
-   the GSIM Dimensional Data Set;
-
-   or a (virtual) **VTL Unit Data Set**: a kind of (Logical) Data Set
-   describing single units of a population. This (virtual) artefact
-   would be the same as the Unit Data Record in GSIM, which has its own
-   structure and can be thought of as a mathematical function. The
-   difference is that the VTL Unit Data Set would not correspond to the
-   GSIM Unit Data Set, because the latter cannot be considered as a
-   mathematical function: in fact, it can have many GSIM Unit Data
-   Records with different structures.
-
-A similar relationship exists between VTL and GSIM Data Structures. In
-particular, introducing in VTL the virtual distinction between Unit and
-Dimensional Data Structures, while a GSIM Data Structure may be a GSIM
-Dimensional Data Structure or a GSIM Unit Data Structure, a VTL Data
-Structure may (virtually) be:
-
-   either a (virtual) **VTL Dimensional Data Structure**: the structure
-   of (0...n) Dimensional Data Sets. This artefact would be the same as
-   in GSIM;
-
-   or a (virtual) **VTL Unit Data Structure**: the structure of (0...n)
-   Unit Data Sets. This artefact would be the same as the Logical Record
-   in GSIM, which corresponds to a single structure and can be thought
-   as the structure of a mathematical function. The difference is that
-   the VTL Unit Data Structure would not correspond to the GSIM Unit
-   Data Structure, because the latter cannot be considered as the
-   structure of a mathematical function: in fact, it can have many
-   Logical Records with different structures.
-
-The following diagram summarizes the relationships between the GSIM and
-the VTL Data Sets and Data Structures, according to the explanation
-given above.
-
-Please take into account that the distinction between Dimensional and
-Unit Data Set and Data Structure is not used by the VTL language and is
-not part of the VTL IM. This virtual distinction is highlighted here and
-in the diagram below just for clarifying the mapping of the VTL IM with
-GSIM and DDI.
-
-GSIM – VTL mapping diagram about data structures:
-
-.. uml::
-
-    @startuml
-
-        skinparam SameClassWidth true
-        skinparam ClassBackgroundColor White
-        skinparam linetype ortho
-        skinparam nodesep 100
-
-        class "GSIM Unit\nData Record" as GSIMUnitDataRecord
-        class "GSIM Dimens.\nData Set" as GSIMDimensDataSet
-        class "GSIM\nLogical Record" as GSIMLogicalRecord
-        class "GSIM Dimens.\nData Structure" as GSIMDimensDataStructure
-        class "VTL\nData Set" as VTLDataSet #F8F8F8
-        class "VTL\nData Structure" as VTLDataStructure #F8F8F8
-
-        package "Virtual VTL artefacts" as vtl #line.dashed {
-            class "VTL Unit Data\nSet" as VTLUnitDataSet
-            class "VTL Dimens.\nData Set" as VTLDimensDataSet
-            class "VTL Unit Data\nStructure" as VTLUnitDataStructure
-            class "VTL Dimens.\nData Structure" as VTLDimensDataStructure
-            'Draw hidden links to control package layout
-            VTLUnitDataSet -down[hidden]- VTLDimensDataSet
-            VTLUnitDataSet -down[hidden]- VTLDimensDataSet
-            VTLDimensDataSet -down[hidden]- VTLUnitDataStructure
-            VTLUnitDataStructure -down[hidden]- VTLDimensDataStructure
-        }
-
-        vtl.VTLUnitDataSet <-left-> GSIMUnitDataRecord: "mappings  "
-        vtl.VTLDimensDataSet <-left-> GSIMDimensDataSet
-        vtl.VTLUnitDataStructure <-left-> GSIMLogicalRecord
-        vtl.VTLDimensDataStructure <-left-> GSIMDimensDataStructure
-
-        vtl.VTLUnitDataSet -right-|> VTLDataSet
-        vtl.VTLDimensDataSet -right-|> VTLDataSet
-        vtl.VTLUnitDataStructure -right-|> VTLDataStructure
-        vtl.VTLDimensDataStructure -right-|> VTLDataStructure
-
-        VTLDataSet "0..N" -down-> "1..1" VTLDataStructure: "structured by"
-
-    @enduml
-
 Examples 
 ~~~~~~~~~
 
@@ -478,7 +369,6 @@ As a first simple example of Data Sets seen as mathematical functions,
 let us consider the following table:
 
    *Production of the American Countries*
-
 
 +--------------+-------------+---------------+----------------+-------------+
 | **Ref.Date** | **Country** | **Meas.Name** | **Meas.Value** | **Status**  |
@@ -523,33 +413,30 @@ value or contain the “NULL” value.
 
    *Institutional Unit Data*
 
-+--------+--------+--------+--------+--------+--------+-----------+
-| **Row  | **I.U. | **Ref. | **I.U. | **I.U. | **As   | **Liab    |
-| Type** | ID**   | Date** | Name** | Se     | sets** | ilities** |
-|        |        |        |        | ctor** |        |           |
-+========+========+========+========+========+========+===========+
-| I      | A      | ###    | AAAAA  | P      | ###    | ###       |
-|        |        |        |        | rivate |        |           |
-+--------+--------+--------+--------+--------+--------+-----------+
-| II     | A      | 2013   | ###    | ###    | 1000   | 800       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| II     | A      | 2014   | ###    | ###    | 1050   | 750       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| I      | B      | ###    | BBBBB  | Public | ###    | ###       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| II     | B      | 2013   | ###    | ###    | 1200   | 900       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| II     | B      | 2014   | ###    | ###    | 1300   | 950       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| I      | C      | ###    | CCCCC  | P      | ###    | ###       |
-|        |        |        |        | rivate |        |           |
-+--------+--------+--------+--------+--------+--------+-----------+
-| II     | C      | 2013   | ###    | ###    | 750    | 900       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| II     | C      | 2014   | ###    | ###    | 800    | 850       |
-+--------+--------+--------+--------+--------+--------+-----------+
-| …      | …      | …      | …      | …      | …      | …         |
-+--------+--------+--------+--------+--------+--------+-----------+
++--------+--------+--------+--------+----------+------------+-----------------+
+| **Row  | **I.U. | **Ref. | **I.U. | **I.U.   | **Assets** | **Liabilities** |
+| Type** | ID**   | Date** | Name** | Sector** |            |                 |
++========+========+========+========+==========+============+=================+
+| I      | A      | ###    | AAAAA  | Private  | ###        | ###             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| II     | A      | 2013   | ###    | ###      | 1000       | 800             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| II     | A      | 2014   | ###    | ###      | 1050       | 750             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| I      | B      | ###    | BBBBB  | Public   | ###        | ###             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| II     | B      | 2013   | ###    | ###      | 1200       | 900             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| II     | B      | 2014   | ###    | ###      | 1300       | 950             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| I      | C      | ###    | CCCCC  | Private  | ###        | ###             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| II     | C      | 2013   | ###    | ###      | 750        | 900             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| II     | C      | 2014   | ###    | ###      | 800        | 850             |
++--------+--------+--------+--------+----------+------------+-----------------+
+| …      | …      | …      | …      | …        | …          | …               |
++--------+--------+--------+--------+----------+------------+-----------------+
 
 This table does not fulfil the functional integrity requirements above
 because its rows (i.e. the Data Points) either have different structures
@@ -641,7 +528,7 @@ The data artefacts
 
 The list of the VTL artefacts related to the manipulation of the data is
 given here, together with the information that the VTL may need to know
-about them [12]_.
+about them [11]_.
 
 For the sake of simplicity, the names of the artefacts can be
 abbreviated in the VTL manuals (in particular the parts of the names
@@ -661,30 +548,38 @@ artefacts, other relationships among artefacts …).
 
 **Data Set**
 
-   *Data Set name name of the Data Set*
+.. list-table::
 
-   *Data Structure name reference to the data structure of the Data Set*
+    * - *Data Set name*
+      - *name of the Data Set*
+    * - *Data Structure name*
+      - *reference to the data structure of the Data Set*
+
 
 **Data Structure**
 
-   *Data Structure name name of the Data Structure (the Structure
-   Components are specified in the following artefact)*
+.. list-table::
+
+    * - *Data Structure name*
+      - *name of the Data Structure (the Structure Components are specified in the following artefact)*
+
 
 **(Data) Structure Component**
 
-   *Data Structure name the data structure, which the Data Structure
-   Component belongs to*
+.. list-table::
 
-   *Component name the name of the Component*
+    * - *Data Structure name*
+      - *the data structure, which the Data Structure Component belongs to*
+    * - *Component name*
+      - *the name of the Component*
+    * - *Component Role*
+      - *IDENTIFIER or MEASURE or ATTRIBUTE (or also VIRAL ATTRIBUTE if the automatic propagation is supported)*
+    * - *Represented Variable*
+      - *the Represented Variable which defines the Component (see also below)*
 
-   *Component Role IDENTIFIER or MEASURE or ATTRIBUTE (or also VIRAL
-   ATTRIBUTE if the automatic propagation is supported)*
-
-   *Represented Variable the Represented Variable which defines the
-   Component (see also below)*
 
 The Data Points have the same information structure of the Data Sets
-they belong to, in fact they form the extensions of the relevant Data
+they belong to; in fact they form the extensions of the relevant Data
 Sets; VTL does not require defining them explicitly.
 
 Generic Model for Variables and Value Domains
@@ -1727,39 +1622,33 @@ be the following:
 
 -  a VTL Transformation Scheme 🡨🡪 A whole spreadsheet
 
-.. [6]
+.. [5]
    The definition of a temporary artefact can be also persistent, if
    needed.
 
-.. [7]
+.. [6]
    See also the section “Relations with the GSIM Information model”
 
+.. [7]
+   Hyperlink
+   “\ \ `https://unece.org/statistics/modernstats/gsim” <https://unece.org/statistics/modernstats/gsim>`__
+
 .. [8]
-   For the GSIM – DDI and GSIM – SDMX mappings, see also the
-   relationships between GSIM and other standards at the UNECE site
-   http://www1.unece.org/stat/platform/display/gsim/GSIM+and+standards.
-   About the mapping with SDMX, however, note that here it is assumed
-   that the SDMX artefacts Data Set and Data Structure Definition may
-   represent both dimensional and unit data (not only dimensional data)
-   and may be mapped respectively to the VTL artefacts Data Set and Data
-   Structure.
+   Some initiatives have been started by UNECE High-Level Group for the
+   Modernisation of Official Statistics (HLG-MOS); see for example https://unece.org/statistics/documents/2023/11/working-documents/hlg2023-ssg-sdmxvtlddi-implement-gsim.
 
 .. [9]
-   Hyperlink
-   “\ \ `http://www1.unece.org/stat/platform/display/GSIMclick/Clickable+GSIM” <http://www1.unece.org/stat/platform/display/GSIMclick/Clickable+GSIM>`__
-
-.. [10]
    For example in the Common Warehouse Metamodel and Meta-Object
    Facility specifications
 
-.. [11]
+.. [10]
    For example, this is the case of a relationship that does not have
    properties: imagine a Data Set containing the relationship between
    the students and the courses that they have followed, without any
    other information: the corresponding Data Set would have StudentId
    and CourseId as Identifiers and would not have any explicit measure
 
-.. [12]
+.. [11]
    For example, for ensuring correct operations, the knowledge of the
    Data Structure of the input Data Sets is essential at parsing time,
    in order to check the correctness of the VTL expression and determine
