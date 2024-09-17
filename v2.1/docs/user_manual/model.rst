@@ -651,16 +651,13 @@ Dark grey additional detail (in respect to GSIM 1.1)
 Explanation of the Diagram 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Even in the case of Variables and Value Domains, the GSIM artefacts are
-used as much as possible. The differences are mainly due to the fact
-that GSIM does not distinguish explicitly between Value Domains and
-their (Sub)Sets, while in the VTL IM this is made more explicit in order
-to allow different Data Set Components relevant to the same aspect of
-the reality (e.g. the geographic area) to share the same Value Domain
-and, at the same time, to take values in different Subsets of it. This
-is essential for VTL for several operations and in particular for
-validation purposes. For example, it may happen that the same
-Represented Variable, say the “place of birth”, in a Data Set takes
+The VTL IM distinguishes explicitly between Value Domains and their
+(Sub)Sets in order to allow different Data Set Components relevant to
+the same aspect of the reality (e.g. the geographic area) to share
+the same Value Domain and, at the same time, to take values in different
+Subsets of it. This is essential for VTL for several operations and in
+particular for validation purposes. For example, it may happen that the
+same Represented Variable, say the “place of birth”, in a Data Set takes
 values in the Set of the European Countries, in another one takes values
 in the set of the African countries, and so on, even at different levels
 of details (e.g. the regions, the cities). The definition of the exact
@@ -676,7 +673,7 @@ Model for Data and their structures).
 **Data Set Component**: a component of the Data Set, which matches with
 just one Data Structure Component of the Data Structure of such a Data
 Set and takes values in a (sub)set of the corresponding Value
-Domain [13]_; this (sub)set of allowed values may either coincide with
+Domain [12]_; this (sub)set of allowed values may either coincide with
 the set of all the values belonging to the Value Domain or be a proper
 subset of it. In respect to a Data Structure Component, a Data Set
 Component bears the important additional information of the set of
@@ -693,28 +690,24 @@ Represented Variable.
 
 **Represented Variable**: a characteristic of a statistical population
 (e.g. the country of birth) represented in a specific way (e.g. through
-the ISO code). This artefact is the same as in GSIM. A represented
-variable may take value in (or may be measured by) just one Value
-Domain.
+the ISO code). A represented variable may take value in (or may be
+measured by) just one Value Domain.
 
 **Value Domain**: the domain of allowed values for one or more
-represented variables. This artefact is very similar to the
-corresponding artefact in GSIM. Because of the distinction between Value
+represented variables. Because of the distinction between Value
 Domain and its Value Domain Subsets, a Value Domain is the wider set of
 values that can be of interest for representing a certain aspect of the
 reality like the time, the geographical area, the economic sector and so
 on. As for the mathematical meaning, a Value Domain is meant to be the
 representation of a “space of events” with the meaning of the
-probability theory [14]_. Therefore, a single Value of a Value Domain is
+probability theory [13]_. Therefore, a single Value of a Value Domain is
 a representation of a single “event” belonging to this space of events.
 
    **Described Value Domain**: a Value Domain defined by a criterion
-   (e.g. the domain of the positive integers). This artefact is the same
-   as in GSIM.
+   (e.g. the domain of the positive integers).
 
    **Enumerated Value Domain**: a Value Domain defined by enumeration of
-   the allowed values (e.g. domain of ISO codes of the countries). This
-   artefact is the same as in GSIM.
+   the allowed values (e.g. domain of ISO codes of the countries).
 
    **Code List**: the list of all the Code Items belonging to an
    enumerated Value Domain, each one representing a single “event” with
@@ -722,28 +715,26 @@ a representation of a single “event” belonging to this space of events.
    meaning, this list is unique for a Value Domain, cannot contain
    repetitions (each Code Item can be present just once) and cannot
    contain ambiguities (each Code Item must have a univocal meaning,
-   i.e., must represent a single event of the space of the events). This
-   artefact is the same as in GSIM except for the multiplicity of the
-   relationship with the Enumerated Value Domain which is 1:1. In fact,
-   as it happens for the Data Set, the VTL considers the Code List as an
-   artefact at a logical level, corresponding to its mathematical
-   meaning. A logical VTL Code List, however, may be obtained as the
-   composition of more physical lists of codes if needed: the mapping
-   between the logical and the physical lists is out of scope of this
-   document and is left to the implementations, provided that the basic
-   conceptual properties of the VTL Code List are ensured (unicity, no
-   repetitions, no ambiguities). In practice, as for the VTL IM, the
+   i.e., must represent a single event of the space of the events).
+   The multiplicity of the relationship with the Enumerated Value Domain
+   which is 1:1 because, as it happens for the Data Set, the VTL
+   considers the Code List as an artefact at a logical level, corresponding
+   to its mathematical meaning. A logical VTL Code List, however, may be
+   obtained as the composition of more physical lists of codes if needed:
+   the mapping between the logical and the physical lists is out of scope
+   of this document and is left to the implementations, provided that the
+   basic conceptual properties of the VTL Code List are ensured (unicity,
+   no repetitions, no ambiguities). In practice, as for the VTL IM, the
    Code List artefact matches 1:1 with the Enumerated Value Domain
    artefact, therefore they can be considered as the same artefact.
 
 **Code Item**: an allowed Value of an enumerated Value Domain. A Code
-Item is the association of a Value with the relevant meaning (called
-“category” in GSIM). An example of Code Item is a single country ISO
-code (the Value) associated to the country it represents (the category).
-As for the mathematical meaning, a Code Item is the representation of an
-“event” of a space of events (i.e. the relevant Value Domain), according
-to the notions of “event” and “space of events” of the probability
-theory (see the note above).
+Item is the association of a Value with the relevant meaning. An example
+of Code Item is a single country ISO code (the Value) associated to the
+country it represents (the category). As for the mathematical meaning,
+a Code Item is the representation of an “event” of a space of events
+(i.e. the relevant Value Domain), according to the notions of “event”
+and “space of events” of the probability theory (see the note above).
 
 **Value**: an allowed value of a Value Domain. Please note that on a
 logical / mathematical level, both the Described and the Enumerated
@@ -760,38 +751,30 @@ countries but only the European countries). This is needed also for
 transformation purposes, for example to filter the Data Points according
 to a subset of Values of a certain Data Structure Component (e.g.
 extract only the European Countries from some data relevant to the World
-Countries). Although this detail does not exist in GSIM, these artefacts
-are compliant with the GSIM artefacts described above, aimed at
-representing the Value Domains:
+Countries).
 
 **Value Domain** **Subset** (or simply **Set**): a subset of Values of a
-Value Domain. This artefact does not exist in GSIM; however, it is
-compliant with the GSIM Value Domain. Hereinafter a Value Domain Subset
-is simply called **Set**, because it can be any set of Values belonging
-to the Value Domain (even the set of all the values of the Value
-Domain).
+Value Domain. Hereinafter a Value Domain Subset is simply called **Set**,
+because it can be any set of Values belonging to the Value Domain
+(even the set of all the values of the Value Domain).
 
    **Described Value Domain Subset** (or simply **Described Set**): a
    described (defined by a criterion) subset of Values of a Value Domain
    (e.g. the countries having more than 100 million inhabitants, the
-   integers between 1 and 100). This artefact does not exist in GSIM;
-   however, it is compliant with the GSIM Described Value Domain.
+   integers between 1 and 100).
 
    **Enumerated Value Domain** **Subset** (or simply **Enumerated
    Set**): an enumerated subset of a Value Domain (e.g. the enumeration
-   of the European countries). This artefact does not exist in GSIM;
-   however, it is compliant with the GSIM Enumerated Value Domain.
+   of the European countries).
 
    **Set List**: the list of all the Values belonging to an Enumerated
    Set (e.g. the list of the ISO codes of the European countries),
    without repetitions (each Value is present just once). As obvious,
    these Values must belong to the Value Domain of which the Set is a
-   subset. This artefact does not exist in GSIM; however, it is
-   compliant with the Code List in GSIM, which has a similar role. The
-   Set List enumerates the Values contained in the Set (e.g. the
-   European country codes), without the associated categories (e.g. the
-   names of the countries), because the latter are already maintained in
-   the Code List / Code Items of the relevant Value Domain (which
+   subset. The Set List enumerates the Values contained in the Set (e.g.
+   the European country codes), without the associated categories (e.g.
+   the names of the countries), because the latter are already maintained
+   in the Code List / Code Items of the relevant Value Domain (which
    enumerates all the possible Values with the associated categories).
    In practice, as for the VTL IM, the Set List artefact coincides 1:1
    with the Enumerated Set artefact, therefore they can be considered as
@@ -1157,34 +1140,36 @@ artefacts …).
 
 **(Represented) Variable**
 
-   *Variable name name of the Represented Variable*
+.. list-table::
 
-   *Value Domain name reference to the Value Domain that measures the
-   Variable, i.e. in which the Variable takes values*
+    * - *Variable name*
+      - *name of the Represented Variable*
+    * - *Value Domain name*
+      - *reference to the Value Domain that measures the Variable, i.e. in which the Variable takes values*
 
 *(Data Set)* **Component**
 
-   *Data Set name the Data set which the Component belongs to*
+.. list-table::
 
-   *Component name the name of the Component*
-
-   *(Sub) Set name reference to the (sub)Set containing the allowed
-   values for the Component*
+    * - *Data Set name*
+      - *the Data set which the Component belongs to*
+    * - *Component name*
+      - *the name of the Component*
+    * - *(Sub) Set name*
+      - *reference to the (sub)Set containing the allowed values for the Component*
 
 **Value Domain**
 
-   *Value Domain name name of the Value Domain*
+.. list-table::
 
-   *Value Domain sub-class if it is an Enumerated or Described Value
-   Domain*
-
-   *Basic Scalar Type the basic scalar type of the Values of the Value
-   Domain, for example string, number … and so on (see also the section
-   “VTL data types”)*
-
-   *Value Domain Criterion a criterion for restricting the Values of a
-   basic scalar type, for example by specifying a max length of the
-   representation, an upper or/and a lower value, and so on*
+    * - *Value Domain name*
+      - *name of the Value Domain*
+    * - *Value Domain sub-class*
+      - *if it is an Enumerated or Described Value Domain*
+    * - *Basic Scalar Type*
+      - *the basic scalar type of the Values of the Value Domain, for example string, number … and so on (see also the section “VTL data types”)*
+    * - *Value Domain Criterion*
+      - *a criterion for restricting the Values of a basic scalar type, for example by specifying a max length of the representation, an upper or/and a lower value, and so on*
 
 **Code List** *this artefact is comprised in the previous one, in fact
 it corresponds one to one to the enumerated Value Domain (see above)*
@@ -1197,65 +1182,67 @@ the Code Item artefact (see below)*
 **Code Item** *this artefact defines the Code Items of the Enumerated
 Value Domains*
 
-   *Value Domain name the Value Domain, which the Value belongs to*
+.. list-table::
 
-   *Value the univocal name of the Value within the Value Domain it
-   belongs to*
+    * - *Value Domain name*
+      - *the Value Domain, which the Value belongs to*
+    * - *Value*
+      - *the univocal name of the Value within the Value Domain it belongs to*
 
-*(Value Domain Sub)\ *\ **Set**
+*(Value Domain Sub)* **Set**
 
-   *Value Domain name the Value Domain, which the set belongs to*
+.. list-table::
 
-   *Set name the name of the Set, which must be univocal within the
-   Value Domain*
-
-   *Set sub-class if it is an Enumerated or Described Set*
-
-   *Set Criterion a criterion for identifying the Values belonging to
-   the Set*
+    * - *Value Domain name*
+      - *the Value Domain, which the Value belongs to*
+    * - *Set name*
+      - *the name of the Set, which must be univocal within the Value Domain*
+    * - *Set sub-class*
+      - *if it is an Enumerated or Described Set*
+    * - *Set Criterion*
+      - *a criterion for identifying the Values belonging to the Set*
 
 **Set List** *this artefact is comprised in the previous one, in fact it
 corresponds one to one to the enumerated Set*
 
-**Set Item** *this artefact specifies the Code Items of the Enumerated
-Sets*
+**Set Item** *this artefact specifies the Code Items of the Enumerated Sets*
 
-   *Value Domain name reference to the Value Domain which the Set and
-   the Value belongs to*
+.. list-table::
 
-   *Set name the Set that contains the Value*
-
-   *Value Value element of the Set*
+    * - *Value Domain name*
+      - *reference to the Value Domain which the Set and the Value belongs to*
+    * - *Set name*
+      - *the Set that contains the Value*
+    * - *Value*
+      - *Value element of the Set*
 
 **Code Item Relation**
 
-   *1stMember Domain name Value Domain of the first member of the
-   Relation; e.g. Geo_Area*
+.. list-table::
 
-   *1stMemberValue the first member of the Relation; e.g. Benelux*
-
-   *1stMemberComposition conventional name of the composition method,
-   which distinguishes possible different compositions methods related
-   to the same first member Value. It must be univocal within the
-   1stMember. Not necessarily, it has to be meaningful; it can be simply
-   a progressive number, e.g. “1”*
-
-   *Relation Type type of relation between the first and the second
-   member, having as possible values =, <, <=, >, >=*
+    * - *1stMember Domain name*
+      - *Value Domain of the first member of the Relation; e.g. Geo_Area*
+    * - *1stMemberValue*
+      - *the first member of the Relation; e.g. Benelux*
+    * - *1stMemberComposition*
+      - *conventional name of the composition method, which distinguishes possible different compositions methods related to the same first member Value. It must be univocal within the 1stMember. Not necessarily, it has to be meaningful; it can be simply a progressive number, e.g. “1”*
+    * - *Relation Type*
+      - *type of relation between the first and the second member, having as possible values =, <, <=, >, >=*
 
 **Code Item Relation Operand**
 
-   *1stMember Domain name Value Domain of the first member of the
-   Relation; e.g. Geo_Area*
+.. list-table::
 
-   *1stMember Value the first member of the Relation; e.g. Benelux*
-
-   *1stMember Composition see the description already given above*
-
-   *2ndMember Value an operand of the Relation; e.g. Belgium*
-
-   *Operator the operator applied on the 2ndMember Value, it can be “+”
-   or ”- “; the default is “+”*
+    * - *1stMember Domain name*
+      - *Value Domain of the first member of the Relation; e.g. Geo_Area*
+    * - *1stMemberValue*
+      - *the first member of the Relation; e.g. Benelux*
+    * - *1stMemberComposition*
+      - *see the description already given above*
+    * - *2ndMember Value*
+      - *an operand of the Relation; e.g. Belgium*
+    * - *Operator*
+      - *the operator applied on the 2ndMember Value, it can be “+” or ”- “; the default is “+”*
 
 Generic Model for Transformations
 ---------------------------------
@@ -1655,12 +1642,12 @@ be the following:
    the Data Structure of the result, and at execution time to perform
    the calculations
 
-.. [13]
+.. [12]
    This is the Value Domain which measures the Represented Variable,
    which defines the Data Structure Component, which the Data Set
    Component matches to
 
-.. [14]
+.. [13]
    According to the probability theory, a random experiment is a
    procedure that returns a result belonging a predefined set of
    possible results (for example, the determination of the “geographic
