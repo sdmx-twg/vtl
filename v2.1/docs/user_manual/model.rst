@@ -1256,11 +1256,11 @@ assumed that the data validation is a particular case of transformation;
 therefore, the term “transformation” is meant to be more general and to
 include the validation case as well.
 
-This model is essentially derived from the SDMX IM [15]_, as DDI and
+This model is essentially derived from the SDMX IM [14]_, as DDI and
 GSIM do not have an explicit transformation model at the present
-time [16]_. In its turn, the SDMX model for Transformations is similar
+time [15]_. In its turn, the SDMX model for Transformations is similar
 in scope and content to the Expression metamodel that is part of the
-Common Warehouse Metamodel (CWM)  [17]_ developed by the Object
+Common Warehouse Metamodel (CWM)  [16]_ developed by the Object
 Management Group (OMG).
 
 The model represents the user logical view of the definition of
@@ -1283,7 +1283,7 @@ Data Sets starting from already existing ones.
 
 The general form of a Transformation is the following:
 
-*result assignment_operator expression*
+   *result assignment_operator expression*
 
 meaning that the outcome of the evaluation of *expression* in the
 right-hand side is assigned to the *result of the Transformation* in the
@@ -1301,7 +1301,7 @@ In turn, the *expression* in the right-hand side composes some operands
 of some operators (e.g. sum, product …) to produce the desired results
 (e.g. the validation outcome, the calculated data).
 
-For example: *D\ r := D\ 1 + D\ 2* (*D\ r , D\ 1 , D\ 2* are assumed to
+For example:   *D\ r := D\ 1 + D\ 2* (*D\ r , D\ 1 , D\ 2* are assumed to
 be Data Sets)
 
 In this example, the measure values of the Data Set *D\ r* are
@@ -1313,7 +1313,7 @@ A validation is intended to be a kind of Transformation. For example,
 the simple validation that *D\ 1* = *D\ 2* can be made through an “If”
 operator, with an expression of the type:
 
-*D\ r* := If (*D\ 1* = *D\ 2* , then TRUE, else FALSE)
+   *D\ r* := If (*D\ 1* = *D\ 2* , then TRUE, else FALSE)
 
 In this case, the Data Set *D\ r* would have a Boolean measure
 containing the value TRUE if the validation is successful and FALSE if
@@ -1330,7 +1330,7 @@ written according to a formal language, which specifies the list of
 allowed operators (e.g. sum, product …), their syntax and semantics, and
 the rules for composing the expression (e.g. the default order of
 execution of the operators, the use of parenthesis to enforce a certain
-order …). The Operators of the language have Parameters [18]_, which are
+order …). The Operators of the language have Parameters [17]_, which are
 the a-priori unknown inputs and output of the operation, characterized
 by a given role (e.g. dividend, divisor or quotient in a division).
 
@@ -1472,7 +1472,7 @@ previous date, *D\ 2* the flows in the last period, *D\ 3* the current
 stocks. Assume that it is desired to check the consistency of the Data
 Sets using the following statement:
 
-*D\ r* := If ((*D\ 1* + *D\ 2*) = *D\ 3* , then “true”, else “false”)
+   *D\ r* := If ((*D\ 1* + *D\ 2*) = *D\ 3* , then “true”, else “false”)
 
 In this case:
 
@@ -1528,7 +1528,7 @@ operators, specify the algorithm for calculating the results in their
 entirety, once for all, and never for updating them. When some change in
 the operands occurs (e.g. the input data change), the VTL assumes that
 the results are recalculated in their entirety according to the
-correspondent expressions [19]_.
+correspondent expressions [18]_.
 
 Coherently, a VTL artefact can be result of just one Transformation and
 cannot be updated by other Transformations, a Transformation cannot
@@ -1546,7 +1546,7 @@ Transformations and spreadsheets.
 In this analogy, a VTL artefact corresponds to a non-empty cell of a
 spreadsheet, a Transformation to the formula defined in a cell (which
 references other cells as operands), a Result to the content of the cell
-in which the formula is defined [20]_.
+in which the formula is defined [19]_.
 
 The model artefacts involved in Transformations can be divided into
 “collected / primary” or “calculated / derived” ones. The former are
@@ -1660,31 +1660,29 @@ be the following:
    “space of events” is the space of all the possible “events” (in the
    example, the space of the geographical areas).
 
-.. [15]
+.. [14]
    The SDMX specification can be found at https://sdmx.org/?page_id=5008
    (see Section 2 - Information Model, package 13 - “Transformations and
    Expressions”).
 
-.. [16]
+.. [15]
    The Transformation model described here is not a model of the
    processes, like the ones that both SDMX and GSIM have, and has a
    different scope. The mapping between the VTL Transformation and the
-   Process models is not covered by the present document, and will be
-   addressed in a separate work task with contributions from several
-   standards experts.
+   Process models is not covered by the present document.
 
-.. [17]
+.. [16]
    This specification can be found at http://www.omg.org/cwm.
 
-.. [18]
+.. [17]
    The term is used with the same meaning of “argument”, as usual in
    computer science.
 
-.. [19]
+.. [18]
    At the implementation level, which is out of the scope of this
    document, the update operations are obviously possible
 
-.. [20]
+.. [19]
    The main difference between the two cases is the fact that a cell of
    a spreadsheet may contain only a scalar value while a VTL artefact
    may have also a more complex data structure, being typically a Data
