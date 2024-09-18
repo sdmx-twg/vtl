@@ -173,7 +173,7 @@ General conventions for describing the types
 
    operand :: string
 
-means that the operand is a *string*.
+   means that the operand is a *string*.
 
 -  The vertical bar **\|** indicates mutually exclusive type options,
    for example
@@ -182,8 +182,7 @@ means that the operand is a *string*.
 
    operand :: scalar \| component \| dataset
 
-means that “operand” can be either *scalar*, or *component*, or
-*dataset.*
+   means that “operand” can be either *scalar*, or *component*, or *dataset.*
 
 -  The angular parenthesis **< type2 >** indicates that type 2 (included
    in the parenthesis) restricts the specification of the preceding
@@ -193,7 +192,7 @@ means that “operand” can be either *scalar*, or *component*, or
 
    operand :: component <string>
 
-means “the operand is a component of *string* basic scalar type”.
+   means “the operand is a component of *string* basic scalar type”.
 
    If the angular parenthesis are omitted, it means that the preceding
    type is already completely specified, for example:
@@ -405,7 +404,7 @@ format of the external representation is known.
 
 For example, the external representation of dates can be associated to
 the internal one provided that the parts that specify year, month and
-day are recognizable [21]_.
+day are recognizable [20]_.
 
 Value Domain Scalar Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -464,7 +463,7 @@ cannot be changed, all the Value Domains are user defined, therefore
 their names and their contents can be assigned by the users.
 
 Some VTL Operators assume that a VTL system have certain kinds of Value
-Domains which are needed to perform the correspondent operations [22]_.
+Domains which are needed to perform the correspondent operations [21]_.
 In the VTL manuals. Definite names and representations are assigned to
 such Value Domains for explanatory purposes; however, these names and
 representations are not mandatory and can be personalised if needed. If
@@ -609,19 +608,23 @@ The **duration** values in these manuals are conventionally restricted
 to very few predefined durations that are codified through just one
 character as follows:
 
-   *Code Duration*
+.. list-table::
+   :header-rows: 1
 
-   D Day
-
-   W Week
-
-   M Month
-
-   Q Quarter
-
-   S Semester
-
-   A Year (Annual)
+   * - *Code*
+     - *Duration*
+   * - D
+     - Day
+   * - W
+     - Week
+   * - M
+     - Month
+   * - Q
+     - Quarter
+   * - S
+     - Semester   
+   * - A
+     - Year (Annual) 
 
 This is a very simple format not compliant with the ISO 8601 standard,
 which allows representing durations in a much more complete, even if
@@ -713,7 +716,7 @@ Conventions for describing the scalar types
    keyword if present), means that the scalar type does not allow the
    NULL value, for example:
 
-operand :: string literal not null
+   operand :: string literal not null
 
    means that the operand is a literal of *string* scalar type and
    cannot be NULL; if not null is omitted the NULL value is meant to be
@@ -721,7 +724,7 @@ operand :: string literal not null
 
 -  An **expression within square brackets** following the previous
    keywords, means that the preceding scalar type is restricted by the
-   expression. This is a VTL *boolean* expression [23]_ (whose result
+   expression. This is a VTL *boolean* expression [22]_ (whose result
    can be TRUE or FALSE) which specifies a membership criterion, that is
    a condition that discriminates the values which belong to the
    restriction (sub-type) from the others (the value is assumed to
@@ -739,7 +742,7 @@ operand :: string literal not null
 
    The following examples show some particular cases:
 
--  The generic expression **[ between ( value, x, y ) ]**\  [24]_
+-  The generic expression **[ between ( value, x, y ) ]**\  [23]_
    restricts a scalar type by indicating a closed interval of possible
    values going from the value x to the value y, for example
 
@@ -781,7 +784,7 @@ operand :: string literal not null
    means integer equal to or greater than 1, while “integer[ value < 100
    ]” means an integer lesser than 100.
 
--  The generic expression **[ value in { v1, … , vN } ]**\  [25]_
+-  The generic expression **[ value in { v1, … , vN } ]**\  [24]_
    restricts a scalar type by specifying explicitly a set of possible
    values, for example
 
@@ -794,7 +797,7 @@ operand :: string literal not null
    where in is the “Element of” VTL operator and set_name is the name of
    an existing Set (Value Domain Subset) of the VTL IM.
 
--  By using in the expression the operator length [26]_ it is possible
+-  By using in the expression the operator length [25]_ it is possible
    to restrict a scalar type by specifying the possible number of digits
    that the values can have, for example
 
@@ -914,7 +917,7 @@ types.
    means that the operand must be a Measure.
 
    The additional role **viral attribute** exists if the automatic
-   propagation of the Attributes is supported [27]_. The type
+   propagation of the Attributes is supported [26]_. The type
    *viral_attribute* is a sub-type of *attribute*.
 
 -  By default, a Component can be either specified directly through its
@@ -929,7 +932,7 @@ types.
    operand :: measure name <string>
 
    means that the name of a *string* Measure must be specified and not a
-   string sub- expression [28]_. If the name keyword is omitted the
+   string sub-expression [27]_. If the name keyword is omitted the
    sub-expression is allowed.
 
 -  The symbol **<** scalar type **>** means that the preceding type is
@@ -976,15 +979,14 @@ following restrictive conditions:
 -  The possible values of the reference time Identifier Component must
    be regularly spaced
 
--  For the type *time*, the time intervals must start (or end) at a
-   regular periodicity and have the same duration
+  -  For the type *time*, the time intervals must start (or end) at a
+     regular periodicity and have the same duration
 
--  For the type *date*, the time values must have a regular periodicity
+  -  For the type *date*, the time values must have a regular periodicity
 
--  For the type *time_period* there are no additional conditions to
-   fulfil, because the *time_period* values comprise by construction the
-   indication of the period and therefore are regularly spaced by
-   default
+  -  For the type *time_period* there are no additional conditions to
+     fulfil, because the *time_period* values comprise by construction the
+     indication of the period and therefore are regularly spaced by default
 
 -  It is assumed that it exist the information about which is Identifier
    Components that acts as the reference time and about which is the
@@ -996,8 +998,6 @@ following restrictive conditions:
    Identifier and the period of the time series and use these
    information to perform correct operations.
 
-..
-
    Usually, the information about which is the reference time is
    included in the data structure definition of the Data Sets or in the
    definition of the Data Set Components.
@@ -1005,14 +1005,14 @@ following restrictive conditions:
    Some commonly used representations of the periodicity are the
    following:
 
--  For the types *time* and *date*, the period is often represented
-   through an additional Component of the Data Set (of any possible
-   role) or an additional metadata relevant to the whole Data Set or
-   some parts of it. This Component (or other metadata) is of the
-   “duration” type and is often called “frequency”.
+  -  For the types *time* and *date*, the period is often represented
+     through an additional Component of the Data Set (of any possible
+     role) or an additional metadata relevant to the whole Data Set or
+     some parts of it. This Component (or other metadata) is of the
+     “duration” type and is often called “frequency”.
 
--  For the type *time_period*, the periodicity is embedded in the
-   *time_period* values.
+  -  For the type *time_period*, the periodicity is embedded in the
+     *time_period* values.
 
 ..
 
@@ -1022,7 +1022,7 @@ following restrictive conditions:
 
 Within a Data Set of Time Series, a single Time Series is the set of
 Data Points that have the same values for all the Identifier Components
-except the reference time [29]_. A Data Set of time series can also
+except the reference time [28]_. A Data Set of time series can also
 contain more time series relevant to the same phenomenon but having
 different periodicities, provided that one or more Identifiers (other
 than the reference time) distinguish the Time Series having different
@@ -1043,16 +1043,14 @@ where the type_constraint may assume many different forms which are
 described in detail in the following section. Examples of Data Set types
 are the following:
 
-   dataset Any Data Set (according to the IM)
+.. list-table::
 
-   dataset { measure <number> \_\* } A Data Set having one or more
-   Measures of type *number*, without constraints on Identifiers and
-   Attributes
-
-   dataset { measure <boolean> \_ , attribute<string> \_\* }
-
-   A Data Set having one *boolean* Measure, one or more *string*
-   Attributes and no constraints on Identifiers
+   * - dataset
+     - Any Data Set (according to the IM)
+   * - dataset { measure <number> \_\* }
+     - A Data Set having one or more Measures of type *number*, without constraints on Identifiers and Attributes
+   * - dataset { measure <boolean> \_ , attribute<string> \_\* }
+     - A Data Set having one *boolean* Measure, one or more *string* Attributes and no constraints on Identifiers
 
 In summary, the following conventions are used for describing Data Set
 types.
@@ -1257,7 +1255,7 @@ Universal Set Type:
 
    *set* < *string* \* *integer* \* *boolean* >
 
-includes the sets [31]_:
+includes the sets [29]_:
 
    { ("PfgTj", 7, true), ("kj-o", 80, false), ("", 4, false) }
 
@@ -1287,11 +1285,11 @@ For instance the following Universal List type:
 
    *list* < *component>*
 
-includes elements like [32]_ [reference date, import, export] but does
+includes elements like [31]_ [reference date, import, export] but does
 not include elements like [dataset1, country, sector] and [import,
 “text”] because dataset1 and “text” are not Components.
 
-.. [21]
+.. [20]
    This can be achieved in many ways that depend on the data type and on
    the adopted internal and external representations. For example, there
    can exist a default correspondence (e.g., 0 means always False and 1
@@ -1300,46 +1298,46 @@ not include elements like [dataset1, country, sector] and [import,
    DD-MM-YYYY or YYYYMMDD specify the position of the digits
    representing year, month and day).
 
-.. [22]
+.. [21]
    For example, at least one default Value Domain should exists for each
    basic scalar type, the Value Domains needed to represent the results
    of the checks should exist, and so on.
 
-.. [23]
+.. [22]
    I.e., an expressions whose result is *boolean*
 
-.. [24]
+.. [23]
    “between ( x, y, z)” is the VTL operator which returns TRUE if x is
    comprised between y and z
 
-.. [25]
+.. [24]
    “in” is the VTL operator which returns TRUE if an element (in this
    case the value) belongs to a Set; the symbol { … , … , … } denotes a
    set defined as the list of its elements (separated by commas)
 
-.. [26]
-   “length” is the VTL Operator that returns the length of a string (in
-   the example, the *integer* operand of the length operator is
+.. [25]
+   “**length**” is the VTL Operator that returns the length of a string (in
+   the example, the *integer* operand of the **length** operator is
    automatically cast to a string and its length is determined)
 
-.. [27]
+.. [26]
    See the section “Behaviour for Attribute Components”
 
-.. [28]
+.. [27]
    I.e., a sub-expressions whose result is *string*
 
-.. [29]
+.. [28]
    Therefore each combination of values of the Identifier Components
    except the reference time identifies a Time Series
 
-.. [30]
+.. [29]
    In the VTL syntax the symbol ( ) allows to define a tuple in-line by
    enumeration of its elements
 
-.. [31]
+.. [30]
    In the VTL syntax, the symbol {…} denotes a set defined as the list
    of its elements (separated by commas).
 
-.. [32]
+.. [31]
    In the VTL syntax, the symbol [ ] allows to define a List in-line by
    enumeration of its elements.
