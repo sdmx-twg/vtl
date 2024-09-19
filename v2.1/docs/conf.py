@@ -90,6 +90,4 @@ for op_type in next(os.walk("reference_manual/operators"))[1]:
 
 
 # TODO: Uncomment this for UML Diagrams (User Manual), we do not have the necessary files
-# plantuml = (
-#     "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
-# )
+plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
