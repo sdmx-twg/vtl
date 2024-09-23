@@ -136,10 +136,10 @@ Integrated approach
       fact, GSIM is designed to provide a formal description of data at
       business level against which other information models can be
       mapped; a very small subset of the GSIM artefacts is used in the
-	  VTL IM in order to keep the model and the language as simple as
-	  possible (Occam’s razor principle); these are the artefacts
-	  strictly needed for describing the data involved in Transformations,
-	  their structure and the variables and value domains;
+      VTL IM in order to keep the model and the language as simple as
+      possible (Occam’s razor principle); these are the artefacts
+      strictly needed for describing the data involved in Transformations,
+      their structure and the variables and value domains;
 
    -  GSIM artefacts are supplemented, when needed, with other artefacts
       that are necessary for describing calculations; in particular, the
