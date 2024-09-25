@@ -53,8 +53,6 @@ def generate_files_from_folder(folder):
             output_name = vtl_script.split(":=")[0].strip()
             expression = vtl_script.split(":=", 1)[1].strip()
 
-        print(folder)
-
         #Generate input datasets files
         regex = re.compile('DS_[0-9]+')
         used_datasets = re.findall(regex, expression)
@@ -71,7 +69,6 @@ def generate_files_from_folder(folder):
             dest_file = dest_folder / f"{ds}.csv"
             dest_file.write_text(source_file.read_text())
 
-
         #Generate output dataset file
         datasets = load_dataset([folder / f"{file.stem}.json"])
         dest_datasets_file = dest_folder / "output.json"
@@ -80,7 +77,6 @@ def generate_files_from_folder(folder):
         dest_output_data_file = dest_folder / f"{output_name}.csv"
         source_file = folder / f"{file.stem}.csv"
         dest_output_data_file.write_text(source_file.read_text())
-
 
         #Copy VTL file with generic name
         dest_vtl_file = dest_folder / "transformation.vtl"
