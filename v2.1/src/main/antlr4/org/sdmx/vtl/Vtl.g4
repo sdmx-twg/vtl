@@ -21,7 +21,7 @@ optionalExpr
  ;
 
 expr: 
-    exprAtom ('[' (datasetClause|(expr ASSIGN expr)) ']')*(MEMBERSHIP componentID)?
+    exprAtom ('[' datasetClause ']')*(MEMBERSHIP componentID)?
     |('+'|'-'|NOT) expr
     |expr ('*'|'/') expr
 	|expr ('+'|'-') expr
