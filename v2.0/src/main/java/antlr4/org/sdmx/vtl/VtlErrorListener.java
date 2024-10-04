@@ -6,8 +6,6 @@ import org.antlr.v4.runtime.Recognizer;
 
 public class VtlErrorListener extends BaseErrorListener{
 
-	public static VtlErrorListener INSTANCE = new VtlErrorListener();
-
 	//When the value is false, the syntaxError method returns without displaying errors.
 	private static final boolean REPORT_SYNTAX_ERRORS = true;
 

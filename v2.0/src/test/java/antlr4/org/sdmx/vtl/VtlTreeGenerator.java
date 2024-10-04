@@ -12,6 +12,8 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.sdmx.vtl.VtlLexer;
+import org.sdmx.vtl.VtlParser;
 
 public class VtlTreeGenerator {
 
