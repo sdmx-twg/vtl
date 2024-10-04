@@ -3,7 +3,6 @@ package antlr4.org.sdmx.vtl;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.sdmx.vtl.VtlErrorListener;
 import org.sdmx.vtl.VtlLexer;
 import org.sdmx.vtl.VtlParser;
 

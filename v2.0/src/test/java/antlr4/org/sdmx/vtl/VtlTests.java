@@ -21,9 +21,11 @@ public class VtlTests extends ParserTest {
 	@Test
 	public void testTheTree() {
 		String expression = "A := B + C * D;";
-		String correctTree = "(start (statement (varID A) := (expr (expr (exprAtom (ref (varID B)))) "
-												+ "+ (expr (expr (exprAtom (ref (varID C)))) * (expr (exprAtom (ref (varID D))))))) "
-												+ "; <EOF>)";
+		String correctTree = "(start (statement (varID A) := " +
+				"(expr (expr (varID B)) + " +
+				"(expr (expr (varID C)) * " +
+				"(expr (varID D))))) ; " +
+				"<EOF>)";
 		try {
 			String theTree = parseVtlString(expression);
 			if (!theTree.equals(correctTree)) {
