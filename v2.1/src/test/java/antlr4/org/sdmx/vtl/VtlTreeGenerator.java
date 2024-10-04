@@ -1,6 +1,8 @@
 package antlr4.org.sdmx.vtl;
 
 import org.antlr.v4.runtime.*;
+import org.sdmx.vtl.VtlLexer;
+import org.sdmx.vtl.VtlParser;
 
 import javax.print.PrintException;
 import java.io.IOException;
