@@ -1,4 +1,4 @@
-package org.sdmx.vtl;
+package antlr4.org.sdmx.vtl;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
