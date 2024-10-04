@@ -1,9 +1,9 @@
 package antlr4.org.sdmx.vtl;
 
-import static org.junit.Assert.fail;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class VtlTests extends ParserTest {
 
