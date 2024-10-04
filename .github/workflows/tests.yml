@@ -1,0 +1,37 @@
+name: "Test VTL grammars"
+
+on:
+  push:
+    branches: [ "master", "docs-dev" ]
+  pull_request:
+    branches: [ "master", "docs-dev" ]
+
+jobs:
+  test-2-0-grammar:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Set up Maven Central Repository
+      uses: actions/setup-java@v4
+      with:
+        java-version: 21
+        distribution: "adopt"
+    - name: Test 2.0 grammar
+      run: mvn test
+      working-directory: v2.0
+  test-2-1-grammar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Maven Central Repository
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: "adopt"
+      - name: Test 2.1 grammar
+        run: mvn test
+        working-directory: v2.1
