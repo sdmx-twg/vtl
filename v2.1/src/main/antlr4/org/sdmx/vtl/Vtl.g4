@@ -218,7 +218,7 @@ timeOperators:
     | YEAR_OP LPAREN expr RPAREN                                                # yearAtom
     | MONTH_OP LPAREN expr RPAREN                                               # monthAtom
     | DAYOFMONTH LPAREN expr RPAREN                                             # dayOfMonthAtom
-    | DAYOFYEAR LPAREN expr RPAREN                                              # datOfYearAtom
+    | DAYOFYEAR LPAREN expr RPAREN                                              # dayOfYearAtom
     | DAYTOYEAR LPAREN expr RPAREN                                              # dayToYearAtom
     | DAYTOMONTH LPAREN expr RPAREN                                             # dayToMonthAtom
     | YEARTODAY LPAREN expr RPAREN                                              # yearTodayAtom
