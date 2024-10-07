@@ -275,6 +275,17 @@ BOOLEAN_CONSTANT
   | 'false'
   ;
 
+TIME_UNIT
+    :
+    'A'
+    |'S'
+    |'M'
+    |'Q'
+    |'W'
+    |'D'
+    |'T'
+    ;
+
 STRING_CONSTANT
   :
   '"' (~'"')* '"'
@@ -355,18 +366,6 @@ IDENTIFIER
     | (DAY MINUS MONTH MINUS YEAR)
     | (MONTH MINUS DAY MINUS YEAR)
     ;*/
-
-/*TIME_UNIT
-    :
-    'A'
-    |'S'
-    |'M'
-    |'Q'
-    |'W'
-    |'D'
-    |'T'
-    ;*/
-
 
  /* old
     TIME
