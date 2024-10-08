@@ -277,18 +277,19 @@ BOOLEAN_CONSTANT
 
 TIME_UNIT
     :
-    'A'
-    |'S'
-    |'M'
-    |'Q'
-    |'W'
-    |'D'
-    |'T'
+    '"A"'
+    |'"S"'
+    |'"M"'
+    |'"Q"'
+    |'"W"'
+    |'"D"'
+    |'"T"'
     ;
 
 STRING_CONSTANT
   :
-  '"' (~'"')* '"'
+  TIME_UNIT
+  | '"' (~'"')* '"'
   ;
 
 IDENTIFIER
