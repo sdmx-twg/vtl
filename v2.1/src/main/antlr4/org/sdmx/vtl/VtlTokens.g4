@@ -275,6 +275,7 @@ BOOLEAN_CONSTANT
   | 'false'
   ;
 
+/*
 TIME_UNIT
     :
     '"A"'
@@ -284,12 +285,11 @@ TIME_UNIT
     |'"W"'
     |'"D"'
     |'"T"'
-    ;
+    ;*/
 
 STRING_CONSTANT
   :
-  TIME_UNIT
-  | '"' (~'"')* '"'
+  '"' (~'"')* '"'
   ;
 
 IDENTIFIER
