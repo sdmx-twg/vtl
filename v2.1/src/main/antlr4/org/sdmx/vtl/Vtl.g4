@@ -26,7 +26,7 @@ expr:
     | left=expr op=AND right=expr                                           # booleanExpr
     | left=expr op=(OR|XOR) right=expr							            # booleanExpr
     | IF  conditionalExpr=expr  THEN thenExpr=expr ELSE elseExpr=expr       # ifExpr
-    | CASE WHEN (condExpr=expr THEN thenExpr=expr)+ ELSE elseExpr=expr      # caseExpr
+    | CASE (WHEN condExpr=expr THEN thenExpr=expr)+ ELSE elseExpr=expr      # caseExpr
     | constant														        # constantExpr
     | varID															        # varIdExpr
 
@@ -45,7 +45,7 @@ exprComponent:
     | left=exprComponent op=AND right=exprComponent                                                         # booleanExprComp
     | left=exprComponent op=(OR|XOR) right=exprComponent                                                    # booleanExprComp
     | IF  conditionalExpr=exprComponent  THEN thenExpr=exprComponent ELSE elseExpr=exprComponent            # ifExprComp
-    | CASE WHEN (condExpr=exprComponent THEN thenExpr=exprComponent)+ ELSE elseExpr=exprComponent           # caseExprComp
+    | CASE (WHEN condExpr=exprComponent THEN thenExpr=exprComponent)+ ELSE elseExpr=exprComponent           # caseExprComp
     | constant                                                                                              # constantExprComp
     | componentID                                                                                           # compId
 ;
