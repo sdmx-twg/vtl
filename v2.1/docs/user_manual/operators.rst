@@ -5,32 +5,32 @@ As mentioned, the VTL is made of Operators, which are the basic
 operations that the language can do. For example, the VTL has
 mathematical operators (e.g. sum (+), subtraction (-), multiplication
 (\*), division (/)…), string operators (e.g. string concatenation,
-substring …), comparison operators (e.g. equal (=), greater than (>),
-lesser than (<) …), logical operators (e.g. and, or, not …) and so on.
+substring…), comparison operators (e.g. equal (=), greater than (>),
+lesser than (<)…), logical operators (e.g. and, or, not…) and so on.
 
 An Operator has some input and output Parameters, which are its a-priori
 unknown operands and result, have a definite role in the operation (e.g.
 dividend, divisor or quotient for the division) and correspond to a
 certain type of artefact (e.g. a “Data Set”, a “Data Set Component”, a
-“scalar Value” …).
+“scalar Value”…).
 
 The VTL operators are considered as functions (high-order
-functions [33]_), which manipulate one or more input first-order
+functions [32]_), which manipulate one or more input first-order
 functions (the operands) to produce one output first-order function (the
 result).
 
 Assuming that *F* is the function corresponding to an operator, that
-*P\ o* is its output parameter and that *P\ i (i=1,… n)* are its input
+*P*:sub:`0` is its output parameter and that *P*:sub:`i (i=1,… n)` are its input
 parameters, the mathematical form of an operator can be written as
 follows:
 
-   *P\ o = F (P\ 1, … , P\ n)*
+   *P*:sub:`0` = *F* (*P*:sub:`1`, … , *P*:sub:`n`)
 
-The function *F* composes the Parameters *P\ i* to obtain *P\ o* (as
-mentioned, *P\ i* :sub:`(i=1,…,n)` and *P\ o* must be first order
+The function *F* composes the Parameters *P*:sub:`i` to obtain *P*:sub:`0` (as
+mentioned, *P*:sub:`i (i=1,…,n)` and *P*:sub:`0` must be first order
 functions). In the common case in which the Parameters are Data Sets,
-*F* composes the Data Points of the input Data Sets *D\ i (i=1,… n)* to
-obtain the Data Points of the output Data Set *D\ o*.
+*F* composes the Data Points of the input Data Sets *D*:sub:`i (i=1,…,n)` to
+obtain the Data Points of the output Data Set *D*:sub:`0`.
 
 When an Operator is invoked, for each input Parameter an actual argument
 (operand) is passed to the Operator, which returns an argument (result)
@@ -142,14 +142,14 @@ Operators have different invocation styles:
 
 ..
 
-   *Operator Operand* (e.g. *-D\ 2* which changes the sign of *D\ 2* )
+   *Operator Operand* (e.g. *-D*:sub:`2` which changes the sign of *D*:sub:`2`)
 
 -  **Infix**, only for binary operators. The operator symbol appears
    between the operands; the general form of invocation is:
 
 ..
 
-   *FirstOperand Operator SecondOperand* (e.g. *D\ 1 + D\ 2* )
+   *FirstOperand Operator SecondOperand* (e.g. *D*:sub:`1` + *D*:sub:`2`)
 
 -  **Postfix**, only for unary operators. The operator symbol appears
    after the operand in square brackets and follows its operand; the
@@ -159,9 +159,9 @@ Operators have different invocation styles:
 
    *Operand [Operator]*
 
-   (e.g. *DS\ 2* **[filter** *M\ 1\ *\ **>**\ *\ 0\ *\ **]** which
-   selects from Data Set *DS\ 2* only the Data Points having values
-   greater than zero for measure M\ :sub:`1` and returns such values in
+   (e.g. *DS*:sub:`2` **[filter** *M*:sub:`1` **>** 0 **]** which
+   selects from Data Set *DS*:sub:`2` only the Data Points having values
+   greater than zero for measure *M*:sub:`1` and returns such values in
    the result Data Set.)
 
    Postfix operators are also called “clause operators” or simply
@@ -172,12 +172,12 @@ Operators have different invocation styles:
 
 ..
 
-   *Operator(IO\ 1, … , IO\ N)* where *IO\ 1, … , IO\ N* are the input
+   *Operator(IO*:sub:`1`, … , *IO*:sub:`N` *)* where *IO*:sub:`1`, … , *IO*:sub:`N` are the input
    operands;
 
    For example, the syntax for the exponentiation is *power(base,
    exponent)* and a possible invocation to calculate the square of the
-   numeric Data Set *D\ 1* is *power(D\ 1, 2)*.
+   numeric Data Set *D*:sub:`1` is *power(D*:sub:`1`, 2 *)*.
 
    The comma (“,”) is the separator between the operands. Parameter
    binding is fully positional: in the invocation, actual parameters are
@@ -187,16 +187,16 @@ Operators have different invocation styles:
    first positions and the optional ones in the last positions. An
    underscore (“\_”) must be used to denote that optional operand is
    omitted in the invocation; for example, this is a possible invocation
-   of *Operator1(P1, P2, P3)*, where *P2, P3* are optional and *P2* is
-   omitted:
+   of *Operator1(P*:sub:`1`, P*:sub:`2`, *P*:sub:`3` *)*, where *P*:sub:`2`,
+   *P*:sub:`3` are optional and *P*:sub:`2` is omitted:
 
-   **Operator1 (** *IO\ 1\ *\ **, \_ ,** *IO\ 3* **)**.
+   **Operator1(** *IO*:sub:`1` , \_ , *IO*:sub:`3` **)**.
 
    One or more unspecified operands in the last positions can be simply
-   omitted (including the relevant commas); for example, if both *P\ 2,
-   P\ 3* are omitted, the invocation can be simply:
+   omitted (including the relevant commas); for example, if both *P*:sub:`2`,
+   *P*:sub:`3` are omitted, the invocation can be simply:
 
-   **Operator1 (** *IO\ 1* **)**.
+   **Operator1 (** *IO*:sub:`1` **)**.
 
 -  **Functional with keywords** (a functional syntax in which some
    parameters are denoted by special keywords); in this case each
@@ -206,8 +206,8 @@ Operators have different invocation styles:
 
 ..
 
-   **inner_join** **(**\ *\ D\ 1 , D\ 2* **using** **[**
-   *Id\ 1\ *\ **,** *Id\ 2* **])**
+   **inner_join** **(** *D*:sub:`1` , *D*:sub:`2` **using** **[**
+   *Id*:sub:`1` **,** *Id*:sub:`2` **])**
 
    In this example, the Data Sets D\ :sub:`1` and D\ :sub:`2` are joined
    on their Identifiers Id\ :sub:`1` and Id\ :sub:`2`. The first two
@@ -248,10 +248,13 @@ level depends on the operator, does not need a general explanation and
 is described in detail in the Reference Manual. Examples of operations
 at the scalar level are:
 
-   *D\ r := 3 + 7* *3* and *7* are scalar literals of *number* type
+.. list-table::
 
-   *D\ r := “abcde” \|\| “fghij”* “\ *abcde*\ ” and “\ *fghij*\ ” are
-   scalar literals of *string* type
+    * - *D*:sub:`r` *:= 3 + 7*
+      - *3* and *7* are scalar literals of *number* type
+    * - *D*:sub:`r` *:= “abcde” \|\| “fghij”*
+      - “\ *abcde*\ ” and “\ *fghij*\ ” are scalar literals of *string* type
+
 
 As already mentioned, the outcome of an operation at the scalar level is
 a Data Set without Components that contains only a scalar Value.
@@ -264,17 +267,16 @@ some few trivial exceptions (e.g. the parenthesis). The behaviour at the
 Data Set level deserves a general explanation that is given in the
 following sections. Examples of operations at the Data Set level are:
 
-   *D\ r := D\ 1 + 7* *D\ 1* is a Data Set with numeric Measures, *7* is
-   a scalar *number*
+.. list-table::
 
-   *D\ r := D\ 1 + D\ 2* *D\ 1* and *D\ 2* are Data Sets having Measures
-   of *number* type
-
-   *D\ r := D\ 3 \|\| “fghij”* *D\ 3* is a Data Set with *string*
-   Measures, “\ *fghij*\ ” is a scalar *string*
-
-   *D\ r := D\ 3 \|\| D\ 4* *D\ 3* and *D\ 4* are Data Sets having
-   Measures of *string* type
+    * - *D*:sub:`r` *:= D*:sub:`1` *+ 7*
+      - *D*:sub:`1` is a Data Set with numeric Measures, *7* is a scalar *number*
+    * - *D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2`
+      - *D*:sub:`1` and *D*:sub:`2` are Data Sets having Measures of *number* type
+    * - *D*:sub:`r` *:= D*:sub:`3` *\|\| “fghij”*
+      - *D*:sub:`3` is a Data Set with *string* Measures, “\ *fghij*\ ” is a scalar *string*
+    * - *D*:sub:`r` *:= D*:sub:`3` *\|\| D*:sub:`4`
+      - *D*:sub:`3` and *D*:sub:`4` are Data Sets having Measures of *string* type
 
 At the **Component level**, the Operators compose Data Set Components
 and possibly scalar literals in order to obtain other Data Set
@@ -284,22 +286,21 @@ calculated Data Set. The behaviour at the Data Set level deserves a
 general explanation that is given in the following sections. Examples of
 operations at the Component level are:
 
-   *D\ r := D\ 1 [ calc C\ 3 := C\ 1 + C\ 2 ]* *C\ 1* and *C\ 2* are
-   numeric Components of *D\ 1*
+.. list-table::
 
-   *D\ r := D\ 1 [ calc C\ 3 := C\ 1 + 7 ]* *C\ 1* is a numeric
-   Component of *D\ 1*, *7* is a scalar *number*
-
-   *D\ r := D\ 3 [ calc C\ 6 := C\ 4 \|\| C\ 5 ]* *C\ 4* and *C\ 5* are
-   string Components of *D\ 3*
-
-   *D\ r := D\ 3 [ calc C\ 6 := C\ 4 \|\| “fghij” ]* *C\ 4* is a string
-   Component of *D\ 3*, “\ *fghij*\ ” is a scalar *string*
+    * - *D*:sub:`r` *:= D*:sub:`1` *[ calc C*:sub:`3` *:= C*:sub:`1` *+ C*:sub:`2` *]*
+      - *C*:sub:`1` and *C*:sub:`2` are numeric Components of *C*:sub:`2`
+    * - *D*:sub:`r` *:= D*:sub:`1` *[ calc C*:sub:`3` *:= C*:sub:`1` *+ 7 ]*
+      - *C*:sub:`1` is a numeric Component of *D*:sub:`1`, *7* is a scalar *number*
+    * - *D*:sub:`r` *:= D*:sub:`3` *[ calc C*:sub:`6` *:= C*:sub:`4` *\|\| C*:sub:`5` *]*
+      - *C*:sub:`4` and *C*:sub:`5` are string Components of *D*:sub:`3`
+    * - *D*:sub:`r` *:= D*:sub:`3` *[ calc C*:sub:`6` *:= C*:sub:`4` *\|\| “fghij” ]*
+      - *C*:sub:`4` is a string Component of *D*:sub:`3`, “\ *fghij*\ ” is a scalar *string*
 
 In these examples, the postfix operator *calc* is applied to the input
-Data Sets *D\ 1* and *D\ 3*, takes in input some their components and
-produces in output the components *C\ 3* and *C\ 6* respectively, which
-become part of the result Data Set *D\ r*.
+Data Sets *D*:sub:`1` and *D*:sub:`3`, takes in input some their components and
+produces in output the components *C*:sub:`3` and *C*:sub:`6` respectively, which
+become part of the result Data Set *D*:sub:`r`.
 
 The operations at a component level are performed row by row and in the
 context of one specific Data Set, so that one input Data point results
@@ -559,7 +560,7 @@ result will also have the same Identifier Components as the operands.
 
 However, various Data Set operations are possible also under a more
 **relaxed constraint**, that is when the Identifier Components of one
-Data Set are a superset of those of the other Data Set [34]_.
+Data Set are a superset of those of the other Data Set [33]_.
 
 For example, let us assume that *D\ 1* contains the population of the
 European countries (by reference date and country) and *D\ 2* contains
@@ -759,7 +760,7 @@ The Transformation *D\ r := D\ 1 \* 0.80* applies to all the Measures
 +-----------------+-----------------+-----------------+-----------------+
 
 An Operator can be applied only on Measures of a certain basic data
-type, corresponding to its semantics [35]_. For example, *the
+type, corresponding to its semantics [34]_. For example, *the
 multiplication* requires the Measures to be of type *number*, while the
 *substring* will require them to be *string*. Expressions that violate
 this constraint are considered an error.
@@ -805,7 +806,7 @@ the operation keeps only the Import and then calculates its 80%):
 +-----------------------------------+-----------------------------------+
 
 If there is the need to **apply an** **Operator only to some specific
-Measures**, the *keep* operator (or the drop) [36]_ can be used, which
+Measures**, the *keep* operator (or the drop) [35]_ can be used, which
 allows keeping in the result (or dropping) the specified Measures (or
 also Attributes) of the input Data Set. Their invocations are:
 
@@ -835,7 +836,7 @@ If there is the need to **perform some** **operations on some specific
 Measures and keep the others measures unchanged**, the *calc* operator
 can be used, which allows to calculate each Measure with a dedicated
 formula leaving the other Measures as they are. A simple kind of
-invocation is [37]_:
+invocation is [36]_:
 
    *dataset_name [ calc component_name ::= cmp_expr, component_name ::=
    cmp_expr …]*
@@ -1007,7 +1008,7 @@ here for convenience:
 
 -  Even in the case of operations on more than one Data Set, all the
    Measures of the input Data Sets must be compatible with the allowed
-   data types of the Operator [38]_, otherwise (i.e. even if only one
+   data types of the Operator [37]_, otherwise (i.e. even if only one
    Measure is incompatible) the operation is not allowed.
 
 In conclusion, the operation is allowed if the input Data Sets have the
@@ -1026,7 +1027,7 @@ data types, the various *comparison* operators whose output is always
 When the basic data type changes, also the Measure must change, because
 a Variable (in this case used with the role of Measure in a Data
 Structure) has just one type, which is the same wherever the Variable is
-used [39]_.
+used [38]_.
 
 Therefore, when an operator that changes the basic scalar type is
 applied, the output Measure cannot be the same as the input Measure. In
@@ -1342,7 +1343,7 @@ virality). The default assignation of the virality can be overridden by
 operations at Component level as mentioned above, for example *keep*
 (i.e., to keep a *non-viral* Attribute or not to keep a *viral* one) and
 *calc* to alter the virality in the result Data Set, (from *viral* to
-*non-viral* or vice-versa) [40]_.
+*non-viral* or vice-versa) [39]_.
 
 Hence, the **default Attribute propagation rule** behaves as follows:
 
@@ -1552,39 +1553,39 @@ inferred by applying the VTL Attribute propagation rule recursively
 (following the order of execution of the operations in the VTL
 expression).
 
-.. [33]
+.. [32]
    A high-order function is a function which takes one or more other
    functions as arguments and/or provides another function as result.
 
-.. [34]
+.. [33]
    This corresponds to the "outer join" form of the join expressions,
    explained in details in the Reference Manual.
 
-.. [35]
+.. [34]
    As obvious, the data type depends on the parameter for which the Data
    Set is passed
 
-.. [36]
+.. [35]
    to preserve the functional behaviour *keep* and *drop* can be applied
    only on Measures and Attributes, for a deeper description of these
    operators see the corresponding section in the Reference Manual
 
-.. [37]
+.. [36]
    The *calc* Operator can be used also to calculate Attributes: for a
    more complete description of this operator see the corresponding
    section in the Reference Manual
 
-.. [38]
+.. [37]
    As obvious, the data type depends on the parameters for which the
    Data Set are passed
 
-.. [39]
+.. [38]
    In fact according to the IM, a Variable takes values in one Value
    Domain which represents just one basic data type, independently of
    where the Variable or the Value Domain are used (e.g. if they have
    the same type everywhere)
 
-.. [40]
+.. [39]
    In particular, the *keep* clause allows the specification of whether
    or not an attribute is kept in the result while the *calc* clause
    makes it possible to define calculation formulas for specific
