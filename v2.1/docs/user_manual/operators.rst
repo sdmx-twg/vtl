@@ -337,9 +337,9 @@ In particular, the Join operators allow to:
 
 ..
 
-   *inner_join D\ 1, D\ 2 using [ reference_date, geo_area ]*
+   *inner_join D*:sub:`1`, *D*:sub:`2` *using [ reference_date, geo_area ]*
 
-   matches the Data Points of *D\ 1*, *D\ 2* which have the same values
+   matches the Data Points of D*:sub:`1`, *D*:sub:`2 *which have the same values
    for the Identifiers *reference_date* and *geo_area*.
 
 -  filter the result of the match according to a condition, for example
@@ -347,31 +347,31 @@ In particular, the Join operators allow to:
 
 ..
 
-   *filter D\ 1\ #M\ 1 > 0*
+   *filter D*:sub:`1` # *M*:sub:`1` *> 0*
 
-   maintains the matched Data Points for which the Measure *M\ 1* of
-   *D\ 1* is positive.
+   maintains the matched Data Points for which the Measure *M*:sub:`1` of
+   *D*:sub:`1` is positive.
 
 -  aggregate according to the values of some Identifier, for example the
    sentence
 
 ..
 
-   *group by [ Id\ 1 , Id\ 2 ]*
+   *group by [ Id*:sub:`1` , *Id*:sub:`2` *]*
 
-   eliminates the Identifiers save than *Id\ 1* and *Id\ 2* and
-   aggregate the Data Points having the same values for *Id\ 1* and
-   *Id\ 2*
+   eliminates the Identifiers save than *Id*:sub:`1` and *Id*:sub:`2` and
+   aggregate the Data Points having the same values for *Id*:sub:`1` and
+   *Id*:sub:`2`
 
 -  combine homonym measures of the matched Data Points according to a
    formula, for example the sentence
 
 ..
 
-   *apply D\ 1 + D\ 2*
+   *apply D*:sub:`1` *+ D*:sub:`2`
 
-   sums the homonymous measures of the matched Data Points of *D\ 1* and
-   *D\ 2*
+   sums the homonymous measures of the matched Data Points of *D*:sub:`1` and
+   *D*:sub:`2`
 
 -  calculate new Components (or new values for existing Components)
    according to the desired formulas, also assigning or changing the
@@ -379,9 +379,9 @@ In particular, the Join operators allow to:
 
 ..
 
-   *calc measure M\ 3 := M\ 1 + M\ 2 , attribute A\ 1 := A\ 2 \|\| A\ 3*
+   *calc measure M*:sub:`3` *:= M*:sub:`1` *+ M*:sub:`2` *, attribute A*:sub:`1` *:= A*:sub:`2` *\|\| A*:sub:`3`
 
-   calculates the measure *M\ 3* and the Attribute *A\ 1* according to
+   calculates the measure *M*:sub:`3` and the Attribute *A*:sub:`1` according to
    the formulas above
 
 -  keep or drop the specified Measures or Attributes, for example the
@@ -389,12 +389,12 @@ In particular, the Join operators allow to:
 
 ..
 
-   *keep [M\ 1 , M\ 3, A\ 1]*
+   *keep [M*:sub:`1` *, M*:sub:`3`, *A*:sub:`1` *]*
 
 maintains only the specified measures and attributes, instead the
 sentence
 
-   *drop [M\ 2 , A\ 2, A\ 3 ]*
+   *drop [M*:sub:`2` *, A*:sub:`2`, *A*:sub:`3` *]*
 
 drops only the specified measures and attributes
 
@@ -402,7 +402,7 @@ drops only the specified measures and attributes
 
 ..
 
-   *rename [M\ 1 to M\ 10 , I\ 1 to I\ 10]*
+   *rename [M*:sub:`1` *to M*:sub:`10` *, I*:sub:`1` *to I*:sub:`10` *]*
 
 As shown above, the Join operator, together with the other operators
 applied at scalar or at Component level, allows to reproduce the
@@ -436,16 +436,16 @@ hierarchical links between the Code Items of an Identifier). The Values
 of the Attributes, instead, are manipulated by default through specific
 Attribute propagation rules explained in a following section.
 
-For example, considering the Transformation *D\ r := ln (D\ 1)*, the
-operation is applied for each Data Point of *D\ 1*, the values of the
+For example, considering the Transformation *D*:sub:`r` *:= ln (D*:sub:`1`), the
+operation is applied for each Data Point of *D*:sub:`1`, the values of the
 Identifiers are left unchanged and the values of all the Measures are
 substituted by their natural logarithm (it is assumed that the Measures
-of *D\ 1* are all numerical).
+of *D*:sub:`1` are all numerical).
 
-Similarly, considering the simple operation *D\ r := D\ 1 + 7*, the
-addition is done for each Data Point of *D\ 1*, the values of the
+Similarly, considering the simple operation *D*:sub:`r` *:= D*:sub:`1` *+ 7*, the
+addition is done for each Data Point of *D*:sub:`1`, the values of the
 Identifiers are left unchanged and the number 7 is added to the values
-of all the Measures (it is assumed that the Measures of *D\ 1* are all
+of all the Measures (it is assumed that the Measures of *D*:sub:`1` are all
 numerical).
 
 As for the structure, like in the examples above, the Identifiers of the
@@ -459,16 +459,16 @@ instead on the Attribute propagation rule.
 
 In the previous examples, only one Data Set is passed in input to the
 Operator (other possible operands are not Data Sets). The operations on
-more Data Sets, like *D\ r := D\ 1 + D\ 2*, behave in the same way than
+more Data Sets, like *D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2`, behave in the same way than
 the operations on one Data Set, save that there is the additional need
 of a preliminary matching of the Identifiers of the Data Points of the
 input Data Sets: the operation applies on the matched Data Points.
 
-For example, the addition *D\ 1 + D\ 2* above happens between each
-couple of Data Points, one from *D\ 1* and the other from *D\ 2*, whose
+For example, the addition *D*:sub:`1` *+ D*:sub:`2` above happens between each
+couple of Data Points, one from *D*:sub:`1` and the other from *D*:sub:`2`, whose
 Identifiers match according to a default rule (which is better explained
-in a following section). The values of the homonymous Measures of *D\ 1*
-and *D\ 2* are added, taken respectively from the *D\ 1* and *D\ 2* Data
+in a following section). The values of the homonymous Measures of *D*:sub:`1`
+and *D*:sub:`2` are added, taken respectively from the *D*:sub:`1` and *D*:sub:`2` Data
 Points (the default rule for composing the measure is better explained
 in a following section).
 
@@ -487,23 +487,23 @@ If just one input Data Set is passed to the operator, the operation is
 applied for each input Data Point and produces a corresponding output
 Data Point. This case happens for all the unary operators, which have
 just on input parameter and therefore cannot operate on more than one
-Data Set (e.g. *ln (D\ 1)* ), and for the invocations of unary operators
-in which just one Data Set is passed to the operator (e.g. *D\ 1 + 7* ).
+Data Set (e.g. *ln (D*:sub:`1` *)* ), and for the invocations of unary operators
+in which just one Data Set is passed to the operator (e.g. *D*:sub:`1` *+ 7* ).
 
-If more input Data Sets are passed to the operator (e.g. *D\ 1 + D\ 2*
+If more input Data Sets are passed to the operator (e.g. *D*:sub:`1` *+ D*:sub:`2`
 ), a preliminary match between the Data Points of the various input Data
 Sets is needed, in order to compose their measures (e.g. summing them)
-and obtain the Data Points of the result (i.e. *D\ r*). The default
+and obtain the Data Points of the result (i.e. *D*:sub:`r`). The default
 matching rules envisage that the **Data Points are matched when the
 values of their homonymous Identifiers are the same**.
 
-For example, let us assume that *D\ 1* and *D\ 2* contain the population
+For example, let us assume that *D*:sub:`1` and *D*:sub:`2` contain the population
 and the gross product of the United States and the European Union
 respectively and that they have the same Structure Components, namely
 the Reference Date and the Measure Name as Identifier Components, and
 the Measure Value as Measure Component:
 
-   *D\ 1* = United States Data
+   *D*:sub:`1` = United States Data
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Meas.Name**        | **Meas.Value**         |
@@ -519,7 +519,7 @@ the Measure Value as Measure Component:
 
 ..
 
-   *D\ 2* = European Union Data
+   *D*:sub:`2` = European Union Data
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Meas.Name**        | **Meas.Value**         |
@@ -535,7 +535,7 @@ the Measure Value as Measure Component:
 
 The desired result of the sum is the following:
 
-   *D\ r* = United States + European Union
+   *D*:sub:`r` = United States + European Union
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Meas.Name**        | **Meas.Value**         |
@@ -562,11 +562,11 @@ However, various Data Set operations are possible also under a more
 **relaxed constraint**, that is when the Identifier Components of one
 Data Set are a superset of those of the other Data Set [33]_.
 
-For example, let us assume that *D\ 1* contains the population of the
-European countries (by reference date and country) and *D\ 2* contains
+For example, let us assume that *D*:sub:`1` contains the population of the
+European countries (by reference date and country) and *D*:sub:`2` contains
 the population of the whole Europe (by reference date):
 
-   *D\ 1* = European Countries
+   *D*:sub:`1` = European Countries
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Country**          | **Population**         |
@@ -582,7 +582,7 @@ the population of the whole Europe (by reference date):
 
 ..
 
-   *D\ 2* = Europe
+   *D*:sub:`2` = Europe
 
 +---------------------------------+------------------------------------+
 | **Ref.Date**                    | **Population**                     |
@@ -595,16 +595,16 @@ the population of the whole Europe (by reference date):
 In order to calculate the percentage of the population of each single
 country on the total of Europe, the Transformation will be:
 
-   *D\ r* := *D\ 1* / *D\ 2* \* 100
+   *D*:sub:`r` *:= D*:sub:`1` / *D*:sub:`2` \* 100
 
 The Data Points will be matched according to the Identifier
-Componen\ *ts* common to *D\ 1* and *D\ 2* (in this case only the
+Components common to *D*:sub:`1` and *D*:sub:`2` (in this case only the
 *Ref.Date*), then the operation will take place.
 
 The result Data Set will have the Identifier Components of both the
 operands:
 
-   *D\ r* = European Countries / Europe \* 100
+   *D*:sub:`r` = European Countries / Europe \* 100
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Country**          | **Population**         |
@@ -621,20 +621,20 @@ operands:
 When the relaxed constraint is applied, therefore, the Data Points are
 matched when the values of their **common** Identifiers are the same.
 
-More formally, let *F* be a generic n-ary VTL Data Set Operator, *D\ r*
-the result Data Set and *D\ i (i=1,… n)* the input Data Sets, so that:
+More formally, let *F* be a generic n-ary VTL Data Set Operator, *D*:sub:`r`
+the result Data Set and *D*:sub:`i` *(i=1,… n)* the input Data Sets, so that:
 
-   *D\ r := F(D\ 1, D\ 2, … , D\ n)*
+   *D*:sub:`r` *:= F(D*:sub:`1` *, D*:sub:`2` *, … , D*:sub:`n` *)*
 
 The “strict” constraint requires that the Identifier Components of the
-*D\ i (i=1,… n)* are the same. The result *D\ r* will also have the same
+*D*:sub:`i` *(i=1,… n)* are the same. The result *D*:sub:`r` will also have the same
 Identifier components.
 
 The “relaxed” constraint requires that at least one input Data Set
-*D\ k* exists such that for each *D\ i* *(i=1,… n)* the Identifier
-Components of *D\ i* are a (possibly improper) subset of those of
-*D\ k*. The output Data Set *D\ r* will have the same Identifier
-Components than *D\ k*.
+*D*:sub:`k` exists such that for each *D*:sub:`i` *(i=1,… n)* the Identifier
+Components of *D*:sub:`i` are a (possibly improper) subset of those of
+*D*:sub:`k`. The output Data Set *D*:sub:`r` will have the same Identifier
+Components than *D*:sub:`k`.
 
 The n-ary Operator *F* will produce the Data Points of the result by
 matching the Data Points of the operands that share the same values for
@@ -654,14 +654,14 @@ operation is NULL as well and the output Data Point is not produced.
 
 This default matching behaviour is the same as the one of the *inner
 join* Operator, which therefore is able to perform the same operation.
-The join operation equivalent to *D\ 1 + D\ 2* is:
+The join operation equivalent to *D*:sub:`1` *+ D*:sub:`2` is:
 
-   *inner_join ( D\ 1 , D\ 2 apply D\ 1 + D\ 2 )*
+   *inner_join ( D*:sub:`1` *, D*:sub:`2` *apply D*:sub:`1` *+ D*:sub:`2` *)*
 
 Different matching behaviours can be obtained using the other *join*
 Operators, for example writing:
 
-   *full_join ( D\ 1 , D\ 2 apply D\ 1 + D\ 2 )*
+   *full_join ( D*:sub:`1` *, D*:sub:`2` *apply D*:sub:`1` *+ D*:sub:`2` *)*
 
 the *full join* brings in the output also the combination of Values of
 the Identifiers which are only in one Data Set, the operation is applied
@@ -688,11 +688,11 @@ applied to the only Measure of the input Data Set. The result Data Set
 will have the same Measure Component, whose values are the result of the
 operation.
 
-For example, let us assume that *D\ 1* contains the salary of the
+For example, let us assume that *D*:sub:`1` contains the salary of the
 employees (the only Identifier is the Employee ID and the only Measure
 is the Salary):
 
-   *D\ 1* = Salary of Employees
+   *D*:sub:`1` = Salary of Employees
 
 +---------------------------------+------------------------------------+
 | **Employee ID**                 | **Salary**                         |
@@ -706,11 +706,11 @@ is the Salary):
 | D                               | 900                                |
 +---------------------------------+------------------------------------+
 
-The Transformation *D\ r := D\ 1 \* 1.10* applies to the only Measure
+The Transformation *D*:sub:`r` *:= D*:sub:`r` \* *1.10* applies to the only Measure
 (the salary) and calculates a new value increased by 10%, so the result
 will be:
 
-   *D\ r* = Increased Salary of Employees
+   *D*:sub:`r` = Increased Salary of Employees
 
 +---------------------------------+------------------------------------+
 | **Employee ID**                 | **Salary**                         |
@@ -731,7 +731,7 @@ Set will have the same Measure Components as the operand Data Set.
 For example, given the import, export, and number of operations by
 reference date:
 
-   *D\ 1* = Import, Export, Operations
+   *D*:sub:`1` = Import, Export, Operations
 
 +----------------+----------------+-----------------+-----------------+
 | **Ref.Date**   | **Import**     | **Export**      | **Operations**  |
@@ -743,11 +743,11 @@ reference date:
 | 2013           | 1200           | 1300            | 4800            |
 +----------------+----------------+-----------------+-----------------+
 
-The Transformation *D\ r := D\ 1 \* 0.80* applies to all the Measures
+The Transformation *D*:sub:`r` *:= D*:sub:`1` \* 0.80 applies to all the Measures
 (e.g. to the Import, the Export and the Balance) and calculates their
 80%:
 
-   *D\ r* = 80% of Import & Export
+   *D*:sub:`r` = 80% of Import & Export
 
 +-----------------+-----------------+-----------------+-----------------+
 | **Ref.Date**    | **Import**      | **Export**      | **Operations**  |
@@ -770,9 +770,9 @@ with the allowed data types of the Operator, otherwise (i.e. if at least
 one Measure is incompatible) the operation is not allowed. The possible
 input data types of each operator are specified in the Reference Manual.
 
-Therefore, the operation of the previous example *(D\ r := D\ 1 \*
-0.80)* , which is assumed to act on all the Measures of *D\ 1*, would
-not be allowed and would return an error if *D\ 1* would contain also a
+Therefore, the operation of the previous example *(D*:sub:`r` *:= D*:sub:`1` *\* 0.80)*, 
+which is assumed to act on all the Measures of *D*:sub:`1`, would
+not be allowed and would return an error if *D*:sub:`1` would contain also a
 Measure which is not *number* (e.g. *string*).
 
 In case of inputs having Measures of different types, the operation can
@@ -788,12 +788,12 @@ just one specific Components of a Data Set. The syntax is:
 *dataset_name#component_name* (for a better description see the
 corresponding section in the Part 2).
 
-For example, in the Transformation D\ :sub:`r` := D\ :sub:`1`\ #Import
+For example, in the Transformation *D*:sub:`r` *:= D*:sub:`1`\ #Import
 \* 0.80
 
 the operation keeps only the Import and then calculates its 80%):
 
-   *D\ r* = 80% of the Import
+   *D*:sub:`r` = 80% of the Import
 
 +-----------------------------------+-----------------------------------+
 | **Ref.Date**                      | **Import**                        |
@@ -814,13 +814,13 @@ also Attributes) of the input Data Set. Their invocations are:
 
    *dataset_name [drop component_name, component_name … ]*
 
-For example, in the Transformation *D\ r := D\ 1\ [keep Import, Export]
+For example, in the Transformation *D*:sub:`r` *:= D*:sub:`1` *[keep Import, Export]
 \* 0.80*
 
 the operation keeps only the Import and the Export and then calculates
 its 80%):
 
-   *D\ r* = 80% of the Import
+   *D*:sub:`r` = 80% of the Import
 
 +-----------------------+-----------------------+-----------------------+
 | **Ref.Date**          | **Import**            | **Export**            |
@@ -844,13 +844,13 @@ invocation is [36]_:
 The component expressions (*cmp_expr*) can reference only other
 components of the input Data Set.
 
-For example, in the Transformation D\ :sub:`r` := D\ :sub:`1` [calc
-Import \* 0.80, Export \* 0.50]
+For example, in the Transformation *D*:sub:`r` *:= D*:sub:`1` *[calc
+Import \* 0.80, Export \* 0.50]*
 
 the operations apply only to Import and Export (and calculate their 80%
 and 50% respectively), while the Operations values remain unchanged:
 
-   *D\ r* = 80% of the Import, 50% of the Export and Operations
+   *D*:sub:`r` = 80% of the Import, 50% of the Export and Operations
 
 +-----------------+-----------------+-----------------+-----------------+
 | **Ref.Date**    | **Import**      | **Export**      | **Operations**  |
@@ -872,7 +872,7 @@ For example, let us assume that D\ :sub:`1` and D\ :sub:`2` contain the
 births and the deaths of the United States and the European Union
 respectively.
 
-   *D\ 1* = Births & Deaths of the United States
+   *D*:sub:`1` = Births & Deaths of the United States
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Births**           | **Deaths**             |
@@ -886,7 +886,7 @@ respectively.
 
 ..
 
-   *D\ 2* = Birth & Deaths of the European Union
+   *D*:sub:`2` = Birth & Deaths of the European Union
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Births**           | **Deaths**             |
@@ -900,7 +900,7 @@ respectively.
 
 The Transformation *D\ r := D\ 1 + D\ 2* will produce:
 
-   *D\ r* = Births & Deaths of United States + European Union
+   *D*:sub:`r` = Births & Deaths of United States + European Union
 
 +----------------------+----------------------+------------------------+
 | **Ref.Date**         | **Births**           | **Deaths**             |
@@ -923,7 +923,7 @@ section in the Part 2).
 
 For example, given these two Data Sets:
 
-   *D\ 1* (Residents in the United States)
+   *D*:sub:`1` (Residents in the United States)
 
 +-----------------------------------+-----------------------------------+
 | **Ref.Date**                      | **Residents**                     |
@@ -937,7 +937,7 @@ For example, given these two Data Sets:
 
 ..
 
-   *D\ 2* (Inhabitants of the European Union)
+   *D*:sub:`2` (Inhabitants of the European Union)
 
 +-----------------------------------+-----------------------------------+
 | **Ref.Date**                      | **Inhabitants**                   |
@@ -952,12 +952,12 @@ For example, given these two Data Sets:
 A Transformation for calculating the population of United States +
 European Union is:
 
-   *D\ r := D\ 1\ [rename Residents to Population] + D\ 2\ [rename
+   *D*:sub:`r` *:= D*:sub:`2` *[rename Residents to Population] + D*:sub:`2` *[rename
    Inhabitants to Population]*
 
 The result will be:
 
-   *D\ r* (Population of United States + European Union)
+   *D*:sub:`r` (Population of United States + European Union)
 
 +-----------------------------------+-----------------------------------+
 | **Ref.Date**                      | **Population**                    |
@@ -979,13 +979,13 @@ component is explicitly specified for each dataset by using the
 *membership* notation, the VTL allows the operation even if the names
 are different. For instance, this operation is allowed:
 
-   *D\ r := D\ 1\ #Residents + D\ 2\ #Inhabitants*
+   *D*:sub:`r` *:= D*:sub:`1` *#Residents + D*:sub:`2` *#Inhabitants*
 
 The result Data Set would have a single Measure named like the Measure
 of the leftmost operand (i.e. *Residents*), which in turn can be
 renamed, if convenient:
 
-   *D\ r := (D\ 1\ #Residents + D\ 2\ #Inhabitants)[rename Residents to
+   *D*:sub:`r` *:= (D*:sub:`1` *#Residents + D*:sub:`2` *#Inhabitants)[rename Residents to
    Population]*
 
 The following options and prescription, already described for the
@@ -1081,7 +1081,7 @@ applied at Component Level, for example by using the *calc* operator.
 For example, taking again the example of import, export and number of
 operations by reference date:
 
-   *D\ 1* = Import_Export_Operations
+   *D*:sub:`1` = Import_Export_Operations
 
 +----------------+----------------+-----------------+-----------------+
 | **Ref.Date**   | **Import**     | **Export**      | **Operations**  |
@@ -1095,33 +1095,25 @@ operations by reference date:
 
 And assuming that the conversion from number to string of all the
 Measure Variables is desired, the following statement expressed at Data
-Set level *cast (D\ 1, string)* *is not allowed* because the Data Set
-D\ :sub:`1` is multi-measure, while the following one, which makes the
+Set level *cast (D*:sub:`1` *, string)* *is not allowed* because the Data Set
+*D*:sub:`1` is multi-measure, while the following one, which makes the
 conversion at the Component level, is allowed:
 
-D1 [ calc
-
-   import_string := cast (import, string)
-
-   , export_string := cast (export, string)
-
-   , operations_string := cast ( operations, string )
-
-   ]
+|  *D*:sub:`1` [ calc
+|     import_string := cast (import, string)
+|     , export_string := cast (export, string)
+|     , operations_string := cast ( operations, string )
+|     ]
 
 For completeness, it is worth to say that also the various Join
 operators allow the same operation that, for example for the inner join,
 would be written as:
 
-   inner_join ( D1 calc
-
-   import_string := cast (import, string)
-
-   , export_string := cast (export, string)
-
-   , operations_string := cast ( operations, string )
-
-   )
+|   inner_join ( *D*:sub:`1` calc
+|                import_string := cast (import, string)
+|                , export_string := cast (export, string)
+|                , operations_string := cast ( operations, string )
+|                )
 
 The join operators is designed primarily to act on many Data Sets and
 allow applying these operations also when more Data Sets are joined.
@@ -1166,9 +1158,9 @@ Behaviour for Missing Data
 The awareness of missing data is very important for correct VTL
 operations, because the knowledge of the Data Points of the result
 depends on the knowledge of the Data Points of the operands. For
-example, assume *D\ r := D\ 1 + D\ 2* and suppose that some Data Points
-of *D\ 2* are unknown, it follows that the corresponding Data Points of
-*D\ r* cannot be calculated and are unknown too.
+example, assume *D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2` and suppose that some Data Points
+of *D*:sub:`2` are unknown, it follows that the corresponding Data Points of
+*D*:sub:`r` cannot be calculated and are unknown too.
 
 Missing data are explicitly represented when some Measures or Attributes
 of a Data Point have the value “NULL”, which denotes the absence of a
@@ -1275,7 +1267,7 @@ values of *D\ 1.M\ 1* into the number 1. For detailed explanations of
 *calc* and *is null* refer to the specific sections in the Reference
 Manual.
 
-   *D\ r* := *D\ 1* [M1 := if M1 is null then 1 else M1] \* *D\ 2*
+   *D*:sub:`r` *:= D*:sub:`1` *[M*:sub:`1` *:= if M*:sub:`1` *is null then 1 else M*:sub:`1`] \* *D*:sub:`2`
 
 Behaviour for Attribute Components
 ----------------------------------
