@@ -1272,10 +1272,10 @@ Manual.
 Behaviour for Attribute Components
 ----------------------------------
 
-Given an invocation of one Operator F, which can be written as *Dr :=
-F(D1, D2, … , Dn)*, and considering that the input Data Sets *Di (i=1,…
-n)* may have any number of Attribute Components, there can be the need
-of calculating the desired Attribute Components of *Dr*. This Section
+Given an invocation of one Operator F, which can be written as *D*:sub:`r` *:=
+F(D*:sub:`1` *, D*:sub:`2` *, … , D*:sub:`n` *)*, and considering that the input Data Sets
+*D*:sub:`i` *(i=1,… n)* may have any number of Attribute Components, there can be the need
+of calculating the desired Attribute Components of *D*:sub:`r`. This Section
 describes the general VTL assumptions about how Attributes are handled
 (the specific behaviours of the various operators are described in the
 Reference Manual).
@@ -1369,12 +1369,12 @@ Hence, the **default Attribute propagation rule** behaves as follows:
    combined.
 
 Extending an example already given for unary Operators, let us assume
-that *D\ 1* contains the salary of the employees of a multinational
+that *D*:sub:`1` contains the salary of the employees of a multinational
 enterprise (the only Identifier is the Employee ID, the only Measure is
 the Salary, and there are two other Components defined as viral
 Attributes, namely the Currency and the Scale of the Salary):
 
-   *D\ 1* = Salary of Employees
+   *D*:sub:`1` = Salary of Employees
 
 +---------------+-----------------+-----------------+-----------------+
 | **Employee    | **Salary**      | **Currency**    | **Scale**       |
@@ -1389,11 +1389,11 @@ Attributes, namely the Currency and the Scale of the Salary):
 | D             | 900             | U.K. Pound      | Unit            |
 +---------------+-----------------+-----------------+-----------------+
 
-The Transformation *D\ r := D\ 1 \* 1.10* applies only to the Measure
+The Transformation *D*:sub:`r` *:= D*:sub:`1` *\* 1.10* applies only to the Measure
 (the salary) and calculates a new value increased by 10%, the viral
 Attributes are kept and left unchanged, so the result will be:
 
-   *D\ r* = Increased Salary of Employees
+   *D*:sub:`r` = Increased Salary of Employees
 
 +---------------+-----------------+-----------------+-----------------+
 | **Employee    | **Salary**      | **Currency**    | **Scale**       |
@@ -1408,17 +1408,17 @@ Attributes are kept and left unchanged, so the result will be:
 | D             | 990             | U.K. Pound      | Unit            |
 +---------------+-----------------+-----------------+-----------------+
 
-The Currency and the Scale of *D\ r* will be considered viral too and
-therefore would be kept also in case *D\ r* becomes operand of other
+The Currency and the Scale of *D*:sub:`r` will be considered viral too and
+therefore would be kept also in case *D*:sub:`r` becomes operand of other
 Transformations.
 
 Another example can be given for operations involving more input Data
-Sets (e.g. Dr := D1 + D2). Let us assume that D1 and D2 contain the
+Sets (e.g. *D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2`). Let us assume that *D*:sub:`1` and *D*:sub:`2` contain the
 births and the deaths of the United States and the Europe respectively,
 plus a viral Attribute that qualifies if the Value is estimated or not
 (having values *True* or *False*).
 
-   *D1* = Births & Deaths of the United States
+   *D*:sub:`1` = Births & Deaths of the United States
 
 +---------------+-----------------+-----------------+-----------------+
 | **Ref.Date**  | **Births**      | **Deaths**      | **Estimate**    |
@@ -1432,7 +1432,7 @@ plus a viral Attribute that qualifies if the Value is estimated or not
 
 ..
 
-   *D1* = Births & Deaths of the European Union
+   *D*:sub:`2` = Births & Deaths of the European Union
 
 +---------------+-----------------+-----------------+-----------------+
 | **Ref.Date**  | **Births**      | **Deaths**      | **Estimate**    |
@@ -1455,9 +1455,9 @@ Suppose that the default propagation algorithm associated to the
    combination is the first in lexicographical order.
 
 Assuming the weights 1 for “false” and 2 for “true”, the Transformation
-Dr := D1 + D2 will produce:
+*D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2` will produce:
 
-   *Dr* = Births & Deaths of United States + European Union
+   *D*:sub:`r` = Births & Deaths of United States + European Union
 
 +---------------+-----------------+-----------------+-----------------+
 | **Ref.Date**  | **Births**      | **Deaths**      | **Estimate**    |
@@ -1484,18 +1484,15 @@ rules, as already explained in the relevant section.
 
 For example, recalling the example already given example:
 
-*Dr := D1 + D2 / (D3 – D4 / D5)*
+*D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2` */ (D*:sub:`3` *– D*:sub:`4` */ D*:sub:`5` *)*
 
 The evaluation of the Attributes will follow the order of composition of
 the Measures:
 
-I.   *A(D4 / D5)* (default precedence order)
-
-II.  *A(D3 - I)* (explicitly defined order)
-
-III. *A(D2* **/** *II)* (default precedence order)
-
-IV.  *A(D1 + III)* (default precedence order)
+| I.   *A(D*:sub:`4` */ D*:sub:`5` *)* (default precedence order)
+| II.  *A(D*:sub:`3` *- I)* (explicitly defined order)
+| III. *A(D*:sub:`2` **/** *II)* (default precedence order)
+| IV.  *A(D*:sub:`1` *+ III)* (default precedence order)
 
 Properties of the Attribute propagation algorithm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1510,26 +1507,25 @@ Data Set operator “§” which applies on the measures):
 
    **Commutative law (1)**
 
-   *A(D\ 1 § D\ 2) = A(D\ 2 § D\ 1)*
+   *A(D*:sub:`1` *§ D*:sub:`2` *) = A(D*:sub:`2` *§ D*:sub:`1` *)*
 
    The application of *A* produces the same result (in term of
    Attributes) independently of the ordering of the operands. For
-   example, *A*\ (*D\ 1 + D\ 2) = A(D\ 2 + D\ 1).* This may seem quite
+   example, *A(D*:sub:`1` *+ D*:sub:`2` *) = A(D*:sub:`2` *+ D*:sub:`1` *)*. This may seem quite
    intuitive for “sum”, but it is important to point out that it holds
    for every operator, also for non-commutative operations like
-   difference, division, logarithm and so on; for example *A*\ (*D\ 1 /
-   D\ 2) = A*\ (*D\ 2 / D\ 1)*
+   difference, division, logarithm and so on; for example *A(D*:sub:`1` */ D*:sub:`2` *) = A(D*:sub:`2` */ D*:sub:`1` *)*
 
    **Associative law (2)**
 
-   *A(D\ 1 § A(D\ 2 § D\ 3) = A(A(D\ 1 § D\ 2) § D\ 3)*
+   *A(D*:sub:`1` *§ A(D*:sub:`2` *§ D*:sub:`3` *)) = A(A(D*:sub:`1` *§ D*:sub:`2` *) § D*:sub:`3` *)*
 
    Within one operator, the result of *A* (in term of Attributes) is
    independent of the sequence of processing.
 
    **Reflexive law (3)**
 
-   *A( §(D\ 1)) = A(D\ 1)*
+   *A( §(D*:sub:`1` *)) = A(D*:sub:`1` *)*
 
    The application of *A* to an Operator having a single operand gives
    the same result (in term of Attributes) that its direct application
