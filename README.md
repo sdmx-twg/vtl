@@ -1,5 +1,5 @@
 # SDMX-VTL
-VTL is a standard language for defining **validation** and **transformation** rules (set of operators, their syntax and semantics) for any kind of statistical data. 
+VTL is a standard language for defining **validation** and **transformation** rules (set  of operators, their syntax and semantics) for any kind of statistical data. 
 
 VTL builds on the Transformation section of the SDMX information model, by taking the common parts of GSIM, SDMX and DDI as for the representation of concepts and data. The assumption is that such a logical formalization of validation and transformation rules will provide a "technology-neutral" expression at business level of the processing taking place, against which various implementations and specific programming languages can be mapped. 
 
