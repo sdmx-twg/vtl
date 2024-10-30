@@ -1,37 +1,39 @@
-package org.sdmx.vtl;
+package antlr4.org.sdmx.vtl;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.sdmx.vtl.VtlLexer;
+import org.sdmx.vtl.VtlParser;
 
 public abstract class ParserTest {
 
-	public ParserTest() {
-		super();
-	}
+    public ParserTest() {
+        super();
+    }
 
-	protected String parseVtlString(String codeToCheck) throws Exception {
-		try {
-			//For testing validity of expressions
-			VtlErrorListener error = new VtlErrorListener();
-			CharStream inputString = new ANTLRInputStream(codeToCheck);
-			VtlLexer lexer = new VtlLexer(inputString);
-			CommonTokenStream tokens = new CommonTokenStream(lexer);
-			VtlParser parser = new VtlParser(tokens);
-			parser.removeErrorListeners();
-			parser.addErrorListener(error);
-			parser.start();
-			if (error.flag) {
-				throw new Exception(error.toString());
-			}
+    protected String parseVtlString(String codeToCheck) throws Exception {
+        try {
+            //For testing validity of expressions
+            VtlErrorListener error = new VtlErrorListener();
+            CharStream inputString = new ANTLRInputStream(codeToCheck);
+            VtlLexer lexer = new VtlLexer(inputString);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            VtlParser parser = new VtlParser(tokens);
+            parser.removeErrorListeners();
+            parser.addErrorListener(error);
+            parser.start();
+            if (error.flag) {
+                throw new Exception(error.toString());
+            }
 
-			// Create the tree for comparison tests
-			VtlTreeGenerator tree = new VtlTreeGenerator("start");
-			return tree.process(codeToCheck, lexer, parser);
+            // Create the tree for comparison tests
+            VtlTreeGenerator tree = new VtlTreeGenerator("start");
+            return tree.process(codeToCheck, lexer, parser);
 
-		}catch (Exception e) {
-			throw e;
-		}
-	}
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
 }

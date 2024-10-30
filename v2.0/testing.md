@@ -8,7 +8,7 @@ For this reason, the GitHub project has been restructured to include the Vtl fil
 
 [`src/main/antlr4/org/sdmx/vtl/Vtl.g4`](src/main/antlr4/org/sdmx/vtl/Vtl.g4)
 
-[`src/main/antlr4/imports/VtlTokens.g4`](src/main/antlr4/imports/VtlTokens.g4)
+[`src/main/antlr4/imports/VtlTokens.g4`](src/main/antlr4/org/sdmx/vtl/VtlTokens.g4)
 
 ## Project structure
 As mentioned above, this is a maven project that uses jUnit 4 test classes, in order to parse the input VTL expressions, validate their syntax and generate their ASTs. Please check the [pom.xml](pom.xml) file for the details on the project requirements.

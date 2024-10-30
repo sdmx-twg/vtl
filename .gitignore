@@ -1,3 +1,10 @@
 venv
 outputdir
 *.jar
+.vscode/
+.idea/
+/v2.1/docs/_build/
+examples_files/
+**/examples.rst
+_build/
+v2.1/docs/engine_files/

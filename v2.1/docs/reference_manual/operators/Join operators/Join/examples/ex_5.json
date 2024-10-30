@@ -1,0 +1,34 @@
+{
+  "name":"DS_r",
+  "components": [
+      {
+          "name": "Id_1",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_2",
+          "role": "Identifier",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_1",
+          "role": "Measure",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_1A",
+          "role": "Measure",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_2",
+          "role": "Measure",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_4",
+          "role": "Measure",
+          "data_type": "String"
+      }
+  ]}
