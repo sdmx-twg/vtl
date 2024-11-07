@@ -1,5 +1,5 @@
 # AGENDA
-1.	VTL 2.1 markup documentation: review of the current version, status-of-art of G4 grammar and planning for the final version by end 0f 2024
+1.	VTL 2.1 markup documentation: review of the current version, status-of-art of G4 grammar and planning for the final version by end of 2024
 2.	Proposals for organizing training sessions and webinars
 3.	Analysis and prioritization of the proposals for VTL 2.2 (or 3.0):
 - a.	Relaxing of some constraints (e.g. widening of numeric data types for arithmetical/statistical operators)
