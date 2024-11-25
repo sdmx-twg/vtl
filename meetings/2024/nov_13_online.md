@@ -42,7 +42,7 @@
 20.  Valentino Pinna
 
 ### 1. VTL 2.1 markup documentation
-The review of the documentation, together with the test of the new G4 grammar by the engines' implementing groups have to be closed by mid December, in order to have enough time to publish the the final version of the manuals, the grammar and the Technical Note document by the end of the current year; the SDMX official pages with the link to the VTL GitHub folder will be updated and a message to SDMX User forum will be sent. From 2025 the markdup folder will contain the official documentation for VTL and will evolve according to the current GitHub rule (changes will be accepted only by pull requests and will be committed after 1 review).
+The review of the documentation, together with the test of the new G4 grammar by the engines' implementing groups has to be closed by mid December, in order to have enough time to publish the the final version of the manuals, the grammar and the Technical Note document by the end of the current year; the SDMX official pages with the link to the VTL GitHub folder will be updated and a post to SDMX User Forum will be sent. From 2025 the markdup folder will contain the official documentation for VTL and will evolve according to the current GitHub rule (changes will be accepted only by pull requests and will be committed after 1 review).
 
 **Actions**:
 - Attilio and Valentino will coordinate the test activities and authorise the commit of the final VTL 2.1 version in GitHub
