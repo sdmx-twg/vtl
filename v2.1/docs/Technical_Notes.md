@@ -215,15 +215,15 @@ sections of the JSON schema are optional if the implementation does not require 
     },
     "type": "object",
     "properties": {
-        "datasets": {
+        "data": {
             "type": "array",
             "items": {
                 "allOf": [ { "$ref": "#/$defs/identifiable" } ],
                 "properties": {
-                    "source": { "type": "string" },
-                    "structure": { "$ref": "#/$defs/vtl-id" }
+                    "metadata": { "$ref": "#/$defs/vtl-id" },
+                    "source": { "type": "string" }
                 },
-                "required": [ "structure" ]
+                "required": [ "metadata" ]
             }
         },
         "structures": {
