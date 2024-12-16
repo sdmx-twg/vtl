@@ -1054,9 +1054,8 @@ Measures will be used:
         ** <i>String</i> (string_var)
         ** <i>Number</i> (num_var)
         *** <i>Integer</i> (int_var)
-		**** <i>Natural</i> (nat_var)
         ** <i>Time</i> (time_var)
-        *** <i>Time-instant</i> (date_var)
+        *** <i>Date</i> (date_var)
         *** <i>Time-period</i> (period_var)
         ** <i>Boolean</i> (bool_var)
 
