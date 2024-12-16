@@ -278,22 +278,8 @@ The hierarchical tree of the basic scalar types is the following:
 
     @endmindmap
 
-.. uml::
-
-    @startwbs
-        * <i>Scalar</i>
-        ** <i>String</i>
-        ** <i>Number</i>
-        *** <i>Integer</i>
-        ** <i>Time</i>
-        *** <i>Date</i>
-        *** <i>Time period</i>
-        ** <i>Duration</i>
-        ** <i>Boolean</i>
-	@endwbs	
-
-A scalar Value of type **string** is a sequence of alphanumeric
-characters of any length. On scalar Values of type *string*, the string
+A Scalar Value of type **string** is a sequence of alphanumeric
+characters of any length. On Scalar Values of type *string*, the string
 operations can be allowed, like concatenation of strings, split of
 strings, extraction of a part of a string (substring) and so on.
 
