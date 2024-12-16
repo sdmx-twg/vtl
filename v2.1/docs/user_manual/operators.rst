@@ -1046,23 +1046,21 @@ Measures will be used:
 
 .. uml::
 
-    @startsalt
+    @startmindmap
 
-        {
-            {T
-                + **Basic Scalar Types**                 **Default Measure Variable**
-                ++ String                            string_var
-                ++ Number                            num_var
-                +++ Integer                          int_var
-                ++++ Natural                         nat_var
-                ++ Time                              time_var
-                +++ Time-instant                     date_var
-                +++ Time-period                      period_var
-                ++ Boolean                           bool_var
-            }
-        }
+    title Basic scalar types with default measure variables
 
-    @endsalt
+        * Scalar
+        ** <i>String</i> (string_var)
+        ** <i>Number</i> (num_var)
+        *** <i>Integer</i> (int_var)
+		**** <i>Natural</i> (nat_var)
+        ** <i>Time</i> (time_var)
+        *** <i>Time-instant</i> (date_var)
+        *** <i>Time-period</i> (period_var)
+        ** <i>Boolean</i> (bool_var)
+
+    @endmindmap
 
 In some cases, in the examples of the Manuals, the default Boolean
 variable is also called “condition”.
