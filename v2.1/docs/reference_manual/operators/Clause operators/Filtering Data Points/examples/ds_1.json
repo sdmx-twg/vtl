@@ -24,6 +24,6 @@
       {
           "name": "At_1",
           "role": "Attribute",
-          "data_type": "Integer"
+          "data_type": "String"
       }
   ]}

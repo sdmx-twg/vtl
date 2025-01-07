@@ -4,7 +4,7 @@
       {
           "name": "Me_1",
           "role": "Identifier",
-          "data_type": "Integer"
+          "data_type": "Number"
       },
       {
           "name": "At_1",

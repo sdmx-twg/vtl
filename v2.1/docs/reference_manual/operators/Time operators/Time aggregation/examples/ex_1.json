@@ -4,12 +4,12 @@
       {
           "name": "Id_1",
           "role": "Identifier",
-          "data_type": "String"
+          "data_type": "TimePeriod"
       },
       {
           "name": "Id_2",
           "role": "Identifier",
-          "data_type": "TimePeriod"
+          "data_type": "String"
       },
       {
           "name": "Me_1",

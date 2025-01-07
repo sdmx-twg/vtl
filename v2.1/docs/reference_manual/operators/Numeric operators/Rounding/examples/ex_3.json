@@ -14,7 +14,7 @@
       {
           "name": "Me_1",
           "role": "Measure",
-          "data_type": "Integer"
+          "data_type": "Number"
       },
       {
           "name": "Me_2",
@@ -24,6 +24,6 @@
       {
           "name": "Me_20",
           "role": "Measure",
-          "data_type": "Integer"
+          "data_type": "Number"
       }
   ]}

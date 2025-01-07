@@ -24,6 +24,6 @@
       {
           "name": "Me_20",
           "role": "Measure",
-          "data_type": "Integer"
+          "data_type": "Number"
       }
   ]}

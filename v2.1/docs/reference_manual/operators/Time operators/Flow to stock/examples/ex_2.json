@@ -14,6 +14,6 @@
       {
           "name": "Me_1",
           "role": "Measure",
-          "data_type": "String"
+          "data_type": "Integer"
       }
   ]}

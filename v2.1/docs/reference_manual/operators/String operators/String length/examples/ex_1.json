@@ -12,8 +12,8 @@
           "data_type": "String"
       },
       {
-          "name": "Me_1",
+          "name": "int_var",
           "role": "Measure",
-          "data_type": "String"
+          "data_type": "Integer"
       }
   ]}
