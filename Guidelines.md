@@ -215,6 +215,14 @@ sections of the JSON schema are optional if the implementation does not require 
     },
     "type": "object",
     "properties": {
+        "versioning": {
+            "type": "object",
+            "properties": {
+                "vtl": { const: "2.1" },
+                "schemaver": { const: "1.0.0" }
+            },
+            "required": [ "vtlmajor", "schemaver" ]
+        },
         "datasets": {
             "type": "array",
             "items": {
