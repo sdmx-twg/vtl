@@ -2,7 +2,7 @@
 Syntax
 ------
 
-{**year** | **month** | **dayofmonth** | **dayofyear**}¹ **(** op **)**
+{**getyear** | **getmonth** | **dayofmonth** | **dayofyear**}¹ **(** op **)**
 
 
 ----------------
@@ -19,7 +19,7 @@ Examples of valid syntaxes
 ------------------------------------
 ::
   
-  year (2022Q1)
+  getyear (2022Q1)
   dayofyear (2020-12-14)
   ds2 := ds1[calc Me2 := dayofmonth(Me1)]
 
@@ -27,8 +27,8 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator **year** returns the year of the given date/time period.
-The operator **month** returns the month of the given date/time period (between 1 and 12).
+The operator **getyear** returns the year of the given date/time period.
+The operator **getmonth** returns the month of the given date/time period (between 1 and 12).
 The operator **dayofmonth** returns the ordinal day within the month (between 1 and 31).
 The operator **dayofyear** returns the ordinal day within the year (between 1 and 366).
 
