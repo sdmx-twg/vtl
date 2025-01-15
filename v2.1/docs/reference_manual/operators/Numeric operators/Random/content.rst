@@ -62,4 +62,5 @@ None.
 Behaviour
 ---------
 
-The operator returns a random decimal number >= 0 and <1.
+The operator returns a random decimal number >= 0 and <1. The results may not be the same ones presented in the examples, since they can depend on the different implementations; anyway repeated executions of the random operator with the same seed should always give the same results. 
+
