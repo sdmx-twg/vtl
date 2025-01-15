@@ -10,7 +10,7 @@ The specifications for exchanging VTL validation rules in SDMX messages, for sto
 
 The current official version of the language is [v2.0](https://github.com/sdmx-twg/vtl/tree/master/v2.1) and it includes:
 
-* [User Manual](https://github.com/sdmx-twg/vtl/v2.1/docs/reference_manual), highlighting the main characteristics of VTL, its core assumptions and the information model the language is based on;
-* [Reference Manual](https://github.com/sdmx-twg/vtl/v2.1/docs/reference_manual), describing the full library of operators ordered by category, with examples;
+* [User Manual](https://github.com/sdmx-twg/vtl/tree/master/v2.1/docs/user_manual) highlighting the main characteristics of VTL, its core assumptions and the information model the language is based on;
+* [Reference Manual](https://github.com/sdmx-twg/vtl/tree/master/v2.1/docs/reference_manual), describing the full library of operators ordered by category, with examples;
 * EBNF notation (Extended Backus-Naur Form) grammar, which is the technical notation to be used as a test bed for all the examples throughout the document: files [Vtl.g4](v2.0/src/main/antlr4/org/sdmx/vtl/Vtl.g4) & [VtlTokens.g4](v2.0/src/main/antlr4/org/sdmx/vtl/VtlTokens.g4)
 * [Technical Notes document](https://github.com/sdmx-twg/vtl/v2.1/docs/Technical_Notes.md), to support VTL implementation
