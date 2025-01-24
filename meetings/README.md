@@ -9,7 +9,6 @@ This is the list of the current VTL-TF members, and their role in the group.
 Angelo Linardi|Banca d’Italia|angelo.linardi@bancaditalia.it|linardian|VTL-TF Chair|
 Antonio Olleros|Meaningful Data|antonio.olleros@meaningfuldata.eu|antonio-olleros|VTL-TF Member|	
 Attilio Mattiocco|Banca d’Italia|attilio.mattiocco@bancaditalia.it|amattioc|VTL-TF Member|
-Bryan	Marquette|NBB|bryan.marquette@nbb.be||VTL-TF Member|
 Daniel Suranyi|ECB|Daniel.Suranyi@ecb.europa.eu|brainwasher|VTL-TF Member|
 Dario Camol|Istat (Italy)|camol@istat.it|dCamol|VTL-TF Member|
 Edgardo Greising|ILO|greising@ilo.org|egreising|VTL-TF Member|
@@ -27,6 +26,7 @@ Romain Tailhurat|Making Sense|romain.tailhurat@making-sense.info|romaintailhurat
 Stefano Pambianco|ECB|stefano.pambianco@ecb.europa.eu|stefanopam|VTL-TF Member|
 Stratos Nikoloutsos|BIS|stratos.nikoloutsos@bis.org|stratosn|VTL-TF Member|
 Thomas Dubois|INSEE (France)|thomas.dubois@casd.eu||VTL-TF Member|
+Ugo Di Zenzo|NBB|ugo.dizenzo@nbb.be||VTL-TF Member|
 Valentino Pinna|Banca d’Italia|valentino.pinna@bancaditalia.it|vpinna80|VTL-TF Member|
 
 
