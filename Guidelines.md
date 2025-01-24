@@ -220,10 +220,15 @@ sections of the JSON schema are optional if the implementation does not require 
             "items": {
                 "allOf": [ { "$ref": "#/$defs/identifiable" } ],
                 "properties": {
-                    "metadata": { "$ref": "#/$defs/vtl-id" },
                     "source": { "type": "string" }
+                    "structure": { "$ref": "#/$defs/vtl-id" },
+                    "valuedomain": { "$ref": "#/$defs/vtl-id" },
                 },
-                "required": [ "metadata" ]
+                "required": [ "metadata" ],
+                "oneOf": [
+                    { "required": [ "structure" ] },
+                    { "required": [ "valuedomain" ] }
+                ]
             }
         },
         "structures": {
