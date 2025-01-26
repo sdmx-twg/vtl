@@ -623,7 +623,7 @@ componentID:
 ;
 
 lists:
-    GLPAREN  scalarItem (COMMA scalarItem)*  GRPAREN
+    GLPAREN  expr (COMMA expr)*  GRPAREN
 ;
 
 erCode:
