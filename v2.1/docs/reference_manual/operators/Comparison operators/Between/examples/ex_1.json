@@ -22,7 +22,7 @@
           "data_type": "String"
       },
       {
-          "name": "bol_var",
+          "name": "bool_var",
           "role": "Measure",
           "data_type": "Boolean"
       }
