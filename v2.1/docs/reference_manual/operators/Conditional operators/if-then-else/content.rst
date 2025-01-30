@@ -73,7 +73,8 @@ Additional Constraints
 * The operands *thenOperand* and *elseOperand* must be of the same scalar type.
 * If the operation is at scalar level, *thenOperand* and *elseOperand* are scalar then *condition* must be
   scalar too (a *boolean* scalar).
-* If the operation is at Component level, condition must be a boolean Component; any Components referenced in condition must belong to the same Data Set.
+* If the operation is at Component level, *condition* must be a boolean expression.  
+  Any Components referenced in *condition*, *thenOperand* and *elseOperand* must belong to the same Data Set.
 * If the operation is at Data Set level, at least one of *thenOperand* and *elseOperand* is a Data Set (the
   other one can be scalar) and *condition* must be a Data Set too (having a unique *boolean* Measure)
   and must have the same Identifiers as *thenOperand* or/and *ElseOperand*

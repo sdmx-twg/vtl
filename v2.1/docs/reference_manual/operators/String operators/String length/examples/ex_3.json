@@ -24,11 +24,11 @@
       {
           "name": "Me_10",
           "role": "Measure",
-          "data_type": "String"
+          "data_type": "Integer"
       },
       {
           "name": "Me_20",
           "role": "Measure",
-          "data_type": "String"
+          "data_type": "Integer"
       }
   ]}
