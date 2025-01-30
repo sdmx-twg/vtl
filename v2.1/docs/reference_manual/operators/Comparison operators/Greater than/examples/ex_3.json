@@ -24,6 +24,6 @@
       {
           "name": "bool_var",
           "role": "Measure",
-          "data_type": "Measure"
+          "data_type": "Boolean"
       }
   ]}
