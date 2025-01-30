@@ -22,7 +22,7 @@ expr:
     | left=expr op=(MUL|DIV) right=expr                                     # arithmeticExpr
     | left=expr op=(PLUS|MINUS|CONCAT) right=expr                           # arithmeticExprOrConcat
     | left=expr op=comparisonOperand  right=expr                            # comparisonExpr
-    | left=expr op=(IN|NOT_IN)(lists|valueDomainID)                         # inNotInExpr
+    | left=expr op=(IN|NOT_IN)(list|valueDomainID)                          # inNotInExpr
     | left=expr op=AND right=expr                                           # booleanExpr
     | left=expr op=(OR|XOR) right=expr							            # booleanExpr
     | IF  conditionalExpr=expr  THEN thenExpr=expr ELSE elseExpr=expr       # ifExpr
@@ -41,7 +41,7 @@ exprComponent:
     | left=exprComponent op=(MUL|DIV) right=exprComponent                                                   # arithmeticExprComp
     | left=exprComponent op=(PLUS|MINUS|CONCAT) right=exprComponent                                         # arithmeticExprOrConcatComp
     | left=exprComponent comparisonOperand right=exprComponent                                              # comparisonExprComp
-    | left=exprComponent op=(IN|NOT_IN)(lists|valueDomainID)                                                # inNotInExprComp
+    | left=exprComponent op=(IN|NOT_IN)(listComponent|valueDomainID)                                                # inNotInExprComp
     | left=exprComponent op=AND right=exprComponent                                                         # booleanExprComp
     | left=exprComponent op=(OR|XOR) right=exprComponent                                                    # booleanExprComp
     | IF  conditionalExpr=exprComponent  THEN thenExpr=exprComponent ELSE elseExpr=exprComponent            # ifExprComp
@@ -622,8 +622,12 @@ componentID:
    IDENTIFIER (MEMBERSHIP IDENTIFIER)?
 ;
 
-lists:
+list:
     GLPAREN  expr (COMMA expr)*  GRPAREN
+;
+
+listComponent:
+    GLPAREN  exprComponent (COMMA exprComponent)*  GRPAREN
 ;
 
 erCode:
