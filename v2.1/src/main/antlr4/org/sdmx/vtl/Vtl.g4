@@ -418,12 +418,16 @@ windowingClause:
 ;
 
 signedInteger:
-  INTEGER_CONSTANT
+  (MINUS|PLUS)?INTEGER_CONSTANT
+;
+
+signedNumber:
+  (MINUS|PLUS)?NUMBER_CONSTANT
 ;
 
 limitClauseItem:
-    INTEGER_CONSTANT dir=PRECEDING
-    | INTEGER_CONSTANT dir=FOLLOWING
+    signedInteger dir=PRECEDING
+    | signedInteger dir=FOLLOWING
     | CURRENT DATA POINT
     | UNBOUNDED dir=PRECEDING
     | UNBOUNDED dir=FOLLOWING
@@ -556,8 +560,8 @@ codeItemRelationClause:
 
 valueDomainValue:
     IDENTIFIER
-    | INTEGER_CONSTANT
-    | NUMBER_CONSTANT
+    | signedInteger
+    | signedNumber
 ;
 
 scalarTypeConstraint:
@@ -679,8 +683,8 @@ routineName:
 ;
 
 constant:
-    INTEGER_CONSTANT
-    | NUMBER_CONSTANT
+    signedInteger
+    | signedNumber
     | BOOLEAN_CONSTANT
     | STRING_CONSTANT
     | NULL_CONSTANT
