@@ -34,7 +34,7 @@ Examples of valid syntaxes
 
 
 ------------------------------------
-Semantics  for scalar operations
+Semantics for scalar operations
 ------------------------------------
 The **in** operator returns TRUE if *op* belongs to the collection, FALSE otherwise.
 The **not_in** operator returns FALSE if *op* belongs to the collection, TRUE otherwise.
