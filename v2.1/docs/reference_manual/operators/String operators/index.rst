@@ -12,3 +12,4 @@ VTL-ML - String Operators
    String pattern replacement/index
    String pattern location/index
    String length/index
+   String distances/index
