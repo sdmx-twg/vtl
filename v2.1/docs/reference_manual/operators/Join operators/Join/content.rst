@@ -241,7 +241,7 @@ result could be obtained.
 If the `using` clause is not specified (we will label this case as “Case A”), calling `Id(dsᵢ)` the set of Identifier
 Components of operand `dsᵢ`, the following group of constraints must hold:
 
-* For **inner_join**, for each pair `dsᵢ`, `dsⱼ`, either `d(dsᵢ) ⊆ Id(dsⱼ)` or `Id(ds) ⊆ Id(dsᵢ)`. In simpler words, the
+* For **inner_join**, for each pair `dsᵢ`, `dsⱼ`, either `Id(dsᵢ) ⊆ Id(dsⱼ)` or `Id(dsⱼ) ⊆ Id(dsᵢ)`. In simpler words, the
   Identifiers of one of the joined Data Sets must be a superset of the identifiers of all the other ones.
 * For **left_join** and **full_join**, for each pair `dsᵢ`, `dsⱼ`, `Id(dsᵢ) = Id(dsⱼ)`. In simpler words, the joined 
   Data Sets must have the same Identifiers.
