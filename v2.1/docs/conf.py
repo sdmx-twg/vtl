@@ -4,6 +4,8 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
+
+project = u'VTL Documentation'
 VERSION = "2.1"
 
 
@@ -35,6 +37,7 @@ exclude_patterns = [
 html_theme_options = {
     "navigation_depth": 5,
     "collapse_navigation": False,
+
 }
 
 
