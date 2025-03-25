@@ -387,11 +387,11 @@ EOL
 
 ML_COMMENT
   :
-  ('/*' (.)*? '*/')-> channel(2);
+  '/*' .*? '*/' -> channel(2);
 
 SL_COMMENT
   :
-  ('//' (.)*? '\n') ->channel(2);
+  '//' ~[\r\n]*  ->channel(2);
 
 /*
 
