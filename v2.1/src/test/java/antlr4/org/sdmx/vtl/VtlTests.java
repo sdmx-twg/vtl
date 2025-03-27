@@ -18,6 +18,16 @@ public class VtlTests extends ParserTest {
     }
 
     @Test
+    public void testLineComment() throws Exception {
+        String expression = "A := B + C; // comment\n// comment";
+        String correctTree = "(start (statement (varID A) := (expr (expr (varID B)) + (expr (varID C)))) ; <EOF>)";
+        String theTree = parseVtlString(expression);
+        if (!theTree.equals(correctTree)) {
+            fail("Tree not as expected!\nThe tree was: " + theTree + "\n..instead of: " + correctTree);
+        }
+    }
+
+    @Test
     public void testTheTree() {
         String expression = "A := B + C * D;";
         String correctTree = "(start (statement (varID A) := (expr (expr (varID B)) + " +
