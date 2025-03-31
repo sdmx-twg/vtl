@@ -80,4 +80,26 @@ Valentino described the current issues in implementing time operators and presen
 - Valentino, Antonio/Javier and Hadrien to make a proposal for improving current time data types to include hours, minutes and seconds and evolving time operators accordingly.
 
 
+### Other issues
+Angelo presented a proposal for change of the "cast matrix" to solve some issues:
+- Number --> Integer: NOT FEASIBLE (use ceil/floor/trunc)
+- Integer --> Number: maintain implicit casting. Since Integer is a subtype of Number and Date and Time_period are subtypes of Time, the casting from subtypes to the correspondent type is always implicit, while the casting from types to the corresponding subtypes are always not feasible
+- Number --> String: EXPLICIT WITH OPTIONAL MASK (in order to allow thousand separator)
+- Integer --> String: EXPLICIT WITH OPTIONAL MASK (in order to allow thousand separator)
+- String --> Integer: EXPLICIT WITH OPTIONAL MASK (like String --> Number)
+The proposals have been accepted.
+Then the topic of how to get a scalar from a dataset was introduced (e.g. to use the result of the count() of a dataset as a scalar to filter some other dataset). Since the result of a count() is a dataset with 1 row, no identifiers and 1 measure, by default named int_var, there is the possibility of getting the desidered outcome applying a join, but it is considered to be too complex. Various proposals have been made, to be chosen via written procedure.
+Finally some bugs to be fixed have been presented; some of them were easy to resolve and already applied to the current version (allowing comments in the last line and updating the title of the manuals from "Python" to "VTL documentation"). The 
+
+**Actions**:
+- Angelo to modify the current cast matrix with the accepted proposals.
+- Antonio to make a proposal for defining a new operator (or modify the membership one) for getting a scalar from a dataset to be approved by written procedure
+
+
+
+
+
+
+
+
 Thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
