@@ -102,8 +102,21 @@ Finally some bugs to be fixed have been presented; some of them were easy to res
 #### Json metadata descriptor
 The current json schema contained in the Technical_note document is not compliant with the VTL Information Model. To align its definition, a devoted workstream has been defined, composed by Antonio, Valentino and whoever wants to contribute.
 #### Empty strings in VTL
-The way VTL handles empty string is not coherently defined in the documentation. It has been clarified that an empty string is not equivalent to a null string. The current documentation will be accordingly corrected. By the way, it has been ascertained that the "null", "true" and "false" reserved words are in lowercase in the grammar, while are written in capital letters in the manuals: the documentation will be corrected according to the grammar.
+The way VTL handles empty string is not coherently defined in the documentation. It has been clarified that an empty string is not equivalent to a null string. The current documentation will be accordingly corrected. 
+By the way, it has been ascertained that the "null", "true" and "false" reserved words are in lowercase in the grammar, while are written in capital letters in the manuals: the documentation will be corrected according to the grammar.
 #### Analytical invocation: partition by
-Two issues related to the partition by clause in the analytical invocation are currently open: one to introduce the "particion except" as in the "group except" clause for the aggregation invocation and one to allow partioning without any identifier. It has been decided to solve both issues by introducing "partition except" and "partition except all" syntax in the partition by clause. 
+Two issues related to the partition by clause in the analytical invocation are currently open: one to introduce the "particion except" as in the "group except" clause for the aggregation invocation and one to allow partioning without any identifier. 
+It has been decided to solve both issues by introducing "partition except" and "partition except all" syntax in the partition by clause. 
+#### Add string distance operator - Levenshtein
+A proposal for introducing a new string distance operator (Levenshtein at least) has been made. The proposal has been accepted; a written procedure will be launched containing the syntax of the new operator with the specification of which metrics will be accepted.
+#### Regex handling
+In the current documentation "regexp" is defined in the match_character operator as defined in the POSIX standard. A short survey among VTL engines implementers groups has clarified that only Extended Regular Expressions (not ERE classes) are currently supported.
+Since an issue to use patterns to specify lists of components to be used in different clauses (e.g. keep, drop, group by, partition by) a proposal about how to implement this use cases will be made by Hadrien, Nicolas and Javier.
+#### Grouping clause with expressions
+An open issue (#456) to change the syntax of the groupingClause allowing also expressions (e.g. c1+c2) was discussed. 
+The resulting expression should have renamed and the change in the groupingClause would be very complex; the decision was not to introduce this change, since the workaround (using two expression) is much simpler. By the way, a proposal to drop the "group all" option has been made; since the change would be not back-compatible, for now it will be deprecated and dropped in the next major release.
+
+
+
 
 Thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
