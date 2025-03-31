@@ -99,10 +99,11 @@ Finally some bugs to be fixed have been presented; some of them were easy to res
 
 
 ### Session 2: Language evolution
-
-
-
-
-
+#### Json metadata descriptor
+The current json schema contained in the Technical_note document is not compliant with the VTL Information Model. To align its definition, a devoted workstream has been defined, composed by Antonio, Valentino and whoever wants to contribute.
+#### Empty strings in VTL
+The way VTL handles empty string is not coherently defined in the documentation. It has been clarified that an empty string is not equivalent to a null string. The current documentation will be accordingly corrected. By the way, it has been ascertained that the "null", "true" and "false" reserved words are in lowercase in the grammar, while are written in capital letters in the manuals: the documentation will be corrected according to the grammar.
+#### Analytical invocation: partition by
+Two issues related to the partition by clause in the analytical invocation are currently open: one to introduce the "particion except" as in the "group except" clause for the aggregation invocation and one to allow partioning without any identifier. It has been decided to solve both issues by introducing "partition except" and "partition except all" syntax in the partition by clause. 
 
 Thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
