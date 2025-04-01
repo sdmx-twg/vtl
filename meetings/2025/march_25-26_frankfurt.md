@@ -124,7 +124,28 @@ By the way, a proposal to drop the "group all" option has been made; since the c
 - A new operator for evaluating the distance between two strings will be defined; Hadrien and Nicolas to make a proposal for its syntax, that will allow to specify which metric to use (Levenshtein in primis) that will be approved via written procedure.
 - Angelo to specify in the documentation that only POSIX Extended Regular Expressions (not ERE classes) are currently supported by VTL.
 - A new workstream, whose members are at the moment Hadrien, Nicolas and Javier, will define how to specify lists of components to be used in different clauses (e.g. keep, drop, group by, partition by).
-- Angelo to add a note for deprecating the "group all" option for group by clause.
+- Angelo to add a note in the documentation to deprecate the "group all" option for group by clause.
+
+
+## Day 2 Wednesday 26th  March
+### Session 3: Discussion on other topics
+#### New Definition Language operators
+Angelo introduced the topic, reminding that in the past versions several attempts have been made to introduce new DL operators to the two actually defined (define datapoint and define hieararchical ruleset).
+Since in the Technical_Notes document some "hints" have been produced, it could be worth defining new DL operators to define structures, valueDomains and variables; Valentino, Laura and Angelo are volunteering for making a proposal.
+#### Pivot and unpivot operators
+According to the current version, for unpivot operator "All the measures of op must be defined on the same ValueDomain". Since this could not be the case for measures with different types when implicit casting is allowed, based on the previous discussion about cast operator, this restriction could be weakened and changed in "All the measures of op must be within the same scalar type, including subtypes".
+More broadly speaking, all the operators that could imply data type changes within the same scalar type (e.g. division of two integers) are not “operators which change the basic scalar type” (see User Manual – VTL Operators). This statement should be explicitly inserted in the User Manual and recalled (linked) whenever needed.
+#### Components, variables and domains
+Antonio introduced the topic, 
+
+
+
+
+
+
+
+
+
 
 
 Thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
