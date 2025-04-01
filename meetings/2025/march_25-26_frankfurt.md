@@ -142,8 +142,25 @@ Antonio introduced the topic, outlining pratical problems that may arise with th
 So his proposal would be (in order of preference):
 - Removing the entity Represented Variable from VTL Information Model
 - Keep the entity Represented Variable, but only as "conceptual link" to data dictionaries
-- Change the cardinality in the relationship between Data Structure Component and Represented Variable from 1:1 to 0:1
-Angelo observed 
+- Change the cardinality in the relationship between Data Structure Component and Represented Variable from 1:1 to 0:1.
+
+Angelo observed that:
+- VTL IM is more "general" than the SDMX one, being derived from GSIM and since VTL is used also with other standards (DDI and in the next future DPM), it does not seem viable to change it
+- In the case of using "same name with different meanings" as OBS_VALUE, it would be much better to guarantee name uniqueness (at least) in the same Transformation Schema
+- It is true that the problem of having diffenent datasets with the same name for data structure components with different meanings is "hidden" in non-persistent datasets, but with persisent assignments the problem arises (e.g. having two columns in a DBMS with the same name and different meanings and possibly different data types would result in a inconsistent data model).
+
+A very heated discussion followed on this topic with differing opinions. Due to time constraints the topic will be brought up again at other meetings. In the meantime Antonio will provide real use cases (i.e. transformation schemas with this issue) and VTL TF will try to analyse them and propose solutions. The topic will be also brought by Angelo and Franck to the attention of working groups within SDMX TWG and UNECE that are discussing about interoperability between SMDX and other standars (in particulare DDI and BPM) to collect some "external" opinions about it. 
+The related "JSON metadata descriptor" workstream will take the current VTL Information Model as the reference version.
+#### Versioning JSON schema
+Actully the JSON schema does not include (in the header) the version attribute. At the moment it seems that there is no need of implementing versioning for such artefact, so the topic will be reinvestigated in the next future
+#### Relaxing constraints in join operator
+In some cases, there is the need of performing a join (more precisely inner_join) between two datasets not compliant with the given constraint (“the Identifiers of one of the joined Data Sets must be a superset of the identifiers of all the other ones”); the constraint has the goal not to allow null values for identifiers.
+The proposal is to weaken this constraint to allow inner_join with at least one common identifier among all datasets; for all the non-common identifiers the “nlv” clause must be specified.
+The proposal has been approved.
+
+
+
+
 
 
 
