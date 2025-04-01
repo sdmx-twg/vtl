@@ -54,7 +54,7 @@ Venue: c/o ECB - Japan Center - Taunustor 2, Frankfurt am Main
 20. Laura	Vignola (remote)
 
 Other attendees:
-Fabio Palatta and Ida Migliaccio (remote - Banca d'italia)
+Ida Migliaccio (remote - Banca d'italia)
 
 ## Day 1 Tuesday 25th  March
 ### Introduction to new members
@@ -158,17 +158,31 @@ In some cases, there is the need of performing a join (more precisely inner_join
 The proposal is to weaken this constraint to allow inner_join with at least one common identifier among all datasets; for all the non-common identifiers the “nlv” clause must be specified.
 The proposal has been approved.
 
+**Actions**:
+- A new workstream, whose members are currently Valentino, Laura and Angelo, will make a proposal for new DL operators.
+- Angelo will propose changes to the manuals to specify that all the operators that could imply data type changes within the same scalar type (e.g. division of two integers) are not “operators which change the basic scalar type” and to provide links to this statement in all the needed points (e.g. behaviour of the operators). He will also pull a request for changing the current constraint of the unpivot operator ("All the measures of op must be defined on the same ValueDomain") to a weaker one ("All the measures of op must be within the same scalar type, including subtypes"). These changes will require specific approval by the implementers' teams.
+- Antonio will provide real use cases of transformation schemas with datasets having "same name with different meanings"
+- Angelo will propose changes to the manuals to allow inner_join with at least one common identifier among all datasets and all the non-common identifiers with mandatory “nlv” clause. Also this change will require specific approval by the implementers' teams.
 
 
+### Session 4: Organizational topics
+#### Actions for closing VTL 2.1
+Franck introduced the session asking for proposals of actions to "close" VTL version 2.1. It has been agreed that the correction of the open  bugs will be part of the 2.1 version, without opening a 3-digits version.
+#### Planning next releases and how to contribute
+Two milestons will be opened: one for 2.2 version and another for 3.0 version; in the first milestone (2.2) all the approved changes that are back-compatible will be put, while the second one (3.0) will contain the ones that are not back-compatible (e.g. removal of the "group all" clause). All the pending issues will be tagged with specific labels to specify in which version they will be applied/resolved.
+VTL TF members have been asked if there were some "urgent" topics to be covered in the next releases not cited in any currently open issue. Antonio answered that a revision of the "propagation of attributes" or "viral attributes" has to be done shortly to solve some use cases for NBB.
+#### VTL TF organisation
+No decision has been taken about "general" TF organisation, so it has been decided to continue defining workstreams for specific purposes. Here are the ones that will be working for VTL 2.2:
+- Workstream for UDO; current members: Hadrien, Javier, Sebastian
+- Workstream for temporals; current members: Valentino, Antonio/Javier, Hadrien
+- Workstream for JSON schema; current members: Antonio, Valentino
+- Workstream for defining lists/patterns for set of components; current members: Hadrien, Nicolas, Javier
+- Workstream for new DL operators; current members: Valentino, Laura, Angelo
 
+For small changes/issues, written procedures will be launched to be approved/rejected by VTL TF; some of them has already assigned to TF members (see above).  
+#### Next meetings
+A slot for VTL has been reserved within next TWG physical meeting, that will be in Salamanca from 16 to 20 of May 2025; VTL meeting will be held (in hybrid mode) on May 20 in the morning.
+A call for presentations about VTL implementations, use cases, technical issues will be shortly launched for hte SDMX Global Conference that will be held in Rome from September 29th to October 1st hosted by Banca d'Italia; in the capacity building part that will follow (OCtober 2-3) a VTL training session will be held.
+For the next year a physical VTL workshop will be organised: location and dates will be decided and communicated by the end of the year.
 
-
-
-
-
-
-
-
-
-
-Thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
+Finally, thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
