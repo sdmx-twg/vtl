@@ -134,10 +134,16 @@ Angelo introduced the topic, reminding that in the past versions several attempt
 Since in the Technical_Notes document some "hints" have been produced, it could be worth defining new DL operators to define structures, valueDomains and variables; Valentino, Laura and Angelo are volunteering for making a proposal.
 #### Pivot and unpivot operators
 According to the current version, for unpivot operator "All the measures of op must be defined on the same ValueDomain". Since this could not be the case for measures with different types when implicit casting is allowed, based on the previous discussion about cast operator, this restriction could be weakened and changed in "All the measures of op must be within the same scalar type, including subtypes".
-More broadly speaking, all the operators that could imply data type changes within the same scalar type (e.g. division of two integers) are not “operators which change the basic scalar type” (see User Manual – VTL Operators). This statement should be explicitly inserted in the User Manual and recalled (linked) whenever needed.
+More broadly speaking, all the operators that could imply data type changes within the same scalar type (e.g. division of two integers) are not “operators which change the basic scalar type” (see User Manual – VTL Operators). This statement (proposed wording: type generalisation) should be explicitly inserted in the User Manual and recalled (linked) whenever needed.
 #### Components, variables and domains
-Antonio introduced the topic, 
-
+Antonio introduced the topic, outlining pratical problems that may arise with the entity Data Structure Components stricly linked (relationship 1:1) with the entity Represented Variable in the Information Model:
+- In the Transformation Schemas there could be hundreds of tranformations with many non-persistent datasets which do not need any represented variables to be associated with
+- If input dataset are coming from different agencies, diffenent datasets can have the same name for data structure components with different meanings (and valueDomains); this frequently happens for SMDX datasets with OBS_VALUE, since the entity (Represented) Variable is not in SDMX Information Model and the relationship between Concept and Representation has cardinality 0:1.
+So his proposal would be (in order of preference):
+- Removing the entity Represented Variable from VTL Information Model
+- Keep the entity Represented Variable, but only as "conceptual link" to data dictionaries
+- Change the cardinality in the relationship between Data Structure Component and Represented Variable from 1:1 to 0:1
+Angelo observed 
 
 
 
