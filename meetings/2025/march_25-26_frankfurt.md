@@ -169,7 +169,10 @@ The proposal has been approved.
 #### Actions for closing VTL 2.1
 Franck introduced the session asking for proposals of actions to "close" VTL version 2.1. It has been agreed that the correction of the open  bugs will be part of the 2.1 version, without opening a 3-digits version.
 #### Planning next releases and how to contribute
-Two milestons will be opened: one for 2.2 version and another for 3.0 version; in the first milestone (2.2) all the approved changes that are back-compatible will be put, while the second one (3.0) will contain the ones that are not back-compatible (e.g. removal of the "group all" clause). All the pending issues will be tagged with specific labels to specify in which version they will be applied/resolved.
+Two milestons will be opened: one for 2.2 version and another for 3.0 version; in the first milestone (2.2) all the approved changes that are back-compatible will be put, while the second one (3.0) will contain the ones that are not back-compatible (e.g. removal of the "group all" clause). 
+
+All the pending issues will be tagged with specific labels to specify in which version they will be applied/resolved.
+
 VTL TF members have been asked if there were some "urgent" topics to be covered in the next releases not cited in any currently open issue. Antonio answered that a revision of the "propagation of attributes" or "viral attributes" has to be done shortly to solve some use cases for NBB.
 #### VTL TF organisation
 No decision has been taken about "general" TF organisation, so it has been decided to continue defining workstreams for specific purposes. Here are the ones that will be working for VTL 2.2:
@@ -180,13 +183,16 @@ No decision has been taken about "general" TF organisation, so it has been decid
 - Workstream for new DL operators; current members: Valentino, Laura, Angelo
 
 For small changes/issues, written procedures will be launched to be approved/rejected by VTL TF; some of them has already assigned to TF members (see above). 
+
 **Actions**:
 - Angelo, Attilio and Valentino to define 2.2 and 3.0 milestone, define valid labels, "tag" all the issues with the target version
 - Attilio, Valentino to create 2.2 folder in gitHub; the opening of the new version and the closure of the old one will be decided and announced (roughly) by the end of the month.
 - All TF members/attendees are invited to join the above mentioned workstreams
 #### Next meetings
 A slot for VTL has been reserved within next TWG physical meeting, that will be in Salamanca from 16 to 20 of May 2025; VTL meeting will be held (in hybrid mode) on May 20 in the morning.
+
 A call for presentations about VTL implementations, use cases, technical issues will be shortly launched for hte SDMX Global Conference that will be held in Rome from September 29th to October 1st hosted by Banca d'Italia; in the capacity building part that will follow (OCtober 2-3) a VTL training session will be held.
+
 For the next year a physical VTL workshop will be organised: location and dates will be decided and communicated by the end of the year.
 
 Finally, thank you so much to Katrin and Stefano for their very good job in organising the meeting and to the Bundesbank's colleagues for the very good dinner!
