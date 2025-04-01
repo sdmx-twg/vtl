@@ -179,7 +179,11 @@ No decision has been taken about "general" TF organisation, so it has been decid
 - Workstream for defining lists/patterns for set of components; current members: Hadrien, Nicolas, Javier
 - Workstream for new DL operators; current members: Valentino, Laura, Angelo
 
-For small changes/issues, written procedures will be launched to be approved/rejected by VTL TF; some of them has already assigned to TF members (see above).  
+For small changes/issues, written procedures will be launched to be approved/rejected by VTL TF; some of them has already assigned to TF members (see above). 
+**Actions**:
+- Angelo, Attilio and Valentino to define 2.2 and 3.0 milestone, define valid labels, "tag" all the issues with the target version
+- Attilio, Valentino to create 2.2 folder in gitHub; the opening of the new version and the closure of the old one will be decided and announced (roughly) by the end of the month.
+- All TF members/attendees are invited to join the above mentioned workstreams
 #### Next meetings
 A slot for VTL has been reserved within next TWG physical meeting, that will be in Salamanca from 16 to 20 of May 2025; VTL meeting will be held (in hybrid mode) on May 20 in the morning.
 A call for presentations about VTL implementations, use cases, technical issues will be shortly launched for hte SDMX Global Conference that will be held in Rome from September 29th to October 1st hosted by Banca d'Italia; in the capacity building part that will follow (OCtober 2-3) a VTL training session will be held.
