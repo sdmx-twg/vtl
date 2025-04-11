@@ -11,7 +11,7 @@ if not OUTPUT_FOLDER.exists():
     OUTPUT_FOLDER.mkdir()
 
 
-def load_dataset(input_paths):
+def load_dataset(input_paths: list[Path]):
     "Generates datasets files from the input paths"
 
     result = {
@@ -33,11 +33,17 @@ def load_dataset(input_paths):
     return result
 
 
-def generate_files_from_folder(folder):
+def generate_files_from_folder(folder: Path):
     "Generate the engine files from the folder"
-    operator_output_folder = OUTPUT_FOLDER / folder.parent.name
+    operator_parent_folder = OUTPUT_FOLDER / folder.parent.parent.name
+    operator_output_folder = OUTPUT_FOLDER / folder.parent.parent.name / folder.parent.name
+
+    if not operator_parent_folder.exists():
+        operator_parent_folder.mkdir()
+
     if not operator_output_folder.exists():
         operator_output_folder.mkdir()
+
     for file in folder.glob('*.vtl'):
         #New folder per example
         dest_folder = operator_output_folder / file.stem
