@@ -259,16 +259,13 @@ DIGITS0_9:
     '0'..'9'
 ;
 
-INTEGER_CONSTANT
-  :
-  MINUS?DIGITS0_9+
-  ;
+INTEGER_CONSTANT:
+  DIGITS0_9+
+;
 
-NUMBER_CONSTANT
-  :
-  INTEGER_CONSTANT '.' INTEGER_CONSTANT* /*FLOATEXP?
-  | INTEGER_CONSTANT+ FLOATEXP*/
-  ;
+NUMBER_CONSTANT:
+  INTEGER_CONSTANT '.' INTEGER_CONSTANT
+;
 
 BOOLEAN_CONSTANT
   :
@@ -391,11 +388,11 @@ EOL
 
 ML_COMMENT
   :
-  ('/*' (.)*? '*/')-> channel(2);
+  '/*' .*? '*/' -> channel(2);
 
 SL_COMMENT
   :
-  ('//' (.)*? '\n') ->channel(2);
+  '//' ~[\r\n]*  ->channel(2);
 
 /*
 

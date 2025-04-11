@@ -9,3 +9,6 @@ examples_files/
 _build/
 v2.1/docs/engine_files/
 build
+build/
+Pipfile
+Pipfile.lock

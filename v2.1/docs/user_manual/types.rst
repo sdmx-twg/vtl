@@ -450,7 +450,7 @@ their names and their contents can be assigned by the users.
 
 Some VTL Operators assume that a VTL system have certain kinds of Value
 Domains which are needed to perform the correspondent operations [21]_.
-In the VTL manuals. Definite names and representations are assigned to
+In the VTL manuals, definite names and representations are assigned to
 such Value Domains for explanatory purposes; however, these names and
 representations are not mandatory and can be personalised if needed. If
 VTL rules are exchanged between different VTL systems, the partners of
