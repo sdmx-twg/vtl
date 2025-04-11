@@ -12,7 +12,7 @@ Attilio Mattiocco|Banca d’Italia|attilio.mattiocco@bancaditalia.it|amattioc|VT
 Daniel Suranyi|ECB|Daniel.Suranyi@ecb.europa.eu|brainwasher|VTL-TF Member|
 Dario Camol|Istat (Italy)|camol@istat.it|dCamol|VTL-TF Member|
 Edgardo Greising|ILO|greising@ilo.org|egreising|VTL-TF Member|
-Florian Vucko|INSEE (France)|florian.vucko@insee.fr|flo7894|VTL-TF Member| 
+Eric Sigaud|INSEE (France)|eric.sigaud@insee.fr||VTL-TF Member| 
 Franck Cotton|Making Sense|franck@making-sense.info|FranckCo|VTL-TF Member|
 Hadrien	Kohl|Hadrien Kohl Consulting|hadrien.kohl@gmail.com|hadrienk|VTL-TF Member|
 Javier Hernandez|Meaningful Data|javier.hernandez@meaningfuldata.eu|javihernant|VTL-TF Member|
@@ -36,6 +36,7 @@ The following list includes collaborators that work on VTL, but do not belong to
 | Name| Organisation| Email| GitHub Name| Role|
 |-----|-------------|------|------------|-----|
 Arturo San Feliciano|Banco de España|arturo.san_feliciano@bde.es||Collaborator|
+Benedikt Huehn|Bundesbank|benedikt.huehn@bundesbank.de||Collaborator|
 Daniele Olivotti|UNICEF|dolivotti@unicef.org||Collaborator|
 Denis Grofils|The Pacific Community|denisg@spc.int|denisgrofils2|Collaborator|
 Frederik	Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
@@ -43,6 +44,7 @@ Jens	Dossé|OECD|Jens.DOSSE@oecd.org|dosse|Collaborator|
 Jose Maria Fernandez Cruza|Banco de España|jose.fernandezcruza@bde.es||Collaborator|
 Juan	Muñoz López|INEGI|Juan.munoz@inegi.org.mx|DrJMunozMx|Collaborator|
 Pedro	Carranza|OECD|pedro.carranza@oecd.org|pedroacarranza|Collaborator|
+Sebastian Heupts|Bundesbank|sebastian.heupts@bundesbank.de||Collaborator|
 Sergey Grebenshchikov|ECB|Sergey.Grebenshchikov@ecb.europa.eu||Collaborator|
 Weichen Lei|ILO|lei@ilo.org|wc-lei|Collaborator|
 Xavier Sosnovsky|BIS|xavier.sosnovsky@bis.org|sosna|Collaborator|
