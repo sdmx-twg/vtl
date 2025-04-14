@@ -1,19 +1,19 @@
 import os
-from pathlib import Path
 import re
 import json
+import zipfile
+from pathlib import Path
 
 # Get DOC_VERSION from environment and validate
 DOC_VERSION = os.environ["DOC_VERSION"]
 VERSION_FOLDER = Path(__file__).parent.parent / DOC_VERSION
 assert VERSION_FOLDER.exists(), f"Invalid DOC_VERSION: {DOC_VERSION} folder not found"
 
-# Define folders
 OPERATORS_FOLDER = VERSION_FOLDER / "docs" / "reference_manual" / "operators"
-OUTPUT_FOLDER = Path(__file__).parent.parent / "tck" / DOC_VERSION
+ZIP_OUTPUT = Path(__file__).parent.parent / "tck" / f"{DOC_VERSION}.zip"
 
-# Ensure OUTPUT_FOLDER exists
-OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
+# Ensure tck folder exists
+ZIP_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 
 def load_dataset(input_paths: list[Path]):
     "Generates datasets files from the input paths"
@@ -29,17 +29,14 @@ def load_dataset(input_paths: list[Path]):
         result["structures"].append(datastructure)
     return result
 
-def generate_files_from_folder(folder: Path):
-    "Generate the engine files from the folder"
-    operator_parent_folder = OUTPUT_FOLDER / folder.parent.parent.name
-    operator_output_folder = operator_parent_folder / folder.parent.name
-
-    operator_parent_folder.mkdir(exist_ok=True)
-    operator_output_folder.mkdir(exist_ok=True)
+def write_to_zip(zipf: zipfile.ZipFile, folder: Path):
+    "Generate files and write them directly into zip"
+    operator_parent_folder = folder.parent.parent.name
+    operator_folder = folder.parent.name
 
     for file in folder.glob("*.vtl"):
-        dest_folder = operator_output_folder / file.stem
-        dest_folder.mkdir(exist_ok=True)
+        example_name = file.stem
+        base_path = f"{operator_parent_folder}/{operator_folder}/{example_name}"
 
         vtl_script = file.read_text()
 
@@ -52,22 +49,24 @@ def generate_files_from_folder(folder: Path):
         used_datasets = re.findall(regex, expression)
         input_paths = [folder / f"{ds.lower()}.json" for ds in used_datasets]
         datasets = load_dataset(input_paths)
-
-        (dest_folder / "input.json").write_text(json.dumps(datasets, indent=4))
+        zipf.writestr(f"{base_path}/input.json", json.dumps(datasets, indent=4))
 
         for ds in used_datasets:
-            (dest_folder / f"{ds}.csv").write_text((folder / f"{ds.lower()}.csv").read_text())
+            ds_csv = folder / f"{ds.lower()}.csv"
+            if ds_csv.exists():
+                zipf.write(ds_csv, f"{base_path}/{ds}.csv")
 
-        datasets = load_dataset([folder / f"{file.stem}.json"])
-        (dest_folder / "output.json").write_text(json.dumps(datasets, indent=4))
-        (dest_folder / f"{output_name}.csv").write_text((folder / f"{file.stem}.csv").read_text())
-        (dest_folder / "transformation.vtl").write_text(vtl_script)
+        output_json = load_dataset([folder / f"{example_name}.json"])
+        zipf.writestr(f"{base_path}/output.json", json.dumps(output_json, indent=4))
+        zipf.write(folder / f"{example_name}.csv", f"{base_path}/{output_name}.csv")
+        zipf.writestr(f"{base_path}/transformation.vtl", vtl_script)
 
 def main():
-    "Generate TCK files"
     examples_folders = list(OPERATORS_FOLDER.glob("**/examples"))
-    for folder in examples_folders:
-        generate_files_from_folder(folder)
+    with zipfile.ZipFile(ZIP_OUTPUT, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for folder in examples_folders:
+            write_to_zip(zipf, folder)
+    print(f"✅ Zip generated: {ZIP_OUTPUT}")
 
 if __name__ == "__main__":
     main()
