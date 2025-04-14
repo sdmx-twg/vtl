@@ -140,6 +140,7 @@ lexer grammar VtlTokens;
   RTRIM							          : 'rtrim';
   INSTR							          : 'instr';
   REPLACE						          : 'replace';
+  LEVENSHTEIN                             : 'levenshtein';
   CEIL							          : 'ceil';
   FLOOR							          : 'floor';
   SQRT							          : 'sqrt';
