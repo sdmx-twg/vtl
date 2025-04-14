@@ -173,7 +173,6 @@ stringOperators:
     | SUBSTR LPAREN expr (((COMMA startParameter=optionalExpr) (COMMA endParameter=optionalExpr))? | COMMA startParameter=optionalExpr ) RPAREN     # substrAtom
     | REPLACE LPAREN expr COMMA param=expr ( COMMA optionalExpr)? RPAREN				                    # replaceAtom
     | INSTR LPAREN expr COMMA pattern=expr ( COMMA startParameter=optionalExpr)? (COMMA occurrenceParameter=optionalExpr)? RPAREN	            # instrAtom
-    | LEVENSHTEIN LPAREN left=expr COMMA right=expr RPAREN    # levenshteinAtom
 ;
 
 stringOperatorsComponent:
@@ -181,9 +180,7 @@ stringOperatorsComponent:
     | SUBSTR LPAREN exprComponent (((COMMA startParameter=optionalExprComponent) (COMMA endParameter=optionalExprComponent))? | COMMA startParameter=optionalExprComponent )  RPAREN  # substrAtomComponent
     | REPLACE LPAREN exprComponent COMMA param=exprComponent ( COMMA optionalExprComponent)? RPAREN                                 # replaceAtomComponent
     | INSTR LPAREN exprComponent COMMA pattern=exprComponent ( COMMA startParameter=optionalExprComponent)? (COMMA occurrenceParameter=optionalExprComponent)? RPAREN    # instrAtomComponent
-    | LEVENSHTEIN LPAREN leftComponent=exprComponent COMMA rightComponent=exprComponent RPAREN    # levenshteinAtomComponent
 ;
-
 
 numericOperators:
     op=(CEIL | FLOOR | ABS | EXP | LN | SQRT) LPAREN expr RPAREN						        # unaryNumeric
