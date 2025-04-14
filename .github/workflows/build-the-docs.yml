@@ -5,19 +5,13 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [ master ]
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: "gh-pages"
   cancel-in-progress: false
 
 jobs:
@@ -26,49 +20,59 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, '#no-gha') }}
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-        cache: 'pip'
-    - name: Setup Java 8
-      uses: actions/setup-java@v4
-      with:
-        java-version: 8
-        distribution: "temurin"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        sudo apt-get update && sudo apt-get install graphviz texlive-font-utils -y
-        wget -O /tmp/plantuml-mit-1.2023.13.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-mit-1.2023.13.jar
-    - name: Sphynx build
-      run: |
-        sphinx-build -M html docs outputdir/
-        sphinx-build -M html v2.1/docs outputdir/2.1/
-        sphinx-build -b pdf v2.1/docs outputdir/2.1/html/pdf
-        mv outputdir/html/* outputdir/
-    - name: Fix permissions
-      run: |
-        chmod -c -R +rX "outputdir/" | while read line; do
-          echo "::warning title=Invalid file permissions automatically fixed::$line"
-        done
-    # Create and upload Pages artifact from docs dir
-    - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: ./outputdir
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build-docs
-    if: ${{ github.event_name != 'pull_request' && !contains(github.event.head_commit.message, '#no-gha') }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Setup Java 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: 8
+          distribution: "temurin"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          sudo apt-get update && sudo apt-get install graphviz texlive-font-utils -y
+          wget -O /tmp/plantuml-mit-1.2023.13.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-mit-1.2023.13.jar
+
+      - name: Build docs
+        run: |
+          sphinx-build -M html docs outputdir/
+          sphinx-build -M html v2.1/docs outputdir/2.1/
+          sphinx-build -b pdf v2.1/docs outputdir/2.1/html/pdf
+          mv outputdir/html/* outputdir/
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "outputdir/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy docs to gh-pages
+        run: |
+          mkdir -p gh-pages/2.1/html
+          rm -rf gh-pages/2.1/html/* || true
+          cp -r outputdir/2.1/* gh-pages/2.1/html/
+
+      - name: Commit and push changes safely
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add 2.1/html
+          git commit -m "Update 2.1 docs from GitHub Actions" || echo "Nothing to commit"
+          git pull --rebase origin gh-pages
+          git push origin gh-pages
