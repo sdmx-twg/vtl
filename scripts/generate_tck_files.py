@@ -47,6 +47,7 @@ def write_to_zip(zipf: zipfile.ZipFile, folder: Path):
 
         regex = re.compile("DS_[0-9]+")
         used_datasets = re.findall(regex, expression)
+        used_datasets = list(set(used_datasets))
         input_paths = [folder / f"{ds.lower()}.json" for ds in used_datasets]
         datasets = load_dataset(input_paths)
         zipf.writestr(f"{base_path}/input.json", json.dumps(datasets, indent=4))
@@ -65,6 +66,7 @@ def main():
     examples_folders = list(OPERATORS_FOLDER.glob("**/examples"))
     with zipfile.ZipFile(ZIP_OUTPUT, "w", zipfile.ZIP_DEFLATED) as zipf:
         for folder in examples_folders:
+            print(f"Processing {folder}")
             write_to_zip(zipf, folder)
     print(f"✅ Zip generated: {ZIP_OUTPUT}")
 
