@@ -1,0 +1,24 @@
+name: Is Fast-Forward PR Test
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-fast-forward:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # fetch full history
+
+      - name: Fetch master
+        run: git fetch origin master
+
+      - name: Check for fast-forward
+        run: |
+          git merge-base --is-ancestor origin/master HEAD || {
+            echo "PR is not a fast-forward from master"
+            exit 1
+          }
