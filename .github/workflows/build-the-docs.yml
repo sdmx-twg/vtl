@@ -48,6 +48,8 @@ jobs:
         sphinx-build -M html docs outputdir/
         sphinx-build -M html v2.1/docs outputdir/2.1/
         sphinx-build -b pdf v2.1/docs outputdir/2.1/html/pdf
+        sphinx-build -M html v2.2/docs outputdir/2.2/
+        sphinx-build -b pdf v2.2/docs outputdir/2.2/html/pdf
         mv outputdir/html/* outputdir/
     - name: Fix permissions
       run: |
