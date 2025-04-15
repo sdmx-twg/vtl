@@ -26,7 +26,7 @@ Examples of valid syntaxes
   time_agg ( “A”, cast ( “2012Q1”, time_period , ”YYYY\Qq” ) )
   time_agg(“M”, cast (“2012-12-23”, date, “YYYY-MM-DD”) )
   time_agg(“M”, DS1)
-  ds_2 := ds_1[calc Me1 := time_agg(“M”,Me1)]
+  ds_2 := ds_1[calc Me1 := time_agg(“M”)]
 
 ------------------------------------
 Semantics  for scalar operations
