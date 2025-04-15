@@ -1,0 +1,34 @@
+{
+  "name": "DS_r",
+  "components": [
+      {
+          "name": "Id_1",
+          "role": "Identifier",
+          "data_type": "TimePeriod"
+      },
+      {
+          "name": "Id_2",
+          "role": "Identifier",
+          "data_type": "String"
+      },
+      {
+          "name": "bool_var",
+          "role": "Measure",
+          "data_type": "Boolean"
+      },
+      {
+          "name": "imbalance",
+          "role": "Measure",
+          "data_type": "Integer"
+      },
+      {
+          "name": "errorcode",
+          "role": "Measure",
+          "data_type": "String"
+      },
+      {
+          "name": "errorlevel",
+          "role": "Measure",
+          "data_type": "Integer"
+      }
+  ]}
