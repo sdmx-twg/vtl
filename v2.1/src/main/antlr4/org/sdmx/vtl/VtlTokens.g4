@@ -289,11 +289,14 @@ STRING_CONSTANT
   '"' (~'"')* '"'
   ;
 
+fragment
+ID_PART
+  : [A-Za-z_] [A-Za-z0-9_.]*
+  ;
+  
 IDENTIFIER
-  :
-  LETTER ([A-Za-z0-9_.])*
-  | DIGITS0_9 ([A-Za-z0-9_.])+
-  | '\'' (.)*? '\''
+  : (ID_PART ':')? ID_PART ( '(' [0-9._+*~]+ ')' )? ( '/' ('.' | ID_PART)+ )?
+  | '\'' ( '\\\'' | [^'] )* '\''
   ;
 
 /*
