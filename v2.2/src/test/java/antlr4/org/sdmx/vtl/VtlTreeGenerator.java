@@ -1,13 +1,19 @@
 package antlr4.org.sdmx.vtl;
 
-import org.antlr.v4.runtime.*;
-import org.sdmx.vtl.VtlLexer;
-import org.sdmx.vtl.VtlParser;
-
-import javax.print.PrintException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import javax.print.PrintException;
+
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.sdmx.vtl.VtlLexer;
+import org.sdmx.vtl.VtlParser;
 
 public class VtlTreeGenerator {
 

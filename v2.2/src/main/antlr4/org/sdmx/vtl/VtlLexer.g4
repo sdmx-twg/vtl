@@ -1,4 +1,4 @@
-lexer grammar VtlTokens;
+lexer grammar VtlLexer;
 
 
     LPAREN:'(';

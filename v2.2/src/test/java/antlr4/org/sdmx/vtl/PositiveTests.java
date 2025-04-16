@@ -35,7 +35,7 @@ public class PositiveTests extends ParserTest {
 
     @Parameters
     public static Collection<String> expressions() {
-        ArrayList<String> data = new ArrayList();
+        ArrayList<String> data = new ArrayList<>();
         try {
             // Input file that will be parsed and create VTL expressions delimited by two consecutive new lines
             LineIterator it = FileUtils.lineIterator(new File("src/test/resources/PositiveTests.vtl"), "UTF-8");
