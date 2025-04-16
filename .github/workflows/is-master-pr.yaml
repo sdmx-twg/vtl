@@ -1,10 +1,10 @@
-name: Block Non-Master PRs
+name: Is pull request based on master branch?
 on:
   pull_request:
     types: [opened, edited, reopened, synchronize]
 
 jobs:
-  block-non-master:
+  is-master-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Check base branch

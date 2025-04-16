@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <name>VTL 2.2 EBNF</name>
+    <name>VTL EBNF</name>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.sdmx.vtl</groupId>
     <artifactId>ebnf</artifactId>
-    <version>2.2.0</version>
+    <version>${revision}</version>
 
     <organization>
         <name>SDMX</name>
@@ -15,8 +15,9 @@
     </organization>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <revision>2.2.0</revision>
 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
@@ -25,11 +26,9 @@
         <antlr4-runtime.version>${antlr4.version}</antlr4-runtime.version>
         <antlr4-maven-plugin.version>${antlr4.version}</antlr4-maven-plugin.version>
 
-        <surefire.version>2.21.0</surefire.version>
-        <surefire-junit47.version>${surefire.version}</surefire-junit47.version>
+        <surefire.version>3.5.0</surefire.version>
 
-        <junit.version>4.13.1</junit.version>
-        <commons-io.version>2.7</commons-io.version>
+        <junit.version>5.10.2</junit.version>
     </properties>
 
     <dependencyManagement>
@@ -39,16 +38,13 @@
                 <artifactId>antlr4-runtime</artifactId>
                 <version>${antlr4-runtime.version}</version>
             </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${junit.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -58,13 +54,8 @@
             <artifactId>antlr4-runtime</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -81,13 +72,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${surefire.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.apache.maven.surefire</groupId>
-                            <artifactId>surefire-junit47</artifactId>
-                            <version>${surefire-junit47.version}</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -99,18 +83,12 @@
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <configuration>
-                            <libDirectory>src/main/antlr4/org/sdmx/vtl</libDirectory>
-                        </configuration>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>antlr4</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

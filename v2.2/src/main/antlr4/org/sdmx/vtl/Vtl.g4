@@ -1,5 +1,5 @@
-grammar Vtl;
-import VtlTokens;
+parser grammar Vtl;
+options { tokenVocab=VtlTokens; }
 
 start:
     (statement  EOL)* EOF
@@ -683,11 +683,11 @@ routineName:
 ;
 
 constant:
-    signedInteger
-    | signedNumber
-    | BOOLEAN_CONSTANT
-    | STRING_CONSTANT
-    | NULL_CONSTANT
+    signedInteger        # integerLiteral
+    | signedNumber       # numberLiteral
+    | BOOLEAN_CONSTANT   # booleanLiteral
+    | STRING_CONSTANT    # stringLiteral
+    | NULL_CONSTANT      # nullLiteral
 ;
 
 basicScalarType:
