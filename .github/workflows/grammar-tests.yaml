@@ -1,0 +1,41 @@
+name: VTL grammar tests
+
+on:
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  maven-test:
+    runs-on: ubuntu-latest
+    permissions:    
+      actions: none
+      attestations: none
+      checks: write
+      contents: read
+      deployments: none
+      id-token: write|none
+      issues: none
+      models: read|none
+      discussions: none
+      packages: none
+      pages: none
+      pull-requests: write
+      security-events: none
+      statuses: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Run tests with Maven
+        working-directory: v2.2
+        run: mvn --batch-mode --fail-at-end clean verify
+
+      - name: Publish Test Report
+        if: success() || failure()
+        uses: scacap/action-surefire-report@v1.9.0
