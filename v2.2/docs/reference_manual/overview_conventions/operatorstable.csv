@@ -1,0 +1,184 @@
+﻿**Name**,**Symbol**,**Syntax**,**Description**
+Parentheses,( ),( op ),Override the default evaluation order of the operators
+Persistent assignment,<-,re <- op,Assigns an Expression to a persistent model artefact
+Non persistent assignment,:=,re := op,Assigns an Expression to a non persistent model artefact
+Membership,#,ds#comp,Identifies a Component within a Data Set
+User defined operator call,,"operator_name ( { argument {, argument }\* } )",Invokes a user defined operator passing the arguments
+Evaluation of an external routine,eval,"eval ( externalRoutineName ( {argument} {, argument }\* ), language, returns outputType )",Evaluates an external routine
+Type conversion,cast,"cast ( op, scalarType {, mask } )",converts to the specified data type
+Join,"inner_join, left_join, full_join, cross_join","joinOperator ( ds { as alias } { , ds { as alias }}*
+{ using usingComp }
+{ filter filterCondition }
+{ apply applyExpr | calc calcClause | aggr aggrClause { groupingClause } }
+{ keep comp {, comp }* | drop comp {, comp }*  }
+{ rename compFrom to compTo { , compFrom to compTo }* } )
+
+joinOperator::= { inner_join | left_join| full_join | cross_join } :sup:`1`
+
+calcClause ::=  { calcRole } calcComp := calcExpr
+{ , { calcRole }  calcComp := calcExpr }*
+
+calcRole :: { identifier | measure | attribute | viral attribute} :sup:`1`
+
+aggrClause ::=  { aggrRole } aggrComp := aggrExpr
+{ , { aggrRole } aggrComp := aggrExpr }*
+
+aggrRole ::=  { measure | attribute | viral attribute } :sup:`1`
+
+groupingClause  ::=  { group by idList | group except idList | group all conversionExpr } :sup:`1`
+{ having havingCondition }","Inner join, left outer join, full outer join, cross join"
+String concatenation,||,op1 || op2,Concatenates two strings
+Whitespace removal,"trim, rtrim, ltrim",{trim|ltrim|rtrim} :sup:`1` ( op ),Removes trailing or/and leading whitespace from a string
+Character case conversion,"upper, lower",{upper | lower} :sup:`1` ( op ),Converts the character case of a string in upper or lower case
+Sub-string extraction,substr,"substr ( op, start, length )",Extracts the substring that starts in a specified position and has a specified length
+String pattern replacement,replace,"replace (op, pattern1, pattern2 )",Replaces a specified string-pattern with another one
+String pattern location,instr,"instr( op, pattern, start, occurrence )",Returns the location of a specified string-pattern
+String length,length,length ( op ),Returns the length of a string
+Unary plus,\+,\+ op,Replicates the operand with the sign unaltered
+Unary minus,\-,\- op,Replicates the operand with the sign changed
+Addition,\+,op1 \+ op2,Sums two numbers
+Subtraction,\-,op1 - op2,Subtracts two numbers
+Multiplication,\*,op1 \* op2,Multiplies two numbers
+Division,/,op1 / op2,Divides two numbers
+Modulo,mod,"mod ( op1, op2)",Calculates the remainder of a number divided by a certain divisor
+Rounding,round,"round ( op, numDigit )",Rounds a number to a certain digit
+Truncation,trunc,"trunc ( op, numDigit )",Truncates a number to a certain digit
+Ceiling,ceil,ceil ( op ),Returns the smallest integer which is greater or equal than a number
+Floor,floor,floor ( op ),Returns the greater integer which is smaller or equal than a number
+Absolute value,abs,abs ( op ),Calculates the absolute value of a number
+Exponential,exp,exp ( op ),Raises e (base of the natural logarithm) to a number
+Natural logarithm,ln,ln ( op ),Calculates the natural logarithm of a number
+Power,power,"power ( base, exponent)",Raises a number to a certain exponent
+Logarithm,log,"log ( op, num )",Calculates the logarithm of a number to a certain base
+Square root,sqrt,sqrt ( op ),Calculates the square root of a number
+Equal to,=,left = right,Verifies if two values are equal
+Not equal to,<>,left <> right,Verifies if two values are not equal
+Greater than,">
+>=",left { > | >= } :sup:`1` right,Verifies if a first value is greater ( or equal ) than a second value
+Less than,"<
+<=",left { < | <= } :sup:`1` right,Verifies if a first value is less (or equal) than a second value
+Between,between,"between( op, from, to )",Verify if a value belongs to a range of values
+Element of,in,"op in collection
+
+collection ::= set | valueDomainName",Verifies if a value belongs to a set of values
+Element of,not_in,"op not_in collection
+
+collection ::= set | valueDomainName",Verifies if a value does not belong to a set of values
+Match_characters,match_characters,"match_characters (op, pattern)",Verifies if a value respects or not a pattern
+Isnull,isnull,isnull ( op ),Verifies if a value is NULL
+Exists in,exists_in,"exists_in ( op1, op2, retain)
+
+retain ::= { true | false | all }","As for the common identifiers of op1 and op2, verifies if the combinations of values of op1 exist in op2."
+Logical conjunction,and,op1 and op2,Calculates the logical AND
+Logical disjunction,or,op1 or op2,Calculates the logical OR
+Exclusive disjunction,xor,op1 xor op2,Calculates the logical XOR
+Logical negation,not,not op,Calculates the logical NOT
+Period indicator,period_indicator,period_indicator ( {op} ),Extracts the period indicator from a time_period value
+Fill time series,fill_time_series,"fill_time_series ( op {, limitsMethod } )
+
+limitsMethod ::= single | all",Replaces each missing data point in the input Data Set
+Flow to stock,flow_to_stock,flow_to_stock ( op ),Transforms from a flow interpretation of a Data Set to stock
+Stock to flow,stock_to_flow,stock_to_flow ( op ),Transforms from stock to flow interpretation of a Data Set
+Time shift,timeshift,"timeshift ( op, shiftNumber )",Shifts the time component of a specified range of time
+Time aggregation,time_agg,"time_agg ( periodIndTo {, periodIndFrom } {,op }{, first | last })",Converts the time values from higher to lower frequency values
+Actual time,current_date,current_date ( ),Returns the current date
+Union,union,"union ( dsList )
+
+dsList ::= ds {, ds }\*",Computes the union of N datasets
+Intersection,intersect,"intersect ( dsList )
+
+dsList ::= ds {, ds }\*",Computes the intersection of N datasets
+Set difference,setdiff,"setdiff ( ds1, ds2 )",Computes the differences of two datasets
+Symmetric difference,symdiff,"symdiff ( ds1, ds2 )",Computes the symmetric difference of two datasets
+Hierarchical roll-up,hierarchy,"hierarchy ( op, hr { condition condComp {, condComp }\* }
+{ rule ruleComp } { mode } { input } { output } )
+
+condComp ::= component {, component }\*
+
+mode ::= non_null | non_zero | partial_null | partial_zero |
+always_null | always_zero
+
+input ::= dataset | rule | rule_priority
+
+output ::= computed | all",Aggregates data using a hierarchical ruleset
+Aggregate invocation,,"in a Data Set expression:
+
+aggregateOperator
+( firstOperand {, additionalOperand }\* { groupingClause } )
+
+in a Component expression within an aggr clause:
+
+aggregateOperator
+( firstOperand {, additionalOperand }\* ) { groupingClause }
+aggregateOperator ::= avg | count | max | median | min |
+stddev_pop| stddev_samp | sum |
+var_pop | var_samp
+
+groupingClause ::=
+{ group by groupingId {, groupingId}\*
+| group except groupingId {, groupingId}\*
+| group all conversionExpr } :sup:`1`
+{ having havingCondition }",Set of statistical functions used to aggregate data
+Analytic invocation,,"analyticOperator
+( firstOperand {, additionalOperand }\* over ( analyticClause ) )
+
+analyticOperator ::= avg | count | max | median | min |
+stddev_pop| stddev_samp | sum | var_pop
+| var_samp | first_value | lag | last_value |
+lead | rank | ratio_to_report
+
+analyticClause ::=
+{ partitionClause } { orderClause } { windowClause }
+
+partitionClause ::= partition by identifier {, identifier }\*
+
+orderClause ::= order by component { asc | desc }
+{, component { asc | desc } }\*
+
+windowClause ::=
+{ data points | range } :sup:`1` between limitClause and limitClause
+
+limitClause ::=
+{ num preceding | num following | current data point
+| unbounded preceding | unbounded following } :sup:`1`",Set of statistical functions used to aggregate data
+Check datapoint,check_datapoint,"check_datapoint
+( op, dpr { components listComp } { output output } )
+
+listComp ::= comp {, comp }\*
+
+output ::= invalid | all | all_measures",Applies one datapoint ruleset on a Data Set
+Check hierarchy,check_hierarchy,"check_hierarchy (
+op, hr { condition condComp {, condComp }\* }
+{ rule ruleComp }
+{ mode } { input } { output } )
+
+mode ::= non_null | non_zero | partial_null | partial_zero | always_null | always_zero
+
+input ::= dataset | dataset_priority
+
+output ::= invalid | all | all_measures",Applies a hierarchical ruleset to a Data Set
+Check,check,"check ( op { errorcode errorcode } { errorlevel errorlevel }
+{ imbalance imbalance } { output } )
+
+output ::= invalid | all",Checks if an expression verifies a condition
+If then else,if… then… else…,if condition then thenOperand else elseOperand,Makes alternative calculations according to a condition
+Nvl,nvl,"nvl ( op1, op2 )",Replaces the null value with a value.
+Filtering Data Points,filter,op [ filter condition ],Filter data using a Boolean condition
+Calculation of a Component,calc,"op [ calc { calcRole } calcComp := calcExpr {, { calcRole } calcComp := calcExpr }\* ]",Calculates the values of a Structure Component
+Aggregation,aggr,"op [ aggr aggrClause { groupingClause } ]
+
+aggrClause ::= { aggrRole } aggrComp := aggrExpr
+{, { aggrRole } aggrComp:= aggrExpr }\*
+
+groupingClause ::= { group by groupingId {, groupingId }\*
+| group except groupingId {, groupingId }\*
+| group all conversionExpr } :sup:`1`
+{ having havingCondition }
+
+aggrRole::= measure | attribute | viral attribute",Aggregates using an aggregate operator
+Maintaining Components,keep,"op [ keep comp {, comp }\* ]",Keep list of components
+Removal of Components,drop,"op [drop comp {, comp }\* ]",Drop list of components
+Change of Component name,rename,"op [ rename comp_from to comp_to {,comp_from to comp_to }\* ]",Rename components
+Pivoting,pivot,"op [ pivot identifier, measure ]",Transform identifier values to measures
+Unpivoting,unpivot,"op [ unpivot identifier, measure ]",Transform measures to identifier values
+Subspace,sub,"op [ sub identifier = value {, identifier = value }\* ]",Remove the specified identifiers by fixing a value for them

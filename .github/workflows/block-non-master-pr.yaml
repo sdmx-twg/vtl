@@ -1,0 +1,15 @@
+name: Block Non-Master PRs
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  block-non-master:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check base branch
+        run: |
+          if [[ "${{ github.event.pull_request.base.ref }}" != "master" ]]; then
+            echo "Pull requests must target master"
+            exit 1
+          fi
