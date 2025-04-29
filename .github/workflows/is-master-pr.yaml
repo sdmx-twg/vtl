@@ -1,5 +1,6 @@
 name: Is pull request based on master branch?
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, edited, reopened, synchronize]
 
