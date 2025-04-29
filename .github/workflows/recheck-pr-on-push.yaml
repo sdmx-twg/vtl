@@ -1,7 +1,6 @@
 name: Recheck PRs when Master is updated
 
 on:
-  workflow_dispatch:
   push:
     branches: [master]
 
