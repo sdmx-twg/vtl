@@ -14,6 +14,7 @@ Dario Camol|Istat (Italy)|camol@istat.it|dCamol|VTL-TF Member|
 Edgardo Greising|ILO|greising@ilo.org|egreising|VTL-TF Member|
 Eric Sigaud|INSEE (France)|eric.sigaud@insee.fr|bibirico|VTL-TF Member| 
 Franck Cotton|Making Sense|franck@making-sense.info|FranckCo|VTL-TF Member|
+Gustavo Homem|Meaningful Data|gustavo.homem@meaningfuldata.eu|ghomem|VTL-TF Member|
 Hadrien	Kohl|Hadrien Kohl Consulting|hadrien.kohl@gmail.com|hadrienk|VTL-TF Member|
 Javier Hernandez|Meaningful Data|javier.hernandez@meaningfuldata.eu|javihernant|VTL-TF Member|
 Jesus Simon|Meaningful Data|jesus.simon@meaningfuldata.eu|jmsimonma-md|VTL-TF Member|
