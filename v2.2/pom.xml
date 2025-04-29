@@ -89,6 +89,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                	<listener>false</listener>
+                </configuration>
             </plugin>
         </plugins>
     </build>
