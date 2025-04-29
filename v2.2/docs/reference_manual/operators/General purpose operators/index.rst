@@ -12,3 +12,4 @@ VTL-ML - General Purpose Operators
    User-defined operator call/index
    Evaluation of an external routine/index
    Type conversion/index
+   Get scalar/index
