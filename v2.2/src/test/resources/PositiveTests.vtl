@@ -1,3 +1,22 @@
+/**
+ * Copyright © 2020 Banca D'Italia
+ *
+ * Licensed under the EUPL, Version 1.2 (the "License");
+ * You may not use this work except in compliance with the
+ * License.
+ * You may obtain a copy of the License at:
+ *
+ * https://joinup.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt
+ *
+ * Unless required by applicable law or agreed to in
+ * writing, software distributed under the License is
+ * distributed on an "AS IS" basis,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied.
+ *
+ * See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
 //Examples run from reference manual 10/04/2018
 
 ## Start[DefineExpression[DefDatapointRuleset[RulesetID RulesetSignature[Signature[VarID] Signature[VarID]] RuleClauseDatapoint[RuleItemDatapoint[BooleanExprComp[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]]] ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]] ErCode[StringLiteral]]]]]]
@@ -144,9 +163,8 @@ DS_r := DS_1[calc Me := eval( f(Me, 1)language "Java" returns integer) ];
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[GenericFunctionsComponents[EvalAtomComponent[RoutineName ComponentID OutputParameterTypeComponent[ScalarType[BasicScalarType]]]]]]]]]]]
 ds_r := ds_1[calc me:=eval(f(me) language "Java" returns integer)];
 
-//The following example is slightly modified to remove an extra parenthesis (line 2063 ref. manual)
-
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[FunctionsExpressionComp[GenericFunctionsComponents[CastExprComponent[CompId[ComponentID] BasicScalarType]]] ConstantExprComp[IntegerLiteral[SignedInteger]]]]]]]]]
+//The following example is slightly modified to remove an extra parenthesis (line 2063 ref. manual)
 ds2 := ds1[calc m2 := cast(m1, number, "DD.DDD")+2];
 
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[GenericFunctionsComponents[CastExprComponent[CompId[ComponentID] BasicScalarType]]]]]]]]]
@@ -694,7 +712,7 @@ temp := datediff(cast("20120213", date, "YYYYMMDD"),cast("20120213", date, "YYYY
 ## Start[TemporaryAssignment[VarID FunctionsExpression[TimeFunctions[DateDiffAtom[FunctionsExpression[GenericFunctions[CastExprDataset[ConstantExpr[StringLiteral] BasicScalarType]]] FunctionsExpression[GenericFunctions[CastExprDataset[ConstantExpr[StringLiteral] BasicScalarType]]]]]]]]
 temp := datediff(cast("20120213", date, "YYYYMMDD"), cast("20120213", date, "YYYYMMDD"));
 
-## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[TimeFunctionsComponents[DateDiffAtomComponent[CompId[ComponentID] VarIdExpr[VarID]]]]]]]]]]
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[TimeFunctionsComponents[DateDiffAtomComponent[CompId[ComponentID] CompId[ComponentID]]]]]]]]]]
 ds2 := ds1[calc Me3 := datediff(Me1, Me2)];
 
 ## Start[TemporaryAssignment[VarID FunctionsExpression[TimeFunctions[DateAddAtom[ConstantExpr[StringLiteral] ConstantExpr[IntegerLiteral[SignedInteger]] ConstantExpr[StringLiteral]]]]]]
@@ -993,3 +1011,19 @@ DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "B", Id_3 = "YY"];
 
 ## Start[TemporaryAssignment[VarID ArithmeticExprOrConcat[ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]] ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]]]]]
 DS_r := DS_1 [sub Id_2 ="A"] + DS_1 [sub Id_2 ="B"];
+
+## Start[TemporaryAssignment[VarID ArithmeticExprOrConcat[ConstantExpr[IntegerLiteral[SignedInteger]] VarIdExpr[VarID]]]]
+// Test SDMX identifiers
+DS_r := 1 + ECB:EXR;
+
+## Start[TemporaryAssignment[VarID ArithmeticExpr[VarIdExpr[VarID] VarIdExpr[VarID]]]]
+DS_r := ECB:EXR(*):A.USD.../ECB:EXR:A.GBP...;
+
+## Start[TemporaryAssignment[VarID ArithmeticExpr[ArithmeticExpr[FunctionsExpression[GenericFunctions[CallDataset[OperatorID Parameter[ConstantExpr[IntegerLiteral[SignedInteger]]] Parameter[ConstantExpr[IntegerLiteral[SignedInteger]]] Parameter[ConstantExpr[IntegerLiteral[SignedInteger]]]]]] VarIdExpr[VarID]] FunctionsExpression[AggregateFunctions[AggrDataset[VarIdExpr[VarID] GroupByOrExcept[ComponentID]]]]]]]
+DS_r := ECB:EXR:A(1, 2, 3)/ECB:EXR/sum(ds1 group by id1);
+
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]]]]
+DS_r := ECB:EXR(1.0):....[sub CURRENCY = "USD"];
+
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]]]]
+DS_r:='ECB:EXR(1.0):....'[sub CURRENCY = "USD"];

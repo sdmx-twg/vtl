@@ -99,16 +99,16 @@ public class GrammarTest
 				}
 				else if (!buffer.matches("(\r?\n| )*"))
 				{
-					String context = null;
+					String expectedTree = null;
 					String trimmed = buffer.stripLeading();
 					if (trimmed.startsWith("## "))
 					{
 						String[] split = trimmed.split(System.lineSeparator(), 2);
-						context = split[0].substring(3);
+						expectedTree = split[0].substring(3);
 						buffer = buffer.substring(0, buffer.length() - trimmed.length()) + lineSeparator() + split[1];
 					}
 					
-					args.add(arguments(lineCount, buffer, context));
+					args.add(arguments(lineCount, buffer, expectedTree));
 					
 					lineCount++;
 					char[] emptyLines = new char[lineCount];
@@ -156,11 +156,8 @@ public class GrammarTest
 		List<ParserRuleContext> children  = ctx.getRuleContexts(ParserRuleContext.class);
 		String simpleName = ctx.getClass().getSimpleName().replace("Context", "");
 		
-		if (children.isEmpty())
-			return simpleName;
-		else
-			return children.stream()
-				.map(GrammarTest::buildTree)
-				.collect(joining(" ", simpleName + "[", "]"));
+		return children.isEmpty() ? simpleName : children.stream()
+			.map(GrammarTest::buildTree)
+			.collect(joining(" ", simpleName + "[", "]"));
 	}
 }

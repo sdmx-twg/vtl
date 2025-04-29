@@ -20,9 +20,11 @@ lexer grammar VtlTokens;
     MINUS: '-';
     MUL: '*';
     DIV: '/';
+    DOT: '.';
     COMMA     : ',';
     POINTER : '->';
     COLON             : ':';
+    SINGLE_QUOTE      : '\'';
 
   ASSIGN            : ':=';
   MEMBERSHIP		: '#';
@@ -289,11 +291,26 @@ STRING_CONSTANT
   '"' (~'"')* '"'
   ;
 
+fragment
+ID_PART
+  : [A-Za-z_] [A-Za-z0-9_.]*
+  ;
+
+fragment
+CODE_PART
+  : [A-Za-z0-9_]+
+  ;
+
+fragment
+SDMX_VERSION
+  : INTEGER_CONSTANT (DOT INTEGER_CONSTANT)* (DOT [_+*~])?
+  | [_+*~]
+  ;
+
 IDENTIFIER
-  :
-  LETTER ([A-Za-z0-9_.])*
-  | DIGITS0_9 ([A-Za-z0-9_.])+
-  | '\'' (.)*? '\''
+  : ID_PART 
+  | ID_PART COLON ID_PART ( LPAREN SDMX_VERSION RPAREN )? ( COLON (DOT | CODE_PART)+ )?
+  | '\'' ( '\\\'' | ~'\'' )* '\''
   ;
 
 /*
@@ -396,8 +413,7 @@ SL_COMMENT
 /*
 
 FREQUENCY
-  :
-  'A'
+  : 'A'
   | 'S'
   | 'Q'
   | 'M'
