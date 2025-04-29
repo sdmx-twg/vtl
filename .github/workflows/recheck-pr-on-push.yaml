@@ -7,7 +7,6 @@ on:
 
 jobs:
   recheck-open-prs:
-    workflow_dispatch:
     runs-on: ubuntu-latest
     permissions:
       actions: write
