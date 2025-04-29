@@ -14,6 +14,7 @@ Dario Camol|Istat (Italy)|camol@istat.it|dCamol|VTL-TF Member|
 Edgardo Greising|ILO|greising@ilo.org|egreising|VTL-TF Member|
 Eric Sigaud|INSEE (France)|eric.sigaud@insee.fr|bibirico|VTL-TF Member| 
 Franck Cotton|Making Sense|franck@making-sense.info|FranckCo|VTL-TF Member|
+Gustavo Homem|Meaningful Data|gustavo.homem@meaningfuldata.eu|ghomem|VTL-TF Member|
 Hadrien	Kohl|Hadrien Kohl Consulting|hadrien.kohl@gmail.com|hadrienk|VTL-TF Member|
 Javier Hernandez|Meaningful Data|javier.hernandez@meaningfuldata.eu|javihernant|VTL-TF Member|
 Jesus Simon|Meaningful Data|jesus.simon@meaningfuldata.eu|jmsimonma-md|VTL-TF Member|
@@ -39,7 +40,8 @@ Arturo San Feliciano|Banco de España|arturo.san_feliciano@bde.es||Collaborator|
 Benedikt Huehn|Bundesbank|benedikt.huehn@bundesbank.de||Collaborator|
 Daniele Olivotti|UNICEF|dolivotti@unicef.org||Collaborator|
 Denis Grofils|The Pacific Community|denisg@spc.int|denisgrofils2|Collaborator|
-Frederik	Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
+Frederik Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
+Giulia Pennè|ISTAT|giulia.penne@istat.it||Collaborator|
 Jens	Dossé|OECD|Jens.DOSSE@oecd.org|dosse|Collaborator|
 Jose Maria Fernandez Cruza|Banco de España|jose.fernandezcruza@bde.es||Collaborator|
 Juan	Muñoz López|INEGI|Juan.munoz@inegi.org.mx|DrJMunozMx|Collaborator|
