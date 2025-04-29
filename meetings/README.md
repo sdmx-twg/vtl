@@ -40,7 +40,8 @@ Arturo San Feliciano|Banco de España|arturo.san_feliciano@bde.es||Collaborator|
 Benedikt Huehn|Bundesbank|benedikt.huehn@bundesbank.de||Collaborator|
 Daniele Olivotti|UNICEF|dolivotti@unicef.org||Collaborator|
 Denis Grofils|The Pacific Community|denisg@spc.int|denisgrofils2|Collaborator|
-Frederik	Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
+Frederik Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
+Giulia Pennè|ISTAT|giulia.penne@istat.it||Collaborator|
 Jens	Dossé|OECD|Jens.DOSSE@oecd.org|dosse|Collaborator|
 Jose Maria Fernandez Cruza|Banco de España|jose.fernandezcruza@bde.es||Collaborator|
 Juan	Muñoz López|INEGI|Juan.munoz@inegi.org.mx|DrJMunozMx|Collaborator|
