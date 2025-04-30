@@ -20,6 +20,7 @@ Input **{{ input.name | upper }}** (see `structure <{{ repourl_ex |replace(" ", 
 Example {{ example.i }}
 ^^^^^^^^^^^^^^^^
 .. literalinclude:: examples/{{ example.name }}.vtl
+   :language: text
 
 results in (see `structure <{{ repourl_ex |replace(" ", "%20") }}/{{ example.folder|replace(" ", "%20")|replace("\\", "/")}}/{{ example.name }}.json>`__\):
 
