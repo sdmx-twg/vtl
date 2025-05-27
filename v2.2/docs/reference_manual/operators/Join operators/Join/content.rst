@@ -378,7 +378,7 @@ The different kinds of relational joins behave as follows.
 The **semantics of the clauses** is the following.
 
 * **filter** takes as input a Boolean Component expression (having type `component<boolean>`). This clause
-  filters in or out the input Data Points; when the expression is TRUE the Data Point is kept, otherwise it is
+  filters in or out the input Data Points; when the expression is **true** the Data Point is kept, otherwise it is
   not kept in the result. Only one **filter** clause is allowed.
 * **apply** combines the homonym Measures in the source operands whose type is compatible with the
   operators used in `applyExpr`, generating homonym Measures in the output. The expression *applyExpr*
