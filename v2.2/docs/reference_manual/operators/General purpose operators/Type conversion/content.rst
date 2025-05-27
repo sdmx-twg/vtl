@@ -104,8 +104,8 @@ behaviour is described here:
 * From **integer** to **number**: an `integer` is provided when a `number` is expected (for example, an `integer`
   and a `number` are passed as inputs of a n-ary numeric operator); it returns a `number` having the integer part equal 
   to the `integer` and the decimal part equal to zero;
-* From **boolean** to **string**: a `boolean` is provided when a `string` is expected; the `boolean` value TRUE is
-  converted into the `string` “TRUE” and FALSE into the `string` “FALSE”;
+* From **boolean** to **string**: a `boolean` is provided when a `string` is expected; the `boolean` value **true** is
+  converted into the `string` “**true**” and **false** into the `string` “**false**”;
 * From **date** to **time**: a `date` (point in time) is provided when a `time` is expected (interval of time): the
   conversion results in an interval having the same start and end, both equal to the original `date`;
 * From **time_period** to **time**: a *time_period* (a regular interval of *time*, like a month, a quarter, a year...) is
@@ -113,8 +113,8 @@ behaviour is described here:
   end as the *time_period* value.
 * From **integer** to **boolean**: if the `integer` is different from 0, then TRUE is returned, FALSE otherwise.
 *	From **number** to **boolean**: if the `number` is different from 0.0, then TRUE is returned, FALSE otherwise.
-* From **boolean** to **integer**: TRUE is converted into 1; FALSE into 0.
-*	From **boolean** to **number**: TRUE is converted into 1.0; FALSE into 0.0.
+* From **boolean** to **integer**: **true** is converted into 1; **false** into 0.
+*	From **boolean** to **number**: **true** is converted into 1.0; **false** into 0.0.
 *	From **time_period** to **string**:  it is applied the `time_period` formatting mask.
 
 An implicit cast is also performed from a **value domain type** or a **set type** to a **basic scalar type**: when a *scalar*
