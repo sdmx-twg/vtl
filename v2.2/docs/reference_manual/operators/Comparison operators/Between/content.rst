@@ -27,7 +27,7 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator returns TRUE if *op* is greater than or equal to *from* and lower than or equal to *to*. In other terms,
+The operator returns true if *op* is greater than or equal to *from* and lower than or equal to *to*. In other terms,
 it is a shortcut for the following:
 
 | ``op >= from and op <= to``
