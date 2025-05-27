@@ -24,16 +24,16 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **or** operator returns TRUE if at least one of the operands is TRUE, otherwise FALSE.
+The **or** operator returns **true** if at least one of the operands is **true**, otherwise **false**.
 The two operands must be of *boolean* type.
 For example:
-| ``FALSE or FALSE`` gives ``FALSE``
-| ``FALSE or TRUE`` gives ``TRUE``
-| ``FALSE or NULL`` gives ``NULL``
-| ``TRUE or FALSE`` gives ``TRUE``
-| ``TRUE or TRUE`` gives ``TRUE``
-| ``TRUE or NULL`` gives ``TRUE``
-| ``NULL or NULL`` gives ``NULL``
+| ``**false** or **false**`` gives ``**false**``
+| `**false** or **true**`` gives ``**true**``
+| ``**false** or **null**`` gives ``**null**``
+| ``**true** or **false**`` gives ``**true**``
+| ``**true** or **true**`` gives ``**true**``
+| ``**true** or **null**`` gives ``**true**``
+| ``**null** or **null**`` gives ``**null**``
 
 -----------------------------
 Input parameters type
