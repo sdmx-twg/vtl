@@ -24,13 +24,13 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator **>** returns TRUE if *left* is greater than *right*, FALSE otherwise.
-The operator **>=** returns TRUE if *left* is greater than or equal to *right*, FALSE otherwise.
+The operator **>** returns **true** if *left* is greater than *right*, **false** otherwise.
+The operator **>=** returns **true** if *left* is greater than or equal to *right*, **false** otherwise.
 For example:
 
-| ``5 > 9`` gives ``FALSE``
-| ``5 >= 5`` gives ``TRUE``
-| ``"hello" > "hi"`` gives ``FALSE``
+| ``5 > 9`` gives ``**false**``
+| ``5 >= 5`` gives ``**true**``
+| ``"hello" > "hi"`` gives ``**false**``
 
 -----------------------------
 Input parameters type
