@@ -96,7 +96,7 @@ Behaviour
 The **check_hierarchy** operator applies the Rules of the Ruleset *hr* to check the Code Items Relations between
 the Code Items present in *op* (as for the Code Items Relations, see the User Manual - section “Generic Model for
 Variables and Value Domains”). The operator checks if the relation between the left and the right member is
-fulfilled, giving TRUE in positive case and FALSE in negative case.
+fulfilled, giving **true** in positive case and FALSE in negative case.
 
 The Attribute propagation rule is applied on each group of Data Points which contributes to the same Data Point
 of the result.
@@ -141,11 +141,11 @@ behaviours are the following:
 
    * - non_null
      - | the result Data Point is produced when all the items involved in the comparison exist
-       | and have not NULL Measure value (i.e., when no Data Point corresponding to the Code
-       | Items of the left and right sides of the rule is missing or has NULL Measure value);
+       | and have not **null** Measure value (i.e., when no Data Point corresponding to the Code
+       | Items of the left and right sides of the rule is missing or has **null** Measure value);
        | under this option, in evaluating the comparison, the possible missing Data Points
        | corresponding to the Code Items of the left and right sides of the rule are considered
-       | existing and having a NULL Measure value;
+       | existing and having a **null** Measure value;
    * - non_zero
      - | the result Data Point is produced when at least one of the items involved in the
        | comparison exist and have Measure not equal to 0 (zero); the possible missing Data
@@ -164,7 +164,7 @@ behaviours are the following:
    * - always_null
      - | the result Data Point is produced in any case; the possible missing Data Points
        | corresponding to the Code Items of the left and right sides of the rule are considered
-       | existing and having a Measure value equal to NULL;
+       | existing and having a Measure value equal to **null**;
    * - always_zero
      - | the result Data Point is produced in any case; the possible missing Data Points
        | corresponding to the Code Items of the left and right sides of the rule are considered
@@ -184,18 +184,18 @@ possible options of the parameter *output* and the corresponding behaviours are 
 .. list-table::
 
    * - all
-     - | all the Data Points produced by the comparison are returned, both the valid ones (TRUE)
-       | and the invalid ones (FALSE) besides the possible NULL ones. The result of the
+     - | all the Data Points produced by the comparison are returned, both the valid ones (**true**)
+       | and the invalid ones (**false**) besides the possible NULL ones. The result of the
        | comparison is returned in the *boolean* Measure *bool_var*. The original Measure
        | Component of the Data Set *op* is not returned.
    * - invalid
-     - | only the invalid (FALSE) Data Points produced by the comparison are returned. The
+     - | only the invalid (**false**) Data Points produced by the comparison are returned. The
        | result of the comparison (*boolean* Measure *bool_var*) is not returned. The original
        | Measure Component of the Data Set *op* is returned and contains the Measure values
        | taken from the Data Points on the left side of the rule.
    * - all_measures
      - | all the Data Points produced by the comparison are returned, both the valid ones
-       | (TRUE) and the invalid ones (FALSE) besides the possible NULL ones. The result
+       | (TRUE) and the invalid ones (**false**) besides the possible NULL ones. The result
        | of the comparison is returned in the *boolean* Measure *bool_var*. The original
        | Measure Component of the Data Set *op* is returned and contains the Measure
        | values taken from the Data Points on the left side of the rule.
@@ -208,11 +208,11 @@ In conclusion, the operator returns a Data Set having the following Components:
 * the additional Identifier Component *ruleid*, whose aim is to identify the Rule that has generated the
   actual Data Point (it contains at least the Rule name specified in *hr* (The content of *ruleid* maybe personalised in the implementation) )
 * if the *output* parameter is *all*: the *boolean* Measure *bool_var* whose values are the result of the
-  evaluation of the Rules (TRUE, FALSE or NULL).
+  evaluation of the Rules (**true**, **false** or **null**).
 * if the *output* parameter is *invalid*: the original Measure of *op*, whose values are taken from the Measure
   values of the Data Points of the left side of the Rule
 * if the *output* parameter is *all_measures*: the *boolean* Measure *bool_var*, whose value is the result of the
-  evaluation of a Rule on a Data Point (TRUE, FALSE or NULL), and the original Measure of *op*, whose
+  evaluation of a Rule on a Data Point (**true**, **false** or **null**), and the original Measure of *op*, whose
   values are taken from the Measure values of the Data Points of the left side of the Rule
 * the Measure *imbalance*, which contains the difference between the Measure values of the Data Points on
   the left side of the Rule and the Measure values of the corresponding calculated Data Points on the right
