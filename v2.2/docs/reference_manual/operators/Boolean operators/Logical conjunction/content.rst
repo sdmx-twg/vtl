@@ -24,7 +24,7 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **and** operator returns TRUE if both operands are **true**, otherwise **false**. The two operands must be of *boolean* type.
+The **and** operator returns **true** if both operands are **true**, otherwise **false**. The two operands must be of *boolean* type.
 For example:
 | ``**false** and **false**`` gives ``**false**``
 | ``**false** and **true**`` gives ``**false**``
