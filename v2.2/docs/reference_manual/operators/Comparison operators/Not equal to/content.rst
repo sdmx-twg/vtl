@@ -25,12 +25,12 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator returns FALSE if the left is equal to right, TRUE otherwise.
+The operator returns **false** if the left is equal to right, **true** otherwise.
 For example:
 
-| ``5 <> 9`` gives ``TRUE``
-| ``5 <> 5`` gives ``FALSE``
-| ``“hello” <> “hi”`` gives ``TRUE``
+| ``5 <> 9`` gives ``**true**``
+| ``5 <> 5`` gives ``**false**``
+| ``“hello” <> “hi”`` gives ``**true**``
 
 -----------------------------
 Input parameters type
