@@ -56,7 +56,7 @@ Behavior
 --------
 
 The operator takes as input a Data Set (*op*) and a *boolean* Component expression (*filterCondition*) and filters the
-input Data Points according to the evaluation of the *condition*. When the expression is TRUE the Data Point is
+input Data Points according to the evaluation of the *condition*. When the expression is **true** the Data Point is
 kept in the result, otherwise it is not kept (in other words, it filters out the Data Points of the operand Data Set
-for which *filterCondition* condition evaluates to FALSE or NULL).
+for which *filterCondition* condition evaluates to **false** or **null**).
 
