@@ -306,7 +306,7 @@ functional dependent from themselves (so having also the role of
 Measure). In an equivalent way, the combinations of values of the
 Identifiers can be considered as “true” (i.e. existing), therefore it
 can be thought that there is an implicit Boolean measure having value
-“TRUE” for all the Data Points [10]_.
+“**true**” for all the Data Points [10]_.
 
 The extreme case of a Data Set having no Identifiers, Measures and
 Attributes is allowed. A Data Set of this kind contains just one scalar
@@ -1313,10 +1313,10 @@ A validation is intended to be a kind of Transformation. For example,
 the simple validation that *D\ 1* = *D\ 2* can be made through an “If”
 operator, with an expression of the type:
 
-   *D\ r* := If (*D\ 1* = *D\ 2* , then TRUE, else FALSE)
+   *D\ r* := If (*D\ 1* = *D\ 2* , then **true**, else **false**)
 
 In this case, the Data Set *D\ r* would have a Boolean measure
-containing the value TRUE if the validation is successful and FALSE if
+containing the value **true** if the validation is successful and **false** if
 it is unsuccessful.
 
 These are only fictitious examples for explanation purposes. The general
@@ -1483,7 +1483,7 @@ and flows” and is formally defined through the statement above.
 
 -  *D\ 1*, *D\ 2* *and D\ 3* are the Operands
 
--  If ((*D\ 1* + *D\ 2*) = *D\ 3* , then TRUE, else FALSE) is the
+-  If ((*D\ 1* + *D\ 2*) = *D\ 3* , then **true**, else **false**) is the
    Expression
 
 -  “:=”, “If”, “+” , “=” are Operators
