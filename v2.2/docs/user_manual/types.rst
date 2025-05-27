@@ -334,7 +334,7 @@ operations, such as: logical conjunction (and), disjunction (or),
 negation (not) and so on.
 
 All the scalar types are assumed by default to contain the conventional
-value “\ **NULL**\ ”, which means “no value”, or “absence of known
+value “\ **null**\ ”, which means “no value”, or “absence of known
 value” or “missing value” (in other words, the scalar types by default
 are “nullable”). Note that the “NULL” value, therefore, is the only
 value of multiple different types (i.e., all the nullable scalar types).
@@ -342,7 +342,7 @@ value of multiple different types (i.e., all the nullable scalar types).
 The scalar types have corresponding non-nullable sub-types, which can be
 declared by adding the suffix “\ *not null*\ ” to the name of the type.
 For example, **string not null** is a string that cannot be NULL, as
-well as **number not null** is a number that cannot be NULL.
+well as **number not null** is a number that cannot be **null**.
 
 The VTL assumes that a basic scalar type has a unique internal
 representation and more possible external representations.
@@ -381,7 +381,7 @@ Examples of possible different choices for external representations:
    formats suggested by the ISO 8601 standard or other possible
    personalized formats;
 
--  the “\ *boolean*\ ” type can use the values TRUE and FALSE, or 0 and
+-  the “\ *boolean*\ ” type can use the values **true** and **false**, or 0 and
    1, or YES and NO or other possible binary options.
 
 It is assumed that a VTL system knows how to convert an external
@@ -617,7 +617,7 @@ which allows representing durations in a much more complete, even if
 more complex, way. As mentioned, the real VTL systems may adopt any
 other external representation.
 
-The **boolean** values used in the VTL manuals are *TRUE* and *FALSE*
+The **boolean** values used in the VTL manuals are *true* and *false*
 (without quotes).
 
 When a *literal* is written in a VTL expression, its basic scalar type
@@ -667,8 +667,8 @@ following:
 
    A literal having one of these patterns is assumed to be a number.
 
--  The boolean literals are assumed to be the values TRUE and FALSE
-   (capital letters without quotes).
+-  The boolean literals are assumed to be the values **true** and **false**
+   (lowercase letters without quotes).
 
 In these manuals, it is also assumed that the types *time*, *date,
 time_period* and *duration* do not directly support literals. Literal
@@ -711,10 +711,10 @@ Conventions for describing the scalar types
 -  An **expression within square brackets** following the previous
    keywords, means that the preceding scalar type is restricted by the
    expression. This is a VTL *boolean* expression [22]_ (whose result
-   can be TRUE or FALSE) which specifies a membership criterion, that is
+   can be **true** or **false**) which specifies a membership criterion, that is
    a condition that discriminates the values which belong to the
    restriction (sub-type) from the others (the value is assumed to
-   belong to the sub-type only if the expression evaluates to TRUE). The
+   belong to the sub-type only if the expression evaluates to **true**). The
    keyword “value” stands for the generic value of the preceding scalar
    type and is used in the expression to formulate the restrictive
    condition. For example:
@@ -1278,8 +1278,8 @@ not include elements like [dataset1, country, sector] and [import,
 .. [20]
    This can be achieved in many ways that depend on the data type and on
    the adopted internal and external representations. For example, there
-   can exist a default correspondence (e.g., 0 means always False and 1
-   means always True for Boolean), or the parts of the external
+   can exist a default correspondence (e.g., 0 means always **false** and 1
+   means always **true** for Boolean), or the parts of the external
    representation can be specified through a mask (e.g., for the dates,
    DD-MM-YYYY or YYYYMMDD specify the position of the digits
    representing year, month and day).
@@ -1293,11 +1293,11 @@ not include elements like [dataset1, country, sector] and [import,
    I.e., an expressions whose result is *boolean*
 
 .. [23]
-   “between ( x, y, z)” is the VTL operator which returns TRUE if x is
+   “between ( x, y, z)” is the VTL operator which returns **true** if x is
    comprised between y and z
 
 .. [24]
-   “in” is the VTL operator which returns TRUE if an element (in this
+   “in” is the VTL operator which returns **true** if an element (in this
    case the value) belongs to a Set; the symbol { … , … , … } denotes a
    set defined as the list of its elements (separated by commas)
 
