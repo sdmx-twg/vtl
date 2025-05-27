@@ -22,11 +22,11 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The operator returns TRUE if the value of the operand is NULL, FALSE otherwise.
+The operator returns **true** if the value of the operand is **null**, **false** otherwise.
 For example:
 
-| ``isnull(“Hello”)`` gives ``FALSE``
-| ``isnull(NULL)`` gives ``TRUE``
+| ``isnull(“Hello”)`` gives ``**false**``
+| ``isnull(**null**)`` gives ``**true**``
 
 -----------------------------
 Input parameters type
