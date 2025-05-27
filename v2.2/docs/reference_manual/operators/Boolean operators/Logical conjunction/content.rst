@@ -26,13 +26,13 @@ Semantics  for scalar operations
 ------------------------------------
 The **and** operator returns TRUE if both operands are **true**, otherwise **false**. The two operands must be of *boolean* type.
 For example:
-| ``FALSE and FALSE`` gives ``**false**``
-| ``FALSE and TRUE`` gives ``**false**``
-| ``FALSE and NULL`` gives ``**false**``
-| ``TRUE and FALSE`` gives ``**false**``
-| ``TRUE and TRUE`` gives ``**true**``
-| ``TRUE and NULL`` gives ``**null**``
-| ``NULL and NULL`` gives ``**null**``
+| ``**false** and **false**`` gives ``**false**``
+| ``**false** and **true**`` gives ``**false**``
+| ``**false** and **null**`` gives ``**false**``
+| ``**true** and **false**`` gives ``**false**``
+| ``**true** and **true**`` gives ``**true**``
+| ``**true** and **null**`` gives ``**null**``
+| ``**null** and **null**`` gives ``**null**``
 
 -----------------------------
 Input parameters type
