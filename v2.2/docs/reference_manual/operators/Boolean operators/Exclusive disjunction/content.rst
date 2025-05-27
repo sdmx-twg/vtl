@@ -27,13 +27,13 @@ Semantics  for scalar operations
 The **xor** operator returns **true** if only one of the operand is **true** (but not both), **false** otherwise.
 The two operands must be of *boolean* type.
 For example:
-| ``FALSE xor FALSE`` gives ``**false**``
-| ``FALSE xor TRUE`` gives ``**true**``
-| ``FALSE xor NULL`` gives ``**null**``
-| ``TRUE xor FALSE`` gives ``**true**``
-| ``TRUE xor TRUE`` gives ``**false**``
-| ``TRUE xor NULL`` gives ``**null**``
-| ``NULL xor NULL`` gives ``**null**``
+| ``**false** xor **false**`` gives ``**false**``
+| ``**false** xor **true**`` gives ``**true**``
+| ``**false** xor **null**`` gives ``**null**``
+| ``**true** xor **false**`` gives ``**true**``
+| ``**true** xor **true**`` gives ``**false**``
+| ``**true** xor **null**`` gives ``**null**``
+| ``**null** xor **null**`` gives ``**null**``
 
 -----------------------------
 Input parameters type
