@@ -55,7 +55,7 @@ Input parameters
    * - filterCondition
      - | a condition (*boolean* expression) at component level, having only Components
        | of the input Data Sets as operands, which is evaluated for each joined
-       | Data Point and filters them (when TRUE the joined Data Point is kept,
+       | Data Point and filters them (when **true** the joined Data Point is kept,
        | otherwise it is not kept)
    * - applyExpr
      - | an expression, having the input Data Sets as operands, which is pairwise applied
