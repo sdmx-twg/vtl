@@ -24,15 +24,15 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **and** operator returns TRUE if both operands are TRUE, otherwise FALSE. The two operands must be of *boolean* type.
+The **and** operator returns TRUE if both operands are **true**, otherwise **false**. The two operands must be of *boolean* type.
 For example:
-| ``FALSE and FALSE`` gives ``FALSE``
-| ``FALSE and TRUE`` gives ``FALSE``
-| ``FALSE and NULL`` gives ``FALSE``
-| ``TRUE and FALSE`` gives ``FALSE``
-| ``TRUE and TRUE`` gives ``TRUE``
-| ``TRUE and NULL`` gives ``NULL``
-| ``NULL and NULL`` gives ``NULL``
+| ``FALSE and FALSE`` gives ``**false**``
+| ``FALSE and TRUE`` gives ``**false**``
+| ``FALSE and NULL`` gives ``**false**``
+| ``TRUE and FALSE`` gives ``**false**``
+| ``TRUE and TRUE`` gives ``**true**``
+| ``TRUE and NULL`` gives ``**null**``
+| ``NULL and NULL`` gives ``**null**``
 
 -----------------------------
 Input parameters type
