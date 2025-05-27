@@ -200,7 +200,7 @@ Syntax description
         the leftCondition is **true**); It can contain references to the Value
         domains or the Variables of the conditioningSignature of the Ruleset and
         Constants; all the VTL-ML component level operators are allowed. The
-        leftCondition is optional, if missing it is assumed to be TRUE and the
+        leftCondition is optional, if missing it is assumed to be **true** and the
         Rule is always evaluated.
     * - leftCodeItem
       - a Code Item of the Value Domain specified in the hrRulesetSignature.
@@ -214,7 +214,7 @@ Syntax description
         Domains or Variables of the vdConditioningSignature or
         varConditioningSignature of the Ruleset and Constants; all the VTL-ML
         component level operators are allowed. The rightCondition is optional,
-        if omitted then it is assumed to be TRUE and the right member Code Item
+        if omitted then it is assumed to be **true** and the right member Code Item
         is always taken into account.
 
 ---------------------
@@ -412,7 +412,7 @@ broken by continents and the world.
 
 When a Hierarchical Ruleset is used for calculation, only the Relations
 expressing coincidence (**=**) are evaluated (provided that the
-leftCondition is TRUE, and taking into account only right-side Code
+leftCondition is **true**, and taking into account only right-side Code
 Items whose rightCondition is **true**). The result Data Set will contain
 the compound Code Items (the left members of those relations) calculated
 from the component Code Items (the right member of those Relations),
@@ -452,7 +452,7 @@ independently, their order is not significant.
 
 If a Hierarchical Ruleset is used for validation, all the possible
 Relations (**=**, **>**, **>=**, **<**, **<=**) are evaluated (provided
-that the leftCondition is TRUE and taking into account only right-side
+that the leftCondition is **true** and taking into account only right-side
 Code Items whose rightCondition is **true**). The Rules are evaluated
 independently. Both the Code Items of the left and right members of the
 Relations are expected to belong to and taken from the input Data Set
@@ -611,7 +611,7 @@ by country), a possible Ruleset is the following:
    end hierarchical ruleset
 
 In the calculation, basically, for each Rule, for all the input Data
-Points and provided that the conditions are TRUE, the right Code Items
+Points and provided that the conditions are **true**, the right Code Items
 are changed into the corresponding left Code Item, obtaining Data Points
 referred only to the left Code Items. Then the outcomes of all the Rules
 of the Ruleset are aggregated together to obtain the Data Points of the
