@@ -177,7 +177,7 @@ Syntax description
     * - errorCode
       - a literal denoting the error code associated to the rule, to
         be assigned to the possible non-valid results in case the Rule is used
-        for validation. If omitted then no error code is assigned (NULL value).
+        for validation. If omitted then no error code is assigned (**null** value).
         VTL assumes that a Value Domain errorcode_vd of the error codes exists
         in the Information Model and contains all the possible error codes: the
         errorCode literal must be one of the possible Values of such a Value
@@ -188,7 +188,7 @@ Syntax description
       - a literal denoting the error level (severity) associated to
         the rule, to be assigned to the possible non-valid results in case the
         Rule is used for validation. If omitted then no error level is assigned
-        (NULL value). VTL assumes that a Value Domain errorlevel_vd of the error
+        (**null** value). VTL assumes that a Value Domain errorlevel_vd of the error
         levels exists in the Information Model and contains all the possible
         error levels: the errorLevel literal must be one of the possible Values
         of such a Value Domain. VTL assumes also that a Variable errorlevel for
@@ -197,7 +197,7 @@ Syntax description
     * - leftCondition
       - a *boolean* expression which defines the pre-condition for
         evaluating the left member Code Item (i.e., it is evaluated only when
-        the leftCondition is TRUE); It can contain references to the Value
+        the leftCondition is **true**); It can contain references to the Value
         domains or the Variables of the conditioningSignature of the Ruleset and
         Constants; all the VTL-ML component level operators are allowed. The
         leftCondition is optional, if missing it is assumed to be TRUE and the
@@ -210,7 +210,7 @@ Syntax description
       - a *boolean* scalar expression which defines the condition
         for a right member Code Item to contribute to the evaluation of the Rule
         (i.e., the right member Code Item is taken into account only when the
-        relevant rightCondition is TRUE). It can contain references to the Value
+        relevant rightCondition is **true**). It can contain references to the Value
         Domains or Variables of the vdConditioningSignature or
         varConditioningSignature of the Ruleset and Constants; all the VTL-ML
         component level operators are allowed. The rightCondition is optional,
@@ -413,7 +413,7 @@ broken by continents and the world.
 When a Hierarchical Ruleset is used for calculation, only the Relations
 expressing coincidence (**=**) are evaluated (provided that the
 leftCondition is TRUE, and taking into account only right-side Code
-Items whose rightCondition is TRUE). The result Data Set will contain
+Items whose rightCondition is **true**). The result Data Set will contain
 the compound Code Items (the left members of those relations) calculated
 from the component Code Items (the right member of those Relations),
 which are taken from the input Data Set (for more details about the
@@ -453,12 +453,12 @@ independently, their order is not significant.
 If a Hierarchical Ruleset is used for validation, all the possible
 Relations (**=**, **>**, **>=**, **<**, **<=**) are evaluated (provided
 that the leftCondition is TRUE and taking into account only right-side
-Code Items whose rightCondition is TRUE). The Rules are evaluated
+Code Items whose rightCondition is **true**). The Rules are evaluated
 independently. Both the Code Items of the left and right members of the
 Relations are expected to belong to and taken from the input Data Set
 (for more details about the evaluation options see the
 **check_hierarchy** operator). The Antecedent Condition is evaluated
-and, if TRUE, the operations specified in the right member of the
+and, if **true**, the operations specified in the right member of the
 Relation are performed and the result is compared to the first member,
 according to the specified type of Relation. The possible relations in
 which Code Items are defined as equal to themselves are ignored. Further
