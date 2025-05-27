@@ -65,7 +65,7 @@ The VTL assumes that a basic scalar type has a unique internal and more possible
 
 The external representations are those of the Value Domains which refers to such a basic scalar types (more
 Value Domains can refer to the same basic scalar type, see the VTL Data Types in the User Manual). For example,
-there can exist a *boolean* Value Domain which uses the values TRUE and FALSE and another *boolean* Value
+there can exist a *boolean* Value Domain which uses the values **true** and **false** and another *boolean* Value
 Domain which uses the values 1 and 0. The external representations are the ones of the Data Point Values and
 are obviously known by users.
 
@@ -104,10 +104,6 @@ behaviour is described here:
 * From **integer** to **number**: an `integer` is provided when a `number` is expected (for example, an `integer`
   and a `number` are passed as inputs of a n-ary numeric operator); it returns a `number` having the integer part equal 
   to the `integer` and the decimal part equal to zero;
-* From **integer** to **string**: an `integer` is provided when a `string` is expected (for example, an `integer` is passed
-  as an input of a `string` operator); it returns a `string` having the literal value of the `integer`;
-* From **number** to **string**: a `number` is provided when a `string` is expected; it returns the `string` having the
-  literal value of the `number`; the decimal separator is converted into the character “.” (dot).
 * From **boolean** to **string**: a `boolean` is provided when a `string` is expected; the `boolean` value TRUE is
   converted into the `string` “TRUE” and FALSE into the `string` “FALSE”;
 * From **date** to **time**: a `date` (point in time) is provided when a `time` is expected (interval of time): the
@@ -116,14 +112,10 @@ behaviour is described here:
   provided when a *time* (any interval of time) is expected; it returns a *time* value having the same start and
   end as the *time_period* value.
 * From **integer** to **boolean**: if the `integer` is different from 0, then TRUE is returned, FALSE otherwise.
-* From **number** to **integer**: converts a `number` with no decimal part into an `integer`; 
-  if the decimal part is present, a runtime error is raised. 
 *	From **number** to **boolean**: if the `number` is different from 0.0, then TRUE is returned, FALSE otherwise.
 * From **boolean** to **integer**: TRUE is converted into 1; FALSE into 0.
 *	From **boolean** to **number**: TRUE is converted into 1.0; FALSE into 0.0.
 *	From **time_period** to **string**:  it is applied the `time_period` formatting mask.
-*	From **string** to **integer**: the `integer` having the literal value of the `string` is returned; if the `string` contains a literal that cannot be matched to an `integer`, a runtime error is raised.
-  
 
 An implicit cast is also performed from a **value domain type** or a **set type** to a **basic scalar type**: when a *scalar*
 value belonging to a Value Domains or a Set is involved in an operation (i.e., provided as input to an operator),
@@ -141,7 +133,7 @@ Value Domains.
 The **cast** operator can be invoked explicitly even for the conversions which allow an implicit cast and in this case
 the same behaviour as the implicit cast is applied.
 
-When an **explicit casting with mask** is required, the conversion is made by applying the formatting mask which specifies 
+When an **explicit casting with mask** or **explicit casting with optional mask** is required, the conversion is made by applying the formatting mask which specifies 
 the meaning of the characters in the output `string`. The formatting Masks are described in the section “VTL-ML – Typical Behaviour 
 of the ML Operators”, sub-section “Type Conversion and Formatting Mask. 
 
