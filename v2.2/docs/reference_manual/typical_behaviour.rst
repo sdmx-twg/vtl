@@ -916,8 +916,8 @@ will not implement what follows.
 
 In short, the automatic propagation of an Attribute depends on a Boolean
 characteristic, called “virality”, which can be assigned to any
-Attribute of a Data Set (a viral Attribute has virality = TRUE, a
-non-viral Attribute has virality=FALSE, if the virality is not defined,
+Attribute of a Data Set (a viral Attribute has virality = **true**, a
+non-viral Attribute has virality=**false**, if the virality is not defined,
 the Attribute is considered as non-viral).
 
 By default, an Attribute propagates from the operand Data Sets (DS_i) to
