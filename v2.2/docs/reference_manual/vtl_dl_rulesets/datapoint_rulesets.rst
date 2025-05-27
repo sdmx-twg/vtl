@@ -90,14 +90,14 @@ Syntax description
        single Data Point of the input Data Set. It can contain Values of the
        Value Domains or Variables specified in the Ruleset signature and
        constants; all the VTL-ML component level operators are allowed. If
-       omitted then antecedentCondition is assumed to be TRUE.
+       omitted then antecedentCondition is assumed to be **true**.
    * - consequentCondition
      - a *boolean* expression to be evaluated for each
        single Data Point of the input Data Set when the antecedentCondition evaluates 
        to TRUE (as mentioned, missing antecedent conditions are assumed to be TRUE). It
        contains Values of the Value Domains or Variables specified in the
        Ruleset signature and constants; all the VTL-ML component level
-       operators are allowed. A consequent condition equal to FALSE is
+       operators are allowed. A consequent condition equal to **false** is
        considered as a non-valid result.
    * - errorCode
      - a literal denoting the error code associated to the rule, to
@@ -193,14 +193,14 @@ and FALSE for non-valid results).
 Each Rule contains an (optional) antecedentCondition *boolean*
 expression followed by a consequentCondition *boolean* expression and
 expresses a logical implication. Each Rule states that when the
-antecedentCondition evaluates to TRUE for a given Data Point, then the
-consequentCondition is expected to be TRUE as well. If this implication
-is fulfilled, the result is considered as valid (TRUE), otherwise as
-non-valid (FALSE). On the other side, if the antecedentCondition
-evaluates to FALSE, the consequentCondition does not applies and is not
-evaluated at all, and the result is considered as valid (TRUE). In case
-the antecedentCondition is absent then it is assumed to be always TRUE,
-therefore the consequentCondition is expected to evaluate to TRUE for
+antecedentCondition evaluates to **true** for a given Data Point, then the
+consequentCondition is expected to be **true** as well. If this implication
+is fulfilled, the result is considered as valid (**true**), otherwise as
+non-valid (**false**). On the other side, if the antecedentCondition
+evaluates to **false**, the consequentCondition does not applies and is not
+evaluated at all, and the result is considered as valid (**true**). In case
+the antecedentCondition is absent then it is assumed to be always **true**,
+therefore the consequentCondition is expected to evaluate to **true** for
 all the Data Points. See an example below:
 
 +-------------------------------------+--------------------------------+
