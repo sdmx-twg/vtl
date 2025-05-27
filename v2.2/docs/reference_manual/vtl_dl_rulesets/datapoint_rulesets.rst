@@ -94,7 +94,7 @@ Syntax description
    * - consequentCondition
      - a *boolean* expression to be evaluated for each
        single Data Point of the input Data Set when the antecedentCondition evaluates 
-       to TRUE (as mentioned, missing antecedent conditions are assumed to be TRUE). It
+       to **true** (as mentioned, missing antecedent conditions are assumed to be **true**). It
        contains Values of the Value Domains or Variables specified in the
        Ruleset signature and constants; all the VTL-ML component level
        operators are allowed. A consequent condition equal to **false** is
@@ -187,7 +187,7 @@ can be invoked by the **check_datapoint** operator. The Rules are aimed
 at checking the combinations of values of the Data Set Components,
 assessing if these values fulfil the logical conditions expressed by the
 Rules themselves. The Rules are evaluated independently for each Data
-Point, returning a Boolean scalar value (i.e., TRUE for valid results
+Point, returning a Boolean scalar value (i.e., **true** for valid results
 and FALSE for non-valid results).
 
 Each Rule contains an (optional) antecedentCondition *boolean*
