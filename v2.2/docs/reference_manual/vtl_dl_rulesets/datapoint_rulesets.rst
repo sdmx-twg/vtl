@@ -102,7 +102,7 @@ Syntax description
    * - errorCode
      - a literal denoting the error code associated to the rule, to
        be assigned to the possible non-valid results in case the Rule is used
-       for validation. If omitted then no error code is assigned (NULL value).
+       for validation. If omitted then no error code is assigned (**null** value).
        VTL assumes that a Value Domain errorcode_vd of error codes exists in
        the Information Model and contains all possible error codes: the
        errorCode literal must be one of the possible Values of such a Value
