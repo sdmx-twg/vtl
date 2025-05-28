@@ -153,7 +153,7 @@ behaviours are the following:
      - | the result Data Point is produced if at least one Data Point corresponding to the
        | Code Items of the right side of the rule is found (whichever is its Measure value);
        | the possible missing Data Points corresponding to the Code Items of the right side
-       | of the rule are considered existing and having a NULL Measure value;
+       | of the rule are considered existing and having a **null** Measure value;
    * - partial_zero
      - | the result Data Point is produced if at least one Data Point corresponding to the
        | Code Items of the right side of the rule is found (whichever is its Measure value);
