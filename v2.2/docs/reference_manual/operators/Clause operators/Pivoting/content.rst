@@ -67,7 +67,7 @@ Set. The semantics of **pivot** can be procedurally described as follows.
 2. It drops the Identifier Component identifier and all the Measure Components from VDS.
 3. It groups VDS by the values of the remaining Identifiers.
 4. For each distinct value of *identifier* in *op*, it adds a corresponding measure to VDS, named as the value of 
-   *identifier*. These Measures are initialized with the NULL value.
+   *identifier*. These Measures are initialized with the **null** value.
 5. For each Data Point of *op*, it finds the Data Point of VDS having the same values as for the common Identifiers and 
    assigns the value of *measure* (taken from the current Data Point of *op*) to the Measure of VDS having the same name
    as the value of *identifier* (taken from the Data Point of *op*).
