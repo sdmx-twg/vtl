@@ -125,9 +125,9 @@ First, the parameter *input* is used to determine the source of the Data Points 
        | from the operand *op*.
        | · if the item is defined as result of another Rule *R* that applies the Code Item
        | relation “is equal to” (=), then:
-       |    > if an expected input Data Point exists in *op* and its Measure is not NULL,
+       |    > if an expected input Data Point exists in *op* and its Measure is not **null**,
        |    then the current Rule takes such Data Point from *op*;
-       |    > if an expected input Data Point does not exist in *op* or its measure is NULL,
+       |    > if an expected input Data Point does not exist in *op* or its measure is **null**,
        |    then the current Rule takes the Data Point (if any) that has the same
        |    Identifiers’ values from the computed output of the other Rule *R*;
 
@@ -155,7 +155,7 @@ behaviours are the following:
      - | the result Data Point is produced if at least one Data Point corresponding to the Code
        | Items of the left and right sides of the rule is found (whichever is its Measure value);
        | the possible missing Data Points corresponding to the Code Items of the left and right
-       | sides of the rule are considered existing and having a NULL Measure value;
+       | sides of the rule are considered existing and having a **null** Measure value;
    * - partial_zero
      - | the result Data Point is produced if at least one Data Point corresponding to the Code
        | Items of the left and right sides of the rule is found (whichever is its Measure value);
