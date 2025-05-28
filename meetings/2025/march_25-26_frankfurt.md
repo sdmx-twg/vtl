@@ -88,6 +88,7 @@ Angelo presented a proposal for change of the "cast matrix" to solve some issues
 - Number --> String: EXPLICIT WITH OPTIONAL MASK (in order to allow thousand separator)
 - Integer --> String: EXPLICIT WITH OPTIONAL MASK (in order to allow thousand separator)
 - String --> Integer: EXPLICIT WITH OPTIONAL MASK (like String --> Number)
+
 The proposals have been accepted.
 Then the topic of how to get a scalar from a dataset was introduced (e.g. to use the result of the count() of a dataset as a scalar to filter some other dataset). Since the result of a count() is a dataset with 1 row, no identifiers and 1 measure, by default named int_var, there is the possibility of getting the desidered outcome applying a join, but it is considered to be too complex. Various proposals have been made, to be chosen via written procedure.
 Finally some bugs to be fixed have been presented; some of them were easy to resolve and already applied to the current version (allowing comments in the last line and updating the title of the manuals from "Python" to "VTL documentation"). The bug on allowing valueDomains values starting with "_" (#405) is considered urgent, since some default values in SDMX rely on this naming convention (e.g. "_Z"), while the one regarding string escaping (#395) has been included in the "regex" topic (see session 2). 
