@@ -40,7 +40,7 @@ The **in** operator returns **true** if *op* belongs to the collection, **false*
 The **not_in** operator returns **false** if *op* belongs to the collection, **true** otherwise.
 For example:
 
-| ``1 in { 1, 2, 3 }`` returns ``TRUE``
+| ``1 in { 1, 2, 3 }`` returns ``**true**``
 | ``“a” in { “c, “ab”, “bb”, “bc” }`` returns ``**false**``
 | ``“b” not_in { “b”, ”hello”, ”c”}`` returns ``**false**``
 | ``“b” not_in { “a”, ”hello”, ”c”}`` returns ``**true**``
