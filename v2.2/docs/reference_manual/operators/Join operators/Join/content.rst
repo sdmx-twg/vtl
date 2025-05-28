@@ -341,7 +341,7 @@ The different kinds of relational joins behave as follows.
 * **left_join**: the join is ideally performed stepwise, between consecutive pairs of input Data Sets, starting from
   the left side and proceeding towards the right side. The Data Points are matched like in the **inner_join**, but a
   virtual Data Point is generated even if no Data Point of the right Data Set matches (in this case, the Measures
-  and Attributes coming from the right Data Set take the NULL value in the virtual Data Set). Therefore, for
+  and Attributes coming from the right Data Set take the **null** value in the virtual Data Set). Therefore, for
   each Data Points of the left Data Set a virtual Data Point is always generated. These stepwise operations are
   associative. More formally, consider the generic pair `<dsᵢ, dsᵢ₊₁>`, where `dsᵢ` is the result of the `left_join` of the
   first “i” operands and `dsᵢ₊₁` is the i+1th operand. For each pair `<dsᵢ, dsᵢ₊₁>`, the joined Data Set is fed with all
@@ -354,16 +354,16 @@ The different kinds of relational joins behave as follows.
   the left side and proceeding toward the right side. The Data Points are matched like in the **inner_join** and
   **left_join**, but the **using** clause is not allowed and a virtual Data Point is generated either if no Data Point of
   the right Data Set matches with the left Data Point or if no Data Point of the left Data Set matches with the
-  right Data Point (in this case, Measures and Attributes coming from the non matching Data Set take the NULL
+  right Data Point (in this case, Measures and Attributes coming from the non matching Data Set take the **null**
   value in the virtual Data Set). Therefore, for each Data Points of the left and the right Data Set, a virtual Data
   Point is always generated. These stepwise operations are associative. More formally, consider the generic
   pair `<dsᵢ, dsᵢ₊₁>`, where `dsᵢ` is the result of the **full_join** of the first “i” operands and `dsᵢ₊₁` is the i+1th operand.
   For each pair `<dsᵢ, dsᵢ₊₁>`, the resulting Data Set is fed with the Data Points that match in `dsᵢ` and `dsᵢ₊₁` or that
   are only in `dsᵢ` or in `dsᵢ₊₁`. If for a Data Point in dsᵢ the join succeeds, the values for the Measures and the
   Attributes are carried from `dsᵢ` and `dsᵢ₊₁` as explained. Otherwise, i.e., if no Data Point in `dsᵢ₊₁` matches the
-  Data Point in `dsᵢ`, NULL values are given to Measures and Attributes coming only from `dsᵢ₊₁`. Symmetrically, if
-  no Data Point in `dsᵢ` matches the Data Point in `dsᵢ₊₁`, NULL values are given to Measures and Attributes
-  coming only from `dsᵢ`. The constraints described above guarantee the absence of NULL values on the
+  Data Point in `dsᵢ`, **null** values are given to Measures and Attributes coming only from `dsᵢ₊₁`. Symmetrically, if
+  no Data Point in `dsᵢ` matches the Data Point in `dsᵢ₊₁`, **null** values are given to Measures and Attributes
+  coming only from `dsᵢ`. The constraints described above guarantee the absence of **null** values on the
   Identifier Components. As mentioned, the **using** clause is not allowed in this case.
 * **cross_join**: the join is performed stepwise, between consecutive pairs of input Data Sets, starting from the
   left side and proceeding toward the right side. No match is performed but the Cartesian product of the input
