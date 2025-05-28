@@ -113,7 +113,7 @@ Syntax description
      - a literal denoting the error level (severity) associated to
        the rule, to be assigned to the possible non-valid results in case the
        Rule is used for validation. If omitted then no error level is assigned
-       (NULL value). VTL assumes that a Value Domain errorlevel_vd of error
+       (**null** value). VTL assumes that a Value Domain errorlevel_vd of error
        levels exists in the Information Model and contains all possible error
        levels: the errorLevel literal must be one of the possible Values of
        such a Value Domain. VTL assumes also that a Variable errorlevel for
