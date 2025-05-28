@@ -126,9 +126,9 @@ Hierarchy. The possible options of the parameter *input* and the corresponding b
        | takes the input Data Points from the operand *op*
        | · if the item is defined as the result of another Rule, then:
        |    > if an expected input Data Point exists in the computed output of such other Rule
-       |    and its Measure is not NULL, then the current Rule takes such Data Point;
+       |    and its Measure is not **null**, then the current Rule takes such Data Point;
        |    > if an expected input Data Point does not exist in the computed output of such
-       |    other Rule or its measure is NULL, then the current Rule takes the Data Point
+       |    other Rule or its measure is **null**, then the current Rule takes the Data Point
        |    from op (if any) having the same values of the Identifiers;
 
 if the parameter *input* is not specified then it is assumed to be *rule*.
@@ -140,11 +140,11 @@ behaviours are the following:
 .. list-table::
 
    * - non_null
-     - | the result Data Point is produced when its computed Measure value is not NULL (i.e.,
+     - | the result Data Point is produced when its computed Measure value is not **null** (i.e.,
        | when no Data Point corresponding to the Code Items of the right side of the rule is
-       | missing or has NULL Measure value); in the calculation, the possible missing Data
+       | missing or has **null** Measure value); in the calculation, the possible missing Data
        | Points corresponding to the Code Items of the right side of the rule are considered
-       | existing and having a Measure value equal to NULL;
+       | existing and having a Measure value equal to **null**;
    * - non_zero
      - | the result Data Point is produced when its computed Measure value is not equal to
        | 0 (zero); the possible missing Data Points corresponding to the Code Items of the
@@ -162,7 +162,7 @@ behaviours are the following:
    * - always_null
      - | the result Data Point is produced in any case; the possible missing Data Points
        | corresponding to the Code Items of the right side of the rule are considered existing
-       | and having a Measure value equal to NULL;
+       | and having a Measure value equal to **null**;
    * - always_zero
      - | the result Data Point is produced in any case; the possible missing Data Points
        | corresponding to the Code Items of the right side of the rule are considered existing
