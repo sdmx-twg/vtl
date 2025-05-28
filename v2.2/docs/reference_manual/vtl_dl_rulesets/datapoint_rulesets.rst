@@ -188,7 +188,7 @@ at checking the combinations of values of the Data Set Components,
 assessing if these values fulfil the logical conditions expressed by the
 Rules themselves. The Rules are evaluated independently for each Data
 Point, returning a Boolean scalar value (i.e., **true** for valid results
-and FALSE for non-valid results).
+and **false** for non-valid results).
 
 Each Rule contains an (optional) antecedentCondition *boolean*
 expression followed by a consequentCondition *boolean* expression and
