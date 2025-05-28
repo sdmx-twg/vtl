@@ -96,7 +96,7 @@ Behaviour
 The **check_hierarchy** operator applies the Rules of the Ruleset *hr* to check the Code Items Relations between
 the Code Items present in *op* (as for the Code Items Relations, see the User Manual - section “Generic Model for
 Variables and Value Domains”). The operator checks if the relation between the left and the right member is
-fulfilled, giving **true** in positive case and FALSE in negative case.
+fulfilled, giving **true** in positive case and **false** in negative case.
 
 The Attribute propagation rule is applied on each group of Data Points which contributes to the same Data Point
 of the result.
