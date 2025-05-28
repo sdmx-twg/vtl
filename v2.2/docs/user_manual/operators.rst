@@ -649,8 +649,8 @@ combinations of values of the Identifiers to be matched. In the cases
 the match does not happen, the operation is not performed and no output
 Data Point is produced. In other words, the measures corresponding to of
 the missing combinations of Values of the Identifiers are assumed to be
-unknown and to have the value NULL, therefore the result of the
-operation is NULL as well and the output Data Point is not produced.
+unknown and to have the value **null**, therefore the result of the
+operation is **null** as well and the output Data Point is not produced.
 
 This default matching behaviour is the same as the one of the *inner
 join* Operator, which therefore is able to perform the same operation.
@@ -1187,24 +1187,24 @@ when the absence does not mean that the phenomenon is unknown; this
 corresponds to the behaviour of the left and full join Operator.
 
 On the basic level, most of the scalar operations (arithmetic, logical,
-and others) return NULL when any of their arguments is NULL.
+and others) return **null** when any of their arguments is **null**.
 
-The general properties of the NULL are the following ones:
+The general properties of the **null** are the following ones:
 
--  **Data type.** The NULL value is the only value of multiple different
+-  **Data type.** The **null** value is the only value of multiple different
    types (i.e., all the nullable scalar types).
 
 -  **Testing**. A built-in Boolean operator **is null** can be used to
-   test if a scalar value is NULL.
+   test if a scalar value is **null**.
 
--  **Comparisons**. Whenever a NULL value is involved in a comparison
+-  **Comparisons**. Whenever a **null** value is involved in a comparison
    (>, <, >=, <=, in, not in, between) the result of the comparison is
-   NULL.
+   **null**.
 
--  **Arithmetic operations**. Whenever a NULL value is involved in a
-   mathematical operation (+, -, \*, /, …), the result is NULL.
+-  **Arithmetic operations**. Whenever a **null** value is involved in a
+   mathematical operation (+, -, \*, /, …), the result is **null**.
 
--  **String operations**. In operations on Strings, NULL is considered
+-  **String operations**. In operations on Strings, **null** is considered
    an empty String (“”).
 
 -  **Boolean operations**. VTL adopts 3VL (three-valued logic).
@@ -1242,7 +1242,7 @@ The general properties of the NULL are the following ones:
 -  **Implicit zero**. Arithmetic operators assuming implicit zeros
    (+,-,\*,/) may generate **null** values for the Identifier Components in
    particular cases (superset-subset relation between the set of the
-   involved Identifier Components). Because NULL values are in general
+   involved Identifier Components). Because **null** values are in general
    forbidden in the Identifiers, the final outcome of an expression must
    not contain Identifiers having **null** values. As a momentary exception
    needed to allow some kinds of calculations, Identifiers having **null**
@@ -1256,7 +1256,7 @@ If a different behaviour is desired for **null** values, it is possible to
 **override** them. This can be achieved with the combination of the
 *calc* clauses and *is null* operators.
 
-For example, suppose that in a specific case the NULL values of the
+For example, suppose that in a specific case the **null** values of the
 Measure Component *M\ 1* of the Data Set *D\ 1* have to be considered
 equivalent to the number 1, the following Transformation can be used to
 multiply the Data Sets *D\ 1* and *D\ 2*, preliminarily converting **null**
