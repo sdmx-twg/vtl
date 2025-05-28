@@ -36,8 +36,8 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **in** operator returns **true** if *op* belongs to the collection, FALSE otherwise.
-The **not_in** operator returns **false** if *op* belongs to the collection, TRUE otherwise.
+The **in** operator returns **true** if *op* belongs to the collection, **false** otherwise.
+The **not_in** operator returns **false** if *op* belongs to the collection, **true** otherwise.
 For example:
 
 | ``1 in { 1, 2, 3 }`` returns ``TRUE``
