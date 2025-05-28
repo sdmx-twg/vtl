@@ -336,12 +336,12 @@ negation (not) and so on.
 All the scalar types are assumed by default to contain the conventional
 value “\ **null**\ ”, which means “no value”, or “absence of known
 value” or “missing value” (in other words, the scalar types by default
-are “nullable”). Note that the “NULL” value, therefore, is the only
+are “nullable”). Note that the “**null**” value, therefore, is the only
 value of multiple different types (i.e., all the nullable scalar types).
 
 The scalar types have corresponding non-nullable sub-types, which can be
 declared by adding the suffix “\ *not null*\ ” to the name of the type.
-For example, **string not null** is a string that cannot be NULL, as
+For example, **string not null** is a string that cannot be **null**, as
 well as **number not null** is a number that cannot be **null**.
 
 The VTL assumes that a basic scalar type has a unique internal
@@ -696,16 +696,16 @@ Conventions for describing the scalar types
    boolean.
 
 -  By default, the basic scalar types are considered as nullable, i.e.,
-   allowing NULL values.
+   allowing **null** values.
 
 -  The keyword **not null** following the type (and the “literal”
    keyword if present), means that the scalar type does not allow the
-   NULL value, for example:
+   **null** value, for example:
 
    operand :: string literal not null
 
    means that the operand is a literal of *string* scalar type and
-   cannot be NULL; if not null is omitted the NULL value is meant to be
+   cannot be **null**; if not null is omitted the **null** value is meant to be
    allowed.
 
 -  An **expression within square brackets** following the previous
@@ -798,7 +798,7 @@ Conventions for describing the scalar types
    expression by using the VTL boolean operators (and, or, not …)
 
 -  Like in the general case, a restricted scalar type is considered by
-   default as including the NULL value. If the NULL value must be
+   default as including the **null** value. If the **null** value must be
    excluded, the type specification must be followed by the symbol **not
    null**; for example
 
@@ -877,7 +877,7 @@ In the list above, the more indented types are sub-types of the less
 indented ones.
 
 According to the functional paradigm, the Identifiers cannot contain
-NULL values, therefore the scalar type of the Identifiers Components
+**null** values, therefore the scalar type of the Identifiers Components
 must be “not null”.
 
 In summary, the following conventions are used for describing Component
