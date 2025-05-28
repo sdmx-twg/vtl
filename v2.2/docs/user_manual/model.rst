@@ -238,9 +238,9 @@ Data model diagram
         Attribute -up-|> DataStructureComponent
     @enduml
 
-White box: same artefact as in GSIM 1.1
+White box: same artefact as in GSIM 2.0
 
-Light grey box: similar to GSIM 1.1
+Light grey box: similar to GSIM 2.0
 
 Explanation of the Diagram 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -343,14 +343,14 @@ integrity* requirements:
 
 -  All the Identifier Components of the Data Set must contain a
    significant value for all the Data Points (i.e. such value cannot be
-   unknown (“NULL”)).
+   unknown (“**null**”)).
 
 -  In a Data Set there cannot exist two or more Data Points having the
    same values for all the Identifier Components (i.e. the same Data
    Point key).
 
 -  When a Measure or Attribute Component has no significant value (i.e.
-   “NULL”) for a Data Point, it is considered unknown for that Data
+   “**null**”) for a Data Point, it is considered unknown for that Data
    Point.
 
 -  When a Data Point is missing (i.e. a possible combination of values
@@ -409,7 +409,7 @@ Components:
 
 As a second example, let us consider the following physical table, in
 which the symbol “###” denotes cells that are not allowed to contain a
-value or contain the “NULL” value.
+value or contain the “**null**” value.
 
    *Institutional Unit Data*
 
