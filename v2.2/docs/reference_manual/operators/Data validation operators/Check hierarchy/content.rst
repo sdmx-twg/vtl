@@ -185,7 +185,7 @@ possible options of the parameter *output* and the corresponding behaviours are 
 
    * - all
      - | all the Data Points produced by the comparison are returned, both the valid ones (**true**)
-       | and the invalid ones (**false**) besides the possible NULL ones. The result of the
+       | and the invalid ones (**false**) besides the possible **null** ones. The result of the
        | comparison is returned in the *boolean* Measure *bool_var*. The original Measure
        | Component of the Data Set *op* is not returned.
    * - invalid
@@ -195,7 +195,7 @@ possible options of the parameter *output* and the corresponding behaviours are 
        | taken from the Data Points on the left side of the rule.
    * - all_measures
      - | all the Data Points produced by the comparison are returned, both the valid ones
-       | (TRUE) and the invalid ones (**false**) besides the possible NULL ones. The result
+       | (TRUE) and the invalid ones (**false**) besides the possible **null** ones. The result
        | of the comparison is returned in the *boolean* Measure *bool_var*. The original
        | Measure Component of the Data Set *op* is returned and contains the Measure
        | values taken from the Data Points on the left side of the rule.
