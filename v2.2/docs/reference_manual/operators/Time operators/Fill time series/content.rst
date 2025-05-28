@@ -72,7 +72,7 @@ increased of one *period* at a time (e.g. day, week, month, quarter, year) from 
 For each increase, an expected Data Point is identified.
 
 If this expected Data Points is missing, it is added to the Data Set. For the added Data Points, Measures and
-Attributes assume the NULL value.
+Attributes assume the **null** value.
 
 The output Data Set has the same Identifier, Measure and Attribute Components as the operand Data Set. The
 output Data Set contains the same time series as the operand, because the time series Identifiers (all the
