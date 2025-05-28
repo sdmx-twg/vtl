@@ -18,5 +18,5 @@ Given the following hierarchical ruleset: ::
 
 
 And given the operand Data Set DS_1 (where *At_1* is viral and the propagation rule says that the alphabetic
-order prevails the NULL prevails on the alphabetic characters and the Attribute value for missing Data Points is
-assumed as NULL):
+order prevails the **null** prevails on the alphabetic characters and the Attribute value for missing Data Points is
+assumed as **null**):
