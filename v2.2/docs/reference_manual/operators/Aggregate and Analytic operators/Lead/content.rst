@@ -73,6 +73,6 @@ Behaviour
 In the ordered set of Data Points of the current partition, the operator returns the value(s) taken from the Data
 Point at the specified physical *offset* beyond the current Data Point.
 
-If *defaultValue* is not specified, then the value returned when the offset goes outside the partition is NULL.
+If *defaultValue* is not specified, then the value returned when the offset goes outside the partition is **null**.
 
 For other details, see Analytic invocation.
