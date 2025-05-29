@@ -1204,9 +1204,6 @@ The general properties of the **null** are the following ones:
 -  **Arithmetic operations**. Whenever a **null** value is involved in a
    mathematical operation (+, -, \*, /, …), the result is **null**.
 
--  **String operations**. In operations on Strings, **null** is considered
-   an empty String (“”).
-
 -  **Boolean operations**. VTL adopts 3VL (three-valued logic).
    Therefore the following deduction rules are applied:
 
