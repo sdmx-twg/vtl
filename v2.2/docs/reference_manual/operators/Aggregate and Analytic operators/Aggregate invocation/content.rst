@@ -21,7 +21,7 @@ Syntax
     groupingClause ::= 
       |  { **group by** groupingId {, groupingId}* 
       |   | **group except** groupingId {, groupingId}* 
-      |   | **group all** conversionExpr }¹ 
+      |   | **group all** conversionExpr }¹ [1^]
       | { **having** havingCondition }
 
 
@@ -178,3 +178,5 @@ section in the User Manual).
 As mentioned, the Aggregate invocation at component level can be done within the **aggr** clause, both as part of a
 Join operator and the **aggr** operator (see the parameter *aggrExpr* of those operators), therefore, for a better
 comprehension fo the behaviour at Component level, see also those operators.
+
+[^1]: This option is deprecated
