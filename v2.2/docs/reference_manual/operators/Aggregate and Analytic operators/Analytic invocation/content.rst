@@ -15,7 +15,10 @@ analyticOperator_ **(** firstOperand { , additionalOperand }* **over (** analyti
       .. _partitionClause:
 
       partitionClause ::= **partition by** identifier { , identifier }*
-                         |**partition except** identifier { , identifier }*
+
+                        |**partition except** identifier { , identifier }*
+
+                        |**partition except all**
 
       .. _orderClause:
       
