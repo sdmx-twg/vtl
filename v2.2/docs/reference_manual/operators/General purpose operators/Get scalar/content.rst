@@ -40,8 +40,7 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-`ds` must be a Data Set without Identifier Components.
-`comp` must be a Data Set Component of the Data Set `ds`. Can be a Measure or an Attribute.
+ds must be a Data Set without Identifier Components, comp must be a Data Set Component of the Data Set ds (a Measure or an Attribute)
 
 ---------
 Behaviour
