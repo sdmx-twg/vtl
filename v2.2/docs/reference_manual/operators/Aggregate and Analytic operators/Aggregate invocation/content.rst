@@ -24,7 +24,7 @@ Syntax
       |   | **group all** conversionExpr }¹ (*)
       | { **having** havingCondition }
 
-(*): This option is deprecated
+(*) This option is deprecated
 
 ----------------
 Input parameters
