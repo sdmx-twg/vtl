@@ -111,8 +111,8 @@ behaviour is described here:
 * From **time_period** to **time**: a *time_period* (a regular interval of *time*, like a month, a quarter, a year...) is
   provided when a *time* (any interval of time) is expected; it returns a *time* value having the same start and
   end as the *time_period* value.
-* From **integer** to **boolean**: if the `integer` is different from 0, then TRUE is returned, FALSE otherwise.
-*	From **number** to **boolean**: if the `number` is different from 0.0, then TRUE is returned, FALSE otherwise.
+* From **integer** to **boolean**: if the `integer` is different from 0, then **true** is returned, **false** otherwise.
+*	From **number** to **boolean**: if the `number` is different from 0.0, then **true** is returned, **false** otherwise.
 * From **boolean** to **integer**: **true** is converted into 1; **false** into 0.
 *	From **boolean** to **number**: **true** is converted into 1.0; **false** into 0.0.
 *	From **time_period** to **string**:  it is applied the `time_period` formatting mask.
