@@ -680,6 +680,10 @@ behaviour of the Operators which convert one type in another, say for
 example a *number* in a *string*, is not the same and is described in a
 following section).
 
+The default behaviour is applied also for Operators which operate on data sub-types 
+(e.g. numerical operators); for example the result of the division of two integers 
+is a number and this is not to be considered a change of basic data type.
+
 As shown in the examples below, the actual behaviour depends also on the
 number of the input Data Sets and the number of their Measures.
 
