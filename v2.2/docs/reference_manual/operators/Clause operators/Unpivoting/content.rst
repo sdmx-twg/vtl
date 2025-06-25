@@ -54,7 +54,7 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-All the measures of *op* must be defined on the same Value Domain.
+All the measures of *op* must have the same basic scalar type, including sub-types.
 
 ---------
 Behaviour
