@@ -10,7 +10,7 @@ Venue: c/o Pontificia Universitad Salamanca
 |09:30 - 09:45|Welcome of participants and adoption of the agenda|	
 |09:45 - 10:15|Actions from previous meeting|Angelo
 |10:15 - 11:00|VTL Information Model|Angelo
-|11:00 - 11:15|Activities from Workstreams from VTL 2.2|	
+|11:00 - 11:15|Workstreams activities for VTL 2.2|	
 |11:15 - 11:30|Coffee break|
 |11:30 - 12:30|Other issues - AOB|
 |12:30|Lunch - End of meeting|
@@ -31,20 +31,20 @@ Venue: c/o Pontificia Universitad Salamanca
 12. Giulia Pennè (remote)
 13. Gustavo Homem (remote)
 14. Jesús Miguel Simón Martín (remote)
-15. Josè Maria Fernandez (remote)
-16. Katrin Heinze (remote)
-17. Laura	Vignola (remote)
-18. Nicolas Laval (remote)
-19. Oeyen Hilde (remote)
-20. Sergey Grebenshchikov (remote)
-21. Thomas Dubois (remote)
-22. Ugo Di Zenzo (remote)
-23. Valentino Pinna (remote)
-
-Deodoro, Jose
+15. Jose Deodoro (remote)
+16. Josè Maria Fernandez (remote)
+17. Katrin Heinze (remote)
+18. Laura	Vignola (remote)
+19. Nicolas Laval (remote)
+20. Oeyen Hilde (remote)
+21. Sergey Grebenshchikov (remote)
+22. Thomas Dubois (remote)
+23. Ugo Di Zenzo (remote)
+24. Valentino Pinna (remote)
 
 ## Welcome of participants
-A warm welcome has been given to Juan Lopez from INEGI, to Daniels Grofils from Pacific Community and to Daniele Mansillo from FAO who joined this VTL TF meeting; Oeyen Hilde from National Bank of Belgium breifly introduced himself as new member of VTL TF.
+A warm welcome has been given to Juan Lopez from INEGI, Daniels Grofils from Pacific Community, Daniele Mansillo from FAO and Jose Deodoro from IMF who joined this VTL TF meeting.
+Oeyen Hilde breifly introduced himself; together with Ugo Di Zenzo they are the representatives of the National Bank of Belgium for the VTL TF.
 
 ## Actions from previous meeting
 Angelo went over the activities following the decisions taken in Frankfurt's meeting (see uploaded presentation for details):
@@ -75,3 +75,20 @@ Angelo explained the reasons for maintaining the "Represented Variable" entity i
 **Actions**:
 - Angelo will update the documentation, making the necessary changes to the Information Model chart and its explanation
 - Work stream for JSON schema will be make a proposal based on the new assumption
+
+## Workstreams activities for VTL 2.2
+For a smooth and efficient management of the activities for VTL 2.2, a coordinator for each workstream has been selected:
+
+- UDO Workstream: Antonio
+- JSON schema Workstream: Attilio/Valentino
+- New (DL) operators Workstream: Angelo/Laura
+- Set of components Workstream: Nicolas/Thomas/Hadrien
+- Temporals Workstream: Angelo/Valentino
+- New operators Workstream: Angelo/Laura
+
+A folder for each workstream has been created at https://github.com/sdmx-twg/vtl/tree/master/v2.2/workstreams. All VTL TF members are kindly requested to participate in the WS activities.
+
+## Other issues - AOB
+A good number of presentations have been sent for approval by VTL TF members for next SDMX Global Conference that will take place in rome at the end of September 2025. Angelo and Attilio, that are part of the GC Organizing Committee, will do their best to support their approval.
+The next VTL Meeting, previously scheduled on Wednseday October 1, will take place as a side event on Tuesday September 30 from 17.15 to 18.45; location and connection details will be communicated in due course.
+For next year physical VTL workshop two proposals are now on the table: one from Hadrien (to be hosted in Oslo) and one from Thomas (to be hosted in Paris); probably a decision (about date and location) will be made in the next meeting.
