@@ -44,7 +44,7 @@ Venue: c/o Pontificia Universitad Salamanca
 
 ## Welcome of participants
 A warm welcome has been given to Juan Lopez from INEGI, Daniels Grofils from Pacific Community, Daniele Mansillo from FAO and Jose Deodoro from IMF who joined this VTL TF meeting.
-Oeyen Hilde breifly introduced himself; together with Ugo Di Zenzo they are the representatives of the National Bank of Belgium for the VTL TF.
+Oeyen Hilde breifly introduced himself; together with Ugo Di Zenzo they are the representatives of the National Bank of Belgium in the VTL TF.
 
 ## Actions from previous meeting
 Angelo went over the activities following the decisions taken in Frankfurt's meeting (see uploaded presentation for details):
@@ -64,7 +64,7 @@ eventually involved (es. division, logarithm) a specific behaviour will be added
 **Actions**:
 - Antonio and Javier will take care of issues #390 (sub operator), #520 (unpartioned analytic invocation), #592 (partition except clause), #595 (unpivot) and #596 (join)
 - Nicolas will take care of issue #564 (string distance)
-- Valentino wil take care of issue #586
+- Valentino will take care of issue #586 (cast operator)
 - Angelo will take care of issue #384 (get scalar), will propose a new syntax for "group all" clause, will update the documentation for numerical operator having number as result and will add an exmple for unpivot operator with the weakened constraint
 
 ## VTL Information Model
@@ -89,6 +89,6 @@ For a smooth and efficient management of the activities for VTL 2.2, a coordinat
 A folder for each workstream has been created at https://github.com/sdmx-twg/vtl/tree/master/v2.2/workstreams. All VTL TF members are kindly requested to participate in the WS activities.
 
 ## Other issues - AOB
-A good number of presentations have been sent for approval by VTL TF members for next SDMX Global Conference that will take place in rome at the end of September 2025. Angelo and Attilio, that are part of the GC Organizing Committee, will do their best to support their approval.
-The next VTL Meeting, previously scheduled on Wednseday October 1, will take place as a side event on Tuesday September 30 from 17.15 to 18.45; location and connection details will be communicated in due course.
-For next year physical VTL workshop two proposals are now on the table: one from Hadrien (to be hosted in Oslo) and one from Thomas (to be hosted in Paris); probably a decision (about date and location) will be made in the next meeting.
+A good number of presentations have been sent for approval by VTL TF members for next SDMX Global Conference that will take place in Rome at the end of September 2025. Angelo and Attilio, that are part of the GC Organizing Committee, will do their best to support their approval.
+Next VTL Meeting, previously scheduled on Wednseday October 1, will take place as a side event on Tuesday September 30 from 17.15 to 18.45; location and connection details will be communicated in due course.
+For next year physical VTL TF workshop two proposals are currently on the table: one from Hadrien (to be hosted in Oslo) and one from Thomas (to be hosted in Paris); probably a decision (about date and location) will be made in the next meeting.
