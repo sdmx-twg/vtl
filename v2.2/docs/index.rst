@@ -1,5 +1,5 @@
 ***************************
-Documentation for VTL v2.1
+Documentation for VTL v2.2
 ***************************
 
 .. toctree::
