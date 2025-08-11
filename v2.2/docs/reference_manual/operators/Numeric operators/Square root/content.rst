@@ -56,4 +56,5 @@ Behaviour
 ---------
 
 The operator has the behaviour of the “Operators applicable on one Scalar Value or Data Set or Data Set
-Component” (see the section “Typical behaviours of the ML Operators”). Some valid examples could be: **sqrt ( DS_1 )**, **sqrt ( 5 )**.
+Component” (see the section “Typical behaviours of the ML Operators”). According to the general rules about data types, 
+the operator can be applied also on sub-types of number, that is the type integer. The result has type number.
