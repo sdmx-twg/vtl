@@ -53,9 +53,15 @@ result and a new Measure is added. The Data Points’ values for the new Measure
 A default conventional name is assigned to the new Measure depending on its type: for example `num_var`
 if the Measure is `numeric`, `string_var` if it is `string` and so on (the default name can be renamed through
 the **rename** operator if needed).
+
 The Attributes follow the Attribute propagation rule as usual (viral Attributes of `ds` are maintained in the result as 
 viral, non-viral ones are dropped). If `comp` is an Attribute, it follows the Attribute propagation rule too.
-The same symbol denoting the membership operator (**#**) is also used inside other operations at Component level 
-(for example in **join**, **calc**, **aggr**) in order to identify the Components to be operated: please note that in these 
-cases the symbol **#** does not denote the membership operator (i.e., this operator, which does not operate at 
-Component level), but a special keyword of the syntax of the other operator in which it is used. 
+
+If ds has no Identifier Components (for example is a result of an aggregate invocation), comp must be a Data Set 
+Component of the Data Set ds (a Measure or an Attribute). In this case the operator returns a scalar value equal to
+the value of `comp` in `ds`; given that `ds` has no Identifier Components, there can be only one value for `comp` in `ds`.
+
+**Please note that the same symbol denoting the membership operator (#) is also used inside other operations at Component level 
+(for example in join, calc, aggr) in order to identify the Components to be operated: in these cases the symbol # does 
+not denote the membership operator (i.e., this operator, which does not operate at Component level), but a special keyword
+of the syntax of the other operator in which it is used.** 
