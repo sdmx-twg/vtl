@@ -26,7 +26,7 @@ Noah Boerger|Bundesbank|Noah.Boerger@bundesbank.de||VTL-TF Member|
 Romain Tailhurat|Making Sense|romain.tailhurat@making-sense.info|romaintailhurat|VTL-TF Member|
 Stefano Pambianco|ECB|stefano.pambianco@ecb.europa.eu|stefanopam|VTL-TF Member|
 Stratos Nikoloutsos|BIS|stratos.nikoloutsos@bis.org|stratosn|VTL-TF Member|
-Tanguy Aubert|ECB|Tanguy_Pierre_Marius.Aubert@ecb.europa.eu|VTL-TF Member|
+Tanguy Aubert|ECB|Tanguy_Pierre_Marius.Aubert@ecb.europa.eu||VTL-TF Member|
 Thomas Dubois|INSEE (France)|thomas.dubois@casd.eu||VTL-TF Member|
 Ugo Di Zenzo|NBB|ugo.dizenzo@nbb.be||VTL-TF Member|
 Valentino Pinna|Banca d’Italia|valentino.pinna@bancaditalia.it|vpinna80|VTL-TF Member|
