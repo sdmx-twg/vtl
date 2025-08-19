@@ -18,7 +18,7 @@ Gustavo Homem|Meaningful Data|gustavo.homem@meaningfuldata.eu|ghomem|VTL-TF Memb
 Hadrien	Kohl|Hadrien Kohl Consulting|hadrien.kohl@gmail.com|hadrienk|VTL-TF Member|
 Javier Hernandez|Meaningful Data|javier.hernandez@meaningfuldata.eu|javihernant|VTL-TF Member|
 Jesus Simon|Meaningful Data|jesus.simon@meaningfuldata.eu|jmsimonma-md|VTL-TF Member|
-Katrin Heinze|ECB|Katrin.Heinze@ecb.europa.eu||VTL-TF Member|
+Katrin Heinze|ECB|Katrin.Heinze@ecb.europa.eu|KatrinHeinze|VTL-TF Member|
 Laura Vignola|Istat (Italy)|vignola@istat.it|vignola|VTL-TF Member|
 Matt Nelson|BIS|matt.nelson@bis.org|agent96|VTL-TF Member|
 Nicolas Laval|Making Sense|nicolas.laval@making-sense.info|NicoLaval|VTL-TF Member|
