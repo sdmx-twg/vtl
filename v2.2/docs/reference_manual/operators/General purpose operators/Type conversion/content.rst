@@ -59,33 +59,177 @@ Additional Constraints
 Behaviour
 ---------
 
-**Conversions between basic scalar types**
-
-The VTL assumes that a basic scalar type has a unique internal and more possible external representations (formats).
-
-The external representations are those of the Value Domains which refers to such a basic scalar types (more
-Value Domains can refer to the same basic scalar type, see the VTL Data Types in the User Manual). For example,
-there can exist a *boolean* Value Domain which uses the values **true** and **false** and another *boolean* Value
-Domain which uses the values 1 and 0. The external representations are the ones of the Data Point Values and
-are obviously known by users.
+The VTL assumes that a basic scalar type has a unique internal and more possible external representations, which are
+those of any value domain, defined on that basic scalar type, or any subset of that domain (see the section VTL Data
+Types in the User Manual). For example, there can exist a *boolean* value domain which uses the representation "true"
+and "false" and another *boolean* value domain which uses the representation "1" and "0". The value domains must
+be obviously known by users in order to understand each scalar value external representation.
 
 The unique internal representation of a basic scalar type, instead, is used by the **cast** operator as a technical
 expedient to make the conversion between external representations easier: users are not necessarily aware of it. 
-In a conversion, the **cast** converts the source external representation into the internal representation (of the
-corresponding scalar type), then this last one is converted into the target external representation (of the target
-type). As mentioned in the User Manual, VTL does not prescribe any specific internal representation for the
-various scalar types, leaving different organisations free of using their preferred or already existing ones.
+In a conversion, first the **cast** operator converts the source internal representation, which solely depends on the
+source basic scalar type, into the internal representation of the destination basic scalar type. The external
+representation of the destination value domain then determines if the converted value is valid or not; when it isn't,
+an error is raised.
 
-In some cases, depending on the type of `op`, the output `scalarType` and the invoked operator, an automatic
-conversion is made, that is, even without the explicit invocation of the **cast** operator: this kind of conversion is
-called **implicit casting**.
+VTL allows for some kinds of conversions to happpen automatically, without the need to use the cast operator; those
+conversions are called **implicit casts**. For all conversions where the implicit cast is not available, the **cast
+operator** must be invoked explictly: this kind of conversion is called an **explicit cast**. If an explicit cast
+involves a cast from or to the string basic scalar type, it may be provided with a mask; the mask overrides the 
+default behavior of the cast operator and specifies how the actual casting is performed.
 
-In other cases, more than all when the implicit casting is not possible, the type conversion must be specified
-explicitly through the invocation of the **cast operator**: this kind of conversion is called **explicit casting**. If an
-explicit casting is specified, the (possible) implicit casting is overridden; the explicit conversion requires a formatting 
-mask that specifies how the actual casting is performed.
+**Conversions between a basic scalar type and value domains defined on that scalar type**
 
-The table below summarises the possible castings between the basic scalar types. In particular, the input type is
+From the above definition, it is clear that any value belonging to a value domain or value domain subset can be
+implicitly converted into a value of the basic `scalar` type on which that domain or subset was defined (upcast).
+Also, VTL allows any value of a basic scalar type to be implicitly converted into a value belonging to a value 
+domain or value domain subset based on that basic scalar type (downcast); obviously, the resulting value must be
+one of the allowed values of that particular domain or subset; otherwise, an error is raised.
+
+**Conversions between two value domains based on the same basic scalar type**
+
+As a result of the above definitions, implicit conversions between two value domains (or any of their subsets) based 
+on the same basic scalar types are also possible. Since an element of a value domain is implicitly upcast into its
+corresponding basic scalar type, and in turn that value can be implictly downcast into another value domain based on 
+that scalar type (or one of its subsets), an implicit conversion between those two domains is straightforward.
+Of course, if the the resulting value is not one of the allowed values of that particular domain or subset, 
+an error is raised.
+
+**Conversions between two value domains based on different basic scalar types**
+
+Also, VTL allows, in some cases, to convert values between two value domains, or any of their subsets, based on
+different basic scalar types. The behavior is as follows: first, the value of the source value domain is upcast to
+the basic scalar type on which that domain or subset is based. Then the internal representation is converted into 
+the basic scalar type on which the destination domain or subset is defined. Finally the obtained basic scalar value
+is downcast into the destination value domain (or subset); again, if the the resulting value is not one of the 
+allowed values of that particular domain or subset, an error is raised.
+
+**Conversions between basic scalar types**
+
+In order to perform conversion between value domains defined on different basic scalar types, a direct conversion
+mechanism between two different basic scalar types (and thus their internal representation) must be defined; in some 
+cases, depending on the basic scalar types involved, even these conversions are performed implicitly without needing
+to write a case operator. 
+
+The implicit or explicit nature of the cast required to perform a given conversion can be personalized in specific
+environments, provided that the personalization is explicitly documented with reference to the table above. For 
+example, assuming that an explicit cast is required for a conversion, in a specific environment the conversion can
+also be performed implicitly, provided that this behavior is documented.
+
+The VTL allows for these **implicit casts**:
+
+* From **integer** to **number**: a `number` value is returned having the integer part equal to the `integer` value,
+  and the decimal part equal to zero.
+* From **number** to **integer**: an `integer` value is returned, representing the sign and the integer part of 
+  the input `number` value; implementations may raise an error if the magnitude of the integer part is too big
+  to be represented internally, provided that they document such a limit.
+* From **boolean** to **string**: Either one of the string values `"true"` and `"false"` is returned, depending on
+  the input.
+* From **date** to **time**: a `time` value is returned having its start equal to its end, and both equal to the input
+  `date` value.
+* From **time_period** to **time**: a `time` value is returned having the stame start and end of the input `time_period`
+  value.
+
+An **explicit cast without mask** can also be used to make an implicit cast more clear, and in this case its
+behavior remains the same. It can also be used for some specific conversions between basic scalar types (other
+than `string`) that, for their potentially ambiguous or error-prone nature, may be misinterpreted if they were 
+to be made implicit.
+
+The behavior of these casts is described here:
+* From **integer** to **boolean**: if the `integer` value is not equal to zero, then the boolean `true` literal is
+  returned, in every other case the boolean `false` literal is returned.
+* From **boolean** to **integer**: the integer `0` is returned if the `boolean` value is false, `1` if its true.
+* From **number** to **boolean**: if the `number` absolute value is not equal to zero, then the boolean `true`
+  literal is returned, in every other case the boolean `false` literal is returned.
+* From **boolean** to **number**: the number `0.0` is returned if the `boolean` value is false, `1.0` if its true.
+* From **string** to **boolean**: The `boolean` value representing true is returned if the input string, with
+  any leading or trailing blanks removed, is equal to `"true"` not considering the case. The `boolean` value 
+  representing false is returned in any other case.
+* From **date** to **time_period**: A `time_period` value with a daily duration is returned, starting and
+  ending at the specified `date` value.
+* From **time_period** to **date**: A `date` value is returned if the input `time_period` has a duration of a 
+  single day, representing that day; otherwise an error is raised.
+* From **time** to **time_period**: A `time_period` value is returned if the time value has a regular duration
+  (see above for its meaning) otherwise an error is raised.
+* From **time** to **date**: A `date` value is returned if the `time` value start and ends at the same date,
+  otherwise an error is raised.
+
+An **explicit cast with optional mask** can be used to perform conversion between the `string` type and
+any other basic scalar type, even those available as implicit conversions. In this case, the specified
+mask may override the default (implicit) behavior.
+
+When the `string` value is the output of the conversion, the mask provides a way to format the input 
+value into a human-readable string, for example to be later output into a report file. When the
+`string` value is the input of the conversion, the mask provides a way to parse each character in
+the input string to determine the output value in the desired value domain, for example to parse the 
+string "01jan2025" into a `date` value representing 2025 January, 1st.
+
+The valid characters that can be used in a mask for a specific conversion are described in the section
+“VTL-ML – Typical Behaviour of the ML Operators”, sub-section “Type Conversion and Formatting Mask”.
+The mask is optional in all cases; the behavior defines how the conversion occurs when the mask is
+not provided in the cast operator.
+
+When performing a conversion from a `string` value, all leading and trailing blanks are removed from
+the input string value before performing the conversion. Then, if the input string or a part of it cannot be 
+matched to the specified or default mask, an error is raised. An empty string generally causes an error
+to be raised when instead a `null` input string is converted to the corresponding `null` value of
+the desired value domain. Also, if some characters are not consumed and remain in the input string after
+the conversion is complete, an error is raised.
+
+The default behavior of conversions **from the `string` type**, when the mask is not provided, is described here:
+* To **integer**: First a `+` or `-` is possibly consumed to determine the sign of the integer; if it's not
+  present, the sign is assumed to be positive. Finally, a sequence of digits is consumed to determine its 
+  absolute value; leading zeroes are skipped.
+* To **number**: First a `+` or `-` is possibly consumed to determine the sign of the number; if it's not
+  present, the sign is assumed to be positive. Then a sequence of digits is consumed to determine the absolute
+  value of the integer part of the number; leading zeroes are skipped. Then a `.` is possibly consumed; if it's 
+  not present, the parsing ends and the number is returned without a decimal part. Otherwise, a sequence of 
+  digits is consumed to determine its decimal part. Then `E` is possibly consumed to determine if a base-ten
+  exponent is present; if its not present, the number is returned as it had an exponent of 0. Otherwise, a
+  `+` or `-` is possibly consumed to determine the sign of the exponent; if it's not present, the sign is
+  assumed to be positive. Finally a sequence of digits is consumed to determine the exponent, then the number
+  is returned multiplied by the corresponding power of 10. Implementations may round the parsed number to
+  the nearest representable decimal.
+* To **date**: First, exactly four digits are consumed to determine the year in the gregorian calendar. Then a `-`
+  is consumed. Then, exactly two digits are consumed to determine the month in the range 01-12. Then a `-` is 
+  consumed again. Finally, exactly two digits are consumed to determine the day of the month in the range 
+  determined by the month and the year, starting from 01. A `date` value is returned by combining the year, month
+  and day of month determined this way.
+* To **time**: the input string is parsed, according to the ISO-8601 standard for time intervals, up to a precision
+  of days, and the corresponding `time` value is returned.
+* To **time_period**: First, the input string is scanned to find a `/`; if one is found, the input string is parsed, 
+  according to the ISO-8601 standard for time intervals up to a precision of days, and the corresponding `time_period`
+  value is returned if its duration is an entire year, a half of a year, a quarter of a year or a month; if it's not,
+  an error is raised. Otherwise, exactly four digits are consumed to determine the year in the gregorian calendar.
+  Then, a `-` is consumed if present. Then one of either `H`, `Q`, `M` or `D` is possibly consumed to determine the
+  duration of the period; if neither of these are present, a `time_period` representing the entire determined year
+  is returned. If `H` is found, either `1` or `2` is consumed to determine which half year is covered, and a 
+  `time_period` value representing that half of the determined year is returned. If `Q` is found, a digit from 1 to 
+  4 is consumed to determine which quarter is covered, and a `time_period` value representing that quarter of the 
+  determined year is returned. If `M` is found, `0` or `1` is possibly consumed, then another digit is consumed to
+  determine which month is covered, and a `time_period` value representing that month of the determined year is 
+  returned. Finally, if `D` is found, up to three digits are consumed to determine which day of year is covered, 
+  and a `time_period` value representing that particular day of the determined year is returned.
+* To **duration**: If the input string starts with `P`, the entire string is consumed and parsed, according to the
+  ISO-8601 standard for durations up to a precision of days, and the corresponding `duration` value is returned.
+  Otherwise, one of `Y`, `H`, `Q`, `M` or `D` is consumed, and a `duration` value is returned representing the 
+  duration respectively of a year, a half of a year, a quarter of a year, a month and a day.
+
+The default behavior of conversions **to the `string`** type, when the mask is not provided, is described here:
+* From **integer**: the `integer` value is printed as a sequence of digits, without any leading zeroes
+  or thousands separators, possibly preceded by a `-`.
+* From **number**: the `number` value may be printed either in the scientific notation, or as a sequence of
+  digits, possibly preceded by a `-`, with `.` as the decimal separator, without any leading zeroes
+  or thousands separators.
+* From **time**: the `time` value is printed using the ISO-8601 representation for generic time intervals,
+  up to a maximum of day precision, in the form start/end.
+* From **date**: the `date` value is printed using the ISO-8601 representation for dates, with the year,
+  month and day of month fields always present.
+* From **time_period**: the `time_period` value is printed using the ISO-8601 representation for generic time
+  intervals, up to a precision of days, in the form start/end.
+* From **duration**: the `duration` value is printed using the ISO-8601 representation for durations.
+
+The table below summarises all the possible castings between the basic scalar types. In particular, the input type is
 specified in the first column (row headings) and the output type in the first row (column headings).
 
 .. csv-table::
@@ -93,84 +237,3 @@ specified in the first column (row headings) and the output type in the first ro
    :header-rows: 1
    :stub-columns: 1
 
-The type of casting can be personalised in specific environments, provided that the personalisation is explicitly
-documented with reference to the table above. For example, assuming that an explicit **cast** with `mask` is
-required and that in a specific environment a definite `mask` is used for such a kind of conversions, the **cast** can
-also become implicit provided that the mask that will be applied is specified.
-
-The **implicit casting** is performed when a value of a certain type is provided when another type is expected. Its
-behaviour is described here:
-
-* From **integer** to **number**: an `integer` is provided when a `number` is expected (for example, an `integer`
-  and a `number` are passed as inputs of a n-ary numeric operator); it returns a `number` having the integer part equal 
-  to the `integer` and the decimal part equal to zero;
-* From **boolean** to **string**: a `boolean` is provided when a `string` is expected; the `boolean` value **true** is
-  converted into the `string` “**true**” and **false** into the `string` “**false**”;
-* From **date** to **time**: a `date` (point in time) is provided when a `time` is expected (interval of time): the
-  conversion results in an interval having the same start and end, both equal to the original `date`;
-* From **time_period** to **time**: a *time_period* (a regular interval of *time*, like a month, a quarter, a year...) is
-  provided when a *time* (any interval of time) is expected; it returns a *time* value having the same start and
-  end as the *time_period* value.
-* From **integer** to **boolean**: if the `integer` is different from 0, then TRUE is returned, FALSE otherwise.
-*	From **number** to **boolean**: if the `number` is different from 0.0, then TRUE is returned, FALSE otherwise.
-* From **boolean** to **integer**: **true** is converted into 1; **false** into 0.
-*	From **boolean** to **number**: **true** is converted into 1.0; **false** into 0.0.
-*	From **time_period** to **string**:  it is applied the `time_period` formatting mask.
-
-An implicit cast is also performed from a **value domain type** or a **set type** to a **basic scalar type**: when a *scalar*
-value belonging to a Value Domains or a Set is involved in an operation (i.e., provided as input to an operator),
-the value is implicitly cast into the basic scalar type which the Value Domain refers to (for this relationship, see
-the description of Type System in the User Manual). For example, assuming that the Component `birth_country` is
-defined on the Value Domain `country`, which contains the ISO 3166-1 numeric codes and therefore refers to the
-basic scalar type `integer`, the (possible) invocation ``length(birth_country)``, which calculates the length of the input
-string, automatically casts the values of `birth_countr` into the corresponding string. If the basic scalar type of the
-Value Domain is not compatible with the expression where it is used, an error is raised. This VTL feature is
-particularly important as it provides a general behaviour for the Value Domains and relevant Sets, preventing
-from the need of defining specific behaviours (or methods or operations) for each one of them. In other words,
-all the Values inherit the operations that can be performed on them from the basic scalar types of the respective
-Value Domains.
-
-The **cast** operator can be invoked explicitly even for the conversions which allow an implicit cast and in this case
-the same behaviour as the implicit cast is applied.
-
-When an **explicit casting with mask** or **explicit casting with optional mask** is required, the conversion is made by applying the formatting mask which specifies 
-the meaning of the characters in the output `string`. The formatting Masks are described in the section “VTL-ML – Typical Behaviour 
-of the ML Operators”, sub-section “Type Conversion and Formatting Mask. 
-
-The behaviour of the **cast** operator for such conversions is the following:
-
-* From **time** to **string**: it is applied the `time` formatting mask.
-*	From **date** to **time_period**: it converts a `date` into the corresponding daily value of `time_period`.
-* From **date** to **string**: it is applied the `time_period` formatting mask.
-* From **time_period** to **date**: it is applied a formatting mask which accepts two possible values (“START”,
-  “END”). If “START” is specified, then the `date` is set to the beginning of the `time_period`; if `END` is specified,
-  then the `date` is set to the end of the `time_period`.
-* From **string** to **number**: the `number` having the literal value of the `string` is returned; if the `string` contains a
-  literal that cannot be matched to a `number`, a runtime error is raised. The `number` is generated by using a
-  `number` formatting mask.
-* From **string** to **time**: the `time` having the literal value of the `string` is returned; if the `string` contains a literal
-  that cannot be matched to a `date`, a runtime error is raised. The `time` value is generated by using a `time`
-  formatting mask.
-*	From **string** to **date**: it converts a `string` value to a `date` value.
-*	From **string** to **time_period**: it converts a `string value` to a `time_period` value.
-* From **string** to **duration**: the `duration` having the literal value of the `string` is returned; if the `string` contains
-  a literal that cannot be matched to a `duration`, a runtime error is raised. The `duration` value is generated by
-  using a `time` formatting mask.
-*	From **duration** to **string**: a `duration` (an absolute time interval) is provided when a `string` is expected; it returns the `string` having the default `string` representation for the `duration`.
-
-
-**Conversions between basic scalar types and Value Domains or Set types**
-
-A value of a basic `scalar` type can be converted into a value belonging to a Value Domain which refers to such a
-`scalar` type. The resulting `scalar` value must be one of the allowed values of the Value Domain or Set; otherwise, a
-runtime error is raised. This specific use of **cast** operators does not really correspond to a type conversion; in
-more formal terms, we would say that it acts as a constructor, i.e., it builds an instance of the output type. Yet,
-towards a homogeneous and possibly simple definition of VTL syntax, we blur the distinction between
-constructors and type conversions and opt for a unique formalism. An example is given below.
-
-**Conversions between different Value Domain types**
-
-As a result of the above definitions, conversions between values of different Value Domains are also possible.
-Since an element of a Value Domain is implicitly cast into its corresponding basic scalar type, we can build on it
-to turn the so obtained scalar type into another Value Domain type. Of course, this latter Value Domain type must
-use as a base type this scalar type.
