@@ -38,18 +38,20 @@ The following topics could require some minor code change, the ones on the docum
 - Bechaviour for numerical operators
 - Weakened condition for unpivot operator
 
+For the following ones, the number of the issue and the responsible are indicated:
 
-- Changes to cast operator: documentation has been updated; grammar changes to be applied (issue #586)
-- Null string: changed documentation to differentiate null string from empty string
-- Literals NULL, TRUE, FALSE have been changed to null, true, false according to grammar
-- group all clause has been deprecated; a new syntax has to be defined for this clause of aggregate invocation
-- partition except clause has been added for analytical invocation; grammar changes to be applied (issue #592)
-- string_distance operator: syntax has to be defined and grammar changes have to be applied (issue #564)
-- get_scalar operator: current proposal for operator will be changed; member operator definition (#) will be suitably modified to get a scalar from a measure or attribute of a data set without identifier components
-- Data type change within the same (basic) scalar type: documentation has been updated. It is envisaged that for every numeric operator 
-eventually involved (es. division, logarithm) a specific behaviour will be added in order to state that the result of such operators will be always a number
-- unpivot operator: the actual constraint has been weakened; in addition to grammar changes (issue #595), a specific example will be added in the documentation with the new (weakened) constraint
-- Allowing inner join with one common identifier; grammar changes to be applied (issue #596)
+- String distance (#564-567) --> Nicolas
+- Cast operator matrix (#586-591) --> Valentino
+- Added partition except, with all option (#520-592) --> Antonio/Javier
+- Weakening condition for inner join (#596) --> Antonio/Javier
+- get_scalar, using membership # operator (#602) --> Nicolas
+- JSON schema (#609) --> JSON work stream
+- sub operator (#390) --> Antonio/Javier
+- New syntax for group all clause --> Since it is a major change, it will be posponed to the next major release (3.0)
+- Calculation of attributes (#598) --> An on-line dedicated meeting will be organized by Ugo
+- TCK (#565) --> Hadrien/Javier
+- Review the versioning model and architecture --> Javier
+
 
 **Actions**:
 - Antonio and Javier will take care of issues #390 (sub operator), #520 (unpartioned analytic invocation), #592 (partition except clause), #595 (unpivot) and #596 (join)
