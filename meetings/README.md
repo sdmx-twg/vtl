@@ -38,7 +38,6 @@ The following list includes collaborators that work on VTL, but do not belong to
 | Name| Organisation| Email| GitHub Name| Role|
 |-----|-------------|------|------------|-----|
 Arturo San Feliciano|Banco de España|arturo.san_feliciano@bde.es||Collaborator|
-Benedikt Huehn|Bundesbank|benedikt.huehn@bundesbank.de||Collaborator|
 Daniele Olivotti|UNICEF|dolivotti@unicef.org||Collaborator|
 Denis Grofils|The Pacific Community|denisg@spc.int|denisgrofils2|Collaborator|
 Frederik Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
