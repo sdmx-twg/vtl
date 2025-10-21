@@ -186,15 +186,22 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-**left_join** requires all the joined data sets, except the left-most one, to have exactly the same Identifiers. Moreover, 
-the left-most data set operand must satisfy exactly one of the following mutually exclusive requirements:
+Let :math:`DS_i` denote the i-th join operand taken from left to right, :math:`\forall i = 1,\ldots,n` where :math:`n` is
+the number of these, and with :math:`I^i := \{\,I^i_j \mid j = 1,\ldots,m^i,\ I^i_j \text{ is an identifier}\,\}` the
+set of identifiers of :math:`DS_i`. Let also :math:`C^1 := \{\,C^1_i \mid i = 1,\ldots,n^1\,\}` be the set of 
+the components :math:`C^1_i` of the left-most data set :math:`DS_1`.
 
-* It must have at least all of those common identifiers, among others if any. In this case, the optional `using` clause
-  may be specified to indicate a subset of the common Identifiers to be used as join keys. 
+**left_join** requires that :math:`I^i = I^j,\ \forall i,j = 2,\ldots,n`, or, in other words, that all the joined data
+sets, except the left-most one, must have exactly the same set of identifiers, which is denoted thereafter by :math:`I^c`.
+Moreover, exactly one of the following mutually exclusive conditions must hold:
 
-* It must have components matching all of those common identifiers except for their role, which may vary. In this case
-  the `using` clause is mandatory, and it must specify all the common identifiers of all the joined data sets except
-  the left-most one.
+* :math:`I^c \subseteq I^1`, or, in other words, the left-most data set has at least all of the common identifiers in
+  :math:`I^c`, among others if any. In this case, the optional `using` clause may be specified to indicate a subset of
+  :math:`I^c` to be used as join keys, which must appear in all the data sets (including the left-most data set). 
+
+* :math:`(I^c \nsubseteq I^1) \land (I^c \subseteq C^1)`, or in other words, the left-most data set has components
+  that match each of the common identifiers in :math:`I^c`, and at least one of these components is not an identifier.
+  In this case the `using` clause is mandatory, and it must specify all and only the common identifiers in :math:`I^c`.
 
 **left_join** sub-expressions must also satisfy other constraints:
 
@@ -234,10 +241,11 @@ VDS₁ has the following components:
 
 Then, subsequent clauses in the **left_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
-#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates filtering the
+#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates by filtering the
    data points to match a specified boolean expression; when the expression is **true** the Data Point is kept in 
    the result, otherwise it is discarded.
-#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃. 
+#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃:
+   
    * **apply** combines the homonym Measures in the source operands whose type is compatible with the
      operators used in `applyExpr`, for each of them generating a single measures. The expression *applyExpr*
      can use as input the names or aliases of the operand data sets. It applies the expression to each of the n-uple
@@ -261,8 +269,9 @@ Then, subsequent clauses in the **left_join** are procedurally evaluated on the 
      clause and/or a filtering expression, as specified in the section for "Aggregation operators". If no grouping
      clause is specified, then all the input Data Points are aggregated in a single group and the clause returns a
      data set that contains a single Data Point and has no Identifier Components.
-#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄.
-   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; while 
+#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄:
+   
+   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; 
    * **drop** will remove all specified non-identifier components of VDS₃.
 #. The **rename** clause, if present, is applied on VDS₄, producing the Virtual data set VDS₅ by giving each 
    specified component with a new name. If the chosen name already exists in VDS₄, an error is raised.
