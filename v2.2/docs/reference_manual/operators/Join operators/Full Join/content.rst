@@ -184,7 +184,10 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-**full_join** requires all the input data sets to have the same identifiers. 
+Let :math:`I^i := \{\,I^i_j \mid j = 1,\ldots,m^i,\ I^i_j \text{is an identifier}\,\}`, with :math:`\forall i = 1,\ldots,n`
+denote the set of identifiers of i-th join operand :math:`DS_i`, in any order. **full_join** requires that 
+:math:`\exists\, I^c \mid I^c = I^i = I^j,\ \forall i,j = 1,\ldots,n`, or in other words, all the input data sets
+must have exactly the same identifiers. 
 
 The **full_join** operator must fulfil also other constraints:
 
@@ -223,10 +226,11 @@ VDS₁ has the following components:
 
 Then, subsequent clauses in the **full_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
-#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates filtering the
+#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates by filtering the
    data points to match a specified boolean expression; when the expression is **true** the Data Point is kept in 
    the result, otherwise it is discarded.
-#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃. 
+#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃:
+   
    * **apply** combines the homonym Measures in the source operands whose type is compatible with the
      operators used in `applyExpr`, for each of them generating a single measures. The expression *applyExpr*
      can use as input the names or aliases of the operand data sets. It applies the expression to each of the n-uple
@@ -250,8 +254,9 @@ Then, subsequent clauses in the **full_join** are procedurally evaluated on the 
      clause and/or a filtering expression, as specified in the section for "Aggregation operators". If no grouping
      clause is specified, then all the input Data Points are aggregated in a single group and the clause returns a
      data set that contains a single Data Point and has no Identifier Components.
-#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄.
-   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; while 
+#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄:
+
+   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; 
    * **drop** will remove all specified non-identifier components of VDS₃.
 #. The **rename** clause, if present, is applied on VDS₄, producing the Virtual data set VDS₅ by giving each 
    specified component with a new name. If the chosen name already exists in VDS₄, an error is raised.

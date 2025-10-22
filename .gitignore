@@ -11,3 +11,4 @@ v2.1/docs/engine_files/
 build/
 Pipfile
 Pipfile.lock
+.project

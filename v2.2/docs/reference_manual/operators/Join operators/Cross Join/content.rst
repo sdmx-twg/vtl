@@ -214,10 +214,11 @@ First, a *cartesian product* of the input operands is performed, producing an in
 
 Then, subsequent clauses in the **cross_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
-#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates filtering the
+#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates by filtering the
    data points to match a specified boolean expression; when the expression is **true** the Data Point is kept in 
    the result, otherwise it is discarded.
-#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃. 
+#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃:
+   
    * **apply** combines the homonym Measures in the source operands whose type is compatible with the
      operators used in `applyExpr`, for each of them generating a single measures. The expression *applyExpr*
      can use as input the names or aliases of the operand data sets. It applies the expression to each of the n-uple
@@ -241,8 +242,9 @@ Then, subsequent clauses in the **cross_join** are procedurally evaluated on the
      clause and/or a filtering expression, as specified in the section for "Aggregation operators". If no grouping
      clause is specified, then all the input Data Points are aggregated in a single group and the clause returns a
      data set that contains a single Data Point and has no Identifier Components.
-#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄.
-   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; while 
+#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄:
+
+   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; 
    * **drop** will remove all specified non-identifier components of VDS₃.
 #. The **rename** clause, if present, is applied on VDS₄, producing the Virtual data set VDS₅ by giving each 
    specified component with a new name. If the chosen name already exists in VDS₄, an error is raised.

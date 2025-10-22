@@ -189,17 +189,27 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-**inner_join** requires at least one of the input data sets to act as the *reference data set*. Moreover, exactly one
-of the following mutually exclusive requirements must be satisfied: 
+Let :math:`DS_r` denote a particular join operand called *reference data set*, :math:`C^r := \{\,C^r_i \mid i = 1,\ldots,n^r\,\}`
+be the set of all the :math:`n^r` components of the *reference data set* :math:`DS_r`, and
+:math:`I^r := \{\,I^r_j \mid I^r_j \in C^r, j = 1,\ldots,m^r,\ m^r \le n^r,\ I^r_j \text{ is an identifier}\,\}` the
+subset of :math:`C^r` containing all its :math:`m^r` identifiers.
 
-* The *reference data set* has at least all of the identifiers appearing in other data sets, among others if any. In 
-  this case, the optional `using` clause may be specified to indicate a subset of the identifiers to be used as join 
-  keys, which must appear in all the data sets (including the *reference data set*). 
+Let also :math:`DS_{nr_i}` with :math:`\forall i = 1,\ldots,(o-1)`, where :math:`o` is the number of join operands, denote
+the i-th non-reference data set, taken in any order, and :math:`I^{nr_i} := \{\,I^{nr_i}_j \mid j = 1,\ldots,m^{nr_i},\ I^{nr_i}_j \text{ is an identifier}\,\}`
+the set of its :math:`m^{nr_i}` identifiers :math:`I^{nr_i}_j`.
 
-* All data sets except the *reference data set* have exactly the same identifiers, and the *reference data set* has 
-  components matching all of these common identifiers except for their role, which may vary. In this case the `using`
-  clause is mandatory, and it must specify all the common identifiers of all the joined data sets, except the 
-  *reference data set*.
+**inner_join** requires that :math:`\exists\, DS_r \land I^{nr_i} = I^{nr_j},\ \forall i,j = 1,\ldots,(o-1)`,
+or, in other words, that the *reference data set* must exist, and all the other, non-reference data sets must have
+exactly the same set of Identifiers, which is denoted thereafter by :math:`I^c`. Moreover, exactly one of the
+following mutually exclusive conditions must hold: 
+
+* :math:`I^c \subseteq I^r`, or, in other words, the *reference data set* has at least all of the common identifiers in
+  :math:`I^c,` among others if any. In this case, the optional `using` clause may be specified to indicate a subset of
+  :math:`I^c` to be used as join keys, which must appear in all the data sets (including the *reference data set*). 
+
+* :math:`(I^c \nsubseteq I^r) \land (I^c \subseteq C^r),` or, in other words, the *reference data set* has components
+  that match each of the common identifiers in :math:`I^c`, and at least one of these components is not an identifier.
+  In this case the `using` clause is mandatory, and it must specify all and only the common identifiers in :math:`I^c`.
 
 The **inner_join** operator must fulfil also other constraints:
 
@@ -238,10 +248,11 @@ VDS₁ has the following components:
 
 Then, subsequent clauses in the **inner_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
-#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates filtering the
+#. The **filter** is applied on VDS₁, if present, producing the Virtual data set VDS₂. It operates by filtering the
    data points to match a specified boolean expression; when the expression is **true** the Data Point is kept in 
    the result, otherwise it is discarded.
-#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃. 
+#. Either one of the **apply**, **calc** or **aggr** expressions, if present, are applied on VDS₂ producing VDS₃: 
+   
    * **apply** combines the homonym Measures in the source operands whose type is compatible with the
      operators used in `applyExpr`, for each of them generating a single measures. The expression *applyExpr*
      can use as input the names or aliases of the operand data sets. It applies the expression to each of the n-uple
@@ -265,8 +276,9 @@ Then, subsequent clauses in the **inner_join** are procedurally evaluated on the
      clause and/or a filtering expression, as specified in the section for "Aggregation operators". If no grouping
      clause is specified, then all the input Data Points are aggregated in a single group and the clause returns a
      data set that contains a single Data Point and has no Identifier Components.
-#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄.
-   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; while 
+#. Either a **keep** or **drop** clause, whichever is present, is applied on VDS₃, producing the Virtual data set VDS₄:
+   
+   * **keep** will maintain all the identifiers and only the specified non-identifier components of VDS₃; 
    * **drop** will remove all specified non-identifier components of VDS₃.
 #. The **rename** clause, if present, is applied on VDS₄, producing the Virtual data set VDS₅ by giving each 
    specified component with a new name. If the chosen name already exists in VDS₄, an error is raised.
