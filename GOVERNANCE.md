@@ -2,7 +2,7 @@
 
 ## 👥 SDMX Technical Standards Working Group
 
-This repository is maintained under the supervision of the **SDMX Technical Standards Working Group (TSWG)**.
+This repository is maintained under the supervision of the **SDMX Technical Working Group (TWG)**.
 
 It follows principles of 🤝 **collaborative** and 🔍 **transparent governance** to ensure the quality, sustainability, and evolution of SDMX-related technical standards.
 
