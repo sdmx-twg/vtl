@@ -6,18 +6,37 @@ We’re excited to collaborate with the community to improve the Validation and 
 To keep the repository clean and consistent, we follow a simple Git branching strategy and contribution process.
 
 ---
+## 📌 Branching Model and Release Model
 
-## 📌 Branching Model
+- **`master`** is the **main branch** — used for stable releases and GitHub Pages deployment.
+- **`develop`** is the **default development branch**.  
+  👉 All pull requests should **target `develop`**.
 
-- `master` is the **main branch** used for stable releases and GitHub Pages deployment.
-- `develop` is the **default development branch**.  
-  👉 All pull requests **must target `develop`**.
+### 🔄 When `develop` is Merged into `master`
+
+- We merge `develop` into `master` **only for releases** or important milestones.
+- This usually means the code is **stable, tested, and ready to go live**.
+- After merging, we:
+    - **Tag the release** (e.g., `v1.2.0`)
+    - Optionally write a short **release note or changelog**
+
+### 👥 Who Does the Merge
+
+- The **project maintainer** (or whoever handles releases) does the merge from `develop` to `master`.
+- Before merging, we make sure:
+    - All tests pass
+    - Docs are updated
+    - The release feels solid and ready
 
 ---
 
 ## 🧩 How to Contribute
 
-1. **Create a feature or fix branch** from `develop`:
+1. **Open an issue first**, if one doesn’t already exist.  
+Every pull request **must be linked to an existing issue** where the relevant discussion takes place — this helps keep all context in one place.  
+Use `Related #issue-number` in the PR description instead of `Closes #issue-number`, since issues should be **closed explicitly** with a final comment summarizing the outcome (e.g., implementation completed or issue closed due to lack of consensus).
+
+2. **Create a feature or fix branch** from `develop`:
     - For features: `feat/short-description`
     - For bugfixes: `fix/short-description`
 
@@ -25,10 +44,9 @@ To keep the repository clean and consistent, we follow a simple Git branching st
    ```bash
    git checkout develop
    git checkout -b feat/add-new-operator
+   git commit -a -m "Adding the new integral operator"
+   git push origin feat/add-new-operator
    ```
-
-2. **Open an issue first**, if one doesn’t already exist.  
-   Every pull request **must be linked to an existing issue** (use `Closes #issue-number` in the PR description).
 
 3. **Write clear and concise commit messages.**
 
@@ -39,17 +57,19 @@ To keep the repository clean and consistent, we follow a simple Git branching st
 
 ## ✉️ Maintainers & Permissions
 
-- Contributors who are **actively involved** in the project can request **maintainer status** in order to work directly via branches in the main repository.  
-  ➡️ To request access, please contact us at **angelo.linardi@bancaditalia.it** and **Attilio.Mattiocco@bancaditalia.it**.
+- Contributors who are **actively involved** in the project can request **maintainer status** to work directly via branches in the main repository.  
+  ➡️ To request access, please contact **angelo.linardi@bancaditalia.it** and **Attilio.Mattiocco@bancaditalia.it**.
 
 - All other contributors are welcome to work through the standard **fork → branch → PR** workflow.
+
+- Maintainers should also follow the rules described in the [📌 Branching Model and Release Model](#-branching-model-and-release-model) section when working with `develop` and `master` branches.
 
 ---
 
 ## 💬 Issues & Discussions
 
 - Got a question, feature idea, or bug to report?  
-  👉 **Open an [issue](../../issues)** or start a [discussion](../../discussions)!
+  👉 **Open an [issue](../../issues)**
 
 - Issues are **prioritized by the VTL leads** from **Banca d’Italia**:
     - 👤 Angelo Linardi
