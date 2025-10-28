@@ -33,8 +33,8 @@ To keep the repository clean and consistent, we follow a simple Git branching st
 ## 🧩 How to Contribute
 
 1. **Open an issue first**, if one doesn’t already exist.  
-Every pull request **must be linked to an existing issue** where the relevant discussion takes place — this helps keep all context in one place.  
-Use `Related #issue-number` in the PR description instead of `Closes #issue-number`, since issues should be **closed explicitly** with a final comment summarizing the outcome (e.g., implementation completed or issue closed due to lack of consensus).
+   Every pull request **must be linked to an existing issue** where the relevant discussion takes place — this helps keep all context in one place.  
+   Use `Related #issue-number` in the PR description instead of `Closes #issue-number`, since issues should be **closed explicitly** with a final comment summarizing the outcome (e.g., implementation completed or issue closed due to lack of consensus).
 
 2. **Create a feature or fix branch** from `develop`:
     - For features: `feat/short-description`
@@ -48,9 +48,9 @@ Use `Related #issue-number` in the PR description instead of `Closes #issue-numb
    git push origin feat/add-new-operator
    ```
 
-3. **Write clear and concise commit messages.**
+   🔸 *Note: please write clear and concise commit messages.*
 
-4. **Submit your pull request**, targeting `develop`.  
+3. **Submit your pull request**, targeting `develop`.  
    Make sure your changes are well-tested and documented if applicable.
 
 ---
