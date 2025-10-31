@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12'
         cache: 'pip'
@@ -39,10 +39,10 @@ jobs:
         distribution: "temurin"
     - name: Install dependencies
       run: |
+        sudo apt-get update && sudo apt-get install graphviz texlive-font-utils libcairo2-dev -y
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        sudo apt-get update && sudo apt-get install graphviz texlive-font-utils -y
-        wget -O /tmp/plantuml-mit-1.2023.13.jar https://github.com/plantuml/plantuml/releases/download/v1.2023.13/plantuml-mit-1.2023.13.jar
+        wget -O /tmp/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025.9/plantuml-1.2025.9.jar
     - name: Sphynx build
       run: |
         sphinx-build -M html docs outputdir/

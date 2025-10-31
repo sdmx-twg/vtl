@@ -16,15 +16,15 @@ Input parameters
    * - mask
      - a character literal that specifies the format of *op*
 
-------------------------------------
+--------------------------------
 Semantics  for scalar operations
-------------------------------------
+--------------------------------
 This operator converts the scalar type of `op` to the scalar type specified by `scalarType`. It returns a copy of `op`
 converted to the specified `scalarType`.
 
------------------------------
+---------------------
 Input parameters type
------------------------------
+---------------------
 op ::
 
     dataset{ measure<scalar> _ }
@@ -39,18 +39,18 @@ mask ::
 
     string
 
------------------------------
+-----------
 Result type
------------------------------
+-----------
 result ::
 
     dataset{ measure<scalar> _ }
     | component<scalar>
     | scalar
 
------------------------------
+----------------------
 Additional Constraints
------------------------------
+----------------------
 * Not all the conversions are possible, the specified casting operation is allowed only according to the
   semantics described below.
 * The `mask` must adhere to one of the formats specified below.
@@ -136,6 +136,7 @@ than `string`) that, for their potentially ambiguous or error-prone nature, may 
 to be made implicit.
 
 The behavior of these casts is described here:
+
 * From **integer** to **boolean**: if the `integer` value is not equal to zero, then the boolean `true` literal is
   returned, in every other case the boolean `false` literal is returned.
 * From **boolean** to **integer**: the integer `0` is returned if the `boolean` value is false, `1` if its true.
@@ -177,6 +178,7 @@ the desired value domain. Also, if some characters are not consumed and remain i
 the conversion is complete, an error is raised.
 
 The default behavior of conversions **from the `string` type**, when the mask is not provided, is described here:
+
 * To **integer**: First a `+` or `-` is possibly consumed to determine the sign of the integer; if it's not
   present, the sign is assumed to be positive. Finally, a sequence of digits is consumed to determine its 
   absolute value; leading zeroes are skipped.
@@ -212,10 +214,11 @@ The default behavior of conversions **from the `string` type**, when the mask is
   and a `time_period` value representing that particular day of the determined year is returned.
 * To **duration**: If the input string starts with `P`, the entire string is consumed and parsed, according to the
   ISO-8601 standard for durations up to a precision of days, and the corresponding `duration` value is returned.
-  Otherwise, one of `Y`, `H`, `Q`, `M` or `D` is consumed, and a `duration` value is returned representing the 
-  duration respectively of a year, a half of a year, a quarter of a year, a month and a day.
+  Otherwise, one of `A`, `S`, `Q`, `M`, `W` or `D` is consumed, and a `duration` value is returned representing the 
+  duration respectively of a year, a half of a year, a quarter of a year, a month, a week and a day.
 
 The default behavior of conversions **to the `string`** type, when the mask is not provided, is described here:
+
 * From **integer**: the `integer` value is printed as a sequence of digits, without any leading zeroes
   or thousands separators, possibly preceded by a `-`.
 * From **number**: the `number` value may be printed either in the scientific notation, or as a sequence of

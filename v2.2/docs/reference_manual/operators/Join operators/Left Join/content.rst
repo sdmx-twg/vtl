@@ -199,7 +199,7 @@ Moreover, exactly one of the following mutually exclusive conditions must hold:
   :math:`I^c`, among others if any. In this case, the optional `using` clause may be specified to indicate a subset of
   :math:`I^c` to be used as join keys, which must appear in all the data sets (including the left-most data set). 
 
-* :math:`(I^c \nsubseteq I^1) \land (I^c \subseteq C^1)`, or in other words, the left-most data set has components
+* :math:`(I^c \nsubseteq I^1) \wedge (I^c \subseteq C^1)`, or in other words, the left-most data set has components
   that match each of the common identifiers in :math:`I^c`, and at least one of these components is not an identifier.
   In this case the `using` clause is mandatory, and it must specify all and only the common identifiers in :math:`I^c`.
 
