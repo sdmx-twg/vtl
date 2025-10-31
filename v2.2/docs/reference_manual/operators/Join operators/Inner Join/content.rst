@@ -191,14 +191,14 @@ and for non-named data set obtained as result of a sub-expression.
 
 Let :math:`DS_r` denote a particular join operand called *reference data set*, :math:`C^r := \{\,C^r_i \mid i = 1,\ldots,n^r\,\}`
 be the set of all the :math:`n^r` components of the *reference data set* :math:`DS_r`, and
-:math:`I^r := \{\,I^r_j \mid I^r_j \in C^r, j = 1,\ldots,m^r,\ m^r \le n^r,\ I^r_j \text{ is an identifier}\,\}` the
+:math:`I^r := \{\,I^r_j \mid I^r_j \in C^r, j = 1,\ldots,m^r,\ m^r \leq n^r,\ I^r_j \text{ is an identifier}\,\}` the
 subset of :math:`C^r` containing all its :math:`m^r` identifiers.
 
 Let also :math:`DS_{nr_i}` with :math:`\forall i = 1,\ldots,(o-1)`, where :math:`o` is the number of join operands, denote
 the i-th non-reference data set, taken in any order, and :math:`I^{nr_i} := \{\,I^{nr_i}_j \mid j = 1,\ldots,m^{nr_i},\ I^{nr_i}_j \text{ is an identifier}\,\}`
 the set of its :math:`m^{nr_i}` identifiers :math:`I^{nr_i}_j`.
 
-**inner_join** requires that :math:`\exists\, DS_r \land I^{nr_i} = I^{nr_j},\ \forall i,j = 1,\ldots,(o-1)`,
+**inner_join** requires that :math:`\exists\, DS_r \wedge I^{nr_i} = I^{nr_j},\ \forall i,j = 1,\ldots,(o-1)`,
 or, in other words, that the *reference data set* must exist, and all the other, non-reference data sets must have
 exactly the same set of Identifiers, which is denoted thereafter by :math:`I^c`. Moreover, exactly one of the
 following mutually exclusive conditions must hold: 
@@ -207,7 +207,7 @@ following mutually exclusive conditions must hold:
   :math:`I^c,` among others if any. In this case, the optional `using` clause may be specified to indicate a subset of
   :math:`I^c` to be used as join keys, which must appear in all the data sets (including the *reference data set*). 
 
-* :math:`(I^c \nsubseteq I^r) \land (I^c \subseteq C^r),` or, in other words, the *reference data set* has components
+* :math:`(I^c \nsubseteq I^r) \wedge (I^c \subseteq C^r),` or, in other words, the *reference data set* has components
   that match each of the common identifiers in :math:`I^c`, and at least one of these components is not an identifier.
   In this case the `using` clause is mandatory, and it must specify all and only the common identifiers in :math:`I^c`.
 
