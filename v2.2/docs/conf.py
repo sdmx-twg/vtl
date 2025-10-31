@@ -99,4 +99,5 @@ for op_type in next(os.walk("reference_manual/operators"))[1]:
             f.write(examples_text)
 
 
-plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml-mit-1.2023.13.jar") + " -tpng"
+plantuml = "java -jar " + os.getenv("PUML_PATH", "/tmp/plantuml.jar")
+plantuml_output_format = 'svg'

@@ -339,7 +339,7 @@ In particular, the Join operators allow to:
 
    *inner_join D*:sub:`1`, *D*:sub:`2` *using [ reference_date, geo_area ]*
 
-   matches the Data Points of D*:sub:`1`, *D*:sub:`2 *which have the same values
+   matches the Data Points of *D*:sub:`1`, *D*:sub:`2 which have the same values
    for the Identifiers *reference_date* and *geo_area*.
 
 -  filter the result of the match according to a condition, for example
