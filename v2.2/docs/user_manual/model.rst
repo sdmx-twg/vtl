@@ -238,9 +238,9 @@ Data model diagram
         Attribute -up-|> DataStructureComponent
     @enduml
 
-White box: same artefact as in GSIM 1.1
+White box: same artefact as in GSIM 2.0
 
-Light grey box: similar to GSIM 1.1
+Light grey box: similar to GSIM 2.0
 
 Explanation of the Diagram 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -306,7 +306,7 @@ functional dependent from themselves (so having also the role of
 Measure). In an equivalent way, the combinations of values of the
 Identifiers can be considered as “true” (i.e. existing), therefore it
 can be thought that there is an implicit Boolean measure having value
-“TRUE” for all the Data Points [10]_.
+“**true**” for all the Data Points [10]_.
 
 The extreme case of a Data Set having no Identifiers, Measures and
 Attributes is allowed. A Data Set of this kind contains just one scalar
@@ -343,14 +343,14 @@ integrity* requirements:
 
 -  All the Identifier Components of the Data Set must contain a
    significant value for all the Data Points (i.e. such value cannot be
-   unknown (“NULL”)).
+   unknown (“**null**”)).
 
 -  In a Data Set there cannot exist two or more Data Points having the
    same values for all the Identifier Components (i.e. the same Data
    Point key).
 
 -  When a Measure or Attribute Component has no significant value (i.e.
-   “NULL”) for a Data Point, it is considered unknown for that Data
+   “**null**”) for a Data Point, it is considered unknown for that Data
    Point.
 
 -  When a Data Point is missing (i.e. a possible combination of values
@@ -409,7 +409,7 @@ Components:
 
 As a second example, let us consider the following physical table, in
 which the symbol “###” denotes cells that are not allowed to contain a
-value or contain the “NULL” value.
+value or contain the “**null**” value.
 
    *Institutional Unit Data*
 
@@ -575,7 +575,7 @@ artefacts, other relationships among artefacts …).
     * - *Component Role*
       - *IDENTIFIER or MEASURE or ATTRIBUTE (or also VIRAL ATTRIBUTE if the automatic propagation is supported)*
     * - *Represented Variable*
-      - *the Represented Variable which defines the Component (see also below)*
+      - *the Represented Variable associated with the Component (see also below)*
 
 
 The Data Points have the same information structure of the Data Sets
@@ -618,7 +618,7 @@ Variable and Value Domain model diagram
 
             DataSet "has" *-down- "1..N" DataSetComponent
             DataSetComponent "0..N" -left-> "1..1" DataStructureComponent: "match to"
-            RepresentedVariable "1..1" <-right-  "0..N" DataStructureComponent: "defined by"
+            RepresentedVariable "0..1" <-right-  "0..N" DataStructureComponent: "defined by"
             DataSetComponent "0..N" -down-> "1..1" ValueDomainSubset: "takes value in"
             ValueDomain "1..1" -right-> "0..N" ValueDomainSubset: "includes"
             ValueDomain "1..1" -up-> "0..N" RepresentedVariable: "measures"
@@ -685,8 +685,8 @@ in the previous section (Generic Model for Data and their structures)
 
 **Data Structure Component**: a component of a Data Structure; see the
 explanation already given in the previous section (Generic Model for
-Data and their structures). A Data Structure Component is defined by a
-Represented Variable.
+Data and their structures). A Data Structure Component can be associated 
+to a Represented Variable.
 
 **Represented Variable**: a characteristic of a statistical population
 (e.g. the country of birth) represented in a specific way (e.g. through
@@ -1313,10 +1313,10 @@ A validation is intended to be a kind of Transformation. For example,
 the simple validation that *D\ 1* = *D\ 2* can be made through an “If”
 operator, with an expression of the type:
 
-   *D\ r* := If (*D\ 1* = *D\ 2* , then TRUE, else FALSE)
+   *D\ r* := If (*D\ 1* = *D\ 2* , then **true**, else **false**)
 
 In this case, the Data Set *D\ r* would have a Boolean measure
-containing the value TRUE if the validation is successful and FALSE if
+containing the value **true** if the validation is successful and **false** if
 it is unsuccessful.
 
 These are only fictitious examples for explanation purposes. The general
@@ -1483,7 +1483,7 @@ and flows” and is formally defined through the statement above.
 
 -  *D\ 1*, *D\ 2* *and D\ 3* are the Operands
 
--  If ((*D\ 1* + *D\ 2*) = *D\ 3* , then TRUE, else FALSE) is the
+-  If ((*D\ 1* + *D\ 2*) = *D\ 3* , then **true**, else **false**) is the
    Expression
 
 -  “:=”, “If”, “+” , “=” are Operators

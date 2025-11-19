@@ -649,8 +649,8 @@ combinations of values of the Identifiers to be matched. In the cases
 the match does not happen, the operation is not performed and no output
 Data Point is produced. In other words, the measures corresponding to of
 the missing combinations of Values of the Identifiers are assumed to be
-unknown and to have the value NULL, therefore the result of the
-operation is NULL as well and the output Data Point is not produced.
+unknown and to have the value **null**, therefore the result of the
+operation is **null** as well and the output Data Point is not produced.
 
 This default matching behaviour is the same as the one of the *inner
 join* Operator, which therefore is able to perform the same operation.
@@ -679,6 +679,10 @@ change the basic scalar type of the input Measure (for example, the
 behaviour of the Operators which convert one type in another, say for
 example a *number* in a *string*, is not the same and is described in a
 following section).
+
+The default behaviour is applied also for Operators which operate on data sub-types 
+(e.g. numerical operators); for example the result of the division of two integers 
+is a number and this is not to be considered a change of basic data type.
 
 As shown in the examples below, the actual behaviour depends also on the
 number of the input Data Sets and the number of their Measures.
@@ -1160,8 +1164,8 @@ of *D*:sub:`2` are unknown, it follows that the corresponding Data Points of
 *D*:sub:`r` cannot be calculated and are unknown too.
 
 Missing data are explicitly represented when some Measures or Attributes
-of a Data Point have the value “NULL”, which denotes the absence of a
-true value (the “NULL” value is not allowed for the Identifier
+of a Data Point have the value “**null**”, which denotes the absence of a
+true value (the “**null**” value is not allowed for the Identifier
 Components, in order to ensure that the Data Points are always
 identifiable).
 
@@ -1187,79 +1191,76 @@ when the absence does not mean that the phenomenon is unknown; this
 corresponds to the behaviour of the left and full join Operator.
 
 On the basic level, most of the scalar operations (arithmetic, logical,
-and others) return NULL when any of their arguments is NULL.
+and others) return **null** when any of their arguments is **null**.
 
-The general properties of the NULL are the following ones:
+The general properties of the **null** are the following ones:
 
--  **Data type.** The NULL value is the only value of multiple different
+-  **Data type.** The **null** value is the only value of multiple different
    types (i.e., all the nullable scalar types).
 
 -  **Testing**. A built-in Boolean operator **is null** can be used to
-   test if a scalar value is NULL.
+   test if a scalar value is **null**.
 
--  **Comparisons**. Whenever a NULL value is involved in a comparison
+-  **Comparisons**. Whenever a **null** value is involved in a comparison
    (>, <, >=, <=, in, not in, between) the result of the comparison is
-   NULL.
+   **null**.
 
--  **Arithmetic operations**. Whenever a NULL value is involved in a
-   mathematical operation (+, -, \*, /, …), the result is NULL.
-
--  **String operations**. In operations on Strings, NULL is considered
-   an empty String (“”).
+-  **Arithmetic operations**. Whenever a **null** value is involved in a
+   mathematical operation (+, -, \*, /, …), the result is **null**.
 
 -  **Boolean operations**. VTL adopts 3VL (three-valued logic).
    Therefore the following deduction rules are applied:
 
 ..
 
-   TRUE *or* NULL → TRUE
+   **true** *or* **null** → **true**
 
-   FALSE *or* NULL → NULL
+   **false** *or* **null** → **null**
 
-   TRUE *and* NULL → NULL
+   **true** *and* **null**L → **null**
 
-   FALSE *and* NULL → FALSE
+   **false** *and* **null** → **false**
 
--  **Conditional operations**. The NULL is considered equivalent to
-   FALSE; for example in the control structures of the type (*if (p)
+-  **Conditional operations**. The **null** is considered equivalent to
+   **false**; for example in the control structures of the type (*if (p)
    -then -else*), the action specified in *–then* is executed if the
-   predicate *p* is TRUE, while the action *-else* is executed if the
-   *p* is FALSE or NULL.
+   predicate *p* is **true**, while the action *-else* is executed if the
+   *p* is **false** or **null**.
 
--  **Filter clauses**. The NULL is considered equivalent to FALSE; for
+-  **Filter clauses**. The **null** is considered equivalent to **false**; for
    example in the filter clause [*filter p*], the Data Points for which
-   the predicate *p* is TRUE are selected and returned in the output,
-   while the Data Points for which *p* is FALSE or NULL are discarded.
+   the predicate *p* is **true** are selected and returned in the output,
+   while the Data Points for which *p* is **false** or **null** are discarded.
 
 -  **Aggregations**. The aggregations (like *sum*, *avg* and so on)
    return one Data Point in correspondence to a set of Data Points of
-   the input. In these operations, the input Data Points having a NULL
+   the input. In these operations, the input Data Points having a **null**
    value are in general not considered. In the average, for example,
    they are not considered both in the numerator (the sum) and in the
    denominator (the count). Specific cases for specific operators are
    described in the respective sections.
 
 -  **Implicit zero**. Arithmetic operators assuming implicit zeros
-   (+,-,\*,/) may generate NULL values for the Identifier Components in
+   (+,-,\*,/) may generate **null** values for the Identifier Components in
    particular cases (superset-subset relation between the set of the
-   involved Identifier Components). Because NULL values are in general
+   involved Identifier Components). Because **null** values are in general
    forbidden in the Identifiers, the final outcome of an expression must
-   not contain Identifiers having NULL values. As a momentary exception
-   needed to allow some kinds of calculations, Identifiers having NULL
+   not contain Identifiers having **null** values. As a momentary exception
+   needed to allow some kinds of calculations, Identifiers having **null**
    values are accepted in the *partial results*. To avoid runtime error,
-   possible NULL values of the Identifiers have to be fully eliminated
+   possible **null** values of the Identifiers have to be fully eliminated
    in the final outcome of the expression (through a selection, or other
    operators), so that the operation of “assignment” (:=) does not
    encounter them.
 
-If a different behaviour is desired for NULL values, it is possible to
+If a different behaviour is desired for **null** values, it is possible to
 **override** them. This can be achieved with the combination of the
 *calc* clauses and *is null* operators.
 
-For example, suppose that in a specific case the NULL values of the
+For example, suppose that in a specific case the **null** values of the
 Measure Component *M\ 1* of the Data Set *D\ 1* have to be considered
 equivalent to the number 1, the following Transformation can be used to
-multiply the Data Sets *D\ 1* and *D\ 2*, preliminarily converting NULL
+multiply the Data Sets *D\ 1* and *D\ 2*, preliminarily converting **null**
 values of *D\ 1.M\ 1* into the number 1. For detailed explanations of
 *calc* and *is null* refer to the specific sections in the Reference
 Manual.
@@ -1413,18 +1414,18 @@ Another example can be given for operations involving more input Data
 Sets (e.g. *D*:sub:`r` *:= D*:sub:`1` *+ D*:sub:`2`). Let us assume that *D*:sub:`1` and *D*:sub:`2` contain the
 births and the deaths of the United States and the Europe respectively,
 plus a viral Attribute that qualifies if the Value is estimated or not
-(having values *True* or *False*).
+(having values ***true*** or ***false***).
 
    *D*:sub:`1` = Births & Deaths of the United States
 
 +---------------+-----------------+-----------------+-----------------+
 | **Ref.Date**  | **Births**      | **Deaths**      | **Estimate**    |
 +===============+=================+=================+=================+
-| 2011          | 1000            | 1200            | False           |
+| 2011          | 1000            | 1200            | false           |
 +---------------+-----------------+-----------------+-----------------+
-| 2012          | 1300            | 1100            | False           |
+| 2012          | 1300            | 1100            | false           |
 +---------------+-----------------+-----------------+-----------------+
-| 2013          | 1200            | 1300            | True            |
+| 2013          | 1200            | 1300            | true            |
 +---------------+-----------------+-----------------+-----------------+
 
 ..
@@ -1434,11 +1435,11 @@ plus a viral Attribute that qualifies if the Value is estimated or not
 +---------------+-----------------+-----------------+-----------------+
 | **Ref.Date**  | **Births**      | **Deaths**      | **Estimate**    |
 +===============+=================+=================+=================+
-| 2011          | 1100            | 1000            | False           |
+| 2011          | 1100            | 1000            | false           |
 +---------------+-----------------+-----------------+-----------------+
-| 2012          | 1200            | 900             | True            |
+| 2012          | 1200            | 900             | true            |
 +---------------+-----------------+-----------------+-----------------+
-| 2013          | 1050            | 1100            | False           |
+| 2013          | 1050            | 1100            | false           |
 +---------------+-----------------+-----------------+-----------------+
 
 Suppose that the default propagation algorithm associated to the
@@ -1459,11 +1460,11 @@ Assuming the weights 1 for “false” and 2 for “true”, the Transformation
 +---------------+-----------------+-----------------+-----------------+
 | **Ref.Date**  | **Births**      | **Deaths**      | **Estimate**    |
 +===============+=================+=================+=================+
-| 2011          | 2100            | 2200            | False           |
+| 2011          | 2100            | 2200            | false           |
 +---------------+-----------------+-----------------+-----------------+
-| 2012          | 2500            | 2000            | True            |
+| 2012          | 2500            | 2000            | true            |
 +---------------+-----------------+-----------------+-----------------+
-| 2013          | 2250            | 2400            | True            |
+| 2013          | 2250            | 2400            | true            |
 +---------------+-----------------+-----------------+-----------------+
 
 Note also that:

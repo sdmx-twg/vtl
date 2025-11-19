@@ -31,7 +31,7 @@ Input parameters
    * - output
      - specifies the Data Points and the Measures of the resulting Data Set:
        |    · **invalid**: the resulting Data Set contains a Data Point for each Data Point of *op* and
-       |    each Rule in *dpr* that evaluates to FALSE on that Data Point. The resulting
+       |    each Rule in *dpr* that evaluates to **false** on that Data Point. The resulting
        |    Data Set has the Measures of *op*.
        |    · **all**: the resulting Data Set contains a data point for each Data Point of *op* and
        |    each Rule in *dpr*. The resulting Data Set has the *boolean* Measure bool_var.
@@ -98,13 +98,13 @@ It returns a Data Set having the following Components:
   Point (it contains at least the Rule name specified in *dpr* 8)
 * if the *output* parameter is **invalid**: the original Measures of *op* (no *boolean* measure)
 * if the *output* parameter is **all**: the *boolean* Measure bool_var whose value is the result of the evaluation
-  of a rule on a Data Point (TRUE, FALSE or NULL).
+  of a rule on a Data Point (**true**, **false** or **null**).
 * if the *output* parameter is **all_measures**: the original measures of *op* and the *boolean* Measure bool_var
-  whose value is the result of the evaluation of a rule on a Data Point (TRUE, FALSE or NULL).
+  whose value is the result of the evaluation of a rule on a Data Point (**true**, **false** or **null**).
 * the Measure errorcode that contains the errorcode specified in the rule
 * the Measure errorlevel that contains the errorlevel specified in the rule
 
 A Data Point of *op* can produce several Data Points in the resulting Data Set, each of them with a different value
 of ruleid. If *output* is **invalid** then the resulting Data Set contains a Data Point for each Data Point of *op* and each
-rule of *dpr* that evaluates to FALSE. If *output* is **all** or **all_measures** then the resulting Data Set contains a Data
+rule of *dpr* that evaluates to **false**. If *output* is **all** or **all_measures** then the resulting Data Set contains a Data
 Point for each Data Point of *op* and each rule of *dpr*.

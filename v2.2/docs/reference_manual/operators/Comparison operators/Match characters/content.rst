@@ -25,9 +25,9 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-**match_characters** returns TRUE if *op* matches the regular expression *regexp*, FALSE otherwise.
+**match_characters** returns **true** if *op* matches the regular expression *regexp*, **false** otherwise.
 
-The string *regexp* is an Extended Regular Expression as described in the POSIX standard. Different
+The string *regexp* is an Extended Regular Expression as described in the POSIX standard[^1]. Different
 implementations of VTL may implement different versions of the POSIX standard therefore it is
 possible that **match_characters** may behave in slightly different ways.
 
@@ -67,3 +67,5 @@ Behaviour
 
 The operator has the typical behaviour of the “Operators changing the data type” (see the section “Typical
 behaviours of the ML Operators”).
+
+[^1]: Please note that only POSIX Extended Regular Expressions (not ERE classes) are currently supported by VTL

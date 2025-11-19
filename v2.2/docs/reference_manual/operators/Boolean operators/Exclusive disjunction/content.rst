@@ -24,16 +24,16 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **xor** operator returns TRUE if only one of the operand is TRUE (but not both), FALSE otherwise.
+The **xor** operator returns **true** if only one of the operand is **true** (but not both), **false** otherwise.
 The two operands must be of *boolean* type.
 For example:
-| ``FALSE xor FALSE`` gives ``FALSE``
-| ``FALSE xor TRUE`` gives ``TRUE``
-| ``FALSE xor NULL`` gives ``NULL``
-| ``TRUE xor FALSE`` gives ``TRUE``
-| ``TRUE xor TRUE`` gives ``FALSE``
-| ``TRUE xor NULL`` gives ``NULL``
-| ``NULL xor NULL`` gives ``NULL``
+| ``**false** xor **false**`` gives ``**false**``
+| ``**false** xor **true**`` gives ``**true**``
+| ``**false** xor **null**`` gives ``**null**``
+| ``**true** xor **false**`` gives ``**true**``
+| ``**true** xor **true**`` gives ``**false**``
+| ``**true** xor **null**`` gives ``**null**``
+| ``**null** xor **null**`` gives ``**null**``
 
 -----------------------------
 Input parameters type

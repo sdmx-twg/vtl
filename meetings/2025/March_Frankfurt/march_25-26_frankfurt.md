@@ -88,8 +88,11 @@ Angelo presented a proposal for change of the "cast matrix" to solve some issues
 - Number --> String: EXPLICIT WITH OPTIONAL MASK (in order to allow thousand separator)
 - Integer --> String: EXPLICIT WITH OPTIONAL MASK (in order to allow thousand separator)
 - String --> Integer: EXPLICIT WITH OPTIONAL MASK (like String --> Number)
+
 The proposals have been accepted.
+
 Then the topic of how to get a scalar from a dataset was introduced (e.g. to use the result of the count() of a dataset as a scalar to filter some other dataset). Since the result of a count() is a dataset with 1 row, no identifiers and 1 measure, by default named int_var, there is the possibility of getting the desidered outcome applying a join, but it is considered to be too complex. Various proposals have been made, to be chosen via written procedure.
+
 Finally some bugs to be fixed have been presented; some of them were easy to resolve and already applied to the current version (allowing comments in the last line and updating the title of the manuals from "Python" to "VTL documentation"). The bug on allowing valueDomains values starting with "_" (#405) is considered urgent, since some default values in SDMX rely on this naming convention (e.g. "_Z"), while the one regarding string escaping (#395) has been included in the "regex" topic (see session 2). 
 
 **Actions**:
@@ -120,7 +123,7 @@ By the way, a proposal to drop the "group all" option has been made; since the c
 **Actions**:
 - A new workstream, whose members are currently Antonio and Valentino, will work on a new version of the JSON schema to align it to the VTL Information Model. Any other member/attendee can join and contribute.
 - Angelo will make corrections in the current documentation to find and fix parts in which an empty string is considedred equivalent to a null string. He will also convert to lowercase the reserved words "FALSE", "TRUE" and "NULL" wherever they are written in capital letters in the manuals.
-- A new "partition except" clause will be introduced for the analytic invocation, together with the possibility to specify "all" to allow no partition (or partition by no identifiers.
+- A new "partition except" clause will be introduced for the analytic invocation, together with the possibility to specify "all" to allow no partition (or partition by no identifiers).
 - A new operator for evaluating the distance between two strings will be defined; Hadrien and Nicolas to make a proposal for its syntax, that will allow to specify which metric to use (Levenshtein in primis) that will be approved via written procedure.
 - Angelo to specify in the documentation that only POSIX Extended Regular Expressions (not ERE classes) are currently supported by VTL.
 - A new workstream, whose members are at the moment Hadrien, Nicolas and Javier, will define how to specify lists of components to be used in different clauses (e.g. keep, drop, group by, partition by).
@@ -189,7 +192,7 @@ For small changes/issues, written procedures will be launched to be approved/rej
 - Attilio, Valentino to create 2.2 folder in gitHub; the opening of the new version and the closure of the old one will be decided and announced (roughly) by the end of the month.
 - All TF members/attendees are invited to join the above mentioned workstreams
 #### Next meetings
-A slot for VTL has been reserved within next TWG physical meeting, that will be in Salamanca from 16 to 20 of May 2025; VTL meeting will be held (in hybrid mode) on May 20 in the morning.
+A slot for VTL has been reserved within next TWG physical meeting, that will be in Salamanca from 16 to 20 of June 2025; VTL meeting will be held (in hybrid mode) on June 20 in the morning.
 
 A call for presentations about VTL implementations, use cases, technical issues will be shortly launched for hte SDMX Global Conference that will be held in Rome from September 29th to October 1st hosted by Banca d'Italia; in the capacity building part that will follow (OCtober 2-3) a VTL training session will be held.
 

@@ -36,14 +36,14 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **in** operator returns TRUE if *op* belongs to the collection, FALSE otherwise.
-The **not_in** operator returns FALSE if *op* belongs to the collection, TRUE otherwise.
+The **in** operator returns **true** if *op* belongs to the collection, **false** otherwise.
+The **not_in** operator returns **false** if *op* belongs to the collection, **true** otherwise.
 For example:
 
-| ``1 in { 1, 2, 3 }`` returns ``TRUE``
-| ``“a” in { “c, “ab”, “bb”, “bc” }`` returns ``FALSE``
-| ``“b” not_in { “b”, ”hello”, ”c”}`` returns ``FALSE``
-| ``“b” not_in { “a”, ”hello”, ”c”}`` returns ``TRUE``
+| ``1 in { 1, 2, 3 }`` returns ``**true**``
+| ``“a” in { “c, “ab”, “bb”, “bc” }`` returns ``**false**``
+| ``“b” not_in { “b”, ”hello”, ”c”}`` returns ``**false**``
+| ``“b” not_in { “a”, ”hello”, ”c”}`` returns ``**true**``
 
 -----------------------------
 Input parameters type
@@ -76,7 +76,7 @@ The operand must be of a basic scalar data type compatible with the basic scalar
 Behavior
 --------
 
-The **in** operator evaluates to TRUE if the operand is an element of the specified collection and FALSE otherwise,
+The **in** operator evaluates to **true** if the operand is an element of the specified collection and **false** otherwise,
 the **not_in** the opposite.
 
 The operator has the typical behaviour of the “Operators changing the data type” (see the section “Typical

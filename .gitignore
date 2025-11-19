@@ -14,3 +14,4 @@ Pipfile.lock
 
 # TCK
 tck/*
+.project

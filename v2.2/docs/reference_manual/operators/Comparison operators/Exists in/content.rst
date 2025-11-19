@@ -61,14 +61,14 @@ The operator takes under consideration the common Identifiers of *op1* and *op2*
 of values of these Identifiers which are in *op1* also exist in *op2*.
 
 The result has the same Identifiers as *op1* and a *boolean* Measure bool_var whose value, for each Data Point of
-*op1*, is TRUE if the combination of values of the common Identifier Components in *op1* is found in a Data Point of
-*op2*, FALSE otherwise.
+*op1*, is **true** if the combination of values of the common Identifier Components in *op1* is found in a Data Point of
+*op2*, **false** otherwise.
 
-If *retain* is **all** then both the Data Points having bool_var = TRUE and bool_var = FALSE are returned.
+If *retain* is **all** then both the Data Points having bool_var = **true** and bool_var = **false** are returned.
 
-If *retain* is **true** then only the data points with bool_var = TRUE are returned.
+If *retain* is **true** then only the data points with bool_var = **true** are returned.
 
-If *retain* is **false** then only the Data Points with bool_var = FALSE are returned.
+If *retain* is **false** then only the Data Points with bool_var = **false** are returned.
 
 If the *retain* parameter is omitted, the default is **all**.
 

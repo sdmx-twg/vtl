@@ -65,7 +65,7 @@ Element of,not_in,"op not_in collection
 
 collection ::= set | valueDomainName",Verifies if a value does not belong to a set of values
 Match_characters,match_characters,"match_characters (op, pattern)",Verifies if a value respects or not a pattern
-Isnull,isnull,isnull ( op ),Verifies if a value is NULL
+Isnull,isnull,isnull ( op ),Verifies if a value is null
 Exists in,exists_in,"exists_in ( op1, op2, retain)
 
 retain ::= { true | false | all }","As for the common identifiers of op1 and op2, verifies if the combinations of values of op1 exist in op2."

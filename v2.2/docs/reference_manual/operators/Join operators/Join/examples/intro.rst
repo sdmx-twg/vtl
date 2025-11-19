@@ -1,1 +1,0 @@
-Given the operand datasets DS_1 and DS_2, DS_3 and that || is the string concatenation:

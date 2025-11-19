@@ -22,11 +22,11 @@ Examples of valid syntaxes
 ------------------------------------
 Semantics  for scalar operations
 ------------------------------------
-The **not** operator returns TRUE if *op* is FALSE, otherwise TRUE. The input operand must be of *boolean* type.
+The **not** operator returns **true** if *op* is **false**, otherwise **true**. The input operand must be of *boolean* type.
 For example:
-| ``not FALSE`` gives ``TRUE``
-| ``not TRUE`` gives ``FALSE``
-| ``not NULL`` gives ``NULL``
+| ``not **false**`` gives ``**true**``
+| ``not **true**`` gives ``**false**``
+| ``not **null**`` gives ``**null**``
 
 -----------------------------
 Input parameters type

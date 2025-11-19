@@ -54,7 +54,7 @@ result ::
 -----------------------------
 Additional Constraints
 -----------------------------
-All the measures of *op* must be defined on the same Value Domain.
+All the measures of *op* must have the same basic scalar type, including sub-types.
 
 ---------
 Behaviour
@@ -65,7 +65,7 @@ result Data set. Its semantics can be procedurally described as follows.
 
 1. It creates a virtual Data Set VDS as a copy of *op*
 2. It adds the Identifier Component *identifier* and the Measure Component *measure* to VDS
-3. For each Data Point DP and for each Measure M of *op* whose value is not NULL, the operator 
+3. For each Data Point DP and for each Measure M of *op* whose value is not **null**, the operator 
    inserts a Data Point into VDS whose values are assigned as specified in the following points
 4. The VDS Identifiers other than *identifier* are assigned the same values as the corresponding 
    Identifiers of the *op* Data Point
@@ -74,6 +74,6 @@ result Data set. Its semantics can be procedurally described as follows.
 
 The result of the last step is the output of the operation.
 
-When a Measure is NULL then **unpivot** does not create a Data Point for that Measure.
+When a Measure is **null** then **unpivot** does not create a Data Point for that Measure.
 Note that in general pivoting and unpivoting are not exactly symmetric operations, i.e., in some cases the unpivot
 operation applied to the pivoted Data Set does not recreate exactly the original Data Set (before pivoting).

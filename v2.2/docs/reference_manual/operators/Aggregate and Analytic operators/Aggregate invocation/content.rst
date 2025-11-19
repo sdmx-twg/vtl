@@ -21,9 +21,10 @@ Syntax
     groupingClause ::= 
       |  { **group by** groupingId {, groupingId}* 
       |   | **group except** groupingId {, groupingId}* 
-      |   | **group all** conversionExpr }¹ 
+      |   | **group all** conversionExpr }¹ (*)
       | { **having** havingCondition }
 
+(*) This option is deprecated
 
 ----------------
 Input parameters
@@ -59,7 +60,7 @@ Input parameters
    * - havingCondition
      - | a condition (*boolean* expression) at component level, having only Components of
        | the input Data Sets as operands (and possibly constants), to be fulfilled by the
-       | groups of Data Points: only groups for which *havingCondition* evaluates to TRUE
+       | groups of Data Points: only groups for which *havingCondition* evaluates to **true**
        | appear in the result. The *havingCondition* refers to the groups specified through
        | the *groupingClause*, therefore it must invoke aggregate operators (e.g. **avg**,
        | **count**, **max**, ..., see also the corresponding sections). A correct example
