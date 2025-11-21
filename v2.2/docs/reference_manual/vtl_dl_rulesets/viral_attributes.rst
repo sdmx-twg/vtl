@@ -80,7 +80,7 @@ enumeratedClause ::= { ruleName **:** } **when** enumerationCondition_ **then** 
 
 .. _aggregationClause:
 
-aggregationClause ::= **aggregate** aggregateFunction
+aggregationClause ::= **aggregate** aggregateFunction_
 
 .. _defaultClause:
 
@@ -88,15 +88,11 @@ defaultClause ::= **else** vpResult
 
 .. _enumerationCondition:
 
-enumerationCondition ::= enumerationTerm { logicalOperator enumerationTerm }\*
+enumerationCondition ::= enumerationTerm_ { **or** enumerationTerm_ }\*
 
 .. _enumerationTerm:
 
-enumerationTerm ::= scalarLiteral
-
-.. _logicalOperator:
-
-logicalOperator ::= **and** | **or**
+enumerationTerm ::= scalarLiteral { **and** scalarLiteral }
 
 .. _aggregateFunction:
 
