@@ -22,7 +22,7 @@ Katrin Heinze|ECB|Katrin.Heinze@ecb.europa.eu|KatrinHeinze|VTL-TF Member|
 Laura Vignola|Istat (Italy)|vignola@istat.it|vignola|VTL-TF Member|
 Matt Nelson|BIS|matt.nelson@bis.org|agent96|VTL-TF Member|
 Nicolas Laval|Making Sense|nicolas.laval@making-sense.info|NicoLaval|VTL-TF Member|
-Noah Boerger|Bundesbank|Noah.Boerger@bundesbank.de||VTL-TF Member|
+Noah Boerger|Bundesbank|Noah.Boerger@bundesbank.de|noahboerger|VTL-TF Member|
 Romain Tailhurat|Making Sense|romain.tailhurat@making-sense.info|romaintailhurat|VTL-TF Member|
 Stefano Pambianco|ECB|stefano.pambianco@ecb.europa.eu|stefanopam|VTL-TF Member|
 Stratos Nikoloutsos|BIS|stratos.nikoloutsos@bis.org|stratosn|VTL-TF Member|
