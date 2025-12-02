@@ -18,28 +18,39 @@ on the Attribute’s Represented Variable. It is a semantic error to
 define more than one propagation rule for the same Value Domain or for
 the same Variable.
 
-The input of a propagation rule is the set of all values that the
-Attribute assumes in the operand Data Sets that participate in the
-operator call. The set ignores ordering and duplicates, because only the
-presence of a value matters; null values are part of the set only if
-they appear explicitly in the operands. The rule always returns a single
-value that becomes the propagated Attribute in the result Data Set.
+The input of a propagation rule is a **pair** of values from the viral
+Attribute. The propagation algorithm is a binary operation that is
+associative, commutative, and reflexive. When an operator involves more
+than two operands (e.g., an aggregate function or an N-ary arithmetic
+operation), the propagation rule is applied recursively to the values
+pair by pair. The final result is independent of the order in which the
+pairs are evaluated.
 
 Two modelling families are supported:
 
 * **Enumerated rules.** These rules are intended for Attributes that are
   based on enumerated Value Domains. They are expressed through ordered
-  **when** … **then** clauses. Each clause describes the combination of
-  input values that must be present in the set (using **and** / **or**
-  between values) and the resulting value that shall be produced. The
-  clauses are evaluated top-down and the first satisfied clause wins.
+  **when** … **then** clauses. Each clause describes a combination of
+  input values and the resulting value that shall be produced. The
+  clauses are evaluated in order, but **binary clauses** (specifying a
+  pair of values) always take precedence over **unary clauses**
+  (specifying a single value).
+
+  * A **binary clause** (e.g., ``when "A" and "B" then "C"``) matches
+    if the input pair consists of exactly those two values.
+  * A **unary clause** (e.g., ``when "A" then "A"``) matches if the
+    specified value is present in the input pair (regardless of what the
+    other value is).
+
+  The first matching clause determines the result. To guarantee
+  determinism and associativity, the rule must be defined such that the
+  result is consistent regardless of grouping.
+
   Optionally, an **else** clause can provide the default result for any
   combination that is not explicitly listed; when it is absent, missing
   combinations yield NULL. Every combination of values can be described
-  only once: defining two clauses that refer to the same unordered
-  combination raises a semantic error, as does creating a clause whose
-  condition is already implied by a previous one. This restriction avoids
-  cycles and ambiguous propagations.
+  only once. The use of the **or** operator is not allowed; every
+  combination must be listed explicitly.
 
 * **Aggregate rules.** These rules are meant for Attributes that use
   non-enumerated Value Domains (for example dates or numbers). The rule
@@ -88,15 +99,11 @@ defaultClause ::= **else** vpResult
 
 .. _enumerationCondition:
 
-enumerationCondition ::= enumerationTerm { logicalOperator enumerationTerm }\*
+enumerationCondition ::= enumerationTerm [ **and** enumerationTerm ]
 
 .. _enumerationTerm:
 
 enumerationTerm ::= scalarLiteral
-
-.. _logicalOperator:
-
-logicalOperator ::= **and** | **or**
 
 .. _aggregateFunction:
 
@@ -131,21 +138,13 @@ Syntax description
        uses either a single aggregation clause or a sequence of
        enumerated clauses (plus an optional default clause).
    * - *enumeratedClause*
-     - describes one combination of input values valid for enumerated
-       Value Domains. The clause is triggered when the input set contains
-       the required values as specified by the logical operators, then
-       the resulting literal is returned. The optional ruleName is a
-       label for documentation purposes only.
+     - describes a combination of input values (a pair or a single value).
+       The clause is triggered when the input pair matches the condition.
+       Binary clauses (two values) are checked before unary clauses
+       (one value).
    * - *enumerationCondition*
-     - the logical expression that lists the values that must be present
-       (via **and**) or sufficient (via **or**) in the input set. Each
-       value must be a literal that belongs to the Value Domain of the
-       Attribute. Conditions compare sets ignoring the ordering of the
-       listed values.
-   * - logicalOperator
-     - **and** requires that all the adjacent enumeration terms are
-       present in the input set. **or** requires that at least one of
-       the adjacent terms is present.
+     - specifies the values to match. It can be a single value (unary)
+       or two values separated by **and** (binary).
    * - vpResult
      - the literal value that must be propagated when the clause is
        satisfied. It must belong to the same Value Domain as the viral
@@ -180,20 +179,23 @@ Enumerated Attribute with strict priority (the CL_CONF list with
    end viral propagation
 
 Enumerated Attribute defined once for the Value Domain so that every
-Attribute using *CL_OBS_STATUS* inherits it:
+Attribute using *CL_OBS_STATUS* inherits it. Note that all combinations
+are listed explicitly:
 
 ::
 
    define viral propagation OBS_STATUS_default (valuedomain CL_OBS_STATUS) is
       when "M" then "M";
       when "L" then "L";
-      when "F" or "E" then "F";
+      when "F" then "F";
+      when "E" then "F";
       when "Q" and "P" then "Q";
       else "A"
    end viral propagation
 
 Enumerated Attribute where the combination of input values produces a
-new code (computed missing status):
+new code (computed missing status). The binary rule ``"C" and "M"``
+takes precedence over the unary rule ``"M"``:
 
 ::
 
