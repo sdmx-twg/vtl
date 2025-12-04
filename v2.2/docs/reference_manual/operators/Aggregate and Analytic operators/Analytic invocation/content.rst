@@ -16,6 +16,10 @@ analyticOperator_ **(** firstOperand { , additionalOperand }* **over (** analyti
 
       partitionClause ::= **partition by** identifier { , identifier }*
 
+                        |**partition except** identifier { , identifier }*
+
+                        |**partition except all**
+
       .. _orderClause:
       
       orderClause ::= **order by** component { **asc | desc** } { , component { **asc | desc** } }*
