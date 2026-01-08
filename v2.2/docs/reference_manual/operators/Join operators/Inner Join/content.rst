@@ -189,27 +189,23 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-Let :math:`DS_r` denote a particular join operand called *reference data set*, :math:`C^r := \{\,C^r_i \mid i = 1,\ldots,n^r\,\}`
-be the set of all the :math:`n^r` components of the *reference data set* :math:`DS_r`, and
-:math:`I^r := \{\,I^r_j \mid I^r_j \in C^r, j = 1,\ldots,m^r,\ m^r \leq n^r,\ I^r_j \text{ is an identifier}\,\}` the
-subset of :math:`C^r` containing all its :math:`m^r` identifiers.
+Let :math:`DS_i` denote a join operand, with :math:`i = 1,\ldots,n` where :math:`n` is the number of join operands; let 
+also :math:`I_i` denote the set of its identifiers.
 
-Let also :math:`DS_{nr_i}` with :math:`\forall i = 1,\ldots,(o-1)`, where :math:`o` is the number of join operands, denote
-the i-th non-reference data set, taken in any order, and :math:`I^{nr_i} := \{\,I^{nr_i}_j \mid j = 1,\ldots,m^{nr_i},\ I^{nr_i}_j \text{ is an identifier}\,\}`
-the set of its :math:`m^{nr_i}` identifiers :math:`I^{nr_i}_j`.
+**inner_join** requires that :math:`\exists\, P = { DS_{p_1},\ldots,DS_{p_n} \mid \forall p_i \in S_n \wedge \bigcap_{j=1}^{i} I_{p_j} \neq \varnothing }`,
+where :math:`S_n` denotes the lexicographically-ordered permutation of the first :math:`n` integers, or, in other words,
+that there exists a permutation of the join operands such that each operand has at least one identifier in common with
+any of the operands preceding it in that permutation.
 
-**inner_join** requires that :math:`\exists\, DS_r \wedge I^{nr_i} = I^{nr_j},\ \forall i,j = 1,\ldots,(o-1)`,
-or, in other words, that the *reference data set* must exist, and all the other, non-reference data sets must have
-exactly the same set of Identifiers, which is denoted thereafter by :math:`I^c`. Moreover, exactly one of the
-following mutually exclusive conditions must hold: 
+Moreover, an optional `using` clause may be specified to restrict which actual identifiers are used in the join. 
 
-* :math:`I^c \subseteq I^r`, or, in other words, the *reference data set* has at least all of the common identifiers in
-  :math:`I^c,` among others if any. In this case, the optional `using` clause may be specified to indicate a subset of
-  :math:`I^c` to be used as join keys, which must appear in all the data sets (including the *reference data set*). 
-
-* :math:`(I^c \nsubseteq I^r) \wedge (I^c \subseteq C^r),` or, in other words, the *reference data set* has components
-  that match each of the common identifiers in :math:`I^c`, and at least one of these components is not an identifier.
-  In this case the `using` clause is mandatory, and it must specify all and only the common identifiers in :math:`I^c`.
+* if `using` is not specified, **inner_join** performs a *natural join*, that is, it uses all the identifiers appearing
+  in more than one dataset as join keys; if the required condition does not hold, an error is raised.
+* if `using` is specified, **inner_join** removes from each of the :math:`I_i` sets those identifiers not appearing in the
+  `using` clause, and only uses the remaining identifiers as join keys if they appear in more than one dataset. If an
+  identifier is named, but does not appear in multiple datasets, an error is raised. The resulting :math:`I_i` sets must
+  still satisfy the required condition for **inner_join**. If a valid permutation that satisfies that condition cannot
+  be found as a result of this manipulation, an error is raised.
 
 The **inner_join** operator must fulfil also other constraints:
 
@@ -232,16 +228,14 @@ performed, by matching the join keys according to SQL inner join (**inner_join**
 The SQL relational join produces an intermediate result, called **virtual data set** (VDS₁); this virtual data set
 VDS₁ has the following components:
 
-* The join keys, which appear once and maintain their names, and assume the roles as they appear on the 
-  *reference data set*;
-* All the left-over identifiers of the *reference data set* which have not been used as join keys;
-* The remaining components coming from exactly one input data set, which appear once and maintain their original name
-  and role.
-* The remaining components coming from multiple data sets, which appear as many times as the data sets they come from;
-  names of each of these components are prefixed with the alias of the data set they come from, separated by the 
-  “`#`” symbol; in this context, the symbol “`#`” does not denote the membership operator, but acts just as a 
-  separator between the data set and the component name. If the aliases are not defined, the names are prefixed with
-  the data set name. If the data set name can't be determined (for example the join operand is an expression), an
+* The join keys, which appear once and maintain their names;
+* The remaining components, identifier or not, coming from exactly one input data set, which appear once and maintain
+  their original name and role.
+* The remaining components, identifier or not, coming from multiple data sets, which appear as many times as the data
+  sets they come from; names of each of these components are prefixed with the alias of the data set they come from,
+  separated by the “`#`” symbol; in this context, the symbol “`#`” does not denote the membership operator, but acts
+  just as a separator between the data set and the component name. If the aliases are not defined, the names are prefixed
+  with the data set name. If the data set name can't be determined (for example the join operand is an expression), an
   error is raised. For example, if “`population`” appears in two input data sets “`ds1`” and “`ds2`”, that have the
   aliases “`a`” and “`b`” respectively, both “`a#population`” and “`b#population`” will appear in the virtual Data
   Set; If the aliases were not specified, the names must be used (i.e. “`ds1#population`” and “`ds2#population`”). 
@@ -285,11 +279,11 @@ Then, subsequent clauses in the **inner_join** are procedurally evaluated on the
 #. Finally, all components that originally appeared in multiple input data sets, are renamed by stripping their
    previously determined prefix; if this step determines a structure with homonymous components, an error is raised.
 
-The **contents of inner_join** are ideally determined stepwise, by using the *reference data set* as the initial 
-partial result, and joining each of the other input data sets to the partial result, starting from the left side
-and proceeding towards the right side. In each step, a data point in VDS₁ is generated for each pair of data points
-in the partial result and the joined data set in which the common join keys assume the same value. Then, the step is
-repeated by joining this partial result to the next data set. 
+The **contents of inner_join** are ideally determined stepwise, by using the left-most dataset in the order defined by the
+chosen permutation as the initial partial result, and joining each of the other input data sets to the partial result,
+starting from the left side and proceeding towards the right side. In each step, a data point in VDS₁ is generated for each
+pair of data points in the partial result and the joined data set in which the common join keys assume the same value. Then,
+the step is repeated by joining this partial result to the next data set. 
 
 The **Viral Attribute propagation** in the join is the following. The Attributes explicitly calculated through the **calc**
 or **aggr** clauses are maintained unchanged. Other viral attributes, present in exactly one input data set, are also kept
