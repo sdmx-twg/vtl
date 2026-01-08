@@ -189,14 +189,14 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-Let :math:`DS_r` denote a particular join operand called *reference data set*, :math:`C^r := \{\,C^r_i \mid i = 1,\ldots,n^r\,\}`
-be the set of all the :math:`n^r` components of the *reference data set* :math:`DS_r`, and
-:math:`I^r := \{\,I^r_j \mid I^r_j \in C^r, j = 1,\ldots,m^r,\ m^r \leq n^r,\ I^r_j \text{ is an identifier}\,\}` the
-subset of :math:`C^r` containing all its :math:`m^r` identifiers.
+Let :math:`DS_r` denote a particular join operand called *reference data set*, :math:`C_r := \{\,C_i \mid i = 1,\ldots,n_r\,\}`
+be the set of all the :math:`n_r` components of the *reference data set* :math:`DS_r`, and
+:math:`I_r := \{\,I_j \mid I_j \in C_r, j = 1,\ldots,m_r,\ m_r \leq n_r,\ I_j \text{ is an identifier}\,\}` the
+subset of :math:`C_r` containing all its :math:`m_r` identifiers.
 
-Let also :math:`DS_{nr_i}` with :math:`\forall i = 1,\ldots,(o-1)`, where :math:`o` is the number of join operands, denote
-the i-th non-reference data set, taken in any order, and :math:`I^{nr_i} := \{\,I^{nr_i}_j \mid j = 1,\ldots,m^{nr_i},\ I^{nr_i}_j \text{ is an identifier}\,\}`
-the set of its :math:`m^{nr_i}` identifiers :math:`I^{nr_i}_j`.
+Let also :math:`DS_i` with :math:`\i = 1,\ldots,(k-1)`, where :math:`k` is the number of join operands, denote
+the i-th non-reference data set, taken in any order, and :math:`I_i := \{\,I_j \mid j = 1,\ldots,m_i,\ I_j \text{ is an identifier}\,\}`
+the set of its :math:`m_i}` identifiers.
 
 **inner_join** requires that :math:`\exists\, DS_r \wedge I^{nr_i} = I^{nr_j},\ \forall i,j = 1,\ldots,(o-1)`,
 or, in other words, that the *reference data set* must exist, and all the other, non-reference data sets must have
