@@ -87,11 +87,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         wget -O /tmp/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025.9/plantuml-1.2025.9.jar
-    - name: Sphynx build manuals
-      run: |
-        sphinx-build -M html v${{ matrix.version }}/docs outputdir/${{ matrix.version }}/
-        sphinx-build -b pdf ${{ matrix.version }}/docs outputdir/${{ matrix.version }}/html/pdf
-    - name: Upload HTML docs ${{ matrix.version }}
+    - name: Build html v${{ matrix.version }}
+      run: sphinx-build -M html v${{ matrix.version }}/docs outputdir/${{ matrix.version }}/
+    - name: Upload html v${{ matrix.version }}
       uses: actions/upload-artifact@v4
       with:
         name: docs-${{ matrix.version }}-html
@@ -99,7 +97,9 @@ jobs:
         path: |
           outputdir/${{ matrix.version }}/html
           !outputdir/${{ matrix.version }}/html/pdf
-    - name: Upload PDF docs ${{ matrix.version }}
+    - name: Build pdf v${{ matrix.version }}
+      run: sphinx-build -b pdf ${{ matrix.version }}/docs outputdir/${{ matrix.version }}/html/pdf
+    - name: Upload pdf ${{ matrix.version }}
       uses: actions/upload-artifact@v4
       with:
         name: docs-${{ matrix.version }}-pdf
