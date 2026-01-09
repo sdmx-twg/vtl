@@ -98,7 +98,7 @@ jobs:
           outputdir/${{ matrix.version }}/html
           !outputdir/${{ matrix.version }}/html/pdf
     - name: Build pdf v${{ matrix.version }}
-      run: sphinx-build -b pdf ${{ matrix.version }}/docs outputdir/${{ matrix.version }}/html/pdf
+      run: sphinx-build -b pdf v${{ matrix.version }}/docs outputdir/${{ matrix.version }}/html/pdf
     - name: Upload pdf ${{ matrix.version }}
       uses: actions/upload-artifact@v4
       with:
