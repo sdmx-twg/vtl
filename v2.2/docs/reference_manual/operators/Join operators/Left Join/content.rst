@@ -186,22 +186,30 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-Let :math:`DS_i` denote the i-th join operand taken from left to right, :math:`\forall i = 1,\ldots,n` where :math:`n` is
-the number of these, and with :math:`I^i := \{\,I^i_j \mid j = 1,\ldots,m^i,\ I^i_j \text{ is an identifier}\,\}` the
-set of identifiers of :math:`DS_i`. Let also :math:`C^1 := \{\,C^1_i \mid i = 1,\ldots,n^1\,\}` be the set of 
-the components :math:`C^1_i` of the left-most data set :math:`DS_1`.
+Let :math:`DS_i` denote the i-th join operand taken from left to right, :math:`i = 1,\ldots,n` where :math:`n` is
+the number of these, and with :math:`I_i := \{\,I_j \mid j = 1,\ldots,m_i,\ I_j \text{ is an identifier}\,\}` the
+set of identifiers of :math:`DS_i`.
 
-**left_join** requires that :math:`I^i = I^j,\ \forall i,j = 2,\ldots,n`, or, in other words, that all the joined data
-sets, except the left-most one, must have exactly the same set of identifiers, which is denoted thereafter by :math:`I^c`.
+**left_join** requires that exactly one of the following mutually exclusive conditions must hold:
+
+:math:`I_1 \cap I_i \neq \varnothing,\ \forall i = 2,\ldots,n`, or in other words, that all 
+the joined data sets, from the second on, must share at least one identifier with the left-most dataset.
+
 Moreover, exactly one of the following mutually exclusive conditions must hold:
 
-* :math:`I^c \subseteq I^1`, or, in other words, the left-most data set has at least all of the common identifiers in
-  :math:`I^c`, among others if any. In this case, the optional `using` clause may be specified to indicate a subset of
-  :math:`I^c` to be used as join keys, which must appear in all the data sets (including the left-most data set). 
+* :math:`I_i \subseteq I_1\ \wedge I_i = I_j,\ \forall i,j = 2,\ldots,n`, or in other words, that all the join operands
+  from the second on have exactly the same identifiers, and the left-most operand contains them all; in this case, the
+  `using` clause is optional.
+* :math:`I_1 \cap I_i \neq \varnothing,\ \forall i = 2,\ldots,n`, or in other words, that all the join operands from the
+  second on, share at least one identifier with the left-most dataset; in this case the `using` clause is mandatory.
 
-* :math:`(I^c \nsubseteq I^1) \wedge (I^c \subseteq C^1)`, or in other words, the left-most data set has components
-  that match each of the common identifiers in :math:`I^c`, and at least one of these components is not an identifier.
-  In this case the `using` clause is mandatory, and it must specify all and only the common identifiers in :math:`I^c`.
+When specified, the `using` clause can specify one or more of the identifiers common to all datasets to be used as global
+join keys, and it must also specify a nvl() expression for each other identifier in each of the join operands, except the
+left-most one, that was not used as a global join key. When an identifier mentioned in a nvl() expression is shared by
+multiple operands, different nvl() rules can be used for the identifier for each join operand that contains it, by
+prefixing the identifier name with the alias of the operand; If a prefix is not used, the same nvl() clause apply,
+indipendently of whichever join operand that identifier comes from. Each nvl() clause must specify a constant value as the
+second operand that can be casted to the valuedomain subset of the identifier being substituted.
 
 **left_join** sub-expressions must also satisfy other constraints:
 

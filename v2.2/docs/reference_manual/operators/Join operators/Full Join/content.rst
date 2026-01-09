@@ -184,10 +184,26 @@ Additional Constraints
 The aliases must be all distinct, and are mandatory for data sets which appear more than once in the Join (self-join)
 and for non-named data set obtained as result of a sub-expression.
 
-Let :math:`I^i := \{\,I^i_j \mid j = 1,\ldots,m^i,\ I^i_j \text{is an identifier}\,\}`, with :math:`\forall i = 1,\ldots,n`
-denote the set of identifiers of i-th join operand :math:`DS_i`, in any order. **full_join** requires that 
-:math:`\exists\, I^c \mid I^c = I^i = I^j,\ \forall i,j = 1,\ldots,n`, or in other words, all the input data sets
-must have exactly the same identifiers. 
+Let :math:`I_i := \{\,I_j \mid j = 1,\ldots,m_i,\ I_j \text{is an identifier}\,\}`, with :math:`i = 1,\ldots,n`
+denote the set of identifiers of i-th join operand :math:`DS_i`, in any order.
+
+**full_join** requires that :math:`\bigcap_{i=1}^n I_i \neq \varnothing`, or in other words, that all the joined data
+sets must share a common set of identifiers.
+
+Moreover, exactly one of the following alternative conditions must hold:
+
+* :math:`I_i = I_j,\ \forall i,j = 1,\ldots,n`, or in other words, that all the input data sets must have exactly the
+  same identifiers; in this case the `using` clause is optional.
+* :math:`\bigcap_{i=1}^n I_i \neq \varnothing`, or in other words, that all the joined data sets must share a common set
+  of identifiers; in this case, the `using` clause is mandatory.
+
+When specified, the `using` clause must specify at least one of the common identifiers to be used as join keys, and it
+must also specify a nvl() expression for each other identifier in each of the joined dataset that is not used as a join
+key. When an identifier shared by more than one dataset is not used as a join key, different nvl() rules can be used for
+the identifier for each join operand that contains it, by prefixing the identifier name with the alias of the operand;
+If a prefix is not used, the same nvl() clause apply, indipendently of whichever join operand that identifier comes from.
+Each nvl() clause must specify a constant value as the second operand that can be casted to the valuedomain subset of the
+identifier being substituted.
 
 The **full_join** operator must fulfil also other constraints:
 
