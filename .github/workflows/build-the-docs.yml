@@ -25,6 +25,10 @@ jobs:
     name: build-docs
     runs-on: ubuntu-latest
     if: ${{ !contains(github.event.head_commit.message, '#no-gha') }}
+    strategy:
+      matrix:
+        # Specify the maintained VTL versions
+        version: [ "2.1", "2.2" ]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -60,7 +64,23 @@ jobs:
     - name: Upload Pages artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./outputdir
+        path: outputdir
+    # Upload preview html artifact
+    - name: Upload HTML docs ${{ matrix.version }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-${{ matrix.version }}-html
+        if-no-files-found: error
+        path: |
+          outputdir/${{ matrix.version }}/html/**
+          !outputdir/${{ matrix.version }}/html/pdf/**
+    # Upload preview pdf artifact
+    - name: Upload PDF docs ${{ matrix.version }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-${{ matrix.version }}-pdf
+        if-no-files-found: error
+        path: outputdir/${{ matrix.version }}/html/pdf/latex/vtl.pdf
 
   # Deployment job
   deploy:
