@@ -4,6 +4,7 @@ Syntax
 
 
     **full_join** **(** ds1 { **as** alias1 }, ds2 { **as** alias2 } { , dsN { **as** aliasN } }* 
+      | { using usingComp { , usingComp }* }
       | { **filter** filterCondition }
       | { **apply** applyExpr 
       | |     **calc** calcClause_ 
@@ -41,6 +42,8 @@ Input parameters
    * - alias
      - | optional aliases for the input data sets, valid only within the “join” operation
        | to make it easier to refer to them. If omitted, the data set name must be used.
+   * - usingComp
+     - | component of the input data sets whose values have to match in the join
    * - filterCondition
      - | a condition (*boolean* expression) at component level, having only Components
        | of the input data sets as operands, which is evaluated for each joined
@@ -100,7 +103,7 @@ Examples of valid syntaxes
 --------------------------
 .. code-block::
 
-  full_join ( ds1 as d1,  ds2 as d2
+  full_join ( ds1 as d1,  ds2 as d2 using Id1, Id2
               filter d1#Me1 + d2#Me1 <10, 
               aggr Me1 := sum(Me1), attribute At20 := avg(Me2)
               group by  Id1, Id2 
@@ -122,6 +125,10 @@ ds1, …, dsN  ::
 alias1, …, aliasN  ::
 
     name
+
+usingId ::
+
+    name<component>
 
 filterCondition ::
 
@@ -217,9 +224,8 @@ The **full_join** operator must fulfil also other constraints:
 Behaviour
 ---------
 
-First, the join keys are selected implicitly as all the identifiers are common to all the input datasets. Then
-a *relational join* of the input operands is performed, by matching the join keys according to SQL full outer join
-(**full_join**).
+First, the join keys are determined, either implicitly or by the `using` clause. Then a *relational join* of 
+the input operands is performed, by matching the join keys according to SQL full outer join (**full_join**).
 
 The SQL relational join produces an intermediate result, called **virtual data set** (VDS₁); this virtual data set
 VDS₁ has the following components:
