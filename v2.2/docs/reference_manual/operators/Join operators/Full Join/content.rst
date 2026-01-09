@@ -197,13 +197,10 @@ Moreover, exactly one of the following alternative conditions must hold:
 * :math:`\bigcap_{i=1}^n I_i \neq \varnothing`, or in other words, that all the joined data sets must share a common set
   of identifiers; in this case, the `using` clause is mandatory.
 
-When specified, the `using` clause must specify at least one of the common identifiers to be used as join keys, and it
-must also specify a nvl() expression for each other identifier in each of the joined dataset that is not used as a join
-key. When an identifier shared by more than one dataset is not used as a join key, different nvl() rules can be used for
-the identifier for each join operand that contains it, by prefixing the identifier name with the alias of the operand;
-If a prefix is not used, the same nvl() clause apply, indipendently of whichever join operand that identifier comes from.
-Each nvl() clause must specify a constant value as the second operand that can be casted to the valuedomain subset of the
-identifier being substituted.
+When specified, the `using` clause must specify at least one of the common identifiers and a nvl() expression for 
+every non common identifier of the joined data sets that are used as join key. Different nvl() rules can be used for
+identifiers contained in more than one joined data set by prefixing the identifier name with the alias of the operand;
+if a prefix is not used, the same nvl() clause apply to all join operands that contain the identifier.
 
 The **full_join** operator must fulfil also other constraints:
 
