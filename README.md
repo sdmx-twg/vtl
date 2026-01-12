@@ -8,7 +8,7 @@ The specifications for exchanging VTL validation rules in SDMX messages, for sto
 --- 
 # VTL Versions
 
-The current official version of the language is [v2.1](https://sdmx-twg.github.io/vtl/2.1/sdmx-twg/vtl/tree/master/v2.1) and it includes:
+The current official version of the language is [v2.1](https://sdmx-twg.github.io/vtl/2.1/) and it includes:
 
 * [User Manual](https://sdmx-twg.github.io/vtl/2.1/user_manual/index.html) highlighting the main characteristics of VTL, its core assumptions and the information model the language is based on;
 * [Reference Manual](https://sdmx-twg.github.io/vtl/2.1/reference_manual/index.html), describing the full library of operators ordered by category, with examples;
