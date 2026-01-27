@@ -32,6 +32,8 @@ Semantics  for scalar operations
 ------------------------------------
 Returns the distance between two strings using the specified distance method.
 
+All distance methods are **symmetric** (commutative), meaning that ``string_distance(method, string1, string2)`` equals ``string_distance(method, string2, string1)``.
+
 * **levenshtein**: Returns the Levenshtein distance, which is the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into another.
 * **damerau–levenshtein**: Returns the Damerau–Levenshtein distance, which extends Levenshtein distance by including transpositions of adjacent characters as a single operation.
 * **hamming**: Returns the Hamming distance, which is the number of positions at which the corresponding characters are different. Both strings must have the same length.
