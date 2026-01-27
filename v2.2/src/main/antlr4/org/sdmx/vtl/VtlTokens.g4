@@ -184,6 +184,7 @@ STDDEV_POP          : 'stddev_pop';
 STDDEV_SAMP         : 'stddev_samp';
 STOCK_TO_FLOW       : 'stock_to_flow';
 STRING              : 'string';
+STRING_DISTANCE     : 'string_distance';
 STRUCTURE           : 'structure';
 SUBSPACE            : 'sub';
 SUBSTR              : 'substr';
@@ -214,6 +215,12 @@ WITH                : 'with';
 XOR                 : 'xor';
 YEAR_OP             : 'getyear';
 YEARTODAY           : 'yeartoday';
+
+// String distance method tokens
+LEVENSHTEIN_METHOD      : '"levenshtein"';
+DAMERAU_LEVENSHTEIN_METHOD : '"damerau–levenshtein"';
+HAMMING_METHOD          : '"hamming"';
+JARO_WINKLER_METHOD     : '"jaro-winkler"';
 
 // Literals definition
 NULL_CONSTANT    : 'null';
