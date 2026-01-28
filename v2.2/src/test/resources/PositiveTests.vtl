@@ -346,6 +346,30 @@ temp := length(DS_1);
 ## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[UnaryStringFunction[VarIdExpr[VarID]]]]]]
 DS_r := length(DS_1);
 
+## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[StringDistanceAtom[StringDistanceMethods ConstantExpr[StringLiteral] ConstantExpr[StringLiteral]]]]]]
+temp := string_distance("levenshtein", "kitten", "sitting");
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[StringDistanceAtom[StringDistanceMethods VarIdExpr[VarID] VarIdExpr[VarID]]]]]]
+temp := string_distance("levenshtein", DS_1, DS_2);
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[StringDistanceAtom[StringDistanceMethods ConstantExpr[StringLiteral] ConstantExpr[StringLiteral]]]]]]
+temp := string_distance("damerau–levenshtein", "kitten", "sitting");
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[StringDistanceAtom[StringDistanceMethods ConstantExpr[StringLiteral] ConstantExpr[StringLiteral]]]]]]
+temp := string_distance("hamming", "karolin", "kathrin");
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[StringDistanceAtom[StringDistanceMethods ConstantExpr[StringLiteral] ConstantExpr[StringLiteral]]]]]]
+temp := string_distance("jaro-winkler", "MARTHA", "MARHTA");
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[StringFunctions[StringDistanceAtom[StringDistanceMethods VarIdExpr[VarID] VarIdExpr[VarID]]]]]]
+DS_r := string_distance("levenshtein", DS_1, DS_2);
+
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[StringFunctionsComponents[StringDistanceAtomComponent[StringDistanceMethods CompId[ComponentID] ConstantExprComp[StringLiteral]]]]]]]]]]
+DS_r := DS_1[calc Me_2:= string_distance("hamming", Me_1, "karolin")];
+
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[StringFunctionsComponents[StringDistanceAtomComponent[StringDistanceMethods CompId[ComponentID] CompId[ComponentID]]]]]]]]]]
+DS_r := DS_1[calc Me_2:= string_distance("levenshtein", Me_1, Me_2)];
+
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[StringFunctionsComponents[UnaryStringFunctionComponent[CompId[ComponentID]]]]]]]]]]
 DS_r:= DS_1[calc Me_2:=length(Me_1)];
 

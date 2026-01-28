@@ -273,6 +273,27 @@ length()
 //more than one operands used
 length(DS_1, "hi")
 
+//no operands used
+string_distance()
+
+//missing operands
+string_distance("levenshtein")
+
+//missing one operand
+string_distance("levenshtein", "hello")
+
+//too many operands
+string_distance("levenshtein", "hello", "world", "extra")
+
+//invalid method parameter
+string_distance(_, "hello", "world")
+
+//missing method parameter
+string_distance(, "hello", "world")
+
+//unknown method parameter
+string_distance("unknown_method", "hello", "world")
+
 //second operand missing
 DS_r := DS_1 + 
 
