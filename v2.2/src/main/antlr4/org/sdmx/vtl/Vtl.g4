@@ -168,11 +168,16 @@ parameter:
     | OPTIONAL
 ;
 
+stringDistanceMethods:
+    LEVENSHTEIN_METHOD | DAMERAU_LEVENSHTEIN_METHOD | HAMMING_METHOD | JARO_WINKLER_METHOD
+;
+
 stringOperators:
     op=(TRIM | LTRIM | RTRIM | UCASE | LCASE | LEN) LPAREN expr RPAREN	                                    # unaryStringFunction
     | SUBSTR LPAREN expr (((COMMA startParameter=optionalExpr) (COMMA endParameter=optionalExpr))? | COMMA startParameter=optionalExpr ) RPAREN     # substrAtom
     | REPLACE LPAREN expr COMMA param=expr ( COMMA optionalExpr)? RPAREN				                    # replaceAtom
     | INSTR LPAREN expr COMMA pattern=expr ( COMMA startParameter=optionalExpr)? (COMMA occurrenceParameter=optionalExpr)? RPAREN	            # instrAtom
+    | STRING_DISTANCE LPAREN method=stringDistanceMethods COMMA string1=expr COMMA string2=expr RPAREN                      # stringDistanceAtom
 ;
 
 stringOperatorsComponent:
@@ -180,6 +185,7 @@ stringOperatorsComponent:
     | SUBSTR LPAREN exprComponent (((COMMA startParameter=optionalExprComponent) (COMMA endParameter=optionalExprComponent))? | COMMA startParameter=optionalExprComponent )  RPAREN  # substrAtomComponent
     | REPLACE LPAREN exprComponent COMMA param=exprComponent ( COMMA optionalExprComponent)? RPAREN                                 # replaceAtomComponent
     | INSTR LPAREN exprComponent COMMA pattern=exprComponent ( COMMA startParameter=optionalExprComponent)? (COMMA occurrenceParameter=optionalExprComponent)? RPAREN    # instrAtomComponent
+    | STRING_DISTANCE LPAREN method=stringDistanceMethods COMMA string1=exprComponent COMMA string2=exprComponent RPAREN                      # stringDistanceAtomComponent
 ;
 
 numericOperators:
