@@ -129,8 +129,10 @@ subspaceClause:
 /************************************************** JOIN FUNCITONS -------------------------------------------*/
 
 joinOperators:
-     joinKeyword=(INNER_JOIN | LEFT_JOIN) LPAREN joinClause joinBody RPAREN                                     # joinExpr
-     | joinKeyword=(FULL_JOIN | CROSS_JOIN) LPAREN joinClauseWithoutUsing joinBody RPAREN                       # joinExpr
+     INNER_JOIN LPAREN joinClause usingClause? joinBody RPAREN                      # innerJoinExpr
+     | LEFT_JOIN LPAREN joinClause (usingClause nvlJoinClause*)? joinBody RPAREN    # leftJoinExpr
+     | FULL_JOIN LPAREN joinClause (usingClause nvlJoinClause*)? joinBody RPAREN    # fullJoinExpr
+     | CROSS_JOIN LPAREN joinClause joinBody RPAREN                                 # crossJoinExpr
 ;
 
 /************************************************** END JOIN FUNCITONS -------------------------------------------*/
@@ -146,7 +148,7 @@ defOperators:
 /*---------------------------------------------------FUNCTIONS-------------------------------------------------*/
 genericOperators:
     operatorID LPAREN (parameter (COMMA parameter)*)? RPAREN                                                                                                                    # callDataset
-    | EVAL LPAREN routineName LPAREN (varID|scalarItem)? (COMMA (varID|scalarItem))* RPAREN (LANGUAGE STRING_CONSTANT)? (RETURNS evalDatasetType)? RPAREN                               # evalAtom
+    | EVAL LPAREN routineName LPAREN (varID|scalarItem)? (COMMA (varID|scalarItem))* RPAREN (LANGUAGE STRING_CONSTANT)? (RETURNS evalDatasetType)? RPAREN                       # evalAtom
     | CAST LPAREN expr COMMA (basicScalarType|valueDomainName) (COMMA STRING_CONSTANT)? RPAREN                                                                                  # castExprDataset
 ;
 
@@ -381,17 +383,17 @@ scalarItem:
 
 /*---------------------------------------------JOIN CLAUSE EXPRESSION---------------------------------------*/
 
-joinClauseWithoutUsing:
-    joinClauseItem (COMMA joinClauseItem)*
-;
-
 joinClause:
-    joinClauseItem (COMMA joinClauseItem)* (USING componentID (COMMA componentID)*)?
-;
+    joinClauseItem (COMMA joinClauseItem)*?;
 
 joinClauseItem:
-    expr (AS alias)?
-;
+    expr (AS alias)?;
+
+usingClause:
+    USING componentID (COMMA componentID)*;
+
+nvlJoinClause:
+    COMMA NVL LPAREN componentID COMMA constant RPAREN;
 
 joinBody:
     filterClause? (calcClause|joinApplyClause|aggrClause)? (keepOrDropClause)? renameClause?

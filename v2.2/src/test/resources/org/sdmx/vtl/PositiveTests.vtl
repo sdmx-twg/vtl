@@ -188,14 +188,14 @@ ds2 := ds1[calc m2 := length(GEO_AREA)];
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[GenericFunctionsComponents[CastExprComponent[CompId[ComponentID] ValueDomainName]]]]]]]]]
 ds2 := ds1 [ calc m2 := cast (GEO, GEO_AREA1) ];
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias] ComponentID ComponentID] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] JoinApplyClause[ArithmeticExpr[VarIdExpr[VarID] VarIdExpr[VarID]]] KeepOrDropClause[ComponentID ComponentID ComponentID] RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[InnerJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] UsingClause[ComponentID ComponentID] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] JoinApplyClause[ArithmeticExpr[VarIdExpr[VarID] VarIdExpr[VarID]]] KeepOrDropClause[ComponentID ComponentID ComponentID] RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
 temp := inner_join ( ds1 as d1, ds2 as d2 using Id1, Id2 filter d1#Me1 + d2#Me1 <10
 apply d1 / d2
 keep Me1, Me2, Me3
 rename Id1 to Id10, id2 to id20
 );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]]]] KeepOrDropClause[ComponentID] RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[LeftJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]]]] KeepOrDropClause[ComponentID] RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
 temp := left_join ( ds1 as d1, ds2 as d2
 filter d1#Me1 + d2#Me1 <10
 calc Me1 := d1#Me1 + d2#Me3
@@ -203,7 +203,23 @@ keep Me1
 rename Id1 to Ident1, Me1 to Meas1
 );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClauseWithoutUsing[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] AggrClause[AggregateClause[AggrFunctionClause[ComponentID AggrComp[CompId[ComponentID]]] AggrFunctionClause[ComponentRole ComponentID AggrComp[CompId[ComponentID]]]] GroupByOrExcept[ComponentID ComponentID] HavingClause[ComparisonExprComp[FunctionsExpressionComp[AggregateFunctionsComponents[AggrComp[CompId[ComponentID]]]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]]]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[LeftJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] UsingClause[ComponentID ComponentID] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]]]] KeepOrDropClause[ComponentID] RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
+temp := left_join ( ds1 as d1, ds2 as d2 using id1, id2
+filter d1#Me1 + d2#Me1 <10
+calc Me1 := d1#Me1 + d2#Me3
+keep Me1
+rename Id1 to Ident1, Me1 to Meas1
+);
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[LeftJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] UsingClause[ComponentID ComponentID] NvlJoinClause[ComponentID StringLiteral] NvlJoinClause[ComponentID StringLiteral] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]]]] KeepOrDropClause[ComponentID] RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
+temp := left_join ( ds1 as d1, ds2 as d2 using id1, id2, nvl(ds1#id1, "ds3/N"), nvl(ds2#id1, "ds2/N")
+filter d1#Me1 + d2#Me1 <10
+calc Me1 := d1#Me1 + d2#Me3
+keep Me1
+rename Id1 to Ident1, Me1 to Meas1
+);
+
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[FullJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[FilterClause[ComparisonExprComp[ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]] AggrClause[AggregateClause[AggrFunctionClause[ComponentID AggrComp[CompId[ComponentID]]] AggrFunctionClause[ComponentRole ComponentID AggrComp[CompId[ComponentID]]]] GroupByOrExcept[ComponentID ComponentID] HavingClause[ComparisonExprComp[FunctionsExpressionComp[AggregateFunctionsComponents[AggrComp[CompId[ComponentID]]]] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]]]]]]]]]]
 temp := full_join (ds1 as d1, ds2 as d2
 filter d1#Me1 + d2#Me1 <10
 aggr Me1:= sum(Me1), attribute At20:=avg(Me2)
@@ -211,28 +227,28 @@ group by Id1, Id2
 having sum(Me3)>0
 );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[KeepOrDropClause[ComponentID ComponentID ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[InnerJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[KeepOrDropClause[ComponentID ComponentID ComponentID]]]]]]]
 DS_r := inner_join ( DS_1 as d1, DS_2 as d2 keep Me_1, d2#Me_2, Me_1A);
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[KeepOrDropClause[ComponentID ComponentID ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[LeftJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[KeepOrDropClause[ComponentID ComponentID ComponentID]]]]]]]
 DS_r := left_join ( DS_1 as d1, DS_2 as d2 keep Me_1, d2#Me_2, Me_1A );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClauseWithoutUsing[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[KeepOrDropClause[ComponentID ComponentID ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[FullJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[KeepOrDropClause[ComponentID ComponentID ComponentID]]]]]]]
 DS_r := full_join ( DS_1 as d1, DS_2 as d2 keep Me_1, d2#Me_2, Me_1A );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClauseWithoutUsing[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[CrossJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[RenameClause[RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID] RenameClauseItem[ComponentID ComponentID]]]]]]]]
 DS_r := cross_join (DS_1 as d1, DS_2 as d2 rename d1#Id_1 to Id11, d1#Id_2 to Id12, d2#Id1 to Id21, d2#Id2 to Id22, d1#Me_2 to Me12 );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[FilterClause[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]]]] KeepOrDropClause[ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[InnerJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[FilterClause[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] CompId[ComponentID]]]] KeepOrDropClause[ComponentID]]]]]]]
 DS_r := inner_join (DS_1 as d1, DS_2 as d2 filter Me_1 ="A" calc Me_4 := Me_1||Me_1A drop d1#Me_2);
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID]]] JoinBody[FilterClause[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] ConstantExprComp[StringLiteral]]]] KeepOrDropClause[ComponentID ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[InnerJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID]]] JoinBody[FilterClause[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]]] CalcClause[CalcClauseItem[ComponentID ArithmeticExprOrConcatComp[CompId[ComponentID] ConstantExprComp[StringLiteral]]]] KeepOrDropClause[ComponentID ComponentID]]]]]]]
 DS_r := inner_join ( DS_1
 filter Id_2 ="B"
 calc Me_2 := Me_2 ||"_NEW"
  keep Me_1, Me_2);
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[JoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[JoinApplyClause[ArithmeticExprOrConcat[VarIdExpr[VarID] VarIdExpr[VarID]]]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[JoinFunctions[InnerJoinExpr[JoinClause[JoinClauseItem[VarIdExpr[VarID] Alias] JoinClauseItem[VarIdExpr[VarID] Alias]] JoinBody[JoinApplyClause[ArithmeticExprOrConcat[VarIdExpr[VarID] VarIdExpr[VarID]]]]]]]]]
 DS_r := inner_join ( DS_1 as d1, DS_2 as d2 apply d1 || d2);
 
 ## Start[TemporaryAssignment[VarID ArithmeticExprOrConcat[ConstantExpr[StringLiteral] ConstantExpr[StringLiteral]]]]
@@ -1037,7 +1053,7 @@ DS_r := DS_1 [ sub Id_1 = 1, Id_2 = "B", Id_3 = "YY"];
 DS_r := DS_1 [sub Id_2 ="A"] + DS_1 [sub Id_2 ="B"];
 
 ## Start[TemporaryAssignment[VarID ArithmeticExprOrConcat[ConstantExpr[IntegerLiteral[SignedInteger]] VarIdExpr[VarID]]]]
-// Test SDMX identifiers
+// Test SDMX identifiers and identifiers starting with _
 DS_r := 1 + ECB:EXR;
 
 ## Start[TemporaryAssignment[VarID ArithmeticExpr[VarIdExpr[VarID] VarIdExpr[VarID]]]]
@@ -1051,3 +1067,6 @@ DS_r := ECB:EXR(1.0):....[sub CURRENCY = "USD"];
 
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]]]]
 DS_r:='ECB:EXR(1.0):....'[sub CURRENCY = "USD"];
+
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[IntegerLiteral[SignedInteger]]] SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]]]]
+DS_r := _DS_1 [ sub _Id_1 = 1, _Id_2 = "A"];
