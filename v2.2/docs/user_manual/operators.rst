@@ -339,7 +339,7 @@ In particular, the Join operators allow to:
 
    *inner_join D*:sub:`1`, *D*:sub:`2` *using [ reference_date, geo_area ]*
 
-   matches the Data Points of D*:sub:`1`, *D*:sub:`2 *which have the same values
+   matches the Data Points of *D*:sub:`1`, *D*:sub:`2 which have the same values
    for the Identifiers *reference_date* and *geo_area*.
 
 -  filter the result of the match according to a condition, for example
@@ -679,6 +679,10 @@ change the basic scalar type of the input Measure (for example, the
 behaviour of the Operators which convert one type in another, say for
 example a *number* in a *string*, is not the same and is described in a
 following section).
+
+The default behaviour is applied also for Operators which operate on data sub-types 
+(e.g. numerical operators); for example the result of the division of two integers 
+is a number and this is not to be considered a change of basic data type.
 
 As shown in the examples below, the actual behaviour depends also on the
 number of the input Data Sets and the number of their Measures.

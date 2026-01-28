@@ -575,7 +575,7 @@ artefacts, other relationships among artefacts …).
     * - *Component Role*
       - *IDENTIFIER or MEASURE or ATTRIBUTE (or also VIRAL ATTRIBUTE if the automatic propagation is supported)*
     * - *Represented Variable*
-      - *the Represented Variable which defines the Component (see also below)*
+      - *the Represented Variable associated with the Component (see also below)*
 
 
 The Data Points have the same information structure of the Data Sets
@@ -618,7 +618,7 @@ Variable and Value Domain model diagram
 
             DataSet "has" *-down- "1..N" DataSetComponent
             DataSetComponent "0..N" -left-> "1..1" DataStructureComponent: "match to"
-            RepresentedVariable "1..1" <-right-  "0..N" DataStructureComponent: "defined by"
+            RepresentedVariable "0..1" <-right-  "0..N" DataStructureComponent: "defined by"
             DataSetComponent "0..N" -down-> "1..1" ValueDomainSubset: "takes value in"
             ValueDomain "1..1" -right-> "0..N" ValueDomainSubset: "includes"
             ValueDomain "1..1" -up-> "0..N" RepresentedVariable: "measures"
@@ -685,8 +685,8 @@ in the previous section (Generic Model for Data and their structures)
 
 **Data Structure Component**: a component of a Data Structure; see the
 explanation already given in the previous section (Generic Model for
-Data and their structures). A Data Structure Component is defined by a
-Represented Variable.
+Data and their structures). A Data Structure Component can be associated 
+to a Represented Variable.
 
 **Represented Variable**: a characteristic of a statistical population
 (e.g. the country of birth) represented in a specific way (e.g. through

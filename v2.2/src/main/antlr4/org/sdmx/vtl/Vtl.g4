@@ -129,8 +129,10 @@ subspaceClause:
 /************************************************** JOIN FUNCITONS -------------------------------------------*/
 
 joinOperators:
-     joinKeyword=(INNER_JOIN | LEFT_JOIN) LPAREN joinClause joinBody RPAREN                                     # joinExpr
-     | joinKeyword=(FULL_JOIN | CROSS_JOIN) LPAREN joinClauseWithoutUsing joinBody RPAREN                       # joinExpr
+     INNER_JOIN LPAREN joinClause usingClause? joinBody RPAREN                      # innerJoinExpr
+     | LEFT_JOIN LPAREN joinClause (usingClause nvlJoinClause*)? joinBody RPAREN    # leftJoinExpr
+     | FULL_JOIN LPAREN joinClause (usingClause nvlJoinClause*)? joinBody RPAREN    # fullJoinExpr
+     | CROSS_JOIN LPAREN joinClause joinBody RPAREN                                 # crossJoinExpr
 ;
 
 /************************************************** END JOIN FUNCITONS -------------------------------------------*/
@@ -146,7 +148,7 @@ defOperators:
 /*---------------------------------------------------FUNCTIONS-------------------------------------------------*/
 genericOperators:
     operatorID LPAREN (parameter (COMMA parameter)*)? RPAREN                                                                                                                    # callDataset
-    | EVAL LPAREN routineName LPAREN (varID|scalarItem)? (COMMA (varID|scalarItem))* RPAREN (LANGUAGE STRING_CONSTANT)? (RETURNS evalDatasetType)? RPAREN                               # evalAtom
+    | EVAL LPAREN routineName LPAREN (varID|scalarItem)? (COMMA (varID|scalarItem))* RPAREN (LANGUAGE STRING_CONSTANT)? (RETURNS evalDatasetType)? RPAREN                       # evalAtom
     | CAST LPAREN expr COMMA (basicScalarType|valueDomainName) (COMMA STRING_CONSTANT)? RPAREN                                                                                  # castExprDataset
 ;
 
@@ -168,11 +170,16 @@ parameter:
     | OPTIONAL
 ;
 
+stringDistanceMethods:
+    LEVENSHTEIN_METHOD | DAMERAU_LEVENSHTEIN_METHOD | HAMMING_METHOD | JARO_WINKLER_METHOD
+;
+
 stringOperators:
     op=(TRIM | LTRIM | RTRIM | UCASE | LCASE | LEN) LPAREN expr RPAREN	                                    # unaryStringFunction
     | SUBSTR LPAREN expr (((COMMA startParameter=optionalExpr) (COMMA endParameter=optionalExpr))? | COMMA startParameter=optionalExpr ) RPAREN     # substrAtom
     | REPLACE LPAREN expr COMMA param=expr ( COMMA optionalExpr)? RPAREN				                    # replaceAtom
     | INSTR LPAREN expr COMMA pattern=expr ( COMMA startParameter=optionalExpr)? (COMMA occurrenceParameter=optionalExpr)? RPAREN	            # instrAtom
+    | STRING_DISTANCE LPAREN method=stringDistanceMethods COMMA string1=expr COMMA string2=expr RPAREN                      # stringDistanceAtom
 ;
 
 stringOperatorsComponent:
@@ -180,6 +187,7 @@ stringOperatorsComponent:
     | SUBSTR LPAREN exprComponent (((COMMA startParameter=optionalExprComponent) (COMMA endParameter=optionalExprComponent))? | COMMA startParameter=optionalExprComponent )  RPAREN  # substrAtomComponent
     | REPLACE LPAREN exprComponent COMMA param=exprComponent ( COMMA optionalExprComponent)? RPAREN                                 # replaceAtomComponent
     | INSTR LPAREN exprComponent COMMA pattern=exprComponent ( COMMA startParameter=optionalExprComponent)? (COMMA occurrenceParameter=optionalExprComponent)? RPAREN    # instrAtomComponent
+    | STRING_DISTANCE LPAREN method=stringDistanceMethods COMMA string1=exprComponent COMMA string2=exprComponent RPAREN                      # stringDistanceAtomComponent
 ;
 
 numericOperators:
@@ -375,17 +383,17 @@ scalarItem:
 
 /*---------------------------------------------JOIN CLAUSE EXPRESSION---------------------------------------*/
 
-joinClauseWithoutUsing:
-    joinClauseItem (COMMA joinClauseItem)*
-;
-
 joinClause:
-    joinClauseItem (COMMA joinClauseItem)* (USING componentID (COMMA componentID)*)?
-;
+    joinClauseItem (COMMA joinClauseItem)*?;
 
 joinClauseItem:
-    expr (AS alias)?
-;
+    expr (AS alias)?;
+
+usingClause:
+    USING componentID (COMMA componentID)*;
+
+nvlJoinClause:
+    COMMA NVL LPAREN componentID COMMA constant RPAREN;
 
 joinBody:
     filterClause? (calcClause|joinApplyClause|aggrClause)? (keepOrDropClause)? renameClause?
