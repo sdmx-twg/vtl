@@ -7,12 +7,32 @@ start:
 
 /* statement */
 statement:
-    varID ASSIGN expr                # temporaryAssignment
-    | varID PUT_SYMBOL expr          # persistAssignment
+      varAssignment                  # assignmentStatement
     | defOperators                   # defineExpression
+    | letAssignment                  # letExpression
 ;
 
-/* expression */
+/* --------------------------------------------Top-level Statements------------------------------------------------- */
+
+varAssignment:
+	  varID ASSIGN expr         # temporaryAssignment
+	| varID PUT_SYMBOL expr     # persistAssignment
+;
+
+defOperators:
+    DEFINE OPERATOR operatorID LPAREN (parameterItem (COMMA parameterItem)*)? RPAREN (RETURNS outputParameterType)? IS (expr) END OPERATOR        # defOperator
+    | DEFINE DATAPOINT RULESET rulesetID LPAREN rulesetSignature RPAREN IS ruleClauseDatapoint END DATAPOINT RULESET                            # defDatapointRuleset
+    | DEFINE HIERARCHICAL RULESET rulesetID LPAREN hierRuleSignature RPAREN IS ruleClauseHierarchical  END HIERARCHICAL RULESET                 # defHierarchical
+;
+
+letAssignment:
+	LET valueDomainID? varID ASSIGN exprConstant
+;
+
+/* --------------------------------------------End Top-level Statements------------------------------------------------- */
+
+/* --------------------------------------------Expressions-------------------------------------------------------------- */
+
 expr:
     LPAREN expr RPAREN											            # parenthesisExpr
     | functions                                                             # functionsExpression
@@ -27,27 +47,35 @@ expr:
     | left=expr op=(OR|XOR) right=expr							            # booleanExpr
     | IF  conditionalExpr=expr  THEN thenExpr=expr ELSE elseExpr=expr       # ifExpr
     | CASE (WHEN condExpr+=expr THEN thenExpr+=expr)+ ELSE elseExpr=expr    # caseExpr
-    | constant														        # constantExpr
+    | exprConstant                                                          # constantExpr
     | varID															        # varIdExpr
-
-
 ;
 
 
 exprComponent:
-    LPAREN exprComponent RPAREN                                                                             # parenthesisExprComp
-    | functionsComponents                                                                                   # functionsExpressionComp
-    | op=(PLUS|MINUS|NOT) right=exprComponent                                                               # unaryExprComp
-    | left=exprComponent op=(MUL|DIV) right=exprComponent                                                   # arithmeticExprComp
-    | left=exprComponent op=(PLUS|MINUS|CONCAT) right=exprComponent                                         # arithmeticExprOrConcatComp
-    | left=exprComponent comparisonOperand right=exprComponent                                              # comparisonExprComp
-    | left=exprComponent op=(IN|NOT_IN)(lists|valueDomainID)                                                # inNotInExprComp
-    | left=exprComponent op=AND right=exprComponent                                                         # booleanExprComp
-    | left=exprComponent op=(OR|XOR) right=exprComponent                                                    # booleanExprComp
-    | IF  conditionalExpr=exprComponent  THEN thenExpr=exprComponent ELSE elseExpr=exprComponent            # ifExprComp
-    | CASE (WHEN condExpr+=exprComponent THEN thenExpr+=exprComponent)+ ELSE elseExpr=exprComponent         # caseExprComp
-    | constant                                                                                              # constantExprComp
-    | componentID                                                                                           # compId
+    LPAREN exprComponent RPAREN                                                                      # parenthesisExprComp
+    | functionsComponents                                                                            # functionsExpressionComp
+    | op=(PLUS|MINUS|NOT) right=exprComponent                                                        # unaryExprComp
+    | left=exprComponent op=(MUL|DIV) right=exprComponent                                            # arithmeticExprComp
+    | left=exprComponent op=(PLUS|MINUS|CONCAT) right=exprComponent                                  # arithmeticExprOrConcatComp
+    | left=exprComponent comparisonOperand right=exprComponent                                       # comparisonExprComp
+    | left=exprComponent op=(IN|NOT_IN)(lists|valueDomainID)                                         # inNotInExprComp
+    | left=exprComponent op=AND right=exprComponent                                                  # booleanExprComp
+    | left=exprComponent op=(OR|XOR) right=exprComponent                                             # booleanExprComp
+    | IF  conditionalExpr=exprComponent  THEN thenExpr=exprComponent ELSE elseExpr=exprComponent     # ifExprComp
+    | CASE (WHEN condExpr+=exprComponent THEN thenExpr+=exprComponent)+ ELSE elseExpr=exprComponent  # caseExprComp
+    | exprConstant                                                                                   # constantExprComp
+    | componentID                                                                                    # compId
+;
+
+exprConstant:
+      LPAREN exprConstant RPAREN											# parenthesisExprConstant
+    | functionsConstant                                                     # functionsExpressionConstant
+    | op=(PLUS|MINUS|NOT) right=exprConstant                                # unaryExprConstant
+    | left=exprConstant op=(MUL|DIV) right=exprConstant                     # arithmeticExprConstant
+    | left=exprConstant op=(PLUS|MINUS|CONCAT) right=exprConstant           # arithmeticExprOrConcatConstant
+    | constant                                                              # constantConstant
+    | constantID															# constantIDConstant
 ;
 
 functionsComponents:
@@ -59,10 +87,15 @@ functionsComponents:
    | conditionalOperatorsComponent      # conditionalFunctionsComponents
    | aggrOperators                      # aggregateFunctionsComponents
    | anFunctionComponent                # analyticFunctionsComponents
-
 ;
 
-/* functions */
+functionsConstant:
+     genericOperatorsConstant           # genericFunctionsConstant
+   | stringOperatorsConstant            # stringFunctionsConstant
+   | numericOperatorsConstant           # numericFunctionsConstant
+   | timeOperatorsConstant              # timeFunctionsConstant
+;
+
 functions:
     joinOperators                       # joinFunctions
     | genericOperators                  # genericFunctions
@@ -78,6 +111,7 @@ functions:
     | anFunction                        # analyticFunctions
 ;
 
+/* --------------------------------------------End Expressions-------------------------------------------------------------- */
 
 /*------------------------------------------------------ Clauses----------------------------------------------- */
 datasetClause:
@@ -136,14 +170,6 @@ joinOperators:
 ;
 
 /************************************************** END JOIN FUNCITONS -------------------------------------------*/
-/* --------------------------------------------Define Functions------------------------------------------------- */
-defOperators:
-    DEFINE OPERATOR operatorID LPAREN (parameterItem (COMMA parameterItem)*)? RPAREN (RETURNS outputParameterType)? IS (expr) END OPERATOR        # defOperator
-    | DEFINE DATAPOINT RULESET rulesetID LPAREN rulesetSignature RPAREN IS ruleClauseDatapoint END DATAPOINT RULESET                            # defDatapointRuleset
-    | DEFINE HIERARCHICAL RULESET rulesetID LPAREN hierRuleSignature RPAREN IS ruleClauseHierarchical  END HIERARCHICAL RULESET                 # defHierarchical
-;
-
-/* --------------------------------------------END DEFINE FUNCTIONS------------------------------------------------- */
 
 /*---------------------------------------------------FUNCTIONS-------------------------------------------------*/
 genericOperators:
@@ -156,7 +182,10 @@ genericOperatorsComponent:
     operatorID LPAREN (parameterComponent (COMMA parameterComponent)*)? RPAREN                                  # callComponent
     | CAST LPAREN exprComponent COMMA (basicScalarType|valueDomainName) (COMMA STRING_CONSTANT)? RPAREN         # castExprComponent
     | EVAL LPAREN routineName LPAREN (componentID|scalarItem)? (COMMA (componentID|scalarItem))* RPAREN (LANGUAGE STRING_CONSTANT)? (RETURNS outputParameterTypeComponent)? RPAREN      # evalAtomComponent
+;
 
+genericOperatorsConstant:
+      CAST LPAREN exprConstant COMMA (basicScalarType|valueDomainName) (COMMA STRING_CONSTANT)? RPAREN          # castExprConstant
 ;
 
 
@@ -190,6 +219,14 @@ stringOperatorsComponent:
     | STRING_DISTANCE LPAREN method=stringDistanceMethods COMMA string1=exprComponent COMMA string2=exprComponent RPAREN                      # stringDistanceAtomComponent
 ;
 
+stringOperatorsConstant:
+    op=(TRIM | LTRIM | RTRIM | UCASE | LCASE | LEN) LPAREN exprConstant RPAREN	                                                    # unaryStringFunctionConstant
+    | SUBSTR LPAREN exprConstant (((COMMA startParameter=optionalExprConstant) (COMMA endParameter=optionalExprConstant))? | COMMA startParameter=optionalExprConstant )  RPAREN  # substrAtomConstant
+    | REPLACE LPAREN exprConstant COMMA param=exprConstant ( COMMA optionalExprConstant)? RPAREN                                 # replaceAtomConstant
+    | INSTR LPAREN exprConstant COMMA pattern=exprConstant ( COMMA startParameter=optionalExprConstant)? (COMMA occurrenceParameter=optionalExprConstant)? RPAREN    # instrAtomConstant
+    | STRING_DISTANCE LPAREN method=stringDistanceMethods COMMA string1=exprConstant COMMA string2=exprConstant RPAREN                      # stringDistanceAtomConstant
+;
+
 numericOperators:
     op=(CEIL | FLOOR | ABS | EXP | LN | SQRT) LPAREN expr RPAREN						        # unaryNumeric
     | op=(ROUND | TRUNC) LPAREN expr (COMMA optionalExpr)? RPAREN							    # unaryWithOptionalNumeric
@@ -200,6 +237,12 @@ numericOperatorsComponent:
     op=(CEIL | FLOOR | ABS | EXP | LN | SQRT) LPAREN exprComponent RPAREN						    # unaryNumericComponent
     | op=(ROUND | TRUNC) LPAREN exprComponent (COMMA optionalExprComponent)? RPAREN			        # unaryWithOptionalNumericComponent
     | op=(MOD | POWER | LOG | RANDOM) LPAREN left=exprComponent COMMA right=exprComponent RPAREN    # binaryNumericComponent
+;
+
+numericOperatorsConstant:
+      op=(CEIL | FLOOR | ABS | EXP | LN | SQRT) LPAREN exprConstant RPAREN                          # unaryNumericConstant
+    | op=(ROUND | TRUNC) LPAREN exprConstant (COMMA optionalExprConstant)? RPAREN                   # unaryWithOptionalNumericConstant
+    | op=(MOD | POWER | LOG | RANDOM) LPAREN left=exprConstant COMMA right=exprConstant RPAREN      # binaryNumericConstant
 ;
 
 comparisonOperators:
@@ -253,11 +296,29 @@ timeOperatorsComponent:
     | MONTHTODAY LPAREN exprComponent RPAREN                                             # monthTodayAtomComponent
 ;
 
+timeOperatorsConstant:
+      PERIOD_INDICATOR LPAREN exprConstant? RPAREN                                      # periodAtomConstant
+    | TIMESHIFT LPAREN exprConstant COMMA signedInteger RPAREN                          # timeShiftAtomConstant
+    | TIME_AGG LPAREN periodIndTo=STRING_CONSTANT (COMMA periodIndFrom=(STRING_CONSTANT| OPTIONAL ))? (COMMA op=optionalExprConstant)? (COMMA delim=(FIRST|LAST))? RPAREN    # timeAggAtomConstant
+    | CURRENT_DATE LPAREN RPAREN                                                        # currentDateAtomConstant
+    | DATEDIFF LPAREN dateFrom=exprConstant COMMA dateTo=exprConstant RPAREN            # dateDiffAtomConstant
+    | DATEADD LPAREN op=exprConstant COMMA shiftNumber=exprConstant COMMA periodInd=exprConstant RPAREN # dateAddAtomConstant
+    | YEAR_OP LPAREN exprConstant RPAREN                                                # yearAtomConstant
+    | MONTH_OP LPAREN exprConstant RPAREN                                               # monthAtomConstant
+    | DAYOFMONTH LPAREN exprConstant RPAREN                                             # dayOfMonthAtomConstant
+    | DAYOFYEAR LPAREN exprConstant RPAREN                                              # dayOfYearAtomConstant
+    | DAYTOYEAR LPAREN exprConstant RPAREN                                              # dayToYearAtomConstant
+    | DAYTOMONTH LPAREN exprConstant RPAREN                                             # dayToMonthAtomConstant
+    | YEARTODAY LPAREN exprConstant RPAREN                                              # yearTodayAtomConstant
+    | MONTHTODAY LPAREN exprConstant RPAREN                                             # monthTodayAtomConstant
+;
+
 setOperators:
     UNION LPAREN left=expr (COMMA expr)+ RPAREN                             # unionAtom
     | INTERSECT LPAREN left=expr (COMMA expr)+ RPAREN                       # intersectAtom
     | op=(SETDIFF|SYMDIFF) LPAREN left=expr COMMA right=expr RPAREN         # setOrSYmDiffAtom
 ;
+
 /* hierarchy */
 hierarchyOperators:
     HIERARCHY LPAREN op=expr COMMA hrName=IDENTIFIER (conditionClause)? (RULE ruleComponent=componentID)? (validationMode)? (inputModeHierarchy)? outputModeHierarchy? RPAREN
@@ -375,8 +436,8 @@ subspaceClauseItem:
 ;
 
 scalarItem:
- constant                                                                           #simpleScalar
- |  CAST LPAREN constant COMMA (basicScalarType) (COMMA STRING_CONSTANT)? RPAREN    #scalarWithCast
+ exprConstant                                                                         # simpleScalar
+ |  CAST LPAREN exprConstant COMMA (basicScalarType) (COMMA STRING_CONSTANT)? RPAREN  # scalarWithCast
 ;
 /*END SUBSPACE CLAUSE*/
 /*----------------------------------------------END CLAUSE EXPRESSION--------------------------------------*/
@@ -393,7 +454,7 @@ usingClause:
     USING componentID (COMMA componentID)*;
 
 nvlJoinClause:
-    COMMA NVL LPAREN componentID COMMA constant RPAREN;
+    COMMA NVL LPAREN componentID COMMA exprConstant RPAREN;
 
 joinBody:
     filterClause? (calcClause|joinApplyClause|aggrClause)? (keepOrDropClause)? renameClause?
@@ -634,16 +695,20 @@ componentID:
    IDENTIFIER (MEMBERSHIP IDENTIFIER)?
 ;
 
+constantID:
+   AMPERSAND IDENTIFIER
+;
+
 lists:
     GLPAREN  scalarItem (COMMA scalarItem)*  GRPAREN
 ;
 
 erCode:
-    ERRORCODE  constant
+    ERRORCODE exprConstant
 ;
 
 erLevel:
-    ERRORLEVEL  constant
+    ERRORLEVEL exprConstant
 ;
 
 comparisonOperand:
@@ -665,6 +730,12 @@ optionalExprComponent:
     exprComponent
     | OPTIONAL
 ;
+
+optionalExprConstant:
+    exprConstant
+    | OPTIONAL
+;
+
 /* Role name*/
 componentRole:
     MEASURE

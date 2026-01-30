@@ -1,6 +1,7 @@
 lexer grammar VtlTokens;
 
 // Non-keyword tokens
+AMPERSAND    : '&';
 ASSIGN       : ':=';
 COLON        : ':';
 COMMA        : ',';
@@ -129,6 +130,7 @@ LCASE               : 'lower';
 LEAD                : 'lead';
 LEFT_JOIN           : 'left_join';
 LEN                 : 'length';
+LET                 : 'let';
 LIST                : 'list';
 LN                  : 'ln';
 LOG                 : 'log';
