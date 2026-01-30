@@ -34,10 +34,10 @@ Returns the distance between two strings using the specified distance method.
 
 All distance methods are **symmetric** (commutative), meaning that ``string_distance(method, string1, string2)`` equals ``string_distance(method, string2, string1)``.
 
-* **levenshtein**: Returns the Levenshtein distance, which is the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into another.
-* **damerau–levenshtein**: Returns the Damerau–Levenshtein distance, which extends Levenshtein distance by including transpositions of adjacent characters as a single operation.
-* **hamming**: Returns the Hamming distance, which is the number of positions at which the corresponding characters are different. Both strings must have the same length.
-* **jaro-winkler**: Returns the Jaro–Winkler distance, which is a string metric measuring an edit distance between two sequences. It is a variant of the Jaro distance metric and mainly used in the area of record linkage.
+* **levenshtein**: Returns the `Levenshtein distance <https://en.wikipedia.org/wiki/Levenshtein_distance>`_, which is the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into another.
+* **damerau–levenshtein**: Returns the `Damerau–Levenshtein distance <https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance>`_, which extends Levenshtein distance by including transpositions of adjacent characters as a single operation.
+* **hamming**: Returns the `Hamming distance <https://en.wikipedia.org/wiki/Hamming_distance>`_, which is the number of positions at which the corresponding characters are different. Both strings must have the same length.
+* **jaro-winkler**: Returns the `Jaro–Winkler distance <https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance>`_, which is a string metric measuring an edit distance between two sequences. It is a variant of the Jaro distance metric and mainly used in the area of record linkage.
 
 For example:
 
