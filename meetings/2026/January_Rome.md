@@ -105,4 +105,7 @@ Javier will clean it, deleting the contents specific for their tool, upload it i
 The SDMX TWG asked VTL TF to review the changes in SDMX-IM for VTL objects in order to be aligned to the last version of SDMX. Javier, who is the TWG responsabile for this task, will
 track the needed activities to be completed by the end of March 2026.
 
+Dario outlined the need to promote the use of VTL within the National Statistical Institutions; VTL members are kindly required to explore if any initiative could be adopted for a 
+broader adoption of VTL in the statitical organisations.
+
 
