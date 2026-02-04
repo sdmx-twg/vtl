@@ -70,6 +70,7 @@ Finally the current open topics have been analysed:
 4. UDO refactoring (several open issues)
 5. Enable expression in lists (PR #567)
 6. TCK
+7. Time operators
 
 **Actions**:
 - Javier will take care of updating the grammar for analytic invocation (**point 1**)
@@ -83,6 +84,7 @@ Finally the current open topics have been analysed:
   - Participants
 - Angelo will take care of UDO refactoring (based on the work done by Antonio, **point 4**) and Enable expression in lists (**point 5**) 
 - For TCK (**point 6**) Hadrien opened an issue (#661) to track the activities. Based on it, a devoted workpackage will be defined and Angelo will write a concept note to be presented to SDMX TWG.
+- The activities on Time operators (**point 7**) are deprioritized and posponed to next release.
    
 ## Organizational topics
 The tentative date for closing version 2.2 id the end of June 2026.
