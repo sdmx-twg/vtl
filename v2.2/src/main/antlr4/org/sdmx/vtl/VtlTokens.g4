@@ -217,10 +217,10 @@ YEAR_OP             : 'getyear';
 YEARTODAY           : 'yeartoday';
 
 // String distance method tokens
-LEVENSHTEIN_METHOD      : '"levenshtein"';
-DAMERAU_LEVENSHTEIN_METHOD : '"damerau–levenshtein"';
-HAMMING_METHOD          : '"hamming"';
-JARO_WINKLER_METHOD     : '"jaro-winkler"';
+LEVENSHTEIN_METHOD      : 'levenshtein';
+DAMERAU_LEVENSHTEIN_METHOD : 'damerau_levenshtein';
+HAMMING_METHOD          : 'hamming';
+JARO_WINKLER_METHOD     : 'jaro_winkler';
 
 // Literals definition
 NULL_CONSTANT    : 'null';
