@@ -1,0 +1,83 @@
+name: "Generate TCK Files"
+
+on:
+  push:
+    paths:
+      - 'v*/docs/reference_manual/operators/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "gh-pages"
+  cancel-in-progress: false
+
+jobs:
+  generate-tck:
+    name: Generate TCK
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        version: ["v2.1"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check if relevant files changed
+        id: check
+        run: |
+          CHANGED=$(git diff --name-only ${{ github.event.before || github.sha }} ${{ github.sha }} | grep "^${{ matrix.version }}/docs/reference_manual/operators/" || true)
+          if [ -z "$CHANGED" ]; then
+            echo "No relevant changes for ${{ matrix.version }}"
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "Changes found for ${{ matrix.version }}"
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set up Python
+        if: steps.check.outputs.skip == 'false'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate TCK files
+        if: steps.check.outputs.skip == 'false'
+        env:
+          DOC_VERSION: ${{ matrix.version }}
+        run: |
+          python scripts/generate_tck_files.py
+
+      - name: Prepare output directory
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          mkdir -p outputdir/tck/${{ matrix.version }}
+          cp -r tck/${{ matrix.version }}/* outputdir/tck/${{ matrix.version }}/ || true
+
+      - name: Checkout gh-pages branch
+        if: steps.check.outputs.skip == 'false'
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy TCK to gh-pages
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          mkdir -p gh-pages/tck/${{ matrix.version }}
+          rm -rf gh-pages/tck/${{ matrix.version }}/* || true
+          cp -r outputdir/tck/${{ matrix.version }}/* gh-pages/tck/${{ matrix.version }}/
+
+      - name: Commit and push safely
+        if: steps.check.outputs.skip == 'false'
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tck/${{ matrix.version }}
+          git commit -m "Update TCK ${{ matrix.version }} from GitHub Actions" || echo "Nothing to commit"
+          git pull --rebase origin gh-pages
+          git push origin gh-pages
