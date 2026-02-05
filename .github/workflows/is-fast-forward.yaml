@@ -1,0 +1,36 @@
+name: Is Fast-Forward PR?
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_call:
+    inputs:
+      pr_ref:
+        required: true
+        type: string
+
+jobs:
+  is-fast-forward:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_call' && inputs.pr_ref || github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+    
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/${{ github.repository }}.git
+
+      - name: Fetch base branch
+        run: git fetch upstream master
+      
+      - name: Check for fast-forward
+        run: |
+          git merge-base --is-ancestor upstream/master HEAD || {
+            echo "PR is not a fast-forward from upstream/master"
+            exit 1
+          }

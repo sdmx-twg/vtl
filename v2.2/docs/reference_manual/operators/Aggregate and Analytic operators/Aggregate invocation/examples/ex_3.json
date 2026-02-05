@@ -1,0 +1,14 @@
+{
+  "name": "DS_r",
+  "components": [
+      {
+          "name": "Me_1",
+          "role": "Identifier",
+          "data_type": "Number"
+      },
+      {
+          "name": "At_1",
+          "role": "Attribute",
+          "data_type": "String"
+      }
+  ]}

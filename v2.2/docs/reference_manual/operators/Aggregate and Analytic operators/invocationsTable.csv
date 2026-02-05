@@ -1,0 +1,17 @@
+Operator,Description,Allowed invocations,Type of resulting Measure,Type of operand Measures
+count,number of Data Points,Aggregate Analytic,integer,any
+min,minimum value of a set of values,Aggregate Analytic,any,any
+max,maximum value of a set of values,Aggregate Analytic,any,any
+median,median value of a set of numbers,Aggregate Analytic,number,number
+sum,sum of a set of numbers,Aggregate Analytic,number,number
+avg,average value of a set of numbers,Aggregate Analytic,number,number
+stddev_pop,population standard deviation of a set of numbers,Aggregate Analytic,number,number
+stddev_samp,sample standard deviation of a set of numbers,Aggregate Analytic,number,number
+var_pop,population variance of a set of numbers,Aggregate Analytic,number,number
+var_samp,sample variance of a set of numbers,Aggregate Analytic,number,number
+first_value,first value in an ordered set of values,Analytic,any,any
+last_value,last value in an ordered set of values,Analytic,any,any
+lag,in an ordered set of Data Points it returns the value(s) taken from a Data Point at a given physical offset prior to the current Data Point,Analytic,any,any
+lead,in an ordered set of Data Points it returns the value(s) taken from a Data Point at a given physical offset beyond the current Data Point,Analytic,any,any
+rank,rank (order number) of a Data Point in an ordered set of Data Points,Analytic,integer,any
+ratio_to_report,ratio of a value to the sum of a set of values,Analytic,number,number
