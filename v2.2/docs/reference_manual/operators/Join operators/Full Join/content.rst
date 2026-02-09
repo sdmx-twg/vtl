@@ -205,7 +205,7 @@ Moreover, exactly one of the following alternative conditions must hold:
   of identifiers; in this case, the `using` clause is mandatory.
 
 When specified, the `using` clause must specify at least one of the common identifiers and a nvl() expression for 
-every non common identifier of the joined data sets that are used as join key. Different nvl() rules can be used for
+every non common identifier of the joined data sets that is not used as join key. Different nvl() rules can be used for
 identifiers contained in more than one joined data set by prefixing the identifier name with the alias of the operand;
 if a prefix is not used, the same nvl() clause apply to all join operands that contain the identifier.
 
