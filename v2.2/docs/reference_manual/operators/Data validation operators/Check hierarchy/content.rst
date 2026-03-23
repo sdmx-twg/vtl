@@ -2,7 +2,8 @@
 Syntax
 ------
 
-    **check_hierarchy (** op , hr { **condition** condComp { , condComp }* } { **rule** ruleComp } { mode_ } { input_ } { output_ } **)**
+    **check_hierarchy (** op , hr { **condition** condComp { , condComp }* } { **rule** ruleComp } { mode_ } { input_ }  
+                       { **errorcode** errorcode } { **errorlevel** errorlevel } { output_ } **)**
 
         .. _mode:
         
@@ -38,6 +39,15 @@ Input parameters
    * - input
      - | this parameter specifies the source of the values used as input of the comparisons. The
        | meaning of the possible values of the parameter is explained below.
+   * - errorcode
+     - | the error code to be produced when the condition evaluates to **false**. It must be a
+       | valid value of the *errorcode_vd* Value Domain (or *string* if the *errorcode_vd*
+       | Value Domain is not found). It can be a Data Set or a *scalar*. If not specified
+       | then *errorcode* is **null**.
+   * - errorlevel
+     - | the error level to be produced when the condition evaluates to **false**. It must be a 
+       | valid value of the *errorlevel_vd* Value Domain (or *integer* if the errorcode_vd Value Domain is not found). 
+       | It can be a Data Set or a *scalar*. If not specified then *errorlevel* is **null**.
    * - output
      - | this parameter specifies the structure and the content of the resulting dataset. The
        | meaning of the possible values of the parameter is explained below.
