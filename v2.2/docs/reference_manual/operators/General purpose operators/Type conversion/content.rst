@@ -120,9 +120,10 @@ The VTL allows for these **implicit casts**:
 
 * From **integer** to **number**: a `number` value is returned having the integer part equal to the `integer` value,
   and the decimal part equal to zero.
-* From **number** to **integer**: an `integer` value is returned, representing the sign and the integer part of 
-  the input `number` value; implementations may raise an error if the magnitude of the integer part is too big
-  to be represented internally, provided that they document such a limit.
+* From **number** to **integer**: converts a number with no decimal part into an integer (if the decimal part is present,
+  runtime error is raised); an `integer` value is returned, representing the sign and the  integer part of the input
+ `number` value; implementations may raise an error if the magnitude of the integer part is too big to be represented
+  internally, provided that they document such a limit.
 * From **boolean** to **string**: Either one of the string values `"true"` and `"false"` is returned, depending on
   the input.
 * From **date** to **time**: a `time` value is returned having its start equal to its end, and both equal to the input
