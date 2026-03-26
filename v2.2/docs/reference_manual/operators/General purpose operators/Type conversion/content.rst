@@ -120,16 +120,17 @@ The VTL allows for these **implicit casts**:
 
 * From **integer** to **number**: a `number` value is returned having the integer part equal to the `integer` value,
   and the decimal part equal to zero.
-* From **number** to **integer**: converts a number with no decimal part into an integer (if the decimal part is present,
-  runtime error is raised); an `integer` value is returned, representing the sign and the  integer part of the input
- `number` value; implementations may raise an error if the magnitude of the integer part is too big to be represented
-  internally, provided that they document such a limit.
 * From **boolean** to **string**: Either one of the string values `"true"` and `"false"` is returned, depending on
   the input.
 * From **date** to **time**: a `time` value is returned having its start equal to its end, and both equal to the input
   `date` value.
 * From **time_period** to **time**: a `time` value is returned having the stame start and end of the input `time_period`
   value.
+
+Please note that the conversion from **number** to **integer** is considered not feasible, because it could result in 
+different results, depending on the implementations: how to deal with the decimal part (if present), the precision
+should be applied (e.g. 0.999999 vs 1) and the magnitude of the biggest representable integer. So, it is better to 
+forbid this conversion; arithmetic operators (like round, trunc, floor, ceiling) can be used.
 
 An **explicit cast without mask** can also be used to make an implicit cast more clear, and in this case its
 behavior remains the same. It can also be used for some specific conversions between basic scalar types (other
