@@ -66,6 +66,8 @@ Input parameters
        | by the *orderClause*. The keyword **range** means that the sliding windows includes
        | all the Data Points whose values are in a certain range in respect to the value,
        | for the current Data Point, of the Measure which the analytic is applied to.
+       | The **range** cannot be used for components having the following Data Types: 
+       | String, Duration, TimePeriod and TimeInterval Point 
    * - limitCause
      - | clause that can specify either the lower or the upper boundaries of the sliding
        | window. Each boundary is specified in relationship either to the whole partition
