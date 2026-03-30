@@ -445,7 +445,7 @@ limitClauseItem:
 /* ------------------------------------------------------------ GROUPING CLAUSE ------------------------------------*/
 groupingClause:
     GROUP op=(BY | EXCEPT) componentID (COMMA componentID)* ( TIME_AGG LPAREN STRING_CONSTANT (COMMA delim=(FIRST|LAST))? RPAREN )?     # groupByOrExcept
-    | GROUP ALL ( TIME_AGG LPAREN STRING_CONSTANT RPAREN )?                                                               # groupAll
+    | GROUP ALL ( TIME_AGG LPAREN STRING_CONSTANT (COMMA delim=(FIRST|LAST))? RPAREN )?                                                 # groupAll
   ;
 
 havingClause:
