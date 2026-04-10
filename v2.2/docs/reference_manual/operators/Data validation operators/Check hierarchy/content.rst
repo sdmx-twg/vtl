@@ -217,10 +217,10 @@ In conclusion, the operator returns a Data Set having the following Components:
 * the Measure *imbalance*, which contains the difference between the Measure values of the Data Points on
   the left side of the Rule and the Measure values of the corresponding calculated Data Points on the right
   side of the Rule
-* the Measure *errorcode*, which contains the *errorcode* value specified in the Rule; if the Measure bool_var is **null** then
-  errorcode is **null**
-* the Measure *errorlevel*, which contains the *errorlevel* value specified in the Rule; if the Measure bool_var is **null** then
-  errorlevel is **null**
+* the Measure *errorcode*, which contains the *errorcode* value specified in the Rule; if the Measure bool_var is **true** or 
+  **null** then errorcode is **null**
+* the Measure *errorlevel*, which contains the *errorlevel* value specified in the Rule; if the Measure bool_var is **true** or 
+  **null** then errorlevel is **null**
 
 Note that a generic Data Point of *op* can produce several Data Points in the resulting Data Set, one for each Rule
 in which the Data Point appears as the left member of the comparison.
