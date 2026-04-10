@@ -101,9 +101,9 @@ It returns a Data Set having the following Components:
   of a rule on a Data Point (**true**, **false** or **null**).
 * if the *output* parameter is **all_measures**: the original measures of *op* and the *boolean* Measure bool_var
   whose value is the result of the evaluation of a rule on a Data Point (**true**, **false** or **null**).
-* the Measure errorcode that contains the errorcode specified in the rule; if the Measure bool_var is **null** then
+* the Measure errorcode that contains the errorcode specified in the rule; if the Measure bool_var is **true** or **null** then
   errorcode is **null**
-* the Measure errorlevel that contains the errorlevel specified in the rule; if the Measure bool_var is **null** then
+* the Measure errorlevel that contains the errorlevel specified in the rule; if the Measure bool_var is **true** or **null** then
   errorlevel is **null**
 
 A Data Point of *op* can produce several Data Points in the resulting Data Set, each of them with a different value
