@@ -9,4 +9,4 @@ Documentation for VTL v2.2
    reference_manual/index
 
 
-`PDF Version </vtl/VTL_2.2_DOCS.pdf>`_
+`PDF Version <VTL_2.2_DOCS.pdf>`_
