@@ -26,11 +26,11 @@ jobs:
         run: git remote add upstream https://github.com/${{ github.repository }}.git
 
       - name: Fetch base branch
-        run: git fetch upstream master
+        run: git fetch upstream develop
       
       - name: Check for fast-forward
         run: |
-          git merge-base --is-ancestor upstream/master HEAD || {
-            echo "PR is not a fast-forward from upstream/master"
+          git merge-base --is-ancestor upstream/develop HEAD || {
+            echo "PR is not a fast-forward from upstream/develop"
             exit 1
           }
