@@ -1,8 +1,8 @@
-name: Recheck PRs when Master is updated
+name: Recheck PRs when develop is updated
 
 on:
   push:
-    branches: [master]
+    branches: [develop]
 
 jobs:
   recheck-open-prs:
@@ -22,7 +22,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 state: 'open',
-                base: 'master'
+                base: 'develop'
               }
             );
 
