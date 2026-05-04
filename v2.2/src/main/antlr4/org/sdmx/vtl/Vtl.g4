@@ -410,7 +410,8 @@ joinApplyClause:
 /*-----------------------------------------ANALYTIC CLAUSE -----------------------------------------------*/
 
 partitionByClause:
-    PARTITION BY componentID (COMMA componentID)*
+    PARTITION type=(BY|EXCEPT) componentID (COMMA componentID)*   #partitionListed
+    | PARTITION type=EXCEPT all=ALL                               #partitionExceptAll
 ;
 
 orderByClause:
