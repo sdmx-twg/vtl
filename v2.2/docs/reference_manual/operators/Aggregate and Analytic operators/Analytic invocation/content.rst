@@ -82,19 +82,20 @@ Input parameters
        | Data Point.
        | * *num* **preceding** specifies either the number of **data points** to consider
        | preceding the current data point in the order given by the *orderClause*
-
        | (when **data points** is specified in the window clause), or the maximum difference
        | to consider, as for the Measure which the analytic is applied to, between the value
        | of the current Data Point and the generic other Data Point (when **range** is
-       | specified in the windows clause).
-       | num following specifies either the number of data points to consider following the
-       | current data point in the order given by the orderClause (when data points is
-       | specified in the window clause), or the maximum difference to consider, as for the
-       | Measure which the analytic is applied to, between the values of the generic other
-       | Data Point and the current Data Point (when range is specified in the windows
-       | clause).
-       | If the whole *windowClause* is omitted then the default is **data points between**
-       | **unbounded preceding and unbounded following**.
+       | specified in the *windowClause*).
+       | *num* **following** specifies either the number of **data points** to consider
+       | following the current data point in the order given by the *orderClause*
+       | (when **data points** is specified in the window clause), or the maximum difference
+       | to consider, as for the Measure which the analytic is applied to, between the value
+       | of the generic other Data Point and the current Data Point (when **range** is
+       | specified in the *windowClause*).
+       | If the whole *windowClause* is omitted, then the default is either **range between**
+       | **unbounded preceding and current data point** or **data points between unbounded preceding**
+       | **and unbounded following**, depending respectively on whether *orderClause* clause was 
+       | specified or not.
    * - identifier
      - an Identifier Component of the input Data Set
    * - component
