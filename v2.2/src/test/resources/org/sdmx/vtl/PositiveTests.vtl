@@ -1,22 +1,3 @@
-/**
- * Copyright © 2020 Banca D'Italia
- *
- * Licensed under the EUPL, Version 1.2 (the "License");
- * You may not use this work except in compliance with the
- * License.
- * You may obtain a copy of the License at:
- *
- * https://joinup.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt
- *
- * Unless required by applicable law or agreed to in
- * writing, software distributed under the License is
- * distributed on an "AS IS" basis,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied.
- *
- * See the License for the specific language governing
- * permissions and limitations under the License.
- */
 //Examples run from reference manual 10/04/2018
 
 ## Start[DefineExpression[DefDatapointRuleset[RulesetID RulesetSignature[Signature[VarID] Signature[VarID]] RuleClauseDatapoint[RuleItemDatapoint[BooleanExprComp[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]]] ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[IntegerLiteral[SignedInteger]]] ErCode[StringLiteral]]]]]]
@@ -851,7 +832,7 @@ DS_r := avg ( DS_1 );
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[AggrClause[AggregateClause[AggrFunctionClause[ComponentID AggrComp[CompId[ComponentID]]] AggrFunctionClause[ComponentID AggrComp[CompId[ComponentID]]]] GroupByOrExcept[ComponentID]]]]]]
 DS_r := DS_1 [ aggr Me_2 := max ( Me_1 ) , Me_3 := min ( Me_1 ) group by Id_1 ];
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] PartitionByClause[ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] PartitionListed[ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]
 temp := sum ( DS_1 over ( partition by Id_1 order by Id_2 ) );
 
 ## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] OrderByClause[OrderByItem[ComponentID]]]]]]]
@@ -900,22 +881,22 @@ DS_r := var_pop ( DS_1 group by Id_1 );
 //In the following example '[' and ']' were removed in order to run (line 6011)
 DS_r := var_samp ( DS_1 group by Id_1);
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] PartitionByClause[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]] WindowingClause[LimitClauseItem[SignedInteger] LimitClauseItem[SignedInteger]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] PartitionListed[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]] WindowingClause[LimitClauseItem[SignedInteger] LimitClauseItem[SignedInteger]]]]]]]
 DS_r := first_value ( DS_1 over ( partition by Id_1, Id_2 order by Id_3 data points between 1 preceding and 1 following));
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] PartitionByClause[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]] WindowingClause[LimitClauseItem[SignedInteger] LimitClauseItem[SignedInteger]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[AnSimpleFunction[VarIdExpr[VarID] PartitionListed[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]] WindowingClause[LimitClauseItem[SignedInteger] LimitClauseItem[SignedInteger]]]]]]]
 DS_r := last_value ( DS_1 over ( partition by Id_1, Id_2 order by Id_3 data points between 1 preceding and 1 following));
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[LagOrLeadAn[VarIdExpr[VarID] SignedInteger PartitionByClause[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[LagOrLeadAn[VarIdExpr[VarID] SignedInteger PartitionListed[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]
 DS_r := lag ( DS_1 , 1 over ( partition by Id_1 , Id_2 order by Id_3 ) );
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[LagOrLeadAn[VarIdExpr[VarID] SignedInteger PartitionByClause[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[LagOrLeadAn[VarIdExpr[VarID] SignedInteger PartitionListed[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]
 DS_r := lead ( DS_1 , 1 over ( partition by Id_1 , Id_2 order by Id_3 ) );
 
-## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[AnalyticFunctionsComponents[RankAnComponent[PartitionByClause[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]]]]]
+## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[CalcClause[CalcClauseItem[ComponentID FunctionsExpressionComp[AnalyticFunctionsComponents[RankAnComponent[PartitionListed[ComponentID ComponentID] OrderByClause[OrderByItem[ComponentID]]]]]]]]]]]
 DS_r := DS_1 [ calc Me2 := rank ( over ( partition by Id_1 , Id_2 order by Me_1 ) )];
 
-## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[RatioToReportAn[VarIdExpr[VarID] PartitionByClause[ComponentID ComponentID]]]]]]
+## Start[TemporaryAssignment[VarID FunctionsExpression[AnalyticFunctions[RatioToReportAn[VarIdExpr[VarID] PartitionListed[ComponentID ComponentID]]]]]]
 DS_r := ratio_to_report ( DS_1 over ( partition by Id_1, Id_2 ) );
 
 ## Start[TemporaryAssignment[VarID FunctionsExpression[ValidationFunctions[ValidateDPruleset[VarIdExpr[VarID] ValidationOutput]]]]]
