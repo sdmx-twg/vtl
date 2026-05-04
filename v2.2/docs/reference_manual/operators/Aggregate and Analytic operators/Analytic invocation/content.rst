@@ -92,7 +92,7 @@ Input parameters
        | to consider, as for the Measure which the analytic is applied to, between the value
        | of the generic other Data Point and the current Data Point (when **range** is
        | specified in the *windowClause*).
-       | If the whole *windowClause* is omitted, then the default is either **data points between**
+       | If the whole *windowClause* is omitted, then the default is either **range between**
        | **unbounded preceding and current data point** or **data points between unbounded preceding**
        | **and unbounded following**, depending respectively on whether *orderClause* clause was 
        | specified or not.
