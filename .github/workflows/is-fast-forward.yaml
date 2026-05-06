@@ -1,36 +1,85 @@
-name: Is Fast-Forward PR?
+name: Is fast forward
 
 on:
-  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
+
   workflow_call:
     inputs:
       pr_ref:
         required: true
         type: string
+      pr_sha:
+        required: true
+        type: string
+      pr_number:
+        required: true
+        type: string
 
 jobs:
-  is-fast-forward:
+  check-fast-forward:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     steps:
-      - name: Checkout PR branch
-        uses: actions/checkout@v4
+      - name: Determine PR context
+        id: ctx
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            REF="${{ github.head_ref }}"
+            SHA="${{ github.event.pull_request.head.sha }}"
+            NUM="${{ github.event.pull_request.number }}"
+          else
+            REF="${{ inputs.pr_ref }}"
+            SHA="${{ inputs.pr_sha }}"
+            NUM="${{ inputs.pr_number }}"
+          fi
+
+          if [ -z "$REF" ] || [ -z "$SHA" ] || [ -z "$NUM" ]; then
+            echo "Missing PR context"
+            exit 1
+          fi
+
+          echo "ref=$REF" >> $GITHUB_OUTPUT
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+          echo "num=$NUM" >> $GITHUB_OUTPUT
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_call' && inputs.pr_ref || github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-    
-      - name: Add upstream remote
-        run: git remote add upstream https://github.com/${{ github.repository }}.git
 
-      - name: Fetch base branch
-        run: git fetch upstream develop
-      
-      - name: Check for fast-forward
+      - name: Fetch develop and PR branch
         run: |
-          git merge-base --is-ancestor upstream/develop HEAD || {
-            echo "PR is not a fast-forward from upstream/develop"
-            exit 1
-          }
+          git fetch origin develop
+          git fetch origin "${{ steps.ctx.outputs.ref }}:${{ steps.ctx.outputs.ref }}"
+
+      - name: Check fast-forward
+        id: ff
+        run: |
+          if git merge-base --is-ancestor origin/develop "${{ steps.ctx.outputs.ref }}"; then
+            echo "result=success" >> $GITHUB_OUTPUT
+          else
+            echo "result=failure" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Set commit status
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const state = '${{ steps.ff.outputs.result }}';
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: '${{ steps.ctx.outputs.sha }}',
+              state: state,
+              context: 'is-fast-forward',
+              description: state === 'success' ?
+                'Branch is up to date with develop' :
+                'Branch is not fast-forward from develop'
+            });
+
+      - name: Fail on PR push if not fast-forward
+        if: github.event_name == 'pull_request' && steps.ff.outputs.result == 'failure'
+        run: exit 1
