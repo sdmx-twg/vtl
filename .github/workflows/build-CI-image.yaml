@@ -1,0 +1,60 @@
+name: Build & publish CI container image (embedded Dockerfile)
+
+on:
+  push:
+    branches: [develop]
+    paths:
+      - .github/workflows/build-ci-image.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: ci-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (optional)
+        uses: actions/checkout@v4
+
+      - name: Write embedded Dockerfile
+        run: |
+          mkdir -p .ci-image
+          cat > .ci-image/Dockerfile << 'EOF'
+          FROM ubuntu:22.04
+
+          ENV DEBIAN_FRONTEND=noninteractive
+
+          RUN apt-get update && \
+              apt-get install -y --no-install-recommends \
+                ca-certificates \
+                git \
+                curl \
+                openjdk-17-jdk \
+                maven \
+              && rm -rf /var/lib/apt/lists/*
+
+          WORKDIR /work
+          EOF
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .ci-image
+          file: .ci-image/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/vtl-ci:latest
