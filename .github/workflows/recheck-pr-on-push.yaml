@@ -5,35 +5,44 @@ on:
     branches: [develop]
 
 jobs:
-  recheck-open-prs:
+  list-open-prs:
     runs-on: ubuntu-latest
     permissions:
-      actions: write
       contents: read
       pull-requests: read
+    outputs:
+      prs: ${{ steps.prs.outputs.prs }}
     steps:
-      - name: Check that each PR is fast forward
-        uses: actions/github-script@v7
+      - name: List open PRs targeting develop
+        id: prs
+        uses: actions/github-script@v9
         with:
           script: |
-            const prs = await github.paginate(
-              github.rest.pulls.list,
-              {
+            const prs = await github.paginate(github.rest.pulls.list, {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 state: 'open',
                 base: 'develop'
               }
             );
+            const matrix = prs.map(pr => ({
+              pr_ref: pr.head.ref,
+              pr_sha: pr.head.sha,
+              pr_number: pr.number.toString()
+            }));
+            console.log("PR list:");
+            console.log(JSON.stringify(matrix, null, 2));
+            core.setOutput('prs', JSON.stringify(matrix));
 
-            for (const pr of prs) {
-              await github.rest.actions.createWorkflowDispatch({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                workflow_id: 'is-fast-forward.yaml', // name of the file in .github/workflows/
-                ref: pr.head.ref,
-                inputs: {
-                  pr_ref: pr.head.ref
-                }
-              });
-            }
+  check-fast-forward:
+    needs: list-open-prs
+    if: ${{ needs.list-open-prs.outputs.prs != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        pr: ${{ fromJson(needs.list-open-prs.outputs.prs) }}
+    uses: ./.github/workflows/is-fast-forward.yaml
+    with:
+      pr_ref: ${{ matrix.pr.pr_ref }}
+      pr_sha: ${{ matrix.pr.pr_sha }}
+      pr_number: ${{ matrix.pr.pr_number }}
