@@ -162,6 +162,7 @@ POINT               : 'point';
 POINTS              : 'points';
 POWER               : 'power';
 PRECEDING           : 'preceding';
+PROPAGATION         : 'propagation';
 RANDOM              : 'random';
 RANGE               : 'range';
 RANK                : 'rank';
