@@ -99,7 +99,7 @@ Variables and Value Domains”). The operator checks if the relation between the
 fulfilled, giving **true** in positive case and **false** in negative case.
 
 The Attribute propagation rule is applied on each group of Data Points which contributes to the same Data Point
-of the result.
+of the result (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`).
 
 The behaviours relevant to the different options of the input parameters are the following.
 

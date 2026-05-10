@@ -22,7 +22,8 @@ In the operations on Data Set, the Operators are meant to be applied by
 default only to the values of the Measures of the input Data Sets,
 leaving the Identifiers unchanged. The Attributes follow by default
 their specific propagation rules, which are described in the User
-Manual.
+Manual (see also :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+for the declaration of propagation algorithms).
 
 In the operations on Components, the Operators are meant to be applied
 on the specified components of one input Data Set, in order to calculate
@@ -198,7 +199,8 @@ of the other operand.
 
 For each couple (DP_1, DP_2) and for each Attribute that propagates in
 DP_r, the Attribute value is calculated by applying the proper Attribute
-propagation algorithm on the values of the Attributes of DP_1 and DP_2 .
+propagation algorithm on the values of the Attributes of DP_1 and DP_2
+(see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`).
 
 As for the data structure, the result Data Set (DS_r) has all the
 Identifiers (with no repetition of common Identifiers) and the Measures
@@ -909,7 +911,8 @@ operators in the Reference Manual).
 The users which want to automatize the propagation of the Attributes’
 Values can optionally enforce a mechanism, called Attribute Propagation
 rule, whose behaviour is explained in the User Manual (see the section
-“Behaviour for Attribute Components”). The adoption of this mechanism is
+“Behaviour for Attribute Components”) and whose declaration is described
+in :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`. The adoption of this mechanism is
 optional, users are free to allow the attribute propagation rule or not.
 The users that do not want to allow Attribute propagation rules simply
 will not implement what follows.

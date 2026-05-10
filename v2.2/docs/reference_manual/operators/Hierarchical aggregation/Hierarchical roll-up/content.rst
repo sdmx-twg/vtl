@@ -102,7 +102,8 @@ Behaviour
 
 The **hierarchy** operator applies the rules of *hr* to *op* as specified in the parameters. The operator returns a Data
 Set with the same Identifiers and the same Measure as *op*. The Attribute propagation rule is applied on the
-groups of Data Points which contribute to the same Data Points of the result.
+groups of Data Points which contribute to the same Data Points of the result
+(see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`).
 
 The behaviours relevant to the different options of the input parameters are the following.
 

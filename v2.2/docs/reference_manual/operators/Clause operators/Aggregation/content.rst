@@ -137,7 +137,7 @@ The operator **aggr** calculates aggregations of dependent Components (Measures 
 sub-expressions at Component level. Each Component is calculated through an independent sub-expression. It is
 possible to specify the role of the calculated Component among **measure**, **attribute**, or **viral attribute**. The
 substring **viral** allows to control the virality of Attributes, if the Attribute propagation rule is adopted (see the
-User Manual). When the role is omitted, the following rule is applied: if the component exists in the operand Data
+User Manual and :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`). When the role is omitted, the following rule is applied: if the component exists in the operand Data
 Set then it maintains its role; if the component does not exist in the operand Data Set then its role is Measure.
 
 The *aggrExpr* sub-expressions are independent of one another, they can only reference Components of the input
