@@ -173,8 +173,8 @@ Measures are dropped because no aggregation behaviour is specified for them).
 
 For invocation at Data Set level, the Attribute propagation rule is applied. For invocation at Component level,
 the Attributes calculated within the *aggr* clause are maintained in the result; for all the other Attributes that are
-defined as **viral**, the Attribute propagation rule is applied (for the semantics, see the Attribute Propagation Rule
-section in the User Manual).
+defined as **viral**, the Attribute propagation rule is applied (for the semantics, see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the "Attribute Propagation Rule" section in the User Manual).
 
 As mentioned, the Aggregate invocation at component level can be done within the **aggr** clause, both as part of a
 Join operator and the **aggr** operator (see the parameter *aggrExpr* of those operators), therefore, for a better

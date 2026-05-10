@@ -166,5 +166,5 @@ If no grouping clause is specified, then all the input Data Points are aggregate
 returns a Data Set that contains a single Data Point and has no Identifiers.
 
 The Attributes calculated through the **aggr** clauses are maintained in the result. For all the other Attributes that
-are defined as **viral**, the Attribute propagation rule is applied (for the semantics, see the Attribute Propagation
-Rule section in the User Manual).
+are defined as **viral**, the Attribute propagation rule is applied (for the semantics, see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the "Attribute Propagation Rule" section in the User Manual).

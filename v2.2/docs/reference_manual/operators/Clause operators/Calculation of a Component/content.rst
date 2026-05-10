@@ -72,7 +72,8 @@ The operator calculates new Identifier, Measure or Attribute Components on the b
 Component level. Each Component is calculated through an independent sub-expression. It is possible to specify
 the role of the calculated Component among **measure**, **identifier**, **attribute**, or **viral attribute**, therefore the calc
 clause can be used also to change the role of a Component when possible. The keyword **viral** allows controlling
-the virality of the calculated Attributes (for the attribute propagation rule see the User Manual). When the role is
+the virality of the calculated Attributes (for the attribute propagation rule see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the User Manual). When the role is
 omitted, the following rule is applied: if the component exists in the operand Data Set then it maintains its role; if
 the component does not exist in the operand Data Set then its role is Measure.
 
