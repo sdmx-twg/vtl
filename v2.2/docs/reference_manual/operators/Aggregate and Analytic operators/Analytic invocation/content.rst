@@ -195,6 +195,9 @@ for each row, all the Attribute values in the data points present in relative wi
 
 For the invocation at Component level through the **calc** operator or the **calc** clause, the resulting Data Set
 retains all the original components of the input Data Set plus the components explicitly calculated by it (see the calc operator).
+The Attributes calculated within the **calc** clause are maintained in the result; for all the other Attributes that are
+defined as viral, the Attribute propagation rule is applied (for the semantics, see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the "Attribute Propagation Rule" section in the User Manual).
 
 For the invocation at Component level through the **filter** operator or the **filter** clause, the resulting Data Set
 retains all the original components of the input Data Set (see the filter operator). The scalar value assumed by the 
