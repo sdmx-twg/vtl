@@ -15,7 +15,7 @@ Polaris 76, avenue Pierre Brossolette 92 240 Malakoff - Paris
 |10:00 - 11:00|Release of VTL version 2.2|Angelo
 |11:00 - 11:15|Coffee break|
 |11:15 - 12:00|Open topics: TCK & others	
-|12:00 - 12:30|Interaction of VTL TF with other statistical working groups|Angelo/Javier
+|12:00 - 12:30|Interaction of VTL TF with other statistical working groups|Angelo/Attilio/Javier
 |12:30 - 13:00|Current situation and evolution
 ||Banca d'Italia|Attilio/Valentino
 ||Makingsense & HK consulting|Franck/Nicolas
