@@ -145,8 +145,7 @@ defOperators:
 ;
 
 vpSignature:
-    VALUE_DOMAIN varID
-    | VARIABLE varID
+    (VARIABLE | VALUE_DOMAIN) IDENTIFIER
 ;
 
 vpBody:
