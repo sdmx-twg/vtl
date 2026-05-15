@@ -159,8 +159,9 @@ Additional Constraints
 -----------------------------
 The analytic invocation cannot be nested in other Aggregate or Analytic invocations.
 
-The analytic operations at component level can be invoked within the **calc** clause, both as part of a Join operator
-and the **calc** operator (see the parameter *calcExpr* of those operators).
+The analytic operations at component level can be invoked within the **calc** and **filter** clauses, either as part of
+a Join operator, or as a part of a **calc** or **filter** operators (see the parameters *calcExpr* and *conditionExpr*
+of those operators).
 
 The basic scalar types of *firstOperand* and *additionalOperand* (if any) must be compliant with the specific basic
 scalar types required by the invoked operator (the required basic scalar types are described in the table at the
@@ -188,15 +189,13 @@ The behaviour of the analytic operations can be procedurally described as follow
   * If *windowClause* is specified, then the set of Data Points is the one specified by *windowClause*
     (see *windowsClause* and *LimitClause* explained above).
 
-For the invocation at Data Set level, the resulting Data Set has the same Measures as the input Data Set
-*firstOperand*. For the invocation at Component level, the resulting Data Set has the Measures of the input Data
-Set plus the Measures explicitly calculated through the **calc** clause.
+For the invocation at Data Set level, the resulting Data Set has the same Identifiers and Measures as the input Data Set
+*firstOperand*, and the Attribute propagation rule is applied for every Viral Attribute in the Data Set by combining,
+for each row, all the Attribute values in the data points present in relative window.
 
-For the invocation at Data Set level, the Attribute propagation rule is applied. For invocation at Component level,
-the Attributes calculated within the *calc* clause are maintained in the result; for all the other Attributes that are
-defined as viral, the Attribute propagation rule is applied (for the semantics, see the Attribute Propagation Rule
-section in the User Manual).
+For the invocation at Component level through the **calc** operator or the **calc** clause, the resulting Data Set
+retains all the original components of the input Data Set plus the components explicitly calculated by it (see the calc operator).
 
-As mentioned, the Analytic invocation at component level can be done within the **calc** clause, both as part of a
-Join operator and the **calc** operator (see the parameter *aggrCalc* of those operators), therefore, for a better
-comprehension fo the behaviour at Component level, see also those operators.
+For the invocation at Component level through the **filter** operator or the **filter** clause, the resulting Data Set
+retains all the original components of the input Data Set (see the filter operator). The scalar value assumed by the 
+analytic invocation at each data point is used to compute the rest of the condition.
