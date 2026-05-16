@@ -21,16 +21,28 @@ The current official version of the language is [v2.1](https://sdmx-twg.github.i
 
 [`generate_tck_files.py`](scripts/generate_tck_files.py) allows you to generate a zip containing all the examples for a given version of VTL.
 
+[`validate_example_fixtures.py`](scripts/validate_example_fixtures.py) checks that each operator example’s CSV matches its JSON structure metadata (column names, INTEGER notation, row width). It runs in **Build the docs** CI and before TCK generation.
+
 The proposed structure allows obtaining the script, the necessary datasets as input and the datasets to be tested as output.
 
-**v2.1** is the only supported version for now.
+**v2.1** is the only supported version for TCK publication; validation runs for **v2.1** and **v2.2**.
 
-### Run locally
+### Validate examples locally
+
+```shell
+cd vtl
+DOC_VERSION=v2.1 python3 scripts/validate_example_fixtures.py
+DOC_VERSION=v2.2 python3 scripts/validate_example_fixtures.py
+python3 -m unittest scripts/tests/test_validate_example_fixtures.py
+```
+
+### Generate TCK zip locally
 
 ```shell
 git clone https://github.com/sdmx-twg/vtl.git
-cd vtl/scripts
-DOC_VERSION=v2.1 python3 generate_tck_files.py
+cd vtl
+DOC_VERSION=v2.1 python3 scripts/validate_example_fixtures.py
+DOC_VERSION=v2.1 python3 scripts/generate_tck_files.py
 ```
 
 ### Deployed resources

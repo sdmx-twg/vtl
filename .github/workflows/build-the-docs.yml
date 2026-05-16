@@ -96,6 +96,11 @@ jobs:
           pip install -r requirements.txt
           curl -L -o /tmp/plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2025.9/plantuml-1.2025.9.jar
 
+      - name: Validate example fixtures (JSON vs CSV)
+        env:
+          DOC_VERSION: v${{ matrix.version }}
+        run: python3 scripts/validate_example_fixtures.py
+
       - name: Build html & pdf v${{ matrix.version }}
         run: |
           . .venv/bin/activate

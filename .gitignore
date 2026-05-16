@@ -4,12 +4,24 @@ outputdir
 *.jar
 .vscode/
 .idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+*.egg-info/
+.eggs/
+dist/
+build/
 /v2.1/docs/_build/
 examples_files/
 **/examples.rst
 _build/
 v2.1/docs/engine_files/
-build/
 Pipfile
 Pipfile.lock
 
