@@ -44,6 +44,12 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Validate example fixtures (JSON vs CSV)
+        if: steps.check.outputs.skip == 'false'
+        env:
+          DOC_VERSION: ${{ matrix.version }}
+        run: python3 scripts/validate_example_fixtures.py
+
       - name: Generate TCK files
         if: steps.check.outputs.skip == 'false'
         env:
