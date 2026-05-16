@@ -174,7 +174,7 @@ If the parameter *mode* is not specified, then it is assumed to be *non_null*.
 The following table summarizes the behaviour of the options of the parameter “*mode*”:
 
 .. csv-table::
-    :file: examples/modeTable.csv
+    :file: ./modeTable.csv
     :header-rows: 1
 
 Finally the parameter *output* is considered, to determine the content of the resulting Data Set. The possible
