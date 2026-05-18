@@ -32,6 +32,7 @@ SINGLE_QUOTE : '\'';
 // Keyword tokens
 ABS                 : 'abs';
 AGGREGATE           : 'aggr';
+AGGREGATE_KW        : 'aggregate';
 ALL                 : 'all';
 ALL_MEASURES        : 'all_measures';
 ALWAYS_NULL         : 'always_null';
@@ -162,6 +163,7 @@ POINT               : 'point';
 POINTS              : 'points';
 POWER               : 'power';
 PRECEDING           : 'preceding';
+PROPAGATION         : 'propagation';
 RANDOM              : 'random';
 RANGE               : 'range';
 RANK                : 'rank';

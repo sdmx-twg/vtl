@@ -141,6 +141,25 @@ defOperators:
     DEFINE OPERATOR operatorID LPAREN (parameterItem (COMMA parameterItem)*)? RPAREN (RETURNS outputParameterType)? IS (expr) END OPERATOR        # defOperator
     | DEFINE DATAPOINT RULESET rulesetID LPAREN rulesetSignature RPAREN IS ruleClauseDatapoint END DATAPOINT RULESET                            # defDatapointRuleset
     | DEFINE HIERARCHICAL RULESET rulesetID LPAREN hierRuleSignature RPAREN IS ruleClauseHierarchical  END HIERARCHICAL RULESET                 # defHierarchical
+    | DEFINE VIRAL PROPAGATION varID LPAREN vpSignature RPAREN IS vpBody END VIRAL PROPAGATION                                                  # defViralPropagation
+;
+
+vpSignature:
+    (VARIABLE | VALUE_DOMAIN) IDENTIFIER
+;
+
+vpBody:
+    vpClause (EOL vpClause)*
+;
+
+vpClause:
+    (IDENTIFIER COLON)? WHEN vpCondition THEN constant    # enumeratedVpClause
+    | AGGREGATE_KW (MIN | MAX | SUM | AVG)                 # aggregationVpClause
+    | ELSE constant                                        # defaultVpClause
+;
+
+vpCondition:
+    constant (AND constant)?
 ;
 
 /* --------------------------------------------END DEFINE FUNCTIONS------------------------------------------------- */

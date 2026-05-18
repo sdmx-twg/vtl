@@ -8,3 +8,4 @@ VTL-DL - Rulesets
 
    datapoint_rulesets
    hierarchical_rulesets
+   viral_attributes

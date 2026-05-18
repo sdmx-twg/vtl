@@ -296,4 +296,4 @@ by joining this partial result to the next data set.
 The **Viral Attribute propagation** in the join is the following. The Attributes explicitly calculated through the **calc**
 or **aggr** clauses are maintained unchanged. Other viral attributes, present in exactly one input data set, are also kept
 unchanged. For all the other viral attributes, which are present in multiple data sets, the Attribute propagation rule is
-applied on VDS₂ (see "Attribute Propagation Rule" section in the User Manual).
+applied on VDS₂ (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes` and the "Attribute Propagation Rule" section in the User Manual).
