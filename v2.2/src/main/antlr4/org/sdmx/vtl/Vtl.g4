@@ -154,7 +154,7 @@ vpBody:
 
 vpClause:
     (IDENTIFIER COLON)? WHEN vpCondition THEN constant    # enumeratedVpClause
-    | AGGREGATE (MIN | MAX | SUM | AVG)                    # aggregationVpClause
+    | AGGREGATE_KW (MIN | MAX | SUM | AVG)                 # aggregationVpClause
     | ELSE constant                                        # defaultVpClause
 ;
 
