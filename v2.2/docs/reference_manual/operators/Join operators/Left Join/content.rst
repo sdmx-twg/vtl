@@ -4,7 +4,7 @@ Syntax
 
 
     **left_join** **(** ds1 { **as** alias1 }, ds2 { **as** alias2 } { , dsN { **as** aliasN } }* 
-      | { **using** usingComp { , usingComp }* }
+      | { **using** usingId { , usingId }* { , **nvl(** nvlId, constant **)** }* }
       | { **filter** filterCondition }
       | { **apply** applyExpr 
       | |     **calc** calcClause_ 
@@ -42,10 +42,11 @@ Input parameters
    * - alias
      - | optional aliases for the input data sets, valid only within the “join” operation
        | to make it easier to refer to them. If omitted, the data set name must be used.
-   * - usingComp
-     - | component of the input data sets whose values have to match in the join (the
-       | **using** clause is allowed for the **left_join** only under certain constraints
-       | described below)
+   * - usingId
+     - | identifier of the input data sets whose values have to match in the join
+   * - nvlId
+     - | identifier of an input data set that is not used as a join key and may become null
+       | as a result of the join.
    * - filterCondition
      - | a condition (*boolean* expression) at component level, having only Components
        | of the input data sets as operands, which is evaluated for each joined
@@ -123,7 +124,11 @@ alias1, …, aliasN  ::
 
 usingId ::
 
-    name<component>
+    name<Identifier>
+
+nvlId ::
+
+    name<Identifier>
 
 filterCondition ::
 
@@ -196,12 +201,12 @@ set of identifiers of :math:`DS_i`.
   from the second on have exactly the same identifiers and the left-most operand contains them all; in this case, the
   `using` clause is optional.
 * :math:`I_1 \cap I_i \neq \varnothing,\ \forall i = 2,\ldots,n`, or in other words, all the join operands from the
-  second on, share at least one identifier with the left-most dataset; in this case the `using` clause is mandatory.
+  second on share at least one identifier with the left-most operand; in this case the `using` clause is mandatory.
 
-When specified, the using clause must specify at least one of the common identifiers and a nvl() expression for every 
-non common identifier of the joined data sets that are used as join key. Different nvl() rules can be used for identifiers 
-contained in more than one joined data set by prefixing the identifier name with the alias of the operand; if a prefix 
-is not used, the same nvl() clause apply to all join operands that contain the identifier.
+When present, the using clause specifies, for each join operand except the left-most one, at least one of its identifiers
+in common with the left-most operand, and an additional nvl() rule for all its other identifiers. Note that the same nvl()
+rule is applied to the same identifier when appearing in multiple join operands; prefixing the identifier name with the 
+alias of the operand in the nvl() rule allows to specify different rules for each of them.
 
 **left_join** sub-expressions must also satisfy other constraints:
 
@@ -225,19 +230,15 @@ performed, by matching the join keys according to SQL left-outer join (**left_jo
 The SQL relational join produces an intermediate result, called **virtual data set** (VDS₁); this virtual data set
 VDS₁ has the following components:
 
-* The join keys, which appear once and maintain their names, and assume the roles as they appear on the first Data 
-  Set;
-* All the left over identifiers of the first data set which have not been used as join keys;
-* The remaining components coming from exactly one input data set, which appear once and maintain their original name
-  and role.
-* The remaining components coming from multiple data sets, which appear as many times as the data sets they come from;
-  names of each of these components are prefixed with the alias of the data set they come from, separated by the 
-  “`#`” symbol; in this context, the symbol “`#`” does not denote the membership operator, but acts just as a 
-  separator between the data set and the component name. If the aliases are not defined, the names are prefixed with
-  the data set name. If the data set name can't be determined (for example the join operand is an expression), an
-  error is raised. For example, if “`population`” appears in two input data sets “`ds1`” and “`ds2`”, that have the
-  aliases “`a`” and “`b`” respectively, both “`a#population`” and “`b#population`” will appear in the virtual Data
-  Set; If the aliases were not specified, the names must be used (i.e. “`ds1#population`” and “`ds2#population`”). 
+* All The identifiers specified in the using clause, or in the left-most Data Set if the using clause is not used,
+  which appear once;
+* The remaining identifiers and measures coming from exactly one input data set, which appear once;
+* The remaining identifiers and measures coming from multiple data sets, which appear as many times as the data sets
+  they come from; names of each of these components are prefixed with the alias of the data set they come from,
+  separated by the “#” symbol; in this context, the symbol “#” does not denote the membership operator, but acts 
+  just as a separator between the data set and the component name. If the aliases are not defined, the names are 
+  prefixed with the data set name;
+* The viral attributes, coming from any number of Data Sets, which appear once.
 
 Then, subsequent clauses in the **left_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
@@ -282,11 +283,16 @@ The **contents of left_join** are ideally determined stepwise, using the left-mo
 result, and joining the partial result with each of the other input data sets in turn, starting from the left side
 and proceeding towards the right side. In each step, a data point in VDS₁ is generated for each datapoint in the
 partial result; if the corresponding set of key values aren't found in the joined data set of the current step,
-the relevant Measures and Attributes coming from that data set take the null value of their respective domains
-if they allow null values; otherwise an error is raised. Then, the step is repeated by joining this partial result
-to the next data set. 
+the Identifiers of the joined operand that were not used as join keys assume the value specified in the relevant
+**nvl()** clause, while Measures coming from that data set take the null value of their respective domains if they
+allow null values, otherwise an error is raised; Each Viral attribute assume the value computed by applying the 
+respective propagation rule to the input value and the accumulated value. Then, the step is repeated by joining 
+this partial result to the next data set. 
 
-The **Viral Attribute propagation** in the join is the following. The Attributes explicitly calculated through the **calc**
-or **aggr** clauses are maintained unchanged. Other viral attributes, present in exactly one input data set, are also kept
-unchanged. For all the other viral attributes, which are present in multiple data sets, the Attribute propagation rule is
-applied on VDS₂ (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes` and the "Attribute Propagation Rule" section in the User Manual).
+The **Viral Attribute propagation** in the join is the following. Viral attributes, present in exactly one input
+data set, are also kept unchanged in VDS₁. The other viral attributes, which are present in multiple data sets,
+are combined by applying the Attribute propagation rule on VDS₁, within the join step where the operand containing
+the Viral Attribute is joined, as described above. Then, if the **aggr** clause is present, the Attribute propagation 
+rule is again applied to the set of all values that are aggregated; if the **calc** clause is present instead, it may
+directly replace the computation algorithm used for the propagation (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the "Attribute Propagation Rule" section in the User Manual).
