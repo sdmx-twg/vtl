@@ -1,1 +1,1 @@
-Given the operand datasets DS_1 and DS_2:
+Given the operand dataset DS_1:
