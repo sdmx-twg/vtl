@@ -3,12 +3,7 @@
   "components": [
       {
           "name": "Me_1",
-          "role": "Identifier",
+          "role": "Measure",
           "data_type": "Number"
-      },
-      {
-          "name": "At_1",
-          "role": "Attribute",
-          "data_type": "String"
       }
   ]}
