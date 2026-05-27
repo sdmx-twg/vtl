@@ -58,6 +58,8 @@ result ::
     dataset { measure<number> _+ }
     | component<number>
 
+The result is always a **number**, including when all operand values are **integer**.
+
 -----------------------------
 Additional Constraints
 -----------------------------

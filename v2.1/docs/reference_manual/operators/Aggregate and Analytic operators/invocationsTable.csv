@@ -3,7 +3,7 @@ count,number of Data Points,Aggregate Analytic,integer,any
 min,minimum value of a set of values,Aggregate Analytic,any,any
 max,maximum value of a set of values,Aggregate Analytic,any,any
 median,median value of a set of numbers,Aggregate Analytic,number,number
-sum,sum of a set of numbers,Aggregate Analytic,number,number
+sum,sum of a set of numbers,Aggregate Analytic,number or integer,number
 avg,average value of a set of numbers,Aggregate Analytic,number,number
 stddev_pop,population standard deviation of a set of numbers,Aggregate Analytic,number,number
 stddev_samp,sample standard deviation of a set of numbers,Aggregate Analytic,number,number

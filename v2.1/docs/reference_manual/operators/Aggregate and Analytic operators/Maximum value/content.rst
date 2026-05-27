@@ -58,6 +58,9 @@ result ::
     dataset
     | component
 
+For numeric operands, the result has the **same** type as the operand (**integer** or **number**). For other
+comparable scalar types (for example **time**, **string**, **boolean**), the result has the same type as the operand.
+
 -----------------------------
 Additional Constraints
 -----------------------------
