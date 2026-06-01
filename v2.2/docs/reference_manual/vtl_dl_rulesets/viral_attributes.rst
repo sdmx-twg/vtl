@@ -71,15 +71,18 @@ Syntax
 
 **define viral propagation** propagationName **(** vpSignature_ **) is**
 
-    vpClause_
-
-   { **;** vpClause_ }\*
+    vpBody_
 
 **end viral propagation**
 
 .. _vpSignature:
 
 vpSignature ::= **valuedomain** valueDomain | **variable** variable
+
+.. _vpBody:
+
+vpBody ::= enumeratedClause_ { **;** enumeratedClause_ }\* [ **;** defaultClause_ ]
+         | aggregationClause_
 
 .. _vpClause:
 
