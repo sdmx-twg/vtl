@@ -9,20 +9,6 @@ described below and their main characteristics.
     :file: invocationsTable.csv
     :header-rows: 1
 
-The column *Type of resulting Measure* gives the **declared** super-type of the measure produced by the
-invocation. The type **integer** is a subtype of **number** (see the User Manual). For numeric operators, engines
-should also document the **nominal** result type when all operand values are **integer**:
-
-* **count**, **rank**: result is **integer**.
-* **min**, **max**: result has the **same** numeric type as the operand (**integer** or **number**).
-* **sum**: result is declared **number**; when all summed values are **integer**, the nominal result may remain
-  **integer** (integer arithmetic, subject to an overflow policy defined by the implementation).
-* **avg**, **median**, **var_***, **stddev_***, **ratio_to_report**: result is **number** even when operands are
-  **integer**.
-
-If any operand measure is **number** (non-integer), or the operator is not closed on integers, the nominal result
-is **number**.
-
 .. toctree::
    :glob:
    :maxdepth: 1
