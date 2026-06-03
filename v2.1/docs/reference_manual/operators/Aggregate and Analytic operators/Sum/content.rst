@@ -58,12 +58,6 @@ result ::
     dataset { measure<number> _+ }
     | component<number>
 
-The result is declared with type **number**. Since **integer** is a subtype of **number**, implementations may
-preserve the **integer** type for the resulting measure or component when all operand values are **integer** and
-the sum is computed in integer arithmetic. When any operand value is a non-integer **number**, the result is a
-**number**. Implementations should document their policy when integer sums overflow the representable range of
-**integer** (for example: error, widening to **number**, or wrap-around).
-
 -----------------------------
 Additional Constraints
 -----------------------------
