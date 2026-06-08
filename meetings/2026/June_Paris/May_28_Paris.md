@@ -46,41 +46,49 @@ Polaris 76, avenue Pierre Brossolette 92 240 Malakoff - Paris
 
 1.  Angelo Linardi
 2.  Antonio Olleros
-3.  Franck Cotton
-4.  Hadrien Kohl
-5.  Javier Hernandez
-6.  Kamel Gadouche
-7.  Nicolas Laval
-8.  Romain Tailhurat
-9.  Thomas Dubois 
-10. Ugo Di Zenzo  
-11. Valentino Pinna
-12. Attilio Mattiocco (remote)
-13. Dario Camol (remote)
-14. Hadrien Kohl (remote)
-15. Katrin Heinze (remote)
-16. Laura Vignola (remote)
-17. Noah Boerger (remote)
-18. Stefano Pambianco
+3.  Cédric Hansen (CASD)
+4.  Franck Cotton
+5.  Hadrien Kohl
+6.  Javier Hernandez
+7.  Kamel Gadouche
+8.  Nicolas Laval
+9.  Romain Tailhurat
+10.  Thomas Dubois 
+11. Ugo Di Zenzo  
+12. Valentino Pinna
+13. Attilio Mattiocco (remote)
+14. Dario Camol (remote)
+15. Giulia Pennè (remote)
+16. Katrin Heinze (remote)
+17. Laura Vignola (remote)
+18. Noah Boerger (remote)
+19. Stefano Pambianco (remote)
+20. Tanguy Aubert (remote)
 
 ## Welcome of participants
-A warm welcome has been given to Juan Munoz, from INEGI, who joined this VTL TF meeting.
+A warm welcome has been given to Cédric Hansen, who joined this meeting and many thanks to Kamel and CASD for
+having hosted this workshop. Kamel introduced himself and CASD and explained what they do and why thay are
+using VTL in their business processes (his presentation is attached).
+Then Thomas gave some information about logistics and organisational topics.
 
-## Current status of version 2.2
-Angelo went over the topics related to the VTL 2.2 version (see uploaded presentation for details): 
-- Bug fixing
-- Major changes already merged in 2.2 folder (master branch):
-  - New version of cast matrix 
+## Release of version 2.2
+Angelo went over the topics related to the work done for VTL 2.2 version (see uploaded presentation for details): 
+- Bug fixing (as of May 2026)
+- Documentation-only changes
+- Major changes already merged in 2.2 folder (develop branch):
+  - New version of cast matrix
+  - Added partiotion except clause (with all option) in the analytic invocation
   - New join operators
   - Scalar extraction from a data set
-  - New DL operator for defining viral propagation 
-- Documentation-only changes
+  - New DL operator for defining viral propagation
+  - New string distance operator
+  - Use of varId instead of scalar for some operators
 
-**Given the newly adopted contributing and governance policy the following changes have been merged into the develop branch 
-   and are waiting for grammar changes and/or new pull requests:**
+Given the number and the value of the changes and new operators introduced, it has been decided that:
 
- 1. Addition of the partition except (with all option) in the analytic invocation
- 2. New string distance operator
+**The 2.2 release will be announced to the SDMX Secretariat and a public review will be launched**
+**VTL 2.2 version will be frozen at the end of June and will be officially published at the end of September, leaving 3 months for public review**
+  
 
 Then the new requests coming from CDM-IREF project team were listed; given the current status of the project, they have been put aside at the moment.
 If there will be an interest from other users, they will be inserted in the 2.2 release, otherwise they will be postponed to the next VTL version.
