@@ -47,18 +47,21 @@ Polaris 76, avenue Pierre Brossolette 92 240 Malakoff - Paris
 1.  Angelo Linardi
 2.  Antonio Olleros
 3.  Franck Cotton
-4.  Nicolas Laval
-5.  Romain Tailhurat
-6.  Thomas Dubois 
-7.  Ugo Di Zenzo  
-8.  Valentino Pinna
-14. Laura Vignola
-15.   (remote)
-16.   (remote)
-17.  Tanguy Aubert (remote)
-18.  
-11.  Katrin Heinze (remote)
-12.  
+4.  Hadrien Kohl
+5.  Javier Hernandez
+6.  Kamel Gadouche
+7.  Nicolas Laval
+8.  Romain Tailhurat
+9.  Thomas Dubois 
+10. Ugo Di Zenzo  
+11. Valentino Pinna
+12. Attilio Mattiocco (remote)
+13. Dario Camol (remote)
+14. Hadrien Kohl (remote)
+15. Katrin Heinze (remote)
+16. Laura Vignola (remote)
+17. Noah Boerger (remote)
+18. Stefano Pambianco
 
 ## Welcome of participants
 A warm welcome has been given to Juan Munoz, from INEGI, who joined this VTL TF meeting.
