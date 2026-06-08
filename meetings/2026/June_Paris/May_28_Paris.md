@@ -87,9 +87,15 @@ Angelo went over the topics related to the work done for VTL 2.2 version (see up
 Given the number and the value of the changes and new operators introduced, it has been decided that:
 
 **The 2.2 release will be announced to the SDMX Secretariat and a public review will be launched**
+
 **VTL 2.2 version will be frozen at the end of June and will be officially published at the end of September, leaving 3 months for public review**
   
-
+An open discussion followed this presentation and a number of further updates has been approved (Romain will investigate if a different behaviour is applied by other programming languages):
+1. To avoid backward incompatibility, in the cast matrix the transformation from number to integer will behave in this way ():
+   - The resulting number will be the non-decimal part of the input
+   - A warning message will be raised to notify the user that the "default" behaviour has been adopted
+2. The result of the stddev_samp operator applied to a dataset with only 1 observation will be *null* and a warning message will be raised
+ 
 Then the new requests coming from CDM-IREF project team were listed; given the current status of the project, they have been put aside at the moment.
 If there will be an interest from other users, they will be inserted in the 2.2 release, otherwise they will be postponed to the next VTL version.
 
