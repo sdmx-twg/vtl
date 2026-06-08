@@ -66,8 +66,8 @@ Polaris 76, avenue Pierre Brossolette 92 240 Malakoff - Paris
 20. Tanguy Aubert (remote)
 
 ## Welcome of participants
-A warm welcome has been given to Cédric Hansen, who joined this meeting and many thanks to Kamel and CASD for
-having hosted this workshop. Kamel introduced himself and CASD and explained what they do and why thay are
+A warm welcome has been given to Cédric Hansen, who joined this meeting, and many thanks were givent to Kamel and CASD for
+having hosted this workshop. Kamel introduced himself and CASD and explained what they do and why they are
 using VTL in their business processes (his presentation is attached).
 Then Thomas gave some information about logistics and organisational topics.
 
@@ -96,30 +96,9 @@ An open discussion followed this presentation and a number of further updates ha
    - A warning message will be raised to notify the user that the "default" behaviour has been adopted
 2. The result of the stddev_samp operator applied to a dataset with only 1 observation will be *null* and a warning message will be raised
  
-Then the new requests coming from CDM-IREF project team were listed; given the current status of the project, they have been put aside at the moment.
-If there will be an interest from other users, they will be inserted in the 2.2 release, otherwise they will be postponed to the next VTL version.
-
-Finally the current open topics have been analysed:
-
-3. JSON schema for VTL model schema (PR #665)
-4. UDO refactoring (several open issues)
-5. Enable expression in lists (PR #567)
-6. TCK
-7. Time operators
-
 **Actions**:
-- Javier will take care of updating the grammar for analytic invocation (**point 1**)
-- Nicolas will add links for better description of the methods used in the new string distance operator and a new PR will be created for a fix in the grammar (**point 2**)
-- The current version of JSON schema has been approved. After a revision the PR #665 will be merged (**point 3**)
-- Since workstreams proved to be ineffective, based on the SDMX TWG experience, workpackages will be defined to work on the current open topics. For each work package a concept note
-  will be prepared describing:
-  - Objectives
-  - Scope and Approach
-  - Work plan and Deliverables
-  - Participants
-- Angelo will take care of UDO refactoring (based on the work done by Antonio, **point 4**) and Enable expression in lists (**point 5**) 
-- For TCK (**point 6**) Hadrien opened an issue (#661) to track the activities. Based on it, a devoted workpackage will be defined and Angelo will write a concept note to be presented to SDMX TWG.
-- The activities on Time operators (**point 7**) are deprioritized and posponed to next release.
+- Angelo will announce the release of VTL 2.2 to the next SDMX TWG meeting, that will take place in the week 15-18 June
+- Romain will notify if behaviours different from the ones before described should be implemented; if not, Angelo will update the documentation accordingly before the end of June   
    
 ## Organizational topics
 The tentative date for closing version 2.2 id the end of June 2026.
