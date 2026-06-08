@@ -98,16 +98,34 @@ An open discussion followed this presentation and a number of further updates ha
  
 **Actions**:
 - Angelo will announce the release of VTL 2.2 to the next SDMX TWG meeting, that will take place in the week 15-18 June
-- Romain will notify if behaviours different from the ones before described should be implemented; if not, Angelo will update the documentation accordingly before the end of June   
+- Romain will notify if behaviours different from the ones before described should be implemented; if not, Angelo will update the documentation accordingly before the end of June
+- At the end of September Angelo will merge the develop 2.2 branch into the master branch and update the current release pointer from 2.1 to 2.2  
    
-## Organizational topics
-The tentative date for closing version 2.2 id the end of June 2026.
+## Workpackages and housekeeping
+The current workstreams will be deleted.
+Three new workpackages will be created: a concept note containing objectives, planning and deliverables will be available for every workpackage.
+These are the 3 groups (in bold the coordinator):
 
-As priviously noted, the new contributing and governance policy has been approved; the default merge folder is now **develop** and all the feat/* and fix/* branches must be merged into the develop folder.
-Valentino will take care of updating the github scripts used for checks; when these changes have been completed, the default "entry" branch will change from **master** to **develop**.
-For the meetings folder, a proposal would be moving it to the Wiki space, otherwise it will be hosted in the develop branch.
+1. **TEMPORALS**:       **Javier**, Angelo, Hadrien
+2. **UDOs**:            **Antonio**, Laura, Nicolas, Valentino
+3. **STANDARD ERRORS**: **Javier**, Hadrien, Valentino
 
-The current **workstreams** are closed. A new folder will be created and the above mentioned **workpackages** will be defined cointaining the related concept notes. VTL members are kindly requested to join them.
+Other VTL members are kindly requested to join them on a voluntary basis.
+
+For the housekeeping of the VTL gitHub repository the following activities will be performed:
+- Creation of (3) Teams: Banca d'Italia, Making Sense and Meaningfuldata; all the reviews/approvals will be addressed to Teams and not to singular members
+- Automatic merge into the develop branch will be activated once the requested approvals have been collected
+- Move the Meetings folder to the Wiki: the current folder in the develop branch will be used just for draft documents
+- Define a security role responsible for vulnerability patch management related to the git software; Javier will be delegated for this role
+- Add a "Learning material" folder to collect all documents/presentations/apps used by VTL TF members for training
+
+**Actions**:
+- Angelo will remove the workstreams folder and create a workpackages one, adding the corresponding concept notes.
+- Angelo, Valentino and Javier will define the Teams and implement the check mechanism to assign reviews only to Teams
+- Angelo, Valentino and Javier will implement the automatic merge into the develop branch once the needed approvals have been collected
+- Valentino will copy the Meetings folder to Wiki; the current Meeting folder in develop will be used only for drafting documents 
+- Angelo, Valentino and Javier will define the Security role and assign the responsability to Javier
+- Angelo will define a new folder for Learning/Training material   
 
 The next VTL workshop will take place in Paris from Thursday May 28th morning to Friday 29th early afternoon (after lunch), gently hosted by CASD.
 
