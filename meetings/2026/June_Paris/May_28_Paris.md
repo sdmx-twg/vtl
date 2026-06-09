@@ -116,13 +116,24 @@ An open discussion followed these presentations; these are the decisions that ha
 
 **A "core" VTL TCK will be implemented with the contribution of Banca d'italia, Making Sense and Meaningfuldata**
 
-**An "add-on" to integrate the core VTL TCK with the SDMX TCK one will be implemented by Meaningfuldata**
+**An "add-on" to integrate the core VTL TCK with the SDMX TCK will be implemented by Meaningfuldata**
 
 **A request for funding will be submitted to the SDMX Secretariat to support the initiative**
 
 ### Actions
 - Angelo and Javier will present the initiative during the next SDMX TWG meeting on 16th June 
 - Angelo will submit a funding request to the SDMX Secretariat in the next meeting on the 17th June  
+
+## Interaction of VTL TF with other statistical working groups
+Angelo informed that by the end of June there will be a meeting of the Working Group 2 of the ISO Technical Committee 154 of ISO to promote the kick-off of the process for VTL.
+If the proposal will be accepted, an ISO number will be assigned for VTL together with an approval for a Preliminary Work Item to be prepared.
+The official presentation will then scheduled for the Plenary Meeting at the end of August.
+
+Attilio informed that tha a "VTL white paper" is being prepared within the Working Group for Statistical Information Management of the SEBC.
+The participants are members of 5 National Central Banks, including ECB and Angelo and Attilio for Banca d'Italia.
+The document will be pretty short (20-35 maximum) and will contain:
+1. An introduction about VTL for decision-makers and stakeholders
+2. Operational and practical information for business users, data experts and IT  
 
 ## Workpackages and housekeeping
 The current workstreams will be deleted.
