@@ -129,11 +129,37 @@ Angelo informed that by the end of June there will be a meeting of the Working G
 If the proposal will be accepted, an ISO number will be assigned for VTL together with an approval for a Preliminary Work Item to be prepared.
 The official presentation will then scheduled for the Plenary Meeting at the end of August.
 
-Attilio informed that tha a "VTL white paper" is being prepared within the Working Group for Statistical Information Management of the SEBC.
-The participants are members of 5 National Central Banks, including ECB and Angelo and Attilio for Banca d'Italia.
-The document will be pretty short (20-35 maximum) and will contain:
-1. An introduction about VTL for decision-makers and stakeholders
-2. Operational and practical information for business users, data experts and IT  
+Angelo also informed that Banca d'Italia's statistical platform (INFOSTAT) will be re-engineered, moving from the current Software Oriented Architecture to a cloud-based
+infrastructure. Within this big  project, current proprietary Expression Language used for validations and transformations will be replaced by VTL.
+Another very important project will start in October aimed at renewing the statistical application used by the Supervision Department; also in this case the new application
+will use VTL to perform validations and transformations. 
+
+Attilio informed that a "VTL white paper" is being prepared within the Working Group for Statistical Information Management of the SEBC by the end of the year.
+The participants are members of 5 National Central Banks: France, Belgium, Croatia, Netherlands, ECB and Banca d'Italia (Angelo and Attilio).
+The document will be pretty short (4 chapters, 20-35 pages maximum) and will contain:
+1. Introduction to the VTL language - Strategic vision for decision-makers and stakeholders
+2. Practical presentation of the VTL language - for Statistical and IT Teams
+3. Current projects and implementations
+4. Future projects
+
+Drafts of the document will be shared among VTL TF as they will be made available.
+
+Since a paragraph about the relation on VTL with DDI is to be written, any material, even in draft, is more than welcome (especially from Thomas and CASD colleagues).
+
+Javier informed that the work for aligning VTL with SDMX is in progress; the goal is to update the Section 6 of SDMX (containing the relation vith VTL) by the end of the year, 
+when SDMX 3.2 release will be published. 
+
+## Current situation and evolution of VTL engines
+Valentino informed that the VTL E&E by Banca d'Italia will be updated to be compliant with VTL 2.2 by the end of the year. Furthermore, Banca d'Italia will actively participate in 
+the VTL TCK implementation.
+
+Javier presented the last evolutions of the Meaningful Data vtl engine. In the back-end moved from pandas to duckdb, resulting in better understanding of VTL internal behaviour 
+for final users (given the native translation from VTL to SQL), much better performances and enabling to handle big datasets (larger than available memory).
+The alignment with VTL version 2.2 will be completed by the end of June. Finally, SDMX compatibility has been improved, using pysdmx.
+
+Nicolas presented the new features of Trevas, first of all the use of Spark 4, resulting in better performances, improved stability and security with reduced infrastructure costs,
+enhanced modularity for API; the release of the new version is expected for the end of June. Then the showed the current TCK used internally by Trevas, which can be used
+as a common basis to implement VTL TCK.
 
 ## Workpackages and housekeeping
 The current workstreams will be deleted.
