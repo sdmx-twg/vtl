@@ -156,7 +156,7 @@ Nicolas presented the new features of Trevas, first of all the use of Spark 4, r
 enhanced modularity for API; the release of the new version is expected for the end of June. Then the showed the current TCK used internally by Trevas, which can be used
 as a common basis to implement VTL TCK. More information is available in the uploaded presentation.
 
-## Workpackages and housekeeping
+## Workpackages
 The current workstreams will be deleted.
 
 Three new workpackages will be created: a concept note containing objectives, planning and deliverables will be available for every workpackage.
@@ -169,6 +169,7 @@ These are the 3 groups (in bold the coordinator):
 
 Other VTL members are kindly requested to join them on a voluntary basis.
 
+## GitHub repository housekeeping
 For the housekeeping of the VTL gitHub repository the following activities will be performed:
 - Creation of (3) Teams: Banca d'Italia, Making Sense and Meaningfuldata; all the reviews/approvals will be addressed to Teams and not to singular members
 - Automatic merge into the develop branch will be activated once the requested approvals have been collected
@@ -184,27 +185,38 @@ For the housekeeping of the VTL gitHub repository the following activities will 
 - Angelo, Valentino and Javier will define the Security role and assign the responsability to Javier
 - Angelo will define a new folder for Learning/Training material   
 
+## New operators for v. 2.3
 
-
-The next VTL workshop will take place in Paris from Thursday May 28th morning to Friday 29th early afternoon (after lunch), gently hosted by CASD.
-
+## Feedback from VTL users
 
 Angelo also informed that Banca d'Italia's statistical platform (INFOSTAT) will be re-engineered, moving from the current Software Oriented Architecture to a cloud-based
 infrastructure. Within this big  project, current proprietary Expression Language used for validations and transformations will be replaced by VTL.
 Another very important project will start in October aimed at renewing the statistical application used by the Supervision Department; also in this case the new application
-will use VTL to perform validations and transformations. 
+will use VTL to perform validations and transformations. In both projects it will explored the possibility to use AI to "translate" validations and transformations 
+expressed in natural language to VTL statements, in order to support statistical users in using VTL.
 
+## Tour-de-table on organisational issues
+At the beginning of the section, a Slido was prepared to understand which are the major issues of the VTL TF regarding the organisation.
+The outcome showed that the major issues are related to sponsorship and funding, followed by the need of "attracting" customesrs and institutions and be more visible. In the different 
+seminars, workgroups and statistical events all VTL TF members are invited to promote the use of VTL by main international bodies. In this sense BIS, UN and Eurostat will be contacted during next SDMX TWG 
+meeting and Expert Workshop.
+; also Eurostat will be  and need to promote the use of VTL within the National Statistical Institutions; VTL members are kindly required to explore if any initiative could be adopted for a 
+broader adoption of VTL in the statitical organisations.
 
 
 ## AOB
+The next VTL workshop, to be scheduled in May-June 2027, will be probably hosted by the National Bank of Belgium; Ugo will follow-up about this proposal.
+
+
+
+
+
+
+
 Javier showed the versioning model and architecture of the Meaningful data gitHub repository. The TF members appreciated it and decided to adopt the presented approach.
 Valentino and Javier will take care of introducing the new scripts and architecture in the VTL gitHub environment.
 
 Javier presented a document containing the error code structure and content of Meaningful data tool. The TF members agreed to take it as the initial version for the VTL error codes.
 Javier will clean it, deleting the contents specific for their tool, upload it in the VTL gitHub repository and insert a link in the Technical Notes document.
 
-The SDMX TWG asked VTL TF to review the changes in SDMX-IM for VTL objects in order to be aligned to the last version of SDMX. Javier, who is the TWG responsabile for this task, will
-track the needed activities to be completed by the end of March 2026.
 
-Dario outlined the need to promote the use of VTL within the National Statistical Institutions; VTL members are kindly required to explore if any initiative could be adopted for a 
-broader adoption of VTL in the statitical organisations.
