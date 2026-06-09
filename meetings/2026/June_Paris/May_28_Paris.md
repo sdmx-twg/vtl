@@ -96,7 +96,7 @@ An open discussion followed this presentation and a number of further updates ha
    - A warning message will be raised to notify the user that the "default" behaviour has been adopted
 2. The result of the stddev_samp operator applied to a dataset with only 1 observation will be *null* and a warning message will be raised
  
-**Actions**:
+### Actions
 - Angelo will announce the release of VTL 2.2 during the next SDMX TWG meeting, that will take place in the week 15-18 June
 - Romain will notify if behaviours different from the ones before described should be implemented; if not, Angelo will update the documentation accordingly before the end of June
 - At the end of September Angelo will merge the develop 2.2 branch into the master branch and update the current release pointer from 2.1 to 2.2  
@@ -109,18 +109,20 @@ The goal is to publish in the VTL gitHub repository an application able to:
 2. Generate TCK files and produce a zip file
 
 The structures of the input/output data will be compliant with the JSON schema published in the gitHub repository and the data will be in csv format.
+
 Every VTL engine should be able to load the produced zip file, load and run all the examples and produce the result of the tests.
 
 An open discussion followed these presentations; these are the decisions that have been made:
 
 **A "core" VTL TCK will be implemented with the contribution of Banca d'italia, Making Sense and Meaningfuldata**
-**An "add-on" to integrate the core TCK with the SDMX one will be implemented by Meaningfuldata**
-**A request for funding will be raised to the SDMX Secretariat to support the initiative**
 
-**Actions**:
-- Angelo and Javier will present the initiative during the next SDMX TWG meeting, that will take place in the week 15-18 June 
-- A request for funding will be Romain will notify 
+**An "add-on" to integrate the core VTL TCK with the SDMX TCK one will be implemented by Meaningfuldata**
 
+**A request for funding will be submitted to the SDMX Secretariat to support the initiative**
+
+### Actions
+- Angelo and Javier will present the initiative during the next SDMX TWG meeting on 16th June 
+- Angelo will submit a funding request to the SDMX Secretariat in the next meeting on the 17th June  
 
 ## Workpackages and housekeeping
 The current workstreams will be deleted.
@@ -140,7 +142,7 @@ For the housekeeping of the VTL gitHub repository the following activities will 
 - Define a security role responsible for vulnerability patch management related to the git software; Javier will be delegated for this role
 - Add a "Learning material" folder to collect all documents/presentations/apps used by VTL TF members for training
 
-**Actions**:
+### Actions
 - Angelo will remove the workstreams folder and create a workpackages one, adding the corresponding concept notes.
 - Angelo, Valentino and Javier will define the Teams and implement the check mechanism to assign reviews only to Teams
 - Angelo, Valentino and Javier will implement the automatic merge into the develop branch once the needed approvals have been collected
