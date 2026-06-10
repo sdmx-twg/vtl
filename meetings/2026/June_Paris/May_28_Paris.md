@@ -160,11 +160,11 @@ The current workstreams will be deleted.
 
 Three new workpackages will be created: a concept note containing objectives, planning and deliverables will be available for every workpackage.
 
-These are the 3 groups (in bold the coordinator):
+These are the 3 groups (in brackets the coordinator):
 
-1. **TEMPORALS**:       **Javier**, Angelo, Hadrien
-2. **UDOs**:            **Antonio**, Laura, Nicolas, Valentino
-3. **STANDARD ERRORS**: **Javier**, Hadrien, Valentino
+1. **TEMPORALS**:       **[Javier]**, Angelo, Hadrien
+2. **UDOs**:            **[Antonio]**, Laura, Nicolas, Valentino
+3. **STANDARD ERRORS**: **[Javier]**, Hadrien, Valentino
 
 Other VTL members are kindly requested to join them on a voluntary basis.
 
@@ -205,14 +205,14 @@ since a paragraph of the cited "white paper" about the relation on VTL with DDI 
 
 Noah presented the current status of the adoption of VTL within the CDM project. Due to cost reductions, at the beginning validations and transformations rules
 will be expressed in SQL, but the adoption of VTL remains a valid option (see upoladed presentation for further details). Angelo replied that Banca d'Italia,
-to perfrom L2 checks betweeen IREF "core" data and the italian "local data" (Country Specific Requirements), will anyway "translate" all IREF validation and 
+to perform L2 checks betweeen IREF "core" data and the italian "local data" (Country Specific Requirements), will anyway "translate" all IREF validation and 
 transformation rules in VTL (see below).
 
 Ugo informed that National Bank of Belgium is currently using VTL in some statistical processes and that more extensive use of it is currently planned.
 He thanked VTL TF for the prompt definition of propagation rules for viral attributes in version 2.2, since it is a crucial operator for their needs.
 
 Angelo also informed that Banca d'Italia's statistical platform (INFOSTAT) will be re-engineered, moving from the current Software Oriented Architecture to a cloud-based
-infrastructure. Within this big  project, current proprietary Expression Language used for validations and transformations will be replaced by VTL.
+infrastructure. Within this big project, current proprietary Expression Language used for validations and transformations will be replaced by VTL.
 Another very important project will start in October aimed at renewing the statistical application used by the Supervision Department; also in this case the new application
 will use VTL to perform validations and transformations. In both projects it will explored the possibility to use AI to "translate" validations and transformations 
 expressed in natural language to VTL statements, in order to support statistical users in using VTL. Any material on this topic, also in draft, will be shared within VTL TF.
