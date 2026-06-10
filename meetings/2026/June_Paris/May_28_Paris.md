@@ -137,8 +137,7 @@ The document will be pretty short (4 chapters, 20-35 pages maximum) and will con
 3. Current projects and implementations
 4. Future projects
 
-Drafts of the document will be shared among VTL TF as they will be made available. Since a paragraph about the relation on VTL with DDI is to be written, any material,
-even in draft, is more than welcome (especially from Thomas and CASD colleagues).
+Drafts of the document will be shared among VTL TF as they will be made available.
 
 Javier informed that the work for aligning VTL with SDMX is in progress; the goal is to update the Section 6 of SDMX (containing the relation vith VTL) by the end of the year, 
 when SDMX 3.2 release will be published. 
@@ -186,37 +185,50 @@ For the housekeeping of the VTL gitHub repository the following activities will 
 - Angelo will define a new folder for Learning/Training material   
 
 ## New operators for v. 2.3
+A Slido live survey has beeen presented with the list of the requests for evolution of current operators and new ones; this is the outcome of the survey, starting 
+from the one that received more preferences:
+1. Percentile
+2. Set operators
+3. Weights
+4. Allow components for time operators
+5. Group by not-null measures and Measures in group by
+6. Add more methods to rank
+7. Scientific notation
+
+Besides this list, also the enabling of expressions in lists (#567) will be implemented in version 2.3
 
 ## Feedback from VTL users
+Kamel and Thomas informed that CASD is actively working on VTL, especially trying to "convince" their users to adopt it for their statistical processes.
+They are also working on the transformation of SAS programs to VTL and on the "mapping" betweeen DDI and VTL. 
+Angelo asked Thomas and Kamel to share any material on this topics with VTL TF, even in draft, especially about the second one, 
+since a paragraph of the cited "white paper" about the relation on VTL with DDI is to be written.
+
+Noah presented the current status of the adoption of VTL within the CDM project. Due to cost reductions, at the beginning validations and transformations rules
+will be expressed in SQL, but the adoption of VTL remains a valid option (see upoladed presentation for further details). Angelo replied that Banca d'Italia,
+to perfrom L2 checks betweeen IREF "core" data and the italian "local data" (Country Specific Requirements), will anyway "translate" all IREF validation and 
+transformation rules in VTL (see below).
+
+Ugo informed that National Bank of Belgium is currently using VTL in some statistical processes and that more extensive use of it is currently planned.
+He thanked VTL TF for the prompt definition of propagation rules for viral attributes in version 2.2, since it is a crucial operator for their needs.
 
 Angelo also informed that Banca d'Italia's statistical platform (INFOSTAT) will be re-engineered, moving from the current Software Oriented Architecture to a cloud-based
 infrastructure. Within this big  project, current proprietary Expression Language used for validations and transformations will be replaced by VTL.
 Another very important project will start in October aimed at renewing the statistical application used by the Supervision Department; also in this case the new application
 will use VTL to perform validations and transformations. In both projects it will explored the possibility to use AI to "translate" validations and transformations 
-expressed in natural language to VTL statements, in order to support statistical users in using VTL.
+expressed in natural language to VTL statements, in order to support statistical users in using VTL. Any material on this topic, also in draft, will be shared within VTL TF.
 
 ## Tour-de-table on organisational issues
 At the beginning of the section, a Slido was prepared to understand which are the major issues of the VTL TF regarding the organisation.
-The outcome showed that the major issues are related to sponsorship and funding, followed by the need of "attracting" customesrs and institutions and be more visible. In the different 
-seminars, workgroups and statistical events all VTL TF members are invited to promote the use of VTL by main international bodies. In this sense BIS, UN and Eurostat will be contacted during next SDMX TWG 
-meeting and Expert Workshop.
-; also Eurostat will be  and need to promote the use of VTL within the National Statistical Institutions; VTL members are kindly required to explore if any initiative could be adopted for a 
-broader adoption of VTL in the statitical organisations.
-
+The outcome showed that the major issues are related to sponsorship and funding, followed by the need of "attracting" customesrs and institutions and be more visible. 
+In the different seminars, workgroups and statistical events all VTL TF members are invited to promote the use of VTL by main international bodies. 
+In this sense BIS, UN and Eurostat will be contacted during next SDMX TWG meeting and Expert Workshop.
+VTL members are kindly required to explore if any initiative could be adopted for a broader adoption of VTL in the statitical organisations.
 
 ## AOB
+Antonio presented two use cases about the way they are presenting VTL failed checks to the final users and the documentation of the "eval" operator in order to preserve data lineage.
+Angelo will share some information about the "error wrapping" in Banca d'Italia and asked Antonio to draft a proposal for the eval operator.
+
+Javier presented the current version of the document containing the error code structure (to be integrated with the agreed "warnings" to be raised for "casting from number to integer"
+and "stdev_samp with 1 observation"). The document will be uploaded in the VTL gitHub repository and a link to it will be inserted in the Technical Notes document.
+
 The next VTL workshop, to be scheduled in May-June 2027, will be probably hosted by the National Bank of Belgium; Ugo will follow-up about this proposal.
-
-
-
-
-
-
-
-Javier showed the versioning model and architecture of the Meaningful data gitHub repository. The TF members appreciated it and decided to adopt the presented approach.
-Valentino and Javier will take care of introducing the new scripts and architecture in the VTL gitHub environment.
-
-Javier presented a document containing the error code structure and content of Meaningful data tool. The TF members agreed to take it as the initial version for the VTL error codes.
-Javier will clean it, deleting the contents specific for their tool, upload it in the VTL gitHub repository and insert a link in the Technical Notes document.
-
-
