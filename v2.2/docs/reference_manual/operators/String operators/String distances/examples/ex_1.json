@@ -12,7 +12,7 @@
           "data_type": "String"
       },
       {
-          "name": "Me_1",
+          "name": "num_var",
           "role": "Measure",
           "data_type": "Number"
       }
