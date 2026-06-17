@@ -66,6 +66,9 @@ Input parameters
        | by the *orderClause*. The keyword **range** means that the sliding windows includes
        | all the Data Points whose values are in a certain range in respect to the value,
        | for the current Data Point, of the Measure which the analytic is applied to.
+       | The **range** cannot be used for components having the following Data Types: 
+       | String, Duration and TimeInterval Point; for Date the range is assumed to be 
+       | expressed in days, for TimePeriod in shifts.
    * - limitCause
      - | clause that can specify either the lower or the upper boundaries of the sliding
        | window. Each boundary is specified in relationship either to the whole partition
@@ -79,19 +82,20 @@ Input parameters
        | Data Point.
        | * *num* **preceding** specifies either the number of **data points** to consider
        | preceding the current data point in the order given by the *orderClause*
-
        | (when **data points** is specified in the window clause), or the maximum difference
        | to consider, as for the Measure which the analytic is applied to, between the value
        | of the current Data Point and the generic other Data Point (when **range** is
-       | specified in the windows clause).
-       | num following specifies either the number of data points to consider following the
-       | current data point in the order given by the orderClause (when data points is
-       | specified in the window clause), or the maximum difference to consider, as for the
-       | Measure which the analytic is applied to, between the values of the generic other
-       | Data Point and the current Data Point (when range is specified in the windows
-       | clause).
-       | If the whole *windowClause* is omitted then the default is **data points between**
-       | **unbounded preceding and unbounded following**.
+       | specified in the *windowClause*).
+       | *num* **following** specifies either the number of **data points** to consider
+       | following the current data point in the order given by the *orderClause*
+       | (when **data points** is specified in the window clause), or the maximum difference
+       | to consider, as for the Measure which the analytic is applied to, between the value
+       | of the generic other Data Point and the current Data Point (when **range** is
+       | specified in the *windowClause*).
+       | If the whole *windowClause* is omitted, then the default is either **range between**
+       | **unbounded preceding and current data point** or **data points between unbounded preceding**
+       | **and unbounded following**, depending respectively on whether *orderClause* clause was 
+       | specified or not.
    * - identifier
      - an Identifier Component of the input Data Set
    * - component
@@ -155,8 +159,9 @@ Additional Constraints
 -----------------------------
 The analytic invocation cannot be nested in other Aggregate or Analytic invocations.
 
-The analytic operations at component level can be invoked within the **calc** clause, both as part of a Join operator
-and the **calc** operator (see the parameter *calcExpr* of those operators).
+The analytic operations at component level can be invoked within the **calc** and **filter** clauses, either as part of
+a Join operator, or as a part of a **calc** or **filter** operators (see the parameters *calcExpr* and *conditionExpr*
+of those operators).
 
 The basic scalar types of *firstOperand* and *additionalOperand* (if any) must be compliant with the specific basic
 scalar types required by the invoked operator (the required basic scalar types are described in the table at the
@@ -184,15 +189,16 @@ The behaviour of the analytic operations can be procedurally described as follow
   * If *windowClause* is specified, then the set of Data Points is the one specified by *windowClause*
     (see *windowsClause* and *LimitClause* explained above).
 
-For the invocation at Data Set level, the resulting Data Set has the same Measures as the input Data Set
-*firstOperand*. For the invocation at Component level, the resulting Data Set has the Measures of the input Data
-Set plus the Measures explicitly calculated through the **calc** clause.
+For the invocation at Data Set level, the resulting Data Set has the same Identifiers and Measures as the input Data Set
+*firstOperand*, and the Attribute propagation rule is applied for every Viral Attribute in the Data Set by combining,
+for each row, all the Attribute values in the data points present in relative window.
 
-For the invocation at Data Set level, the Attribute propagation rule is applied. For invocation at Component level,
-the Attributes calculated within the *calc* clause are maintained in the result; for all the other Attributes that are
-defined as viral, the Attribute propagation rule is applied (for the semantics, see the Attribute Propagation Rule
-section in the User Manual).
+For the invocation at Component level through the **calc** operator or the **calc** clause, the resulting Data Set
+retains all the original components of the input Data Set plus the components explicitly calculated by it (see the calc operator).
+The Attributes calculated within the **calc** clause are maintained in the result; for all the other Attributes that are
+defined as viral, the Attribute propagation rule is applied (for the semantics, see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the "Attribute Propagation Rule" section in the User Manual).
 
-As mentioned, the Analytic invocation at component level can be done within the **calc** clause, both as part of a
-Join operator and the **calc** operator (see the parameter *aggrCalc* of those operators), therefore, for a better
-comprehension fo the behaviour at Component level, see also those operators.
+For the invocation at Component level through the **filter** operator or the **filter** clause, the resulting Data Set
+retains all the original components of the input Data Set (see the filter operator). The scalar value assumed by the 
+analytic invocation at each data point is used to compute the rest of the condition.

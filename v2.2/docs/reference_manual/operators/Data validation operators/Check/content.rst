@@ -81,8 +81,10 @@ It returns a Data Set having the following components:
 * the Identifier Components of *op*
 * a *boolean* Measure named *bool_var* that contains the result of the evaluation of the boolean dataset *op*
 * the Measure *imbalance* that contains the specified imbalance
-* the Measure *errorcode* that contains the specified *errorcode*
-* the Measure *errorlevel* that contains the specified *errorlevel*
+* the Measure *errorcode* that contains the specified *errorcode*; if the Measure bool_var is **null** then
+  errorcode is **null**
+* the Measure *errorlevel* that contains the specified *errorlevel*; if the Measure bool_var is **null** then
+  errorlevel is **null**
 
 If *output* is **all** then all data points are returned. If *output* is **invalid** then only the Data Points where *bool_var* is
 **false** are returned.

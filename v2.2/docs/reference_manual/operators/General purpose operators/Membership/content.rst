@@ -54,8 +54,9 @@ A default conventional name is assigned to the new Measure depending on its type
 if the Measure is `numeric`, `string_var` if it is `string` and so on (the default name can be renamed through
 the **rename** operator if needed).
 
-The Attributes follow the Attribute propagation rule as usual (viral Attributes of `ds` are maintained in the result as 
-viral, non-viral ones are dropped). If `comp` is an Attribute, it follows the Attribute propagation rule too.
+The Attributes follow the Attribute propagation rule as usual (viral Attributes of `ds` are maintained in the result as
+viral, non-viral ones are dropped). If `comp` is an Attribute, it follows the Attribute propagation rule too
+(see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`).
 
 If ds has no Identifier Components (for example is a result of an aggregate invocation), comp must be a Data Set 
 Component of the Data Set ds (a Measure or an Attribute). In this case the operator returns a scalar value equal to
