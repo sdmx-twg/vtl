@@ -1267,3 +1267,28 @@ DS_r := DS_1 [ sub Id_1 = 1  Id_2 = "A"]
 
 //nested clauses
 DS_r := DS_1 [ filter DS_2[sub id_1 = "AA"]];
+
+//two aggregate clauses are not allowed in a viral propagation
+define viral propagation EMBARGO_dup (variable EMBARGO_TIME) is
+aggregate max;
+aggregate min
+end viral propagation
+
+//an aggregation clause cannot be mixed with enumerated clauses
+define viral propagation CONF_mixed (variable CONF) is
+when "C" then "C";
+aggregate max
+end viral propagation
+
+//an aggregation clause cannot be combined with a default clause
+define viral propagation EMBARGO_else (variable EMBARGO_TIME) is
+aggregate max;
+else "F"
+end viral propagation
+
+//only one default clause is allowed in a viral propagation
+define viral propagation CONF_twodef (variable CONF) is
+when "C" then "C";
+else "F";
+else "G"
+end viral propagation

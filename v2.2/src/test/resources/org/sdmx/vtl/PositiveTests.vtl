@@ -1051,3 +1051,15 @@ DS_r:='ECB:EXR(1.0):....'[sub CURRENCY = "USD"];
 
 ## Start[TemporaryAssignment[VarID ClauseExpr[VarIdExpr[VarID] DatasetClause[SubspaceClause[SubspaceClauseItem[ComponentID SimpleScalar[IntegerLiteral[SignedInteger]]] SubspaceClauseItem[ComponentID SimpleScalar[StringLiteral]]]]]]]
 DS_r := _DS_1 [ sub _Id_1 = 1, _Id_2 = "A"];
+
+## Start[DefineExpression[DefViralPropagation[VarID VpSignature VpBody[EnumeratedVpClause[VpCondition[StringLiteral] StringLiteral] EnumeratedVpClause[VpCondition[StringLiteral] StringLiteral] DefaultVpClause[StringLiteral]]]]]
+define viral propagation CONF_priority (variable CONF) is
+when "C" then "C";
+when "N" then "N";
+else "F"
+end viral propagation;
+
+## Start[DefineExpression[DefViralPropagation[VarID VpSignature VpBody[AggregationVpClause]]]]
+define viral propagation EMBARGO_time (variable EMBARGO_TIME) is
+aggregate max
+end viral propagation;
