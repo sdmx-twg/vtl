@@ -202,15 +202,13 @@ Behaviour
 First, a *cartesian product* of the input operands is performed, producing an intermediate result, called
 **virtual data set** (VDS₁); this virtual data set VDS₁ has the following components:
 
-* The components coming from exactly one input data set, which appear once and maintain their original name and role.
-* The components coming from multiple data sets, which appear as many times as the data sets they come from; names
+* The identifiers and measures coming from exactly one input data set, which appear once and maintain their original name and role.
+* The identifiers and measures coming from multiple data sets, which appear as many times as the data sets they come from; names
   of each of these components are prefixed with the alias of the data set they come from, separated by the “`#`”
   symbol; in this context, the symbol “`#`” does not denote the membership operator, but acts just as a separator
   between the data set and the component name. If the aliases are not defined, the names are prefixed with the data
-  set name. If the data set name can't be determined (for example the join operand is an expression), an error
-  is raised. For example, if “`population`” appears in two input data sets “`ds1`” and “`ds2`”, that have the 
-  aliases “`a`” and “`b`” respectively, both “`a#population`” and “`b#population`” will appear in the virtual Data
-  Set; If the aliases were not specified, the names must be used (i.e. “`ds1#population`” and “`ds2#population`”). 
+  set name;
+* The viral attributes, coming from any number of Data Sets, which appear once.
 
 Then, subsequent clauses in the **cross_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
@@ -255,9 +253,13 @@ The **contents of cross_join** are ideally determined stepwise, using the left-m
 result, and joining the partial result with each of the other input data sets in turn, starting from the left side
 and proceeding towards the right side. In each step, a data point in VDS₁ is generated for each pair of data points
 in the partial result and the joined data set. Then, the step is repeated by joining this partial result to the next
-data set. The final result has a size equal to the product of the sizes of each input data set. 
+data set. The final result has a size equal to the product of number of identifiers and measures of each input data 
+set, plus the number of viral attributes.
 
-The **Viral Attribute propagation** in the join is the following. The Attributes explicitly calculated through the **calc**
-or **aggr** clauses are maintained unchanged. Other viral attributes, present in exactly one input data set, are also kept
-unchanged. For all the other viral attributes, which are present in multiple data sets, the Attribute propagation rule is
-applied on VDS₂ (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes` and the "Attribute Propagation Rule" section in the User Manual).
+The **Viral Attribute propagation** in the join is the following. Viral attributes, present in exactly one input
+data set, are also kept unchanged in VDS₁. The other viral attributes, which are present in multiple data sets,
+are combined by applying the Attribute propagation rule on VDS₁, within the join step where the operand containing
+the Viral Attribute is joined, as described above. Then, if the **aggr** clause is present, the Attribute propagation 
+rule is again applied to the set of all values that are aggregated; if the **calc** clause is present instead, it may
+directly replace the computation algorithm used for the propagation (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
+and the "Attribute Propagation Rule" section in the User Manual).
