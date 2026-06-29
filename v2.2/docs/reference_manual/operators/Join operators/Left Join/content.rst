@@ -232,13 +232,12 @@ VDS₁ has the following components:
 
 * All The identifiers specified in the using clause, or in the left-most Data Set if the using clause is not used,
   which appear once;
-* The remaining identifiers and measures coming from exactly one input data set, which appear once;
-* The remaining identifiers and measures coming from multiple data sets, which appear as many times as the data sets
-  they come from; names of each of these components are prefixed with the alias of the data set they come from,
-  separated by the “#” symbol; in this context, the symbol “#” does not denote the membership operator, but acts 
-  just as a separator between the data set and the component name. If the aliases are not defined, the names are 
-  prefixed with the data set name;
-* The viral attributes, coming from any number of Data Sets, which appear once.
+* The remaining identifiers, measures and attributes coming from exactly one input data set, which appear once;
+* The remaining identifiers, measures and attributes coming from multiple data sets, which appear as many times as the
+  data sets they come from; names of each of these components are prefixed with the alias of the data set they come from,
+  separated by the “#” symbol; in this context, the symbol “#” does not denote the membership operator, but acts
+  just as a separator between the data set and the component name. If the aliases are not defined, the names are
+  prefixed with the data set name.
 
 Then, subsequent clauses in the **left_join** are procedurally evaluated on the virtual data set VDS₁ as follows.
 
@@ -284,15 +283,12 @@ result, and joining the partial result with each of the other input data sets in
 and proceeding towards the right side. In each step, a data point in VDS₁ is generated for each datapoint in the
 partial result; if the corresponding set of key values aren't found in the joined data set of the current step,
 the Identifiers of the joined operand that were not used as join keys assume the value specified in the relevant
-**nvl()** clause, while Measures coming from that data set take the null value of their respective domains if they
-allow null values, otherwise an error is raised; Each Viral attribute assume the value computed by applying the 
-respective propagation rule to the input value and the accumulated value. Then, the step is repeated by joining 
-this partial result to the next data set. 
+**nvl()** clause, while Measures and Attributes coming from that data set take the null value of their respective
+domains if they allow null values, otherwise an error is raised. Then, the step is repeated by joining
+this partial result to the next data set.
 
-The **Viral Attribute propagation** in the join is the following. Viral attributes, present in exactly one input
-data set, are also kept unchanged in VDS₁. The other viral attributes, which are present in multiple data sets,
-are combined by applying the Attribute propagation rule on VDS₁, within the join step where the operand containing
-the Viral Attribute is joined, as described above. Then, if the **aggr** clause is present, the Attribute propagation 
-rule is again applied to the set of all values that are aggregated; if the **calc** clause is present instead, it may
-directly replace the computation algorithm used for the propagation (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`
-and the "Attribute Propagation Rule" section in the User Manual).
+The **Attribute handling** in the join is the following. The Attributes are
+managed exactly like the Measures. Therefore the Attributes coming from exactly one input data set are kept unchanged; the
+homonymous Attributes coming from multiple data sets are prefixed and must be disambiguated like the homonymous Measures
+(through the **calc**, **aggr**, **keep**, **drop** or **rename** clauses), otherwise an error is raised; the Attributes
+explicitly calculated through the **calc** or **aggr** clauses are maintained unchanged.

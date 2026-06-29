@@ -257,7 +257,8 @@ and proceeding towards the right side. In each step, a data point in VDS₁ is g
 in the partial result and the joined data set. Then, the step is repeated by joining this partial result to the next
 data set. The final result has a size equal to the product of the sizes of each input data set. 
 
-The **Viral Attribute propagation** in the join is the following. The Attributes explicitly calculated through the **calc**
-or **aggr** clauses are maintained unchanged. Other viral attributes, present in exactly one input data set, are also kept
-unchanged. For all the other viral attributes, which are present in multiple data sets, the Attribute propagation rule is
-applied on VDS₂ (see :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes` and the "Attribute Propagation Rule" section in the User Manual).
+The **Attribute handling** in the join is the following. The Attributes are
+managed exactly like the Measures. Therefore the Attributes coming from exactly one input data set are kept unchanged; the
+homonymous Attributes coming from multiple data sets are prefixed and must be disambiguated like the homonymous Measures
+(through the **calc**, **aggr**, **keep**, **drop** or **rename** clauses), otherwise an error is raised; the Attributes
+explicitly calculated through the **calc** or **aggr** clauses are maintained unchanged.
