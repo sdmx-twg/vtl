@@ -289,4 +289,6 @@ The **Attribute handling** in the join is the following. The Attributes are
 managed exactly like the Measures. Therefore the Attributes coming from exactly one input data set are kept unchanged; the
 homonymous Attributes coming from multiple data sets are prefixed and must be disambiguated like the homonymous Measures
 (through the **calc**, **aggr**, **keep**, **drop** or **rename** clauses), otherwise an error is raised; the Attributes
-explicitly calculated through the **calc** or **aggr** clauses are maintained unchanged.
+explicitly calculated through the **calc** or **aggr** clauses are maintained unchanged. The **apply** clause operates on
+the Measures only: it does not combine the homonymous Attributes, which, if present, remain prefixed and must be
+disambiguated through the **keep**, **drop** or **rename** clauses, otherwise an error is raised.
