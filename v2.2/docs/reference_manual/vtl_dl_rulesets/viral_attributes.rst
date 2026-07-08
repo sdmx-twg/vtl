@@ -16,7 +16,9 @@ declared on a Value Domain it acts as the default for all Attributes
 using that Value Domain, unless a more specific rule is defined directly
 on the Attribute’s Represented Variable. It is a semantic error to
 define more than one propagation rule for the same Value Domain or for
-the same Variable.
+the same Variable. It is also a semantic error for an Attribute to be
+declared viral without a viral propagation rule defined for it (either on
+its Represented Variable or on the Value Domain it uses).
 
 The input of a propagation rule is a **pair** of values from the viral
 Attribute. The propagation algorithm is a binary operation that is

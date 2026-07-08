@@ -928,6 +928,12 @@ the result Data Set (DS_r) if it is “viral” at least in one of the
 operand Data Sets. By default, an Attribute which is viral in one of the
 operands DS_i is considered as viral also in the result DS_r.
 
+Once an Attribute is declared as viral, a viral propagation rule (see
+:doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`) must be defined for
+it, either on its Represented Variable or on the Value Domain it uses. It is a
+semantic error for an Attribute to be viral when no viral propagation rule is
+defined for it.
+
 The Attribute propagation rule does not apply for the time series
 operators.
 
