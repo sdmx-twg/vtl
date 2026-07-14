@@ -1,0 +1,31 @@
+--------
+Examples
+--------
+
+.. include:: examples/intro.rst
+
+{% for input in inputs %}
+
+
+
+Input **{{ input.name | upper }}** (see `structure <{{ repourl_ex |replace(" ", "%20") }}/{{ input.folder|replace(" ", "%20")|replace("\\", "/")}}/{{ input.name }}.json>`__\)
+
+.. csv-table::
+   :file: examples/{{ input.name }}.csv
+   :header-rows: 1
+{% endfor %}
+
+{% for example in examples %}
+^^^^^^^^^^^^^^^^
+Example {{ example.i }}
+^^^^^^^^^^^^^^^^
+.. literalinclude:: examples/{{ example.name }}.vtl
+   :language: text
+
+results in (see `structure <{{ repourl_ex |replace(" ", "%20") }}/{{ example.folder|replace(" ", "%20")|replace("\\", "/")}}/{{ example.name }}.json>`__\):
+
+.. csv-table:: DS_r
+   :file: examples/{{ example.name }}.csv
+   :header-rows: 1
+
+{% endfor %}

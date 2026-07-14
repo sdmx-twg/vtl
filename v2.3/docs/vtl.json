@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdmx.org/vtl-dict-schema.json",
+  "description": "Serialization schema for a VTL model instance.",
+  "version": "2.2.0",
+  
+  "$defs": {
+    "vtl-id": {
+      "$comment": "A VTL identifier, it should be the same as the VTL grammar",
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_.]*$|^'.*'$|^[A-Za-z_][A-Za-z0-9_.]*:[A-Za-z_][A-Za-z0-9_.]*(\\([0-9]+(\\.[0-9]+)*(\\.[_+*~])?\\))?(:(\\.[A-Za-z0-9_])+)?$"
+    },
+    "identifiable": {
+      "$comment": "Any VTL IM entity that can be identified with a VTL identifier",
+      "type": "object",
+      "properties": {
+        "name": { "$ref": "#/$defs/vtl-id" },
+        "description": { "type": "string" }
+      },
+      "required": [ "name" ]
+    }
+  },
+  
+  "type": "object",
+  "properties": {
+    "vtl-schema-version": { "const": "2.2.0" },
+    "data": {
+      "$comment": "This schema section describes data such as datasets and scalars.",
+      "type": "array",
+      "items": {
+        "allOf": [ { "$ref": "#/$defs/identifiable" } ],
+        "oneOf": [
+          {
+            "$comment": "A dataset is defined with the structure property, eventually specifying the components' domain",
+            "type": "object", 
+            "properties": {
+              "source": { "type": "string" },
+              "structure": {
+              	"$comment": "The name of a structure",
+              	"$ref": "#/$defs/vtl-id"
+              },
+              "components": { 
+                "type": "array",
+                "items": {
+                  "$comment": "A dataset component overriding the structure component. Only needed when there's no reference to a represented variable, or the subset is a proper subset",
+                  "allOf": [ { "$ref": "#/$defs/identifiable" } ],
+                  "properties": {
+                    "subset": {
+                      "$comment": "When overriding a represented variable, the subset must be compatible with its valuedomain", 
+                      "$ref": "#/$defs/vtl-id"
+                    },
+                    "nullable": {
+                    	"$comment": "A flag specifying if the component subset allows null values. It should be false for identifiers and when the valuedomain of the represented variable does not allow null values.",
+                    	"type": "boolean"
+                    }
+                  },
+                  "required": [ "subset" ]
+                }
+              }
+            },
+            "required": [ "structure" ]
+          }, {
+            "$comment": "A scalar is defined by its value domain subset.",
+            "type": "object", 
+            "properties": {
+              "subset": { "$ref": "#/$defs/vtl-id" }
+            },
+            "required": [ "subset" ]
+          }
+        ]
+      }
+    },
+    "structures": {
+      "$comment": "This schema section describes data structures.",
+      "type": "array",
+      "items": {
+        "$comment": "A datastructure is a identified collection of data structure components",
+        "allOf": [ { "$ref": "#/$defs/identifiable" } ],
+        "properties": {
+          "components": {
+            "type": "array",
+            "items": {
+              "$comment": "A structure component is an identifiable, possibly referencing a represented variable, with a specific role",
+              "allOf": [ { "$ref": "#/$defs/identifiable" } ],
+              "properties": {
+                "nullable": {
+                  "$comment": "A flag specifying if the component allows null values. It must be false for identifiers.",
+                  "type": "boolean"
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [ "identifier", "measure", "attribute", "viral attribute" ]
+                }
+              },
+              "required": [ "role" ]
+            }
+          }
+        },
+        "required": [ "components" ]
+      }
+    },
+    "variables": {
+      "$comment": "This schema section describes represented variables, such as age or price.",
+      "type": "array",
+      "items": {
+        "$comment": "A VTL represented variable that may link, with a valuedomain, a data structure component to a dataset component",
+        "allOf": [ { "$ref": "#/$defs/identifiable" } ],
+        "properties": {
+          "domain": { "$ref": "#/$defs/vtl-id" }
+        },
+        "required": [ "domain" ]
+      }
+    },
+    "domains": {
+      "$comment": "This schema section describes valuedomains such as enumerated or described valuedomain.",
+      "type": "array",
+      "items": {
+        "allOf": [ { "$ref": "#/$defs/identifiable" } ],
+        "unevaluatedProperties": false,
+        "oneOf": [
+          {
+            "$comment": "A VTL value domain externally specified. The meaning is implementation-dependent",
+            "properties": {
+              "externalRef": { "type": "string" }
+            },
+            "required": [ "externalRef" ]
+          }, {
+            "$comment": "A proper VTL valuedomain or valuedomain subset, restricting a parent valuedomain (subset).",
+            "properties": {
+              "parent": { "$ref": "#/$defs/vtl-id" }
+            },
+            "required": [ "parent" ],
+            "oneOf": [ 
+              {
+                "$comment": "An enumerated valuedomain or valuedomain subset. The enumeration items must be unique.",
+                "properties": {
+                  "enumerated": { 
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "$comment": "An enumeration item. It can be a code or an object containing a code with a description.",
+                      "oneOf": [
+                        { "type": "string" },
+                        { "allOf": [ { "$ref": "#/$defs/identifiable" } ] }
+                      ]
+                    }
+                  }
+                },
+                "required": [ "enumerated" ]
+              },
+              {
+                "$comment": "A described value domain subset. The string should be a valid VTL expression describing it. It should not containing variables, except X as the value being validated.",
+                "properties": {
+                  "described": { "type": "string" }
+                },
+                "required": [ "described" ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [ "vtl-schema-version" ]
+}
