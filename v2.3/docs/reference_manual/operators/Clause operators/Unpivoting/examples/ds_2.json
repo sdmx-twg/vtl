@@ -1,0 +1,24 @@
+{
+  "name": "DS_1",
+  "components": [
+      {
+          "name": "Id_1",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "A",
+          "role": "Measure",
+          "data_type": "Number"
+      },
+      {
+          "name": "B",
+          "role": "Measure",
+          "data_type": "Integer"
+      },
+      {
+          "name": "C",
+          "role": "Measure",
+          "data_type": "Integer"
+      }
+  ]}
