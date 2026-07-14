@@ -10,12 +10,12 @@ The specifications for exchanging VTL validation rules in SDMX messages, for sto
 
 ## VTL Versions
 
-The current official version of the language is [v2.1](https://sdmx-twg.github.io/vtl/v2.1/) and it includes:
+The current official version of the language is [v2.2](https://sdmx-twg.github.io/vtl/v2.2/) and it includes:
 
-* [User Manual](https://sdmx-twg.github.io/vtl/v2.1/user_manual/index.html) highlighting the main characteristics of VTL, its core assumptions and the information model the language is based on;
-* [Reference Manual](https://sdmx-twg.github.io/vtl/v2.1/reference_manual/index.html), describing the full library of operators ordered by category, with examples;
-* EBNF notation (Extended Backus-Naur Form) grammar, which is the technical notation to be used as a test bed for all the examples throughout the document: files [Vtl.g4](https://github.com/sdmx-twg/vtl/blob/master/v2.1/src/main/antlr4/org/sdmx/vtl/Vtl.g4) & [VtlTokens.g4](https://github.com/sdmx-twg/vtl/blob/master/v2.1/src/main/antlr4/org/sdmx/vtl/VtlTokens.g4)
-* [Technical Notes document](https://github.com/sdmx-twg/vtl/blob/master/v2.1/docs/Technical_Notes.md), to support VTL implementation
+* [User Manual](https://sdmx-twg.github.io/vtl/v2.2/user_manual/index.html) highlighting the main characteristics of VTL, its core assumptions and the information model the language is based on;
+* [Reference Manual](https://sdmx-twg.github.io/vtl/v2.2/reference_manual/index.html), describing the full library of operators ordered by category, with examples;
+* EBNF notation (Extended Backus-Naur Form) grammar, which is the technical notation to be used as a test bed for all the examples throughout the document: files [Vtl.g4](https://github.com/sdmx-twg/vtl/blob/master/v2.2/src/main/antlr4/org/sdmx/vtl/Vtl.g4) & [VtlTokens.g4](https://github.com/sdmx-twg/vtl/blob/master/v2.2/src/main/antlr4/org/sdmx/vtl/VtlTokens.g4)
+* [Technical Notes document](https://github.com/sdmx-twg/vtl/blob/master/v2.2/docs/Technical_Notes.md), to support VTL implementation
 
 ## Technology Compatibility Kit (TCK)
 
@@ -25,7 +25,7 @@ The current official version of the language is [v2.1](https://sdmx-twg.github.i
 
 The proposed structure allows obtaining the script, the necessary datasets as input and the datasets to be tested as output.
 
-**v2.1** is the only supported version for TCK publication; validation runs for **v2.1** and **v2.2**.
+**v2.2** is the only supported version for TCK publication; validation runs for **v2.1** and **v2.2**.
 
 ### Validate examples locally
 
@@ -41,12 +41,12 @@ python3 -m unittest scripts/tests/test_validate_example_fixtures.py
 ```shell
 git clone https://github.com/sdmx-twg/vtl.git
 cd vtl
-DOC_VERSION=v2.1 python3 scripts/validate_example_fixtures.py
-DOC_VERSION=v2.1 python3 scripts/generate_tck_files.py
+DOC_VERSION=v2.2 python3 scripts/validate_example_fixtures.py
+DOC_VERSION=v2.2 python3 scripts/generate_tck_files.py
 ```
 
 ### Deployed resources
 
 Github action releases [`TCK` zip](https://sdmx-twg.github.io/vtl/tck) each time `vX/docs/reference_manual/operators` is updated.
 
-For instance, for `v2.1`, you can access directly to the zip through http with `https://sdmx-twg.github.io/vtl/tck/v2.1.zip` url.
+For instance, for `v2.2`, you can access directly to the zip through http with `https://sdmx-twg.github.io/vtl/tck/v2.2.zip` url.
