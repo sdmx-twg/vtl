@@ -1,6 +1,6 @@
 # SDMX-VTL
 
-[![VTL 2.1 documentation](https://img.shields.io/badge/VTL%202.1-documentation-ff69b4)](https://sdmx-twg.github.io/vtl/v2.1/html/)
+[![VTL 2.2 documentation](https://img.shields.io/badge/VTL%202.2-documentation-ff69b4)](https://sdmx-twg.github.io/vtl/v2.2/html/)
 
 VTL is a standard language for defining **validation** and **transformation** rules (set of operators, their syntax and semantics) for any kind of statistical data. 
 
