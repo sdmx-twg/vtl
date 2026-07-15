@@ -19,5 +19,5 @@ jobs:
           java-version: 21
 
       - name: Run tests with Maven
-        working-directory: v2.2
+        working-directory: v2.3
         run: mvn --batch-mode --fail-at-end clean verify
