@@ -8,7 +8,7 @@
 
 ## Guidelines version
 
-These technical guidelines address implementation issues for VTL standard version 2.2.
+These technical guidelines address implementation issues for VTL standard version 2.3.
 
 These guidelines are meant to facilitate developers of VTL tools (engines, interpreters, 
 translators...) in order to make implementation of such tools easier and speedier.

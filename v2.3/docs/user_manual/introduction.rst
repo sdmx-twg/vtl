@@ -2,7 +2,7 @@ Introduction
 ============
 
 This document presents the Validation and Transformation Language (also
-known as ‘VTL’) version 2.2.
+known as ‘VTL’) version 2.3.
 
 The purpose of VTL is to allow a formal and standard definition of
 algorithms to validate statistical data and calculate derived data.
@@ -82,5 +82,5 @@ A short annex gives some background information about the BNF
 (Backus-Naur Form) syntax used for providing a context-free
 representation of VTL.
 
-The Extended BNF (EBNF) representation of the VTL 2.2 package is
+The Extended BNF (EBNF) representation of the VTL 2.3 package is
 available at https://sdmx.org/?page_id=5096.

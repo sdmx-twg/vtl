@@ -3,7 +3,7 @@ Foreword
 
 The Task force for the Validation and Transformation Language (VTL),
 created in 2012-2013 under the initiative of the SDMX Secretariat, is
-pleased to present the version 2.2 of VTL.
+pleased to present the version 2.3 of VTL.
 
 The SDMX Secretariat launched the VTL work at the end of 2012, moving on
 from the consideration that SDMX already had a package for
@@ -67,7 +67,7 @@ has been involved in the SDMX implementation of VTL, aiming at defining
 formats for exchanging rules and developing web services to retrieve them;
 the new features have been included in the SDMX 3.0 package.
 
-The present VTL 2.2 package contains the general VTL specifications,
+The present VTL 2.3 package contains the general VTL specifications,
 independently of the possible implementations of other standards; it includes:
 
 a) The User Manual, highlighting the main
