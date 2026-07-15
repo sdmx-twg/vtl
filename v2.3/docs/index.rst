@@ -1,5 +1,5 @@
 ***************************
-Documentation for VTL v2.2
+Documentation for VTL v2.3
 ***************************
 
 .. toctree::
@@ -9,4 +9,4 @@ Documentation for VTL v2.2
    reference_manual/index
 
 
-`PDF Version <VTL_2.2_DOCS.pdf>`_
+`PDF Version <VTL_2.3_DOCS.pdf>`_
