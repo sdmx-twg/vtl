@@ -2,7 +2,7 @@ Evolution of VTL 2.0 in respect to VTL 1.0
 ==========================================
 
 Important contributions gave origin to the work that brought to the
-VTL 2.0, then the VTL 2.1 and now to this VTL 2.2 version.
+VTL 2.0, then the VTL 2.1, 2.2 and now to this VTL 2.3 version.
 
 Firstly, it was not possible to acknowledge immediately - in VTL 1.0 -
 all of the remarks received during the 1.0 public review. Secondly, the
@@ -202,6 +202,9 @@ conventions and on the other side can be easily substituted by the
 Even in respect to the draft VTL 1.1 many rationalisations have been
 applied, also following the very numerous comments received during the
 relevant public consultation.
+
+Changes for version 2.3
+-----------------------
 
 Changes for version 2.2
 -----------------------

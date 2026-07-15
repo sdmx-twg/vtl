@@ -1,6 +1,6 @@
 # Documentation How-to
 
-VTL 2.2 documentation is published on the web through the content of this directory.
+VTL 2.3 documentation is published on the web through the content of this directory.
 
 The actual publication is automated via a [GitHub action](https://github.com/sdmx-twg/vtl/blob/master/.github/workflows/build-the-docs.yml).
 
@@ -25,17 +25,17 @@ Since we are using Sphinx for the documentation website, some upfront setup is r
 
 Now you can use Sphinx to build and test locally the website by using:
 
-- `sphinx-build -M html v2.2/docs/ ./build/`
+- `sphinx-build -M html v2.3/docs/ ./build/`
 
 ## Structure of the repository
 
-The main directory is `/<vtl>/v2.2/docs` where `<vtl>` is the name of the root directory (the one git create when cloning the repo).
+The main directory is `/<vtl>/v2.3/docs` where `<vtl>` is the name of the root directory (the one git create when cloning the repo).
 
 The Python related files are already described in the _Setup_ section.
 
 `index.rst` is the main page file. As all `.rst` files in this repo, it is a [reStructuredText](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html) markup file.
 
-The `pandocTranslation` folder holds an automated creation of the respective User manual and Reference manual from their 2.2 original document to a `.rst` file. This has to be considered as the raw material for the initial contribution.
+The `pandocTranslation` folder holds an automated creation of the respective User manual and Reference manual from their 2.3 original document to a `.rst` file. This has to be considered as the raw material for the initial contribution.
 
 ## How to actually contribute?
 

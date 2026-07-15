@@ -15,7 +15,7 @@
     </organization>
 
     <properties>
-        <revision>2.2.0</revision>
+        <revision>2.3.0</revision>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
