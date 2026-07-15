@@ -2,14 +2,14 @@ Introduction
 ============
 
 This document is the Reference Manual of the Validation and
-Transformation Language (also known as ‘VTL’) version 2.2.
+Transformation Language (also known as ‘VTL’) version 2.3.
 
-The VTL 2.2 library of the Operators is described hereinafter.
+The VTL 2.3 library of the Operators is described hereinafter.
 
-VTL 2.2 consists of two parts: the VTL Definition Language (VTL-DL) and
+VTL 2.3 consists of two parts: the VTL Definition Language (VTL-DL) and
 the VTL Manipulation Language (VTL-ML).
 
-This manual describes the operators of VTL 2.2 in detail (both VTL-DL
+This manual describes the operators of VTL 2.3 in detail (both VTL-DL
 and VTL-ML) and is organized as follows.
 
 First, in the following Chapter “Overview of the language and

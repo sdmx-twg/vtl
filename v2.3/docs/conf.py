@@ -6,7 +6,7 @@ from jinja2 import Environment, FileSystemLoader
 
 
 project = u'VTL Documentation'
-VERSION = "2.2"
+VERSION = "2.3"
 
 
 def name_norm(value):
