@@ -1,7 +1,7 @@
 # Concept Note: User Defined Operators (UDO)
 This work package seeks to make user defined operators more flexible and powerful, overcoming current limitations (e.g. on input parameters). 
 
-This package's output will be a new set of rules for UDOs ... 
+This package's output will be a new set of features for UDOs, possibly introducing "named parameters" together with the existing positional order approach. 
 
 ## I. Overview and Purpose
 
