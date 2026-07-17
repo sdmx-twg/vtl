@@ -1,27 +1,24 @@
 # Concept Note: User Defined Operators (UDO)
 This work package seeks to make user defined operators more flexible and powerful, overcoming current limitations (e.g. on input parameters). 
 
-This package's output will be a new set of features for UDOs, possibly introducing "named parameters" together with the existing positional order approach. 
-
 ## I. Overview and Purpose
 
-The main goal of this workpackage will be to eliminate discrepancies between the different time operators and to align them as much as possibile to ISO 8601 standard (current version documentation is available at [(https://www.isotc154.org/standards/iso-8601-1-2019/)].
+The main goal of this workpackage will be to allow final users to define general purpose UDOs with more flexibility to cover more use cases than the current version.
 
 ## II. Scope and Approach
 
 Here is a non-exhaustive list of the topics that would be resolved (in parenthesis the current open issue number for reference):
 
--	Clarify comparison on Time Period (#618)
--	Review time_agg operator (#512)
--	Allow components in timeshift, dateadd, time_agg (#649)
--	Problem with description of Casting with optional mask from string to Time_Period/Duration and Time_Period/Duration to string (#671)
--	Inconsistency in Duration specification (#630)
+-	Allow set of components as argument of UDOs (#389)
+-	UDO default parameters (#396)
+-	Cannot provide a set as input parameter for UDO (#410)
 
-Furthermore, the definition of new data types for VTL to be used by temporal operators could be explored. 
+Furthermore, the possibility to introduce "named parameters" together with the existing positional order approach will be explored.
 
 ## Timeline (TBD)
 
 ## Members
-- Javier (workpackage coordinator)
-- Angelo
-- Hadrien
+- Antonio (workpackage coordinator)
+- Laura
+- Nicolas
+- Valentino
