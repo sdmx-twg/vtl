@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://sdmx.org/vtl-dict-schema.json",
   "description": "Serialization schema for a VTL model instance.",
-  "version": "2.2.0",
+  "version": "2.3.0",
   
   "$defs": {
     "vtl-id": {
@@ -23,7 +23,7 @@
   
   "type": "object",
   "properties": {
-    "vtl-schema-version": { "const": "2.2.0" },
+    "vtl-schema-version": { "const": "2.3.0" },
     "data": {
       "$comment": "This schema section describes data such as datasets and scalars.",
       "type": "array",
