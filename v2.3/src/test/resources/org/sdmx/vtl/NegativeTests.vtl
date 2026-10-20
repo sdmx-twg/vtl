@@ -1292,3 +1292,13 @@ when "C" then "C";
 else "F";
 else "G"
 end viral propagation
+
+//'<>' is not allowed as relation in a hierarchical rule
+define hierarchical ruleset hr_neq (valuedomain rule GeoArea) is
+BENELUX <> BELGIUM + LUXEMBOURG + NETHERLANDS
+end hierarchical ruleset
+
+//relation operator missing in a hierarchical rule
+define hierarchical ruleset hr_no_operator (valuedomain rule GeoArea) is
+BENELUX BELGIUM + LUXEMBOURG + NETHERLANDS
+end hierarchical ruleset

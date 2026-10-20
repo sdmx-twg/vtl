@@ -18,12 +18,12 @@ define datapoint ruleset DPR_2 ( variable flow as F, obs_value as O) is
 when F = "CREDIT" or F = "DEBIT" then O >= 0 errorcode "Bad value"
 end datapoint ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
 define hierarchical ruleset BeneluxCountriesHierearchy (valuedomain rule Geo_Area) is
 BENELUX = BELGIUM + LUXEMBOURG + NETHERLANDS
 end hierarchical ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
 define hierarchical ruleset BeneluxRuleset (valuedomain rule GeoArea) is
 Belgium = Belgium
 ;Luxembourg = Luxembourg
@@ -31,7 +31,7 @@ Belgium = Belgium
 ;Benelux = Belgium + Luxembourg + Netherlands
 end hierarchical ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature[ValueDomainSignature[Signature[VarID]]] RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature[ValueDomainSignature[Signature[VarID]]] RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ComparisonExprComp[CompId[ComponentID] ComparisonOperand ConstantExprComp[StringLiteral]] ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
 define hierarchical ruleset CalcCountryLevel (valuedomain condition Residence rule GeoArea) is
 when Residence = "resident" then Country1 = Country1
 ; when Residence = "non-resident" then Country1 = Region11+Region1M        
@@ -39,23 +39,23 @@ when Residence = "resident" then Country1 = Country1
 ; when Residence = "non-resident" then CountryN = RegionN1 + RegionNM
 end hierarchical ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
 define hierarchical ruleset sex_hr (valuedomain rule sex) is
 TOTAL = MALE + FEMALE
 end hierarchical ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]] ErCode[StringLiteral]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]] ErCode[StringLiteral]]]]]]
 define hierarchical ruleset BeneluxCountriesHierarchy (valuedomain rule GeoArea) is
 BENELUX = BELGIUM + LUXEMBOURG + NETHERLANDS errorcode "Bad value for Benelux" 
 end hierarchical ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
 define hierarchical ruleset american_partners_hr (variable rule PartnerArea) is
 NORTH_AMERICA > US ;
 SOUTH_AMERICA = BR + UY + AR + CL 
 end hierarchical ruleset;
 
-## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue ComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]]]]]]
 define hierarchical ruleset validationruleset_bop (variable rule BoPItem ) is
 transport_method1 : Transport  =  AirTransport + SeaTransport + LandTransport ;
 transport_method2 : Transport = PassengersTransport + FreightsTransport
@@ -1063,3 +1063,12 @@ end viral propagation;
 define viral propagation EMBARGO_time (variable EMBARGO_TIME) is
 aggregate max
 end viral propagation;
+
+## Start[DefineExpression[DefHierarchical[RulesetID HierRuleSignature RuleClauseHierarchical[RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue] CodeItemRelationClause[ValueDomainValue]]] RuleItemHierarchical[CodeItemRelation[ValueDomainValue HrComparisonOperand CodeItemRelationClause[ValueDomainValue]]]]]]]
+define hierarchical ruleset hr_relations (valuedomain rule GeoArea) is
+EU = EA + NON_EA
+; EU > EA
+; EA < EU
+; EU >= EA + DK
+; EA <= EU
+end hierarchical ruleset;
