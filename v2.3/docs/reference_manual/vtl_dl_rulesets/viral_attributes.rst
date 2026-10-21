@@ -19,12 +19,13 @@ define more than one propagation rule for the same Value Domain or for
 the same Variable.
 
 The input of a propagation rule is a **pair** of values from the viral
-Attribute. The propagation algorithm is a binary operation that is
-associative, commutative, and reflexive. When an operator involves more
-than two operands (e.g., an aggregate function or an N-ary arithmetic
+Attribute. Except for the **avg** aggregate rule (see below), the
+propagation algorithm is a binary operation that is associative,
+commutative, and reflexive. When an operator involves more than two
+operands (e.g., an aggregate function or an N-ary arithmetic
 operation), the propagation rule is applied recursively to the values
-pair by pair. The final result is independent of the order in which the
-pairs are evaluated.
+pair by pair, and the final result is independent of the order in which
+the pairs are evaluated.
 
 Two modelling families are supported:
 
@@ -58,6 +59,16 @@ Two modelling families are supported:
   operand values to a single result. Only a dedicated list of aggregate
   keywords (**min**, **max**, **sum**, **avg**) can be used so that the
   propagation stays deterministic and implementation-independent.
+
+  **avg** is not associative, because an average does not record how
+  many values it summarises. Within one operator, **avg** is applied
+  once to the whole set of operand values (e.g., the Data Points of a
+  group or the Data Sets of a join), so the result does not depend on
+  the order of the operands. Across the operators of an expression, the
+  propagation follows their order of execution, so the result depends
+  on the order of the operations. For example, with the values 1, 2
+  and 6, ``DS_1 + DS_2 + DS_3`` yields avg(avg(1, 2), 6) = 3.75, while
+  ``DS_3 + DS_2 + DS_1`` yields avg(avg(6, 2), 1) = 2.5.
 
 Operators do not accept propagation instructions directly: once the
 propagation is defined (either on the Value Domain or on the Variable),
