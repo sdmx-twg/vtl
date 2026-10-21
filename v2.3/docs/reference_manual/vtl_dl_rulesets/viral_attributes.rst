@@ -65,10 +65,13 @@ Two modelling families are supported:
   once to the whole set of operand values (e.g., the Data Points of a
   group or the Data Sets of a join), so the result does not depend on
   the order of the operands. Across the operators of an expression, the
-  propagation follows their order of execution, so the result depends
-  on the order of the operations. For example, with the values 1, 2
-  and 6, ``DS_1 + DS_2 + DS_3`` yields avg(avg(1, 2), 6) = 3.75, while
-  ``DS_3 + DS_2 + DS_1`` yields avg(avg(6, 2), 1) = 2.5.
+  propagation follows their order of execution (precedence,
+  associativity and parentheses), so the result depends on how the
+  operations are grouped. For example, if the viral Attribute is 1, 2
+  and 6 in DS_1, DS_2 and DS_3, ``(DS_1 + DS_2) + DS_3`` yields
+  avg(avg(1, 2), 6) = 3.75, while ``DS_1 + (DS_2 + DS_3)`` yields
+  avg(1, avg(2, 6)) = 2.5. When the value of the viral Attribute
+  matters, the grouping should be made explicit with parentheses.
 
 Operators do not accept propagation instructions directly: once the
 propagation is defined (either on the Value Domain or on the Variable),
