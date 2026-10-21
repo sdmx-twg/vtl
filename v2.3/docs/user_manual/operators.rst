@@ -1523,8 +1523,9 @@ Data Set operator “§” which applies on the measures):
 
    The **avg** aggregate rule is the only exception to this law. Within
    one operator it is applied once to the whole set of operand values,
-   and across operators its result depends on the order of execution of
-   the operations (see
+   and across operators its result depends on how the operations are
+   grouped, so the grouping should be made explicit with parentheses
+   when the value of the viral Attribute matters (see
    :doc:`/reference_manual/vtl_dl_rulesets/viral_attributes`).
 
    **Reflexive law (3)**
