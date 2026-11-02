@@ -206,6 +206,33 @@ relevant public consultation.
 Changes for version 2.2
 -----------------------
 
+The VTL 2.2 version is a minor one and contains the following changes
+in respect to 2.1:
+
+i.   a new important change has been introduced to the VTL Information Model:
+     the relation between Data Structure Component and Represented Variable entities
+     has been changed from 1:1 to 0:1, giving more flexibility for the implementation;
+
+ii.  typos and errors in the text and/or in the examples have been fixed;
+
+iii. the join operators have been completely reorganized: in 2.1 version there
+     was just an operator (join) with 4 different sub-operators. In the 
+     2.2 version 4 different operators have been introduced (inner_join, left_join, 
+     full_join, cross_join) and the Additional constraints and the Behaviour
+     have been completely redefined;
+     
+iv.  a new DL operator hase been added for defining viral attributes
+     propagation rules;
+
+v.   a new string distance operator has been introduced supporting 4 different methods:
+     levenshtein, damerau_levenshtein, hamming and jaro_winkler, returning the 
+     respecting string distances;
+
+vi.  new clauses have been added to the analytical invocation operator.
+
+The JSON Schema for Metadata in the Technical Notes document has been reviewed according 
+to the changes made in the Information Model.
+
 Changes for version 2.1
 -----------------------
 

@@ -1,0 +1,49 @@
+{
+  "name":"DS_r",
+  "components": [
+      {
+          "name": "Id_1",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_21",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_22",
+          "role": "Identifier",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Me_1",
+          "role": "Measure",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_31",
+          "role": "Identifier",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_21",
+          "role": "Measure",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Id_32",
+          "role": "Identifier",
+          "data_type": "String"
+      },
+      {
+          "name": "Me_22",
+          "role": "Measure",
+          "data_type": "Integer"
+      },
+      {
+          "name": "Me_3",
+          "role": "Measure",
+          "data_type": "Integer"
+      }
+  ]}

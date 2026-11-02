@@ -1,0 +1,19 @@
+{
+    "name": "DS_r",
+    "components": [
+        {
+            "name": "Id_1",
+            "role": "Identifier",
+            "data_type": "String"
+        },
+        {
+            "name": "Me_1",
+            "role": "Measure",
+            "data_type": "Date"
+        },
+        {
+            "name": "Me_2",
+            "role": "Measure",
+            "data_type": "Integer"
+        }
+    ]}
