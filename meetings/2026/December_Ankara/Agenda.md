@@ -2,6 +2,8 @@
 
 Hybrid Meeting: 2nd December 2026 (60 minutes)
 
+Draft Agenda
+
 | Time        | Item                                        | Presenter  | 
 | ----------- | --------------------------------------------|----------- | 
 | 0:00 – 0:05 | Opening: welcome of participants            | Angelo     | 
