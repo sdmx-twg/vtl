@@ -39,6 +39,7 @@ The following list includes collaborators that work on VTL, but do not belong to
 Arturo San Feliciano|Banco de España|arturo.san_feliciano@bde.es||Collaborator|
 Daniele Mansillo|FAO|daniele.mansillo@fao.org||Collaborator|
 Daniele Olivotti|UNICEF|dolivotti@unicef.org||Collaborator|
+Emilien Dieryck|NBB|emilien.dieryck@nbb.be||Collaborator|
 Frederik Van Hecke|NBB|frederik.vanhecke@nbb.be||Collaborator|
 Giulia Pennè|ISTAT|giulia.penne@istat.it||Collaborator|
 Jens Dossé|OECD|Jens.DOSSE@oecd.org|dosse|Collaborator|
