@@ -263,7 +263,6 @@ timeOperators:
 timeOperatorsComponent:
     PERIOD_INDICATOR LPAREN exprComponent? RPAREN                                                                                               # periodAtomComponent
     | FILL_TIME_SERIES LPAREN exprComponent (COMMA op=(SINGLE|ALL))? RPAREN                                                                        # fillTimeAtomComponent
-    | op=(FLOW_TO_STOCK | STOCK_TO_FLOW) LPAREN exprComponent RPAREN	                                                                                    # flowAtomComponent
     | TIMESHIFT LPAREN exprComponent COMMA (intShift=signedInteger | varShift=varID) RPAREN                                                     # timeShiftAtomComponent
     | TIME_AGG LPAREN (periodIndToVar=varID | periodIndToConst=STRING_CONSTANT) (COMMA periodIndFrom=(STRING_CONSTANT| OPTIONAL ))? (COMMA op=optionalExprComponent)? (COMMA delim=(FIRST|LAST))? RPAREN    # timeAggAtomComponent
     | CURRENT_DATE LPAREN RPAREN                                                                                                               # currentDateAtomComponent
